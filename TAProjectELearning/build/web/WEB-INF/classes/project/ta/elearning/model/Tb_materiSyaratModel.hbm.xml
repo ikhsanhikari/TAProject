@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="project.ta.elearning.model.Tb_materiSyaratModel" table="tb_materi_syarat">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="lessonid" column="lessonid" />
+        <property name="quizid" column="quizid" />
+    </class>
+  
+
+</hibernate-mapping>

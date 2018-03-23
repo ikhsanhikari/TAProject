@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="project.ta.elearning.model.Tb_quizModel" table="tb_quiz">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="name" type="string" column="name"/>
+        <property name="timeopen" type="integer" length="10" column="timeopen"/>
+        <property name="timeclose" type="integer" length="10" column="timeclose"/>
+        <property name="timelimit" type="integer" length="10" column="timelimit"/>
+        <property name="timecreated" type="integer" length="10" column="timecreated"/>
+        <property name="timemodified" type="integer" length="10" column="timemodified"/>       
+        <property name="id_category" type="integer" column="id_category" length="10"/>
+        <property name="id_matery" type="integer" column="id_matery" length="10"/>
+    </class>
+</hibernate-mapping>

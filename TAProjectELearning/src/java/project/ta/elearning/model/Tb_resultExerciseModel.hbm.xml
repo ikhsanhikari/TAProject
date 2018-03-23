@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class table="tb_resultExercise" name="project.ta.elearning.model.Tb_resultExcerciseModel">
+        <id name="id">
+            <generator class="native"/>
+        </id>
+        <property name="id_collerger" column="id_collerger" type="integer"/>
+        <property name="id_matery" column="id_matery" type="integer"/>
+        <property name="id_qa" column="id_qa" type="integer"/>
+        <property name="status" column="status" type="integer"/>
+        <property name="timeopen" column="timeopen" type="string"/>
+        <property name="timeclose" column="timeclose" type="string"/>
+        <property name="timecreated" column="timecreated" type="string"/>
+        <property name="timemodified" column="timemodified" type="string"/>
+    </class>
+  
+
+</hibernate-mapping>

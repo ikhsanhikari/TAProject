@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="project.ta.elearning.model.Tb_sessionModel" table="tb_session">
+        <id name="id" column="id">
+            <generator class="native"></generator>
+        </id>
+        <property name="userid" type="integer" />
+        <property name="timecreated" type="string" />
+        <property name="username" type="string" />
+        <property name="timeout" type="string" />
+        <property name="firstip" type="string" />
+        <property name="lastip" type="string" />
+    </class>
+  
+
+</hibernate-mapping>

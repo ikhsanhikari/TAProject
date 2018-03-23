@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="project.ta.elearning.model.Tb_userModel" table="tb_user">
+        <id name="id" column="id">
+            <generator class="native"></generator>
+        </id>
+        <property name="username" length="255"/>
+        <property name="password" length="255"/>
+        <property name="firstname" length="100"/>
+        <property name="lastname" length="100"/>
+        <property name="email" length="100"/>
+        <property name="phone1" length="20"/>
+        <property name="institution" length="255"/>
+        <property name="department" length="255"/>
+        <property name="address" length="255"/>
+        <property name="city" length="120"/>
+        <property name="firstaccess" length="100"/>
+        <property name="lastaccess" length="100"/>
+        <property name="lastlogin" length="100"/>
+        <property name="currentlogin" length="100"/>
+        <property name="picture" length="100"/>
+        <property name="description" type="text" />
+        <property name="timecreated" length="100"/>
+        <property name="timemodified" length="100"/>
+        <property name="id_role" type="integer" length="10"/>
+    </class>
+  
+
+</hibernate-mapping>

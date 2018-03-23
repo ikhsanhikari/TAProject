@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+ <class name="project.ta.elearning.model.Tb_choice_answersModel" table="tb_choice_answers">
+        <id column="id" name="id">
+            <generator class="native"/>
+        </id>
+        <property name="userid" column="userid" type="integer" length="10"/>
+        <property name="choiceid" column="choiceid" type="integer" length="10"/>
+        <property name="optionid" column="optionid" type="integer" length="10"/>
+        <property name="timecreated" column="timecreated" type="string" length="50"/>
+        <property name="timemodified" column="timemodified" type="string" length="50"/>
+ </class>
+</hibernate-mapping>
