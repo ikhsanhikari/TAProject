@@ -17,6 +17,7 @@
 <link href="<c:url value="/resources/css/font-awesome.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/pages/dashboard.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/pages/faq.css" />" rel="stylesheet">
 <!DOCTYPE html>
 <html>
     <head>
@@ -45,9 +46,6 @@
                                 </ul>
                             </li>
                         </ul>
-                        <form class="navbar-search pull-right">
-                            <input type="text" class="search-query" placeholder="Search">
-                        </form>
                     </div>
                     <!--/.nav-collapse --> 
                 </div>
@@ -56,36 +54,74 @@
             <!-- /navbar-inner --> 
         </div>
         <!-- /navbar -->
-        <h1>Hello ${username} Passsword anda ${password} anda sebagai ${role} (Mahasiswa)</h1>
-        <p><a href="logout.htm">Log Out</a></p>
-        <div class="row">
-            <div class=" col-5 pull-right" >
-                <form:form modelAttribute="reDto" method="GET" action="random_quiz.htm">
-                    <form:hidden path="id_collerger" />
-                    <c:forEach var="data" items="${listQuiz}" >
-                        ${data.id} . ${data.name} 
-                        <br/>
-                        <c:forEach var="dataA" items="${listAnswer}" >
-                            <form:radiobutton path="id_qa" value="${dataA.id_answer}"></form:radiobutton> . ${dataA.answer}<br/>
-                        </c:forEach>
-                        <c:if test="${stat==0}">
-                            <form:input path="short_answer" placeholder="Jawaban"/>
-                        </c:if>
-                    </c:forEach>
-                    <input type="submit" value="next"/>
-                </form:form>        
-                <br/>
-                <a href="view_historis.htm"><button>Selesai</button></a>
-                            
-<!--                <a href="random_quiz.htm"><button class="btn-default">Next</button></a>-->
-            </div>
-        </div>
-        <!--        <div class="row">
-                    a. pilihan 1<br/>
-                    b. pilihan 2<br/>
-                    c. pilihan 3<br/>
-                    d. pilihan 4<br/>
-                </div>-->
+
+
+
+        <div class="main">
+
+            <div class="main-inner">
+
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="span12">
+
+                            <div class="widget">
+
+                                <div class="widget-header" style="margin-top:20px">
+                                    <i class="icon-tasks"></i>
+                                    <h3>Exercise</h3>
+                                </div> <!-- /widget-header -->
+
+                                <div class="widget-content" style="height:500px">
+
+<!--                                    <h1>Hello ${username} Passsword anda ${password} anda sebagai ${role} (Mahasiswa)</h1>
+                                    <p><a href="logout.htm">Log Out</a></p>-->
+                                    <form:form modelAttribute="reDto" method="GET" action="random_quiz.htm">
+                                        <form:hidden path="id_collerger" />
+                                        <c:forEach var="data" items="${listQuiz}" >
+                                            ${data.id} . ${data.name} 
+                                            <br/>
+                                            <c:forEach var="dataA" items="${listAnswer}" >
+                                                <form:radiobutton path="id_qa" value="${dataA.id_answer}"></form:radiobutton> . ${dataA.answer}<br/>
+                                            </c:forEach>
+                                            <c:if test="${stat==0}">
+                                                <form:input path="short_answer" placeholder="Jawaban"/>
+                                            </c:if>
+                                        </c:forEach>
+                                    </form:form>   
+
+                                    <!--                <a href="random_quiz.htm"><button class="btn-default">Next</button></a>-->
+                                    <!--        <div class="row">
+                                                a. pilihan 1<br/>
+                                                b. pilihan 2<br/>
+                                                c. pilihan 3<br/>
+                                                d. pilihan 4<br/>
+                                            </div>-->
+                                </div> <!-- /widget-content -->     
+                                <br/>
+                                <a href="view_historis.htm" class="btn btn-success">Selesai</a>
+                                <input class="btn btn-primary" type="submit" value="next"/>
+
+                            </div> <!-- /widget -->	
+
+                        </div> <!-- /spa12 -->
+
+
+
+
+
+
+
+                    </div> <!-- /row -->
+
+                </div> <!-- /container -->
+
+            </div> <!-- /main-inner -->
+
+        </div> <!-- /main -->
+
         <!--javascript-->
         <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script> 
         <script src="<c:url value="resources/js/excanvas.min.js"/>"></script> 

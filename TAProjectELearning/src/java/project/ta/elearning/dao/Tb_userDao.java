@@ -21,4 +21,6 @@ public interface Tb_userDao {
     public void deleteData(Integer id);
     public void updateData(Tb_userModel model);
     public List<Tb_userModel> getDataById(Integer id);
+//    public List<Tb_userModel> getDataKnowledge(Integer id);
+    public int getDataKnowledge(String username);
 }
