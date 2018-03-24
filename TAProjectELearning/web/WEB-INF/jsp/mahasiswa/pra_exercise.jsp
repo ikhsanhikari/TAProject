@@ -1,7 +1,7 @@
 <%-- 
-    Document   : index.jsp
-    Created on : Feb 24, 2018, 10:56:06 AM
-    Author     : Sou
+    Document   : pra_exercise
+    Created on : Mar 25, 2018, 12:07:29 AM
+    Author     : IT
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -20,7 +20,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Halaman Mahasiswa</title>
     </head>
-    <body>
+    <body onload="setDisabled()">
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
@@ -50,30 +50,44 @@
             <!-- /navbar-inner --> 
         </div>
         <!-- /navbar -->
-        <p>Knowledge terdeteksi sebagai "${knowledge}". Datamu ${ada} dalam database.</p>
-        <p>Pilih aksi berikut untuk memulai :</p>
         <table>
             <tr>
                 <td>
-                    <a href="pra_exercise.htm">
-                        <button>
-                        Excercise
+                    <a href="view_quiz.htm">
+                        <button id="btnPoor" disabled>
+                            Poor
                         </button>
                     </a>
                 </td>
                 <td>
-                    <button>
-                        Quiz
-                    </button>
+                    <a href="view_quiz.htm">
+                        <button id="btnFair" disabled>
+                            Fair
+                        </button>
+                    </a>
+                </td>
+                <td>
+                    <a href="view_quiz.htm">
+                        <button id="btnGood" disabled>
+                            Good
+                        </button>
+                    </a>
                 </td>
             </tr>
         </table>
-                <!--javascript-->
-        <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script> 
-        <script src="<c:url value="resources/js/excanvas.min.js"/>"></script> 
-        <script src="<c:url value="resources/js/chart.min.js"/>" type="text/javascript"></script> 
+        <!--javascript-->
+        <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script>
         <script src="<c:url value="resources/js/bootstrap.js"/>"></script>
-        <script language="javascript" type="text/javascript" src="<c:url value="resources/js/full-calendar/fullcalendar.min.js"/>"></script>
+        <script>
+            function setDisabled(){
+//                var elemen = document.getElementByTagName('button');
+                var btnPoor = document.getElementById('btnPoor');
+                var btnFair = document.getElementById('btnFair');
+                var btnGood = document.getElementById('btnGood');
+                btnPoor.disabled = ${nilaiDisabledPoor};
+                btnFair.disabled = ${nilaiDisabledFair};
+                btnGood.disabled = ${nilaiDisabledGood};
+            }
+        </script>
     </body>
 </html>
-
