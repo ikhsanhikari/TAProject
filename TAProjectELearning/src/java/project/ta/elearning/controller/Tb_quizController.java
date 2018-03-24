@@ -12,8 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import project.ta.elearning.dto.Tb_qaDto;
 import project.ta.elearning.dto.Tb_quizDto;
+import project.ta.elearning.dto.Tb_resultExerciseDto;
 import project.ta.elearning.dto.Tb_userDto;
 import project.ta.elearning.service.Tb_quizService;
 
@@ -84,11 +86,13 @@ public class Tb_quizController {
     }
 
     @RequestMapping(value = "/view_quiz", method = RequestMethod.GET)
-    public String viewQuiz(Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_qaDto tb_qaDto) {
+    public String viewQuiz(Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
         List<Tb_quizDto> listQuiz = tb_quizService.getData();
         List<Tb_quizDto> listAnswer = tb_quizService.getAnswerAllByQuiz(listQuiz.get(0).getId());
+        reDto.setId_collerger(Integer.parseInt(session.getAttribute("iduser").toString()));
         map.addAttribute("listQuiz", listQuiz);
-        map.addAttribute("tb_qaDto", tb_qaDto);
+        map.addAttribute("reDto", reDto);
+        
         int stat = 0;
         if(listAnswer.size()>1){
             map.addAttribute("listAnswer", listAnswer);
@@ -98,18 +102,26 @@ public class Tb_quizController {
         return "mahasiswa/view_quiz";
     }
     
-    
+//    @ResponseBody
     @RequestMapping(value = "/random_quiz", method = RequestMethod.GET)
-    public String randomQuiz(ModelMap map,Tb_qaDto tb_qaDto) {
+    public String randomQuiz(ModelMap map,Tb_resultExerciseDto reDto) {
         List<Tb_quizDto> listQuiz = tb_quizService.getData();
         map.addAttribute("listQuiz", listQuiz);
-        map.addAttribute("tb_qaDto", tb_qaDto);
+        map.addAttribute("reDto", reDto);
+        tb_quizService.saveData(reDto);
         return "redirect:view_quiz.htm";
     }
     @RequestMapping(value = "/delete_quiz", method = RequestMethod.GET)
     public String deleteQuiz(Integer id) {
         tb_quizService.deleteData(id);
         return "redirect:view_quiz.htm";
+    }
+    
+    @RequestMapping(value = "/view_historis", method = RequestMethod.GET)
+    public String historis(ModelMap model,HttpSession session) {
+        List<Tb_quizDto> listHistoris = tb_quizService.getDataHistoris(Integer.parseInt(session.getAttribute("iduser").toString()));
+        model.addAttribute("listHistoris", listHistoris);
+        return "mahasiswa/historis_exercise";
     }
 
 }

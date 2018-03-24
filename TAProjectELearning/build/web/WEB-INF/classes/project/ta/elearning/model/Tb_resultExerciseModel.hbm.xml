@@ -13,6 +13,7 @@
         <property name="id_matery" column="id_matery" type="integer"/>
         <property name="id_qa" column="id_qa" type="integer"/>
         <property name="status" column="status" type="integer"/>
+        <property name="short_answer" column="short_answer" type="string"/>
         <property name="timeopen" column="timeopen" type="string"/>
         <property name="timeclose" column="timeclose" type="string"/>
         <property name="timecreated" column="timecreated" type="string"/>

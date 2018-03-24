@@ -7,6 +7,7 @@ package project.ta.elearning.service;
 
 import java.util.List;
 import project.ta.elearning.dto.Tb_quizDto;
+import project.ta.elearning.dto.Tb_resultExerciseDto;
 
 /**
  *
@@ -15,6 +16,8 @@ import project.ta.elearning.dto.Tb_quizDto;
 public interface Tb_quizService {
 
     public List<Tb_quizDto> getData();
+    
+    public List<Tb_quizDto> getDataHistoris(Integer id);
 
     public void saveData(Tb_quizDto dto);
 
@@ -26,5 +29,9 @@ public interface Tb_quizService {
     
     public List<Tb_quizDto> getAnswerAllByQuiz(Integer id);
     
+    public List<Tb_quizDto> getJawabanBenar(Integer id);
+    
     public Integer saveQuiz(Integer id,Integer id_collerger,Integer id_matery,Integer id_qa,Integer status);
+    
+    public void saveData(Tb_resultExerciseDto dto);
 }

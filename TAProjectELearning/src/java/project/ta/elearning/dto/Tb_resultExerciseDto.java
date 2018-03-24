@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project.ta.elearning.model;
+package project.ta.elearning.dto;
 
 /**
  *
  * @author Sou
  */
-public class Tb_resultExcerciseModel {
+public class Tb_resultExerciseDto {
     private Integer id;
     private Integer id_collerger;
     private Integer id_matery;
@@ -20,6 +20,15 @@ public class Tb_resultExcerciseModel {
     private String timecreated;
     private String timemodified;
     private String short_answer;
+    private String jawaban_benar;
+
+    public String getJawaban_benar() {
+        return jawaban_benar;
+    }
+
+    public void setJawaban_benar(String jawaban_benar) {
+        this.jawaban_benar = jawaban_benar;
+    }
 
     public String getShort_answer() {
         return short_answer;
@@ -100,5 +109,5 @@ public class Tb_resultExcerciseModel {
     public void setTimemodified(String timemodified) {
         this.timemodified = timemodified;
     }
-    
+
 }

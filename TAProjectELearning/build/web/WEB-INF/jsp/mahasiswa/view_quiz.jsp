@@ -60,19 +60,24 @@
         <p><a href="logout.htm">Log Out</a></p>
         <div class="row">
             <div class=" col-5 pull-right" >
-                <form:form modelAttribute="tb_qaDto" method="GET" action="random_quiz.htm">
+                <form:form modelAttribute="reDto" method="GET" action="random_quiz.htm">
+                    <form:hidden path="id_collerger" />
                     <c:forEach var="data" items="${listQuiz}" >
                         ${data.id} . ${data.name} 
                         <br/>
                         <c:forEach var="dataA" items="${listAnswer}" >
-                            <form:radiobutton path="id"></form:radiobutton>${dataA.answer}<br/>
+                            <form:radiobutton path="id_qa" value="${dataA.id_answer}"></form:radiobutton> . ${dataA.answer}<br/>
                         </c:forEach>
                         <c:if test="${stat==0}">
-                            <form:input path="id" placeholder="Jawaban"/>
+                            <form:input path="short_answer" placeholder="Jawaban"/>
                         </c:if>
                     </c:forEach>
+                    <input type="submit" value="next"/>
                 </form:form>        
-                <a href="random_quiz.htm"><button class="btn-default">Next</button></a>
+                <br/>
+                <a href="view_historis.htm"><button>Selesai</button></a>
+                            
+<!--                <a href="random_quiz.htm"><button class="btn-default">Next</button></a>-->
             </div>
         </div>
         <!--        <div class="row">

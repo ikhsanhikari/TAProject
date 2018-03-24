@@ -53,7 +53,7 @@
             <!-- /navbar-inner --> 
         </div>
         <!-- /navbar -->
-        <h1>Hello ${username} Passsword anda ${password} anda sebagai ${role} (Mahasiswa)</h1>
+        <h1>${iduser} ==== Hello ${username} Passsword anda ${password} anda sebagai ${role} (Mahasiswa)</h1>
         <p><a href="logout.htm">Log Out</a></p>
         <table>
             <tr>

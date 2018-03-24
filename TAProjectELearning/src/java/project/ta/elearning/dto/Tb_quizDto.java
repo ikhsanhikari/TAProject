@@ -22,6 +22,60 @@ public class Tb_quizDto {
     private String answer;
     private String id_status; 
     private Integer id_jenis_soal;
+    private Integer id_answer;
+    private String nama;
+    private String soal;
+    private String jenis_soal;
+    private String benar_salah;
+    private String jawaban;
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public String getSoal() {
+        return soal;
+    }
+
+    public void setSoal(String soal) {
+        this.soal = soal;
+    }
+
+    public String getJenis_soal() {
+        return jenis_soal;
+    }
+
+    public void setJenis_soal(String jenis_soal) {
+        this.jenis_soal = jenis_soal;
+    }
+
+    public String getBenar_salah() {
+        return benar_salah;
+    }
+
+    public void setBenar_salah(String benar_salah) {
+        this.benar_salah = benar_salah;
+    }
+
+    public String getJawaban() {
+        return jawaban;
+    }
+
+    public void setJawaban(String jawaban) {
+        this.jawaban = jawaban;
+    }
+
+    public Integer getId_answer() {
+        return id_answer;
+    }
+
+    public void setId_answer(Integer id_answer) {
+        this.id_answer = id_answer;
+    }
 
     public Integer getId_jenis_soal() {
         return id_jenis_soal;

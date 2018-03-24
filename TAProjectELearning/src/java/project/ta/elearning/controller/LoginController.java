@@ -24,7 +24,7 @@ import project.ta.elearning.service.UserService;
  *
  * @author Sou
  */
-@SessionAttributes({"username", "password", "firstname", "lastname", "role", "nama"})
+@SessionAttributes({"username", "password", "firstname", "lastname", "role", "nama","iduser"})
 @Controller
 public class LoginController {
 
@@ -44,6 +44,7 @@ public class LoginController {
             modelMap.addAttribute("password", password);
             modelMap.addAttribute("role", listUser.getId_role());
             modelMap.addAttribute("firstname", listUser.getFirstname());
+            modelMap.addAttribute("iduser", listUser.getId());
             Tb_sessionDto tb_sessionDto = new Tb_sessionDto();
             tb_sessionDto.setFirstip("10.10.10.142");
             tb_sessionDto.setLastip("10.10.10.142");

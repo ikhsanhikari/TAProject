@@ -1,10 +1,13 @@
 <%-- 
-    Document   : index.jsp
-    Created on : Feb 24, 2018, 10:56:06 AM
+    Document   : historis_exercise
+    Created on : Mar 24, 2018, 1:13:29 PM
     Author     : Sou
 --%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
@@ -18,7 +21,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Halaman Mahasiswa</title>
+        <title>Historis Exercise</title>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
@@ -53,25 +56,47 @@
             <!-- /navbar-inner --> 
         </div>
         <!-- /navbar -->
-        <h1>${iduser} ==== Hello ${username} Passsword anda ${password} anda sebagai ${role} (Mahasiswa)</h1>
+        <h1>Hello ${username} Passsword anda ${password} anda sebagai ${role} (Mahasiswa)</h1>
         <p><a href="logout.htm">Log Out</a></p>
-        <table>
-            <tr>
-                <td>
-                    <a href="view_quiz.htm">
-                        <button>
-                        Excercise
-                        </button>
-                    </a>
-                </td>
-                <td>
-                    <button>
-                        Quiz
-                    </button>
-                </td>
-            </tr>
-        </table>
-                <!--javascript-->
+        <div class="widget widget-table action-table">
+            <div class="widget-header"> <i class="icon-th-list"></i>
+                <h3>Data Historis Pengerjaan</h3>
+            </div>
+            <!-- /widget-header -->
+            <div class="widget-content">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th > Nama</th>
+                            <th > Soal yang di kerjakan </th>
+                            <th > Jenis Soal </th>
+                            <th >Benar Salah </th>
+                            <th > Jawaban </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="data" items="${listHistoris}">
+                            <tr>
+                                <td>${data.nama}</td>
+                                <td>${data.soal}</td>
+                                <td>${data.jenis_soal}</td>
+                                <td>${data.benar_salah}</td>
+                                <td>${data.jawaban}</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /widget-content --> 
+        </div>
+        
+        <!--        <div class="row">
+                    a. pilihan 1<br/>
+                    b. pilihan 2<br/>
+                    c. pilihan 3<br/>
+                    d. pilihan 4<br/>
+                </div>-->
+        <!--javascript-->
         <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script> 
         <script src="<c:url value="resources/js/excanvas.min.js"/>"></script> 
         <script src="<c:url value="resources/js/chart.min.js"/>" type="text/javascript"></script> 
@@ -79,4 +104,5 @@
         <script language="javascript" type="text/javascript" src="<c:url value="resources/js/full-calendar/fullcalendar.min.js"/>"></script>
     </body>
 </html>
+
 
