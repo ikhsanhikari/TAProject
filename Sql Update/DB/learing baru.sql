@@ -349,16 +349,15 @@ CREATE TABLE `tb_resultexercise` (
   `id_matery` int(11) DEFAULT NULL,
   `id_qa` int(11) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
+  `short_answer` varchar(255) DEFAULT NULL,
   `timeopen` varchar(255) DEFAULT NULL,
   `timeclose` varchar(255) DEFAULT NULL,
   `timecreated` varchar(255) DEFAULT NULL,
   `timemodified` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `tb_resultexercise` */
-
-insert  into `tb_resultexercise`(`id`,`id_collerger`,`id_matery`,`id_qa`,`status`,`timeopen`,`timeclose`,`timecreated`,`timemodified`) values (1,1,1,1,1,'1','1','1','1');
 
 /*Table structure for table `tb_role` */
 
@@ -387,11 +386,11 @@ CREATE TABLE `tb_session` (
   `firstip` varchar(255) DEFAULT NULL,
   `lastip` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tb_session` */
 
-insert  into `tb_session`(`id`,`userid`,`timecreated`,`username`,`timeout`,`firstip`,`lastip`) values (1,1,'2018-03-23 15:19:52','ikhsan',NULL,'10.10.10.142','10.10.10.142'),(2,1,'2018-03-23 15:21:53','ikhsan',NULL,'10.10.10.142','10.10.10.142'),(3,1,'2018-03-23 20:11:19','ikhsan',NULL,'10.10.10.142','10.10.10.142');
+insert  into `tb_session`(`id`,`userid`,`timecreated`,`username`,`timeout`,`firstip`,`lastip`) values (1,1,'2018-03-23 15:19:52','ikhsan',NULL,'10.10.10.142','10.10.10.142'),(2,1,'2018-03-23 15:21:53','ikhsan',NULL,'10.10.10.142','10.10.10.142'),(3,1,'2018-03-23 20:11:19','ikhsan',NULL,'10.10.10.142','10.10.10.142'),(4,1,'2018-03-24 07:09:30','ikhsan',NULL,'10.10.10.142','10.10.10.142'),(5,1,'2018-03-24 10:57:29','ikhsan',NULL,'10.10.10.142','10.10.10.142'),(6,1,'2018-03-24 11:56:50','ikhsan',NULL,'10.10.10.142','10.10.10.142'),(7,1,'2018-03-24 12:21:45','ikhsan',NULL,'10.10.10.142','10.10.10.142'),(8,1,'2018-03-24 12:24:35','ikhsan',NULL,'10.10.10.142','10.10.10.142'),(9,1,'2018-03-24 12:30:54','ikhsan',NULL,'10.10.10.142','10.10.10.142'),(10,1,'2018-03-24 12:34:38','ikhsan',NULL,'10.10.10.142','10.10.10.142'),(11,1,'2018-03-24 12:34:57','ikhsan',NULL,'10.10.10.142','10.10.10.142'),(12,1,'2018-03-24 12:39:24','ikhsan',NULL,'10.10.10.142','10.10.10.142'),(13,2,'2018-03-24 12:49:09','yayah',NULL,'10.10.10.142','10.10.10.142'),(14,2,'2018-03-24 13:03:07','yayah',NULL,'10.10.10.142','10.10.10.142'),(15,2,'2018-03-24 13:03:25','yayah',NULL,'10.10.10.142','10.10.10.142'),(16,2,'2018-03-24 13:03:49','yayah',NULL,'10.10.10.142','10.10.10.142'),(17,2,'2018-03-24 13:04:06','yayah',NULL,'10.10.10.142','10.10.10.142'),(18,1,'2018-03-24 13:08:53','ikhsan',NULL,'10.10.10.142','10.10.10.142'),(19,1,'2018-03-24 14:10:00','ikhsan',NULL,'10.10.10.142','10.10.10.142'),(20,1,'2018-03-24 15:27:03','ikhsan',NULL,'10.10.10.142','10.10.10.142'),(21,2,'2018-03-24 16:01:36','yayah',NULL,'10.10.10.142','10.10.10.142'),(22,2,'2018-03-24 16:03:07','yayah',NULL,'10.10.10.142','10.10.10.142'),(23,1,'2018-03-24 16:04:09','ikhsan',NULL,'10.10.10.142','10.10.10.142'),(24,2,'2018-03-24 16:13:45','yayah',NULL,'10.10.10.142','10.10.10.142'),(25,1,'2018-03-24 16:15:11','ikhsan',NULL,'10.10.10.142','10.10.10.142');
 
 /*Table structure for table `tb_user` */
 
@@ -419,11 +418,11 @@ CREATE TABLE `tb_user` (
   `timemodified` varchar(100) DEFAULT NULL,
   `id_role` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `tb_user` */
 
-insert  into `tb_user`(`id`,`username`,`password`,`firstname`,`lastname`,`email`,`phone1`,`institution`,`department`,`address`,`city`,`firstaccess`,`lastaccess`,`lastlogin`,`currentlogin`,`picture`,`description`,`timecreated`,`timemodified`,`id_role`) values (1,'ikhsan','ikhsan','ikhsan','ikhsan','ikhsan@gmail.com','0993579','98798',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1);
+insert  into `tb_user`(`id`,`username`,`password`,`firstname`,`lastname`,`email`,`phone1`,`institution`,`department`,`address`,`city`,`firstaccess`,`lastaccess`,`lastlogin`,`currentlogin`,`picture`,`description`,`timecreated`,`timemodified`,`id_role`) values (1,'ikhsan','ikhsan','ikhsan','ikhsan','ikhsan@gmail.com','0993579','98798',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1),(2,'yayah','yayah','yayah','yayah','yayah@gmail.com','098090',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1);
 
 /*Table structure for table `tb_weekly_quiz` */
 
