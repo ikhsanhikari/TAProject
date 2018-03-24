@@ -42,6 +42,9 @@
                                 </ul>
                             </li>
                         </ul>
+                        <form class="navbar-search pull-right">
+                            <input type="text" class="search-query" placeholder="Search">
+                        </form>
                     </div>
                     <!--/.nav-collapse --> 
                 </div>
@@ -50,12 +53,12 @@
             <!-- /navbar-inner --> 
         </div>
         <!-- /navbar -->
-        <p>Knowledge terdeteksi sebagai "${knowledge}". Datamu ${ada} dalam database.</p>
-        <p>Pilih aksi berikut untuk memulai :</p>
+        <h1>${iduser} ==== Hello ${username} Passsword anda ${password} anda sebagai ${role} (Mahasiswa)</h1>
+        <p><a href="logout.htm">Log Out</a></p>
         <table>
             <tr>
                 <td>
-                    <a href="pra_exercise.htm">
+                    <a href="view_quiz.htm">
                         <button>
                         Excercise
                         </button>

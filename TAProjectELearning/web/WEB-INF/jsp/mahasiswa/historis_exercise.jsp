@@ -45,6 +45,9 @@
                                 </ul>
                             </li>
                         </ul>
+                        <form class="navbar-search pull-right">
+                            <input type="text" class="search-query" placeholder="Search">
+                        </form>
                     </div>
                     <!--/.nav-collapse --> 
                 </div>
@@ -53,9 +56,10 @@
             <!-- /navbar-inner --> 
         </div>
         <!-- /navbar -->
-        <div class="span12">
+        <h1>Hello ${username} Passsword anda ${password} anda sebagai ${role} (Mahasiswa)</h1>
+        <p><a href="logout.htm">Log Out</a></p>
         <div class="widget widget-table action-table">
-            <div class="widget-header" style="margin-top:20px"> <i class="icon-th-list"></i>
+            <div class="widget-header"> <i class="icon-th-list"></i>
                 <h3>Data Historis Pengerjaan</h3>
             </div>
             <!-- /widget-header -->
@@ -66,7 +70,7 @@
                             <th > Nama</th>
                             <th > Soal yang di kerjakan </th>
                             <th > Jenis Soal </th>
-                            <th > Benar Salah </th>
+                            <th >Benar Salah </th>
                             <th > Jawaban </th>
                         </tr>
                     </thead>
@@ -85,7 +89,7 @@
             </div>
             <!-- /widget-content --> 
         </div>
-        </div>
+        
         <!--        <div class="row">
                     a. pilihan 1<br/>
                     b. pilihan 2<br/>

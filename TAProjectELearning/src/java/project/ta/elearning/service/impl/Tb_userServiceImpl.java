@@ -262,9 +262,4 @@ public class Tb_userServiceImpl implements Tb_userService {
         return listDto;
     }
 
-    @Override
-    public int getDataKnowledge(String username) {
-        return tb_userDao.getDataKnowledge(username);
-    }
-
 }

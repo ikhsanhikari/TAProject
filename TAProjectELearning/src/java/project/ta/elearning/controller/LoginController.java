@@ -24,7 +24,7 @@ import project.ta.elearning.service.UserService;
  *
  * @author Sou
  */
-@SessionAttributes({"username", "password", "firstname", "lastname", "role", "nama", "iduser"})
+@SessionAttributes({"username", "password", "firstname", "lastname", "role", "nama","iduser"})
 @Controller
 public class LoginController {
 
@@ -38,11 +38,8 @@ public class LoginController {
         int data = tb_userService.loginUser(username, password);
         Tb_userDto listUser = tb_userService.selectUser(username, password);
         String nama = listUser.getFirstname() + " " + listUser.getLastname();
-        int idKnowledge = 0;
-
         modelMap.addAttribute("nama", nama);
         if (data > 0) {
-            idKnowledge = tb_userService.getDataKnowledge(username);
             modelMap.addAttribute("username", username);
             modelMap.addAttribute("password", password);
             modelMap.addAttribute("role", listUser.getId_role());
@@ -55,16 +52,6 @@ public class LoginController {
             tb_sessionDto.setUserid(listUser.getId());
             tb_sessionService.saveData(tb_sessionDto);
             if (listUser.getId_role() == 1) {
-                String knowledge = "";
-                String ada = "ada";
-                switch (idKnowledge) {
-                    case 0: knowledge = "none"; ada = "belum ada"; break;
-                    case 1: knowledge = "good"; break;
-                    case 2: knowledge = "fair"; break;
-                    case 3: knowledge = "poor"; break;
-                }
-                modelMap.addAttribute("knowledge", knowledge);
-                modelMap.addAttribute("ada", ada);
                 return "mahasiswa/index";
             } else if (listUser.getId_role() == 2) {
                 return "dosen/index";

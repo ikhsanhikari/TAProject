@@ -8,7 +8,6 @@ package project.ta.elearning.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Query;
-import org.hibernate.SQLQuery;
 import project.ta.elearning.dao.Tb_userDao;
 import project.ta.elearning.model.Tb_userModel;
 
@@ -87,15 +86,5 @@ public class Tb_userDaoImpl extends HibernateUtil implements Tb_userDao{
         Query query = createQuery(sql).setParameter("cari", cari);
         listData = query.list();
         return listData;
-    }
-
-    @Override
-    public int getDataKnowledge(String username) {
-        Query query = createNativeQuery("SELECT idknowledge FROM tb_user WHERE username ='" + username + "'");
-        List<Object> list = new ArrayList();
-        list = query.list();
-        System.out.println("knowledge : " + list.get(0));
-        
-        return Integer.parseInt(list.get(0).toString());
     }
 }

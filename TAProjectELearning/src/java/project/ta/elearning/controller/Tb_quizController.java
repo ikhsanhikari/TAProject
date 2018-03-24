@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import project.ta.elearning.dto.Tb_qaDto;
 import project.ta.elearning.dto.Tb_quizDto;
 import project.ta.elearning.dto.Tb_resultExerciseDto;
-import project.ta.elearning.dto.Tb_sessionDto;
 import project.ta.elearning.dto.Tb_userDto;
 import project.ta.elearning.service.Tb_quizService;
-import project.ta.elearning.service.Tb_userService;
 
 /**
  *
@@ -30,9 +28,6 @@ public class Tb_quizController {
 
     @Autowired
     Tb_quizService tb_quizService;
-    
-    @Autowired
-    Tb_userService tb_userService;
 
     @RequestMapping(value = "/form_tambah_quiz", method = RequestMethod.GET)
     public String formTambahQuiz(ModelMap map, Tb_quizDto quizDto, HttpSession session, Tb_userDto userDto) {
@@ -129,25 +124,4 @@ public class Tb_quizController {
         return "mahasiswa/historis_exercise";
     }
 
-    @RequestMapping(value = "/pra_exercise", method = RequestMethod.GET)
-    public String praExercise(ModelMap modelMap, HttpSession session){
-        int idKnowledge = tb_userService.getDataKnowledge(session.getAttribute("username").toString());
-        System.out.println("Checking inside praExercise for Disabled Setting, idKnowledge is " + idKnowledge);
-        String knowledge = "";
-        String nilaiDisabledPoor = "true";
-        String nilaiDisabledFair = "true";
-        String nilaiDisabledGood = "true";
-        switch (idKnowledge) {
-            case 0: knowledge = "none"; nilaiDisabledPoor = "false"; break;
-            case 1: knowledge = "poor"; nilaiDisabledPoor = "false"; nilaiDisabledFair = "false"; break;
-            case 2: knowledge = "fair"; nilaiDisabledPoor = "false"; nilaiDisabledFair = "false"; nilaiDisabledGood = "false"; break;
-            case 3: knowledge = "good"; nilaiDisabledPoor = "false"; nilaiDisabledFair = "false"; nilaiDisabledGood = "false"; break;
-        }
-        System.out.println("poor " + nilaiDisabledPoor + "\nfair " + nilaiDisabledFair + "\ngood " + nilaiDisabledGood);
-        modelMap.addAttribute("nilaiDisabledPoor", nilaiDisabledPoor);
-        modelMap.addAttribute("nilaiDisabledFair", nilaiDisabledFair);
-        modelMap.addAttribute("nilaiDisabledGood", nilaiDisabledGood);
- 
-        return "mahasiswa/pra_exercise";
-    }
 }
