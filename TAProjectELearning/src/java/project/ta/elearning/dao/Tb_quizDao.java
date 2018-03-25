@@ -39,4 +39,8 @@ public interface Tb_quizDao {
     public void saveData(Tb_resultExcerciseModel model);
     
     public List<Object[]> getJawabanBenar(Integer id);
+    
+    public List<Object[]> getQuizRandomByLevel(int idLevel);
+    
+    public int getTotalSoalByLevel(int idLevel);
 }

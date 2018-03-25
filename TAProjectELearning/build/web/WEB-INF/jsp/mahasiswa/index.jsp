@@ -50,25 +50,25 @@
             <!-- /navbar-inner --> 
         </div>
         <!-- /navbar -->
-        <p>Knowledge terdeteksi sebagai "${knowledge}". Datamu ${ada} dalam database.</p>
-        <p>Pilih aksi berikut untuk memulai :</p>
-        <table>
-            <tr>
-                <td>
-                    <a href="pra_exercise.htm">
-                        <button>
-                        Excercise
-                        </button>
-                    </a>
-                </td>
-                <td>
-                    <button>
-                        Quiz
-                    </button>
-                </td>
-            </tr>
-        </table>
-                <!--javascript-->
+        <div class="alert alert-info">
+            <p>Knowledge terdeteksi sebagai "<strong>${knowledge}</strong>". Datamu ${ada} dalam database.</p>
+            <p>Pilih jenis soal berikut untuk memulai :</p>
+        </div>
+        
+        <div class="widget-content span12">
+            <div class="shortcuts"> 
+                <a href="pra_exercise.htm" class="shortcut"><i class="shortcut-icon icon-tasks"></i>
+                    <span class="shortcut-label">Excercise</span> 
+                </a>
+                <a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-time"></i>
+                    <span class="shortcut-label">Quiz</span> 
+                </a>
+            </div>
+            <!-- /shortcuts --> 
+        </div>
+        <!-- /widget-content --> 
+
+        <!--javascript-->
         <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script> 
         <script src="<c:url value="resources/js/excanvas.min.js"/>"></script> 
         <script src="<c:url value="resources/js/chart.min.js"/>" type="text/javascript"></script> 

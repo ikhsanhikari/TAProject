@@ -50,44 +50,47 @@
             <!-- /navbar-inner --> 
         </div>
         <!-- /navbar -->
-        <table>
-            <tr>
-                <td>
-                    <a href="view_quiz.htm">
-                        <button id="btnPoor" disabled>
-                            Poor
-                        </button>
-                    </a>
-                </td>
-                <td>
-                    <a href="view_quiz.htm">
-                        <button id="btnFair" disabled>
-                            Fair
-                        </button>
-                    </a>
-                </td>
-                <td>
-                    <a href="view_quiz.htm">
-                        <button id="btnGood" disabled>
-                            Good
-                        </button>
-                    </a>
-                </td>
-            </tr>
-        </table>
+        <div class="alert alert-block">
+            <p>Berikut level soal yang tersedia untuk Knowledge-mu.</p>
+            <table>
+                <tr>
+                    <td>
+                        <a href="view_quiz.htm?idLevel=1">
+                            <button id="btnLow" disabled class="btn btn-invert">
+                                Low
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="view_quiz.htm?idLevel=2">
+                            <button id="btnMedium" disabled class="btn btn-invert">
+                                Medium
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="view_quiz.htm?idLevel=3">
+                            <button id="btnHigh" disabled class="btn btn-invert">
+                                High
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
         <!--javascript-->
         <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script>
         <script src="<c:url value="resources/js/bootstrap.js"/>"></script>
         <script>
-            function setDisabled(){
-//                var elemen = document.getElementByTagName('button');
-                var btnPoor = document.getElementById('btnPoor');
-                var btnFair = document.getElementById('btnFair');
-                var btnGood = document.getElementById('btnGood');
-                btnPoor.disabled = ${nilaiDisabledPoor};
-                btnFair.disabled = ${nilaiDisabledFair};
-                btnGood.disabled = ${nilaiDisabledGood};
-            }
+        function setDisabled() {
+            var btnLow = document.getElementById('btnLow');
+            var btnMedium = document.getElementById('btnMedium');
+            var btnHigh = document.getElementById('btnHigh');
+            btnLow.disabled = ${nilaiDisabledLow};
+            btnMedium.disabled = ${nilaiDisabledMedium};
+            btnHigh.disabled = ${nilaiDisabledHigh};
+        }
         </script>
     </body>
 </html>

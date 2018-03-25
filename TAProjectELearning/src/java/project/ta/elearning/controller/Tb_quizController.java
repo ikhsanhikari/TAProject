@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import project.ta.elearning.dto.Tb_qaDto;
 import project.ta.elearning.dto.Tb_quizDto;
@@ -91,11 +92,13 @@ public class Tb_quizController {
     }
     int idx =  0;
     @RequestMapping(value = "/view_quiz", method = RequestMethod.GET)
-    public String viewQuiz(Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
-        List<Tb_quizDto> listQuiz = tb_quizService.getData();
-        List<Tb_quizDto> listAnswer = tb_quizService.getAnswerAllByQuiz(listQuiz.get(0).getId());
+    public String viewQuiz(@RequestParam int idLevel, Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
+        System.out.println("Cek @RequestParam viewQuiz...\nidLevel : " + idLevel);
+//        List<Tb_quizDto> listQuiz = tb_quizService.getData();
+        List<Tb_quizDto> listQuizRandomByLevel = tb_quizService.getQuizRandomByLevel(idLevel);
+        List<Tb_quizDto> listAnswer = tb_quizService.getAnswerAllByQuiz(listQuizRandomByLevel.get(0).getId());
         reDto.setId_collerger(Integer.parseInt(session.getAttribute("iduser").toString()));
-        map.addAttribute("listQuiz", listQuiz);
+        map.addAttribute("listQuiz", listQuizRandomByLevel);
         map.addAttribute("reDto", reDto);
         idx++;
         map.addAttribute("idx", idx);
@@ -105,17 +108,45 @@ public class Tb_quizController {
             stat = 1;
         }
         map.addAttribute("stat", stat);
+        
+//        Setting button disabled/enabled
+        int idKnowledge = tb_userService.getDataKnowledge(session.getAttribute("username").toString());
+        System.out.println("Checking inside viewQuiz for Disabled Setting, idKnowledge is " + idKnowledge);
+        String knowledge = "";
+        String nilaiDisabledLow = "true";
+        String nilaiDisabledMedium = "true";
+        String nilaiDisabledHigh = "true";
+        switch (idKnowledge) {
+            case 0: knowledge = "none"; nilaiDisabledLow = "false"; break;
+            case 1: knowledge = "poor"; nilaiDisabledLow = "false"; break;
+            case 2: knowledge = "fair"; nilaiDisabledLow = "false"; nilaiDisabledMedium = "false"; break;
+            case 3: knowledge = "good"; nilaiDisabledLow = "false"; nilaiDisabledMedium = "false"; nilaiDisabledHigh = "false"; break;
+        }
+        System.out.println("poor " + nilaiDisabledLow + "\nfair " + nilaiDisabledMedium + "\ngood " + nilaiDisabledHigh);
+        map.addAttribute("nilaiDisabledLow", nilaiDisabledLow);
+        map.addAttribute("nilaiDisabledMedium", nilaiDisabledMedium);
+        map.addAttribute("nilaiDisabledHigh", nilaiDisabledHigh);
+        map.addAttribute("idKnowledge", idKnowledge);
+        
+        String level = "";
+        level = (idLevel==1?"Low":idLevel==2?"Medium":idLevel==3?"High":"");
+        map.addAttribute("idLevel", idLevel);
+        map.addAttribute("level", level);
+        
+        int totalSoalByLevel = tb_quizService.getTotalSoalByLevel(idLevel);
+        map.addAttribute("totalSoalByLevel", totalSoalByLevel);
+        
         return "mahasiswa/view_quiz";
     }
     
-//    @ResponseBody
     @RequestMapping(value = "/random_quiz", method = RequestMethod.GET)
-    public String randomQuiz(ModelMap map,Tb_resultExerciseDto reDto) {
+    public String randomQuiz(@RequestParam int idLevel, ModelMap map,Tb_resultExerciseDto reDto) {
+        System.out.println("Cek @RequestParam randomQuiz...\nidLevel : " + idLevel);
         List<Tb_quizDto> listQuiz = tb_quizService.getData();
         map.addAttribute("listQuiz", listQuiz);
         map.addAttribute("reDto", reDto);
         tb_quizService.saveData(reDto);
-        return "redirect:view_quiz.htm";
+        return "redirect:view_quiz.htm?idLevel=" + idLevel;
     }
     @RequestMapping(value = "/delete_quiz", method = RequestMethod.GET)
     public String deleteQuiz(Integer id) {
@@ -132,23 +163,25 @@ public class Tb_quizController {
 
     @RequestMapping(value = "/pra_exercise", method = RequestMethod.GET)
     public String praExercise(ModelMap modelMap, HttpSession session){
+//        Setting button disabled/enabled
         int idKnowledge = tb_userService.getDataKnowledge(session.getAttribute("username").toString());
         System.out.println("Checking inside praExercise for Disabled Setting, idKnowledge is " + idKnowledge);
         String knowledge = "";
-        String nilaiDisabledPoor = "true";
-        String nilaiDisabledFair = "true";
-        String nilaiDisabledGood = "true";
+        String nilaiDisabledLow = "true";
+        String nilaiDisabledMedium = "true";
+        String nilaiDisabledHigh = "true";
         switch (idKnowledge) {
-            case 0: knowledge = "none"; nilaiDisabledPoor = "false"; break;
-            case 1: knowledge = "poor"; nilaiDisabledPoor = "false"; nilaiDisabledFair = "false"; break;
-            case 2: knowledge = "fair"; nilaiDisabledPoor = "false"; nilaiDisabledFair = "false"; nilaiDisabledGood = "false"; break;
-            case 3: knowledge = "good"; nilaiDisabledPoor = "false"; nilaiDisabledFair = "false"; nilaiDisabledGood = "false"; break;
+            case 0: knowledge = "none"; nilaiDisabledLow = "false"; break;
+            case 1: knowledge = "poor"; nilaiDisabledLow = "false"; break;
+            case 2: knowledge = "fair"; nilaiDisabledLow = "false"; nilaiDisabledMedium = "false"; break;
+            case 3: knowledge = "good"; nilaiDisabledLow = "false"; nilaiDisabledMedium = "false"; nilaiDisabledHigh = "false"; break;
         }
-        System.out.println("poor " + nilaiDisabledPoor + "\nfair " + nilaiDisabledFair + "\ngood " + nilaiDisabledGood);
-        modelMap.addAttribute("nilaiDisabledPoor", nilaiDisabledPoor);
-        modelMap.addAttribute("nilaiDisabledFair", nilaiDisabledFair);
-        modelMap.addAttribute("nilaiDisabledGood", nilaiDisabledGood);
- 
+        System.out.println("poor " + nilaiDisabledLow + "\nfair " + nilaiDisabledMedium + "\ngood " + nilaiDisabledHigh);
+        modelMap.addAttribute("nilaiDisabledLow", nilaiDisabledLow);
+        modelMap.addAttribute("nilaiDisabledMedium", nilaiDisabledMedium);
+        modelMap.addAttribute("nilaiDisabledHigh", nilaiDisabledHigh);
+//        modelMap.addAttribute("idKnowledge", idKnowledge);
+        
         return "mahasiswa/pra_exercise";
     }
 }

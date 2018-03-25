@@ -59,9 +59,9 @@ public class LoginController {
                 String ada = "ada";
                 switch (idKnowledge) {
                     case 0: knowledge = "none"; ada = "belum ada"; break;
-                    case 1: knowledge = "good"; break;
+                    case 1: knowledge = "poor"; break;
                     case 2: knowledge = "fair"; break;
-                    case 3: knowledge = "poor"; break;
+                    case 3: knowledge = "good"; break;
                 }
                 modelMap.addAttribute("knowledge", knowledge);
                 modelMap.addAttribute("ada", ada);

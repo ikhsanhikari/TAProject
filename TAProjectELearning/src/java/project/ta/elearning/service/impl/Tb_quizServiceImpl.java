@@ -183,4 +183,25 @@ public class Tb_quizServiceImpl implements Tb_quizService {
         return listData;
     }
 
+    @Override
+    public List<Tb_quizDto> getQuizRandomByLevel(int idLevel) {
+        List<Tb_quizDto> listData = new ArrayList<>();
+        List<Object[]> listModel = tb_quizDao.getQuizRandomByLevel(idLevel);
+        if (listModel.size() > 0) {
+            for (Object[] obj : listModel) {
+                Tb_quizDto dto = new Tb_quizDto();
+                dto.setId(Integer.parseInt(obj[0].toString()));
+                dto.setName(obj[1].toString());
+                dto.setId_jenis_soal(Integer.parseInt(obj[2].toString()));
+                listData.add(dto);
+            }
+        }
+        return listData;
+    }
+
+    @Override
+    public int getTotalSoalByLevel(int idLevel) {
+        return tb_quizDao.getTotalSoalByLevel(idLevel);
+    }
+
 }

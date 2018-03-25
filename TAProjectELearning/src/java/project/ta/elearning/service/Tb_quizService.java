@@ -34,4 +34,8 @@ public interface Tb_quizService {
     public Integer saveQuiz(Integer id,Integer id_collerger,Integer id_matery,Integer id_qa,Integer status);
     
     public void saveData(Tb_resultExerciseDto dto);
+    
+    public List<Tb_quizDto> getQuizRandomByLevel(int idLevel);
+    
+    public int getTotalSoalByLevel(int idLevel);
 }

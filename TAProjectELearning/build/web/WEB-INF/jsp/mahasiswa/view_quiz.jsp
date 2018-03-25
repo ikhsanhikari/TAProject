@@ -24,11 +24,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Quiz Mahasiswa</title>
     </head>
-    <body>
+    <body onload="setDisabled()">
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.html">Good Learner </a>
+                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="loginAction.htm">Good Learner </a>
                     <div class="nav-collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
@@ -55,31 +55,54 @@
         </div>
         <!-- /navbar -->
 
+        <div class="alert alert-block">
+            <table>
+                <tr>
+                    <td>
+                        <a href="view_quiz.htm?idLevel=1">
+                            <button id="btnLow" disabled class="btn btn-invert">
+                                Low
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="view_quiz.htm?idLevel=2">
+                            <button id="btnMedium" disabled class="btn btn-invert">
+                                Medium
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="view_quiz.htm?idLevel=3">
+                            <button id="btnHigh" disabled class="btn btn-invert">
+                                High
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
+        <div class="alert alert-info">
+            Soal exercise yang ditampilkan adalah soal dengan level <strong>${idLevel} (${level})</strong><br/>
+            Total soal untuk level ini adalah <strong>${totalSoalByLevel}</strong>
+        </div>
 
         <div class="main">
-
             <div class="main-inner">
-
                 <div class="container">
-
                     <div class="row">
-
                         <div class="span12">
-
                             <div class="widget">
-
                                 <div class="widget-header" style="margin-top:20px">
                                     <i class="icon-tasks"></i>
-                                    <h3>Exercise</h3>
+                                    <h3>Exercise | Level ${idLevel} (${level})</h3>
                                 </div> <!-- /widget-header -->
 
-                                <div class="widget-content" style="height:500px">
-
-<!--                                    <h1>Hello ${username} Passsword anda ${password} anda sebagai ${role} (Mahasiswa)</h1>
-                                    <p><a href="logout.htm">Log Out</a></p>-->
+                                <div class="widget-content" style="height:350px">
                                     <form:form modelAttribute="reDto" method="GET" action="random_quiz.htm">
                                         <form:hidden path="id_collerger" />
+                                        <input type="hidden" name="idLevel" value="${idLevel}"/>
                                         <c:forEach var="data" items="${listQuiz}" >
                                             ${idx} . ${data.name} 
                                             <br/>
@@ -93,32 +116,28 @@
                                     </div> <!-- /widget-content -->     
                                     <br/>
                                     <a href="view_historis.htm" class="btn btn-success">Selesai</a>
-                                    <input class="btn btn-primary" type="submit" value="next"/>
+                                    <input class="btn btn-primary" type="submit" value="Next"/>
                                 </form:form>
                             </div> <!-- /widget -->	
-
                         </div> <!-- /spa12 -->
-
-
-
-
-
-
-
                     </div> <!-- /row -->
-
                 </div> <!-- /container -->
-
             </div> <!-- /main-inner -->
-
         </div> <!-- /main -->
 
         <!--javascript-->
-        <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script> 
-        <script src="<c:url value="resources/js/excanvas.min.js"/>"></script> 
-        <script src="<c:url value="resources/js/chart.min.js"/>" type="text/javascript"></script> 
+        <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script>
         <script src="<c:url value="resources/js/bootstrap.js"/>"></script>
-        <script language="javascript" type="text/javascript" src="<c:url value="resources/js/full-calendar/fullcalendar.min.js"/>"></script>
+        <script>
+        function setDisabled() {
+            var btnLow = document.getElementById('btnLow');
+            var btnMedium = document.getElementById('btnMedium');
+            var btnHigh = document.getElementById('btnHigh');
+            btnLow.disabled = ${nilaiDisabledLow};
+            btnMedium.disabled = ${nilaiDisabledMedium};
+            btnHigh.disabled = ${nilaiDisabledHigh};
+        }
+        </script>
     </body>
 </html>
 
