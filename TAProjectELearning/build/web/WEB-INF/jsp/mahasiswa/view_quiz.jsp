@@ -81,7 +81,7 @@
                                     <form:form modelAttribute="reDto" method="GET" action="random_quiz.htm">
                                         <form:hidden path="id_collerger" />
                                         <c:forEach var="data" items="${listQuiz}" >
-                                            ${data.id} . ${data.name} 
+                                            ${idx} . ${data.name} 
                                             <br/>
                                             <c:forEach var="dataA" items="${listAnswer}" >
                                                 <form:radiobutton path="id_qa" value="${dataA.id_answer}"></form:radiobutton> . ${dataA.answer}<br/>
@@ -90,20 +90,11 @@
                                                 <form:input path="short_answer" placeholder="Jawaban"/>
                                             </c:if>
                                         </c:forEach>
-                                    </form:form>   
-
-                                    <!--                <a href="random_quiz.htm"><button class="btn-default">Next</button></a>-->
-                                    <!--        <div class="row">
-                                                a. pilihan 1<br/>
-                                                b. pilihan 2<br/>
-                                                c. pilihan 3<br/>
-                                                d. pilihan 4<br/>
-                                            </div>-->
-                                </div> <!-- /widget-content -->     
-                                <br/>
-                                <a href="view_historis.htm" class="btn btn-success">Selesai</a>
-                                <input class="btn btn-primary" type="submit" value="next"/>
-
+                                    </div> <!-- /widget-content -->     
+                                    <br/>
+                                    <a href="view_historis.htm" class="btn btn-success">Selesai</a>
+                                    <input class="btn btn-primary" type="submit" value="next"/>
+                                </form:form>
                             </div> <!-- /widget -->	
 
                         </div> <!-- /spa12 -->

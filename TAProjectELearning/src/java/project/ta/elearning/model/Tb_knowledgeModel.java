@@ -9,10 +9,9 @@ package project.ta.elearning.model;
  *
  * @author Sou
  */
-public class Tb_materiSyaratModel {
+public class Tb_knowledgeModel {
     private Integer id;
-    private Integer lessonid;
-    private Integer quizid;
+    private String knowlegde;
 
     public Integer getId() {
         return id;
@@ -22,21 +21,12 @@ public class Tb_materiSyaratModel {
         this.id = id;
     }
 
-    public Integer getLessonid() {
-        return lessonid;
+    public String getKnowlegde() {
+        return knowlegde;
     }
 
-    public void setLessonid(Integer lessonid) {
-        this.lessonid = lessonid;
+    public void setKnowlegde(String knowlegde) {
+        this.knowlegde = knowlegde;
     }
-
-    public Integer getQuizid() {
-        return quizid;
-    }
-
-    public void setQuizid(Integer quizid) {
-        this.quizid = quizid;
-    }
-    
 
 }

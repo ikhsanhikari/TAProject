@@ -42,7 +42,7 @@
                 <value>project/ta/elearning/model/Tb_weklyQuizModel.hbm.xml</value>
                 <value>project/ta/elearning/model/Tb_majorsModel.hbm.xml</value>
                 <value>project/ta/elearning/model/Tb_nilaiModel.hbm.xml</value>
-                <value>project/ta/elearning/model/Tb_materiSyaratModel.hbm.xml</value>
+                <value>project/ta/elearning/model/Tb_materyModel.hbm.xml</value>
                 <value>project/ta/elearning/model/Tb_fileModel.hbm.xml</value>
                 <value>project/ta/elearning/model/Tb_sessionModel.hbm.xml</value>
                 <value>project/ta/elearning/model/Tb_choiceModel.hbm.xml</value>
@@ -57,6 +57,13 @@
                 <value>project/ta/elearning/model/Tb_qaModel.hbm.xml</value>
                 <value>project/ta/elearning/model/Tb_jenisSoal.hbm.xml</value>
                 <value>project/ta/elearning/model/Tb_resultExerciseModel.hbm.xml</value>
+                <value>project/ta/elearning/model/Tb_categoryModel.hbm.xml</value>
+                <value>project/ta/elearning/model/Tb_historisquizModel.hbm.xml</value>
+                <value>project/ta/elearning/model/Tb_knowledgeModel.hbm.xml</value>
+                <value>project/ta/elearning/model/Tb_modelModel.hbm.xml</value>
+                <value>project/ta/elearning/model/Tb_resultquizModel.hbm.xml</value>
+                <value>project/ta/elearning/model/Tb_skillModel.hbm.xml</value>
+                <!--<value>project/ta/elearning/model/Tb_knowledgeModel.hbm.xml</value>-->
                 <!--<value>project/ta/elearning/model/Tb_eventModel.hbm.xml</value>-->
             </list>  
         </property>  

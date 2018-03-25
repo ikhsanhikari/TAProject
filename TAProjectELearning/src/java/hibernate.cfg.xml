@@ -18,7 +18,7 @@
     <mapping resource="project/ta/elearning/model/Tb_weklyQuizModel.hbm.xml"/>
     <mapping resource="project/ta/elearning/model/Tb_majorsModel.hbm.xml"/>
     <mapping resource="project/ta/elearning/model/Tb_nilaiModel.hbm.xml"/>
-    <mapping resource="project/ta/elearning/model/Tb_materiSyaratModel.hbm.xml"/>
+    <mapping resource="project/ta/elearning/model/Tb_materyModel.hbm.xml"/>
     <mapping resource="project/ta/elearning/model/Tb_fileModel.hbm.xml"/>
     <mapping resource="project/ta/elearning/model/Tb_sessionModel.hbm.xml"/>
     <mapping resource="project/ta/elearning/model/Tb_choiceModel.hbm.xml"/>
@@ -33,5 +33,12 @@
     <mapping resource="project/ta/elearning/model/Tb_qaModel.hbm.xml"/>
     <mapping resource="project/ta/elearning/model/Tb_jenisSoal.hbm.xml"/>
     <mapping resource="project/ta/elearning/model/Tb_resultExerciseModel.hbm.xml"/>
+    <mapping resource="project/ta/elearning/model/Tb_categoryModel.hbm.xml"/>
+    <mapping resource="project/ta/elearning/model/Tb_historisquizModel.hbm.xml"/>
+    <mapping resource="project/ta/elearning/model/Tb_knowledgeModel.hbm.xml"/>
+    <!--<mapping resource="project/ta/elearning/model/Tb_knowledgeModel.hbm.xml"/>-->
+    <mapping resource="project/ta/elearning/model/Tb_modelModel.hbm.xml"/>
+    <mapping resource="project/ta/elearning/model/Tb_resultquizModel.hbm.xml"/>
+    <mapping resource="project/ta/elearning/model/Tb_skillModel.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

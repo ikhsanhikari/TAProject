@@ -5,13 +5,10 @@
   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="project.ta.elearning.model.Tb_materiSyaratModel" table="tb_materi_syarat">
+    <class name="project.ta.elearning.model.Tb_knowledgeModel" table="tb_knowledge">
         <id name="id" column="id">
             <generator class="native"/>
         </id>
-        <property name="lessonid" column="lessonid" />
-        <property name="quizid" column="quizid" />
+        <property name="knowlegde" column="knowlegde" type="string" length="200"/>
     </class>
-  
-
 </hibernate-mapping>

@@ -89,7 +89,7 @@ public class Tb_quizController {
         tb_quizService.updateData(quizDto);
         return "redirect:view_quiz.htm";
     }
-
+    int idx =  0;
     @RequestMapping(value = "/view_quiz", method = RequestMethod.GET)
     public String viewQuiz(Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
         List<Tb_quizDto> listQuiz = tb_quizService.getData();
@@ -97,7 +97,8 @@ public class Tb_quizController {
         reDto.setId_collerger(Integer.parseInt(session.getAttribute("iduser").toString()));
         map.addAttribute("listQuiz", listQuiz);
         map.addAttribute("reDto", reDto);
-        
+        idx++;
+        map.addAttribute("idx", idx);
         int stat = 0;
         if(listAnswer.size()>1){
             map.addAttribute("listAnswer", listAnswer);

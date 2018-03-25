@@ -30,6 +30,15 @@ public class Tb_userModel {
     private String timecreated;
     private String timemodified;
     private Integer id_role;
+    private Integer idknowledge;
+
+    public Integer getIdknowledge() {
+        return idknowledge;
+    }
+
+    public void setIdknowledge(Integer idknowledge) {
+        this.idknowledge = idknowledge;
+    }
 
     public String getUsername() {
         return username;
