@@ -151,14 +151,14 @@ public class Tb_quizServiceImpl implements Tb_quizService {
             for (Object[] obj : listModel) {
                 Tb_quizDto dto = new Tb_quizDto();
 //                dto.setId(Integer.parseInt(obj[0].toString()));
-                benarsalah = Integer.parseInt(obj[4].toString())==1?"Benar":"Salah";
+                benarsalah = Integer.parseInt(obj[5].toString())==1?"Benar":"Salah";
                 jenissoal = Integer.parseInt(obj[3].toString())==1?"Short Answer":"Choice";
                 
                 dto.setNama(obj[1].toString());
                 dto.setSoal(obj[2].toString());
                 dto.setJenis_soal(jenissoal);
                 dto.setBenar_salah(benarsalah);
-                dto.setJawaban(obj[5].toString());
+                dto.setJawaban(obj[6].toString());
                 listData.add(dto);
             }
         }

@@ -80,7 +80,7 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
 
     @Override
     public List<Object[]> getHistorisExercise(Integer id) {
-        String sql = "select  q.id,u.firstname,q.name,qa.id_jenis_soal, q.id_matery , qa.id_status , re.id_qa as jawaban"
+        String sql = "select  q.id,u.firstname,q.name,qa.id_jenis_soal, q.id_matery , qa.id_status , a.answers as jawaban"
                 + " from tb_quiz q,tb_qa qa,tb_answers a , tb_resultexercise re, tb_user u"
                 + " where q.id=qa.id_quiz "
                 + " and qa.id=a.id  "
