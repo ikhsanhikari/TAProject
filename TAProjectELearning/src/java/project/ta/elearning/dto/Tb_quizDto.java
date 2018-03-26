@@ -20,7 +20,7 @@ public class Tb_quizDto {
     private Integer id_matery;
     private Integer id_category;
     private String answer;
-    private String id_status; 
+    private Integer id_status; 
     private Integer id_jenis_soal;
     private Integer id_answer;
     private String nama;
@@ -28,6 +28,15 @@ public class Tb_quizDto {
     private String jenis_soal;
     private String benar_salah;
     private String jawaban;
+    private Integer id_qa;
+
+    public Integer getId_qa() {
+        return id_qa;
+    }
+
+    public void setId_qa(Integer id_qa) {
+        this.id_qa = id_qa;
+    }
 
     public String getNama() {
         return nama;
@@ -85,13 +94,14 @@ public class Tb_quizDto {
         this.id_jenis_soal = id_jenis_soal;
     }
 
-    public String getId_status() {
+    public Integer getId_status() {
         return id_status;
     }
 
-    public void setId_status(String id_status) {
+    public void setId_status(Integer id_status) {
         this.id_status = id_status;
     }
+
 
     public String getAnswer() {
         return answer;

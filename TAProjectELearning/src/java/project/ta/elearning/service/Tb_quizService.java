@@ -38,4 +38,6 @@ public interface Tb_quizService {
     public List<Tb_quizDto> getQuizRandomByLevel(int idLevel);
     
     public int getTotalSoalByLevel(int idLevel);
+    
+    public List<Tb_quizDto> getStatus(Integer id_quiz,Integer id_answer);
 }

@@ -131,11 +131,7 @@ public class Tb_quizServiceImpl implements Tb_quizService {
             model.setId_matery(1);
             model.setId_qa(dto.getId_qa());
             model.setShort_answer(dto.getShort_answer());
-//            model.setStatus(1);
-//            model.setId_collerger(dto.getId_collerger());
-//            model.setId_matery(dto.getId_matery());
-//            model.setId_qa(dto.getId_qa());
-            model.setStatus(1);
+            model.setStatus(dto.getStatus());
             model.setTimeclose(currDate);
             model.setTimecreated(currDate);
             model.setTimemodified(currDate);
@@ -155,8 +151,9 @@ public class Tb_quizServiceImpl implements Tb_quizService {
             for (Object[] obj : listModel) {
                 Tb_quizDto dto = new Tb_quizDto();
 //                dto.setId(Integer.parseInt(obj[0].toString()));
-                benarsalah = obj[4].toString().equals("1")?"Benar":"Salah";
-                jenissoal = obj[3].toString().equals("1")?"Choice":"Short Answer";
+                benarsalah = Integer.parseInt(obj[4].toString())==1?"Benar":"Salah";
+                jenissoal = Integer.parseInt(obj[3].toString())==1?"Short Answer":"Choice";
+                
                 dto.setNama(obj[1].toString());
                 dto.setSoal(obj[2].toString());
                 dto.setJenis_soal(jenissoal);
@@ -175,8 +172,8 @@ public class Tb_quizServiceImpl implements Tb_quizService {
         if (listModel.size() > 0) {
             for (Object[] obj : listModel) {
                 Tb_quizDto dto = new Tb_quizDto();
-//                dto.setId(Integer.parseInt(obj[0].toString()));
-//                dto.setAnswer(obj[1].toString());
+                dto.setId(Integer.parseInt(obj[0].toString()));
+                dto.setAnswer(obj[1].toString());
                 listData.add(dto);
             }
         }
@@ -193,6 +190,7 @@ public class Tb_quizServiceImpl implements Tb_quizService {
                 dto.setId(Integer.parseInt(obj[0].toString()));
                 dto.setName(obj[1].toString());
                 dto.setId_jenis_soal(Integer.parseInt(obj[2].toString()));
+                dto.setId_qa(Integer.parseInt(obj[4].toString()));
                 listData.add(dto);
             }
         }
@@ -202,6 +200,22 @@ public class Tb_quizServiceImpl implements Tb_quizService {
     @Override
     public int getTotalSoalByLevel(int idLevel) {
         return tb_quizDao.getTotalSoalByLevel(idLevel);
+    }
+
+    @Override
+    public List<Tb_quizDto> getStatus(Integer id_quiz, Integer id_answer) {
+        List<Tb_quizDto> listData = new ArrayList<>();
+        List<Object[]> listModel = tb_quizDao.getStatus(id_quiz, id_answer);
+        if (listModel.size() > 0) {
+            for (Object[] obj : listModel) {
+                Tb_quizDto dto = new Tb_quizDto();
+                dto.setId(Integer.parseInt(obj[0].toString()));
+                dto.setId_status(Integer.parseInt(obj[1].toString()));
+//                dto.setId_answer(Integer.parseInt(obj[2].toString()));
+                listData.add(dto);
+            }
+        }
+        return listData;
     }
 
 }

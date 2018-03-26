@@ -21,9 +21,18 @@ public class Tb_resultExerciseDto {
     private String timemodified;
     private String short_answer;
     private String jawaban_benar;
+    private Integer id_answer;
 
     public String getJawaban_benar() {
         return jawaban_benar;
+    }
+
+    public Integer getId_answer() {
+        return id_answer;
+    }
+
+    public void setId_answer(Integer id_answer) {
+        this.id_answer = id_answer;
     }
 
     public void setJawaban_benar(String jawaban_benar) {

@@ -108,11 +108,11 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
     @Override
     public List<Object[]> getQuizRandomByLevel(int idLevel) {
 
-        String sql = "SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level "
+        String sql = "SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level,qa.id as id_qa "
                 + "FROM tb_quiz q, tb_qa qa, tb_answers a "
                 + "WHERE q.id=qa.id_quiz "
                 + "AND qa.id=a.id AND qa.id_level = " + idLevel
-                + " ORDER BY rand() LIMIT 0,1";
+                + "  ORDER BY rand() LIMIT 0,1";
         Query query = createNativeQuery(sql);
         return query.list();
     }
@@ -127,6 +127,16 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
         list = query.list();
         
         return Integer.parseInt(list.get(0).toString());
+    }
+
+    @Override
+    public List<Object[]> getStatus(Integer id_quiz, Integer id_answer) {
+        String sql = "select id,id_status" +
+        " from tb_qa" +
+        " where id_answers = "+id_answer+"" +
+        " and id_quiz = "+id_quiz+"";
+        Query query = createNativeQuery(sql);
+        return query.list();
     }
 
 }
