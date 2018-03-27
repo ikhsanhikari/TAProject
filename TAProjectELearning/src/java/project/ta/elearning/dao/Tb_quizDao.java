@@ -50,4 +50,7 @@ public interface Tb_quizDao {
     public List<Object[]> getStatus(Integer id_qa,Integer id_answer);
     
     public Integer getTotalPoin(Integer id_user);
+    
+//    Permulaan untuk Menu Quiz
+    public List<Object[]> getQuizByLevel(int idLevel);
 }

@@ -5,6 +5,7 @@
  */
 package project.ta.elearning.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -156,7 +157,7 @@ public class Tb_quizController {
         setId_quiz(listQuizRandomByLevel.get(0).getId());
 
         List<Tb_quizDto> listJawabanBenar = tb_quizService.getJawabanBenar(getId_quiz());
-
+        
         setJenis_soal(listQuizRandomByLevel.get(0).getId_jenis_soal());
 
         setJawaban_benar(listJawabanBenar.get(0).getAnswer());
@@ -322,4 +323,32 @@ public class Tb_quizController {
 
         return "mahasiswa/pra_exercise";
     }
+    
+//    Awal kode untuk MENU QUIZ
+    @RequestMapping(value = "quiz", method = RequestMethod.GET)
+    public String menuQuiz(Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto){
+        List<HashMap> listSoalQuiz = tb_quizService.getSoalQuiz(3);
+//        setId_quiz(listQuizByLevel.get(0).getId());
+//
+//        List<Tb_quizDto> listJawabanBenar = tb_quizService.getJawabanBenar(getId_quiz());
+//        setJenis_soal(listQuizByLevel.get(0).getId_jenis_soal());
+//        setJawaban_benar(listJawabanBenar.get(0).getAnswer());
+//        setId_category(listQuizByLevel.get(0).getId_category());
+//        
+//        List<Tb_quizDto> listAnswer = tb_quizService.getAnswerAllByQuiz(listQuizByLevel.get(0).getId());
+//        reDto.setId_collerger(Integer.parseInt(session.getAttribute("iduser").toString()));
+//        map.addAttribute("listQuiz", listQuizByLevel);
+//        map.addAttribute("reDto", reDto);
+//        idx++;
+//        map.addAttribute("idx", idx);
+//        int stat = 0;
+//        if (listAnswer.size() > 1) {
+//            map.addAttribute("listAnswer", listAnswer);
+//            stat = 1;
+//        }
+//        map.addAttribute("stat", stat);
+
+        return "mahasiswa/quiz";
+    }
+    
 }

@@ -9,7 +9,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -249,4 +251,160 @@ public class Tb_quizServiceImpl implements Tb_quizService {
         return tb_quizDao.getTotalPoin(id_user);
     }
 
+//    Permulaan Menu Quiz
+
+    @Override
+    public List<HashMap> getSoalQuiz(int jumlahSoalPerLevel) {
+        List<Tb_quizDto> listData = new ArrayList<>();
+        List<HashMap> listSoalQuizLow = new ArrayList<>();
+        List<HashMap> listSoalQuizMedium = new ArrayList<>();
+        List<HashMap> listSoalQuizHigh = new ArrayList<>();
+        List<Object[]> listModel = null;
+        
+//        Memisahkan soal quiz berdasarkan level ke dalam list yang berbeda.
+        int nomor = 0;
+        for(int i=1;i<=3;i++){
+            listModel = tb_quizDao.getQuizByLevel(i);
+            nomor = 1;
+            if (listModel.size() > 0) {
+                for (Object[] obj : listModel) {
+//                    if(i==2){
+//                        Tb_quizDto dto = new Tb_quizDto();
+//                        dto.setId(Integer.parseInt(obj[0].toString()));
+//                        dto.setName(obj[1].toString());
+//                        dto.setId_jenis_soal(Integer.parseInt(obj[2].toString()));
+//                        listData.add(dto);
+//                    }
+
+                    HashMap hm = new HashMap();
+                    hm.put("no", nomor);
+                    hm.put("id", Integer.parseInt(obj[0].toString()));
+                    hm.put("name", obj[1].toString());
+                    hm.put("id_jenis_soal", Integer.parseInt(obj[2].toString()));
+                    hm.put("id_level", Integer.parseInt(obj[3].toString()));
+                    if(i==1){
+                        listSoalQuizLow.add(hm);
+                        System.out.println("00000000000909\n" + listSoalQuizLow);
+                    } else if(i==2){
+                        listSoalQuizMedium.add(hm);
+                        System.out.println("\n1111111111111111111100000000000909\n" + listSoalQuizMedium);
+                    } else if(i==3){
+                        listSoalQuizHigh.add(hm);
+                        System.out.println("\n2222222222222200000000000909\n" + listSoalQuizHigh);
+                    }
+                    nomor++;
+                }
+            }
+        }
+        
+//        Merandom Soal
+        List<HashMap> listSoalQuizHasilRandomLow = randomNSoal(jumlahSoalPerLevel, listSoalQuizLow);
+        List<HashMap> listSoalQuizHasilRandomMedium = randomNSoal(jumlahSoalPerLevel, listSoalQuizMedium);
+        List<HashMap> listSoalQuizHasilRandomHigh = randomNSoal(jumlahSoalPerLevel, listSoalQuizHigh);
+        
+//        Menggabungkan hasil random dari ketiga level menjadi satu list
+        List<HashMap> listSoalQuizHasilRandom = new ArrayList<>();
+        for(HashMap hashMap : listSoalQuizHasilRandomLow){
+            HashMap hm = new HashMap();
+            hm.put("no", Integer.parseInt(hashMap.get("no").toString()));
+            hm.put("id", Integer.parseInt(hashMap.get("id").toString()));
+            hm.put("name", hashMap.get("name").toString());
+            hm.put("id_jenis_soal", Integer.parseInt(hashMap.get("id_jenis_soal").toString()));
+            hm.put("id_level", Integer.parseInt(hashMap.get("id_level").toString()));
+            listSoalQuizHasilRandom.add(hm);
+        }
+        for(HashMap hashMap : listSoalQuizHasilRandomMedium){
+            HashMap hm = new HashMap();
+            hm.put("no", Integer.parseInt(hashMap.get("no").toString()));
+            hm.put("id", Integer.parseInt(hashMap.get("id").toString()));
+            hm.put("name", hashMap.get("name").toString());
+            hm.put("id_jenis_soal", Integer.parseInt(hashMap.get("id_jenis_soal").toString()));
+            hm.put("id_level", Integer.parseInt(hashMap.get("id_level").toString()));
+            listSoalQuizHasilRandom.add(hm);
+        }
+        for(HashMap hashMap : listSoalQuizHasilRandomHigh){
+            HashMap hm = new HashMap();
+            hm.put("no", Integer.parseInt(hashMap.get("no").toString()));
+            hm.put("id", Integer.parseInt(hashMap.get("id").toString()));
+            hm.put("name", hashMap.get("name").toString());
+            hm.put("id_jenis_soal", Integer.parseInt(hashMap.get("id_jenis_soal").toString()));
+            hm.put("id_level", Integer.parseInt(hashMap.get("id_level").toString()));
+            listSoalQuizHasilRandom.add(hm);
+        }
+        
+        System.out.println("\n44444444444444444444444444444444444444444444000000\n" + listSoalQuizHasilRandom);
+        
+        return listSoalQuizHasilRandom;
+    }
+    
+    public List<HashMap> randomNSoal(int jumlahSoalQuizPerLevel, List<HashMap> listSoalQuiz){
+        Random random = new Random();
+        
+        ArrayList arrayList = new ArrayList(); 
+        
+        int a = 0;
+        int indexList = 0;
+        int jumlah = 0;
+        int jumlahSoalDalamList = listSoalQuiz.size();
+        int n = jumlahSoalQuizPerLevel;
+        for(int i=1;i!=0;i++){
+            System.out.println("Putaran " + (i));
+            a = random.nextInt(jumlahSoalDalamList) + 1;
+            System.out.println("Isi random baru " + a);
+            
+            indexList = 0;
+            jumlah=0;
+            
+//            Mengeset dua angka random awal
+            if(i==0) { 
+                arrayList.add(a);
+                a = random.nextInt(jumlahSoalDalamList) + 1;
+                int j = 1;
+                
+//                Mengecek apakah angka random kedua sama dengan angka random 1. Jika sama, 
+//                tidak dimasukkan ke list dan melakukan random lagi.
+                while(j!=0){
+                    if(a != (int) arrayList.get(indexList)){
+                        arrayList.add(a);
+                        break;
+                    }
+                }
+                
+            }
+            
+//            Mengecek apakah angka random sudah pernah muncul atau belum. Jika pernah muncul, 
+//            tidak dimasukkan ke list dan sebaliknya.
+            for (Object object : arrayList) {
+                System.out.println("Isi arrayList " + (indexList+1) + " : " + (int) arrayList.get(indexList));
+                if(a == (int) arrayList.get(indexList)){
+                    jumlah++;
+                }
+                indexList++;
+            }
+            if(jumlah==0) arrayList.add(a);
+            
+//            Menghentikan perulangan saat banyaknya angka random dalam list sesuai banyak soal per level 
+//            yang telah ditentukan.
+            if(indexList==n) break;
+        }
+        
+        List<HashMap> listSoalQuizHasilRandom = new ArrayList<>();
+        int counter = 0;
+        while(counter<n){
+            for(HashMap hashMap : listSoalQuiz){
+                if((int) arrayList.get(counter) == (int) hashMap.get("no")){
+                    HashMap hm = new HashMap();
+                    hm.put("no", Integer.parseInt(hashMap.get("no").toString()));
+                    hm.put("id", Integer.parseInt(hashMap.get("id").toString()));
+                    hm.put("name", hashMap.get("name").toString());
+                    hm.put("id_jenis_soal", Integer.parseInt(hashMap.get("id_jenis_soal").toString()));
+                    hm.put("id_level", Integer.parseInt(hashMap.get("id_level").toString()));
+                    listSoalQuizHasilRandom.add(hm);
+                }
+            }
+            
+            counter++;
+        }
+        return listSoalQuizHasilRandom;
+    }
 }

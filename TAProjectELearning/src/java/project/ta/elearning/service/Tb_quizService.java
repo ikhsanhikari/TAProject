@@ -5,6 +5,7 @@
  */
 package project.ta.elearning.service;
 
+import java.util.HashMap;
 import java.util.List;
 import project.ta.elearning.dto.Tb_quizDto;
 import project.ta.elearning.dto.Tb_resultExerciseDto;
@@ -45,4 +46,7 @@ public interface Tb_quizService {
     public List<Tb_quizDto> getStatus(Integer id_quiz,Integer id_answer);
     
     public Integer  getTotalPoin(Integer id_user);
+    
+//    Permulaan Menu Quiz
+    public List<HashMap> getSoalQuiz(int idLevel);
 }
