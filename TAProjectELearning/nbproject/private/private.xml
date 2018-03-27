@@ -3,23 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/TA/project/23-03-2018/TAProject/TAProjectELearning/src/java/project/ta/elearning/service/Tb_userService.java</file>
-            <file>file:/D:/TA/project/23-03-2018/TAProject/TAProjectELearning/web/resources/css/style.css</file>
-            <file>file:/D:/TA/project/23-03-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/login.jsp</file>
-            <file>file:/D:/TA/project/23-03-2018/TAProject/TAProjectELearning/src/java/project/ta/elearning/dao/impl/Tb_userDaoImpl.java</file>
-            <file>file:/D:/TA/project/23-03-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/exercise.jsp</file>
-            <file>file:/D:/TA/project/23-03-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/historis_exercise.jsp</file>
-            <file>file:/D:/TA/project/23-03-2018/TAProject/TAProjectELearning/src/java/hibernate.cfg.xml</file>
-            <file>file:/D:/TA/project/23-03-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/index.jsp</file>
-            <file>file:/D:/TA/project/23-03-2018/TAProject/TAProjectELearning/web/resources/css/pages/faq.css</file>
-            <file>file:/D:/TA/project/23-03-2018/TAProject/TAProjectELearning/src/java/project/ta/elearning/controller/Tb_quizController.java</file>
-            <file>file:/D:/TA/project/23-03-2018/TAProject/TAProjectELearning/src/java/project/ta/elearning/controller/LoginController.java</file>
-            <file>file:/D:/TA/project/23-03-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/linkAdmin.jsp</file>
-            <file>file:/D:/TA/project/23-03-2018/TAProject/TAProjectELearning/src/java/project/ta/elearning/service/impl/Tb_userServiceImpl.java</file>
-            <file>file:/D:/TA/project/23-03-2018/TAProject/TAProjectELearning/src/java/project/ta/elearning/dao/Tb_userDao.java</file>
-            <file>file:/D:/TA/project/23-03-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/view_quiz.jsp</file>
-            <file>file:/D:/TA/project/23-03-2018/TAProject/TAProjectELearning/src/java/project/ta/elearning/dao/impl/Tb_weeklyQuizDaoImpl.java</file>
-            <file>file:/D:/TA/project/23-03-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/index.jsp</file>
+            <file>file:/D:/TA/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/view_quiz.jsp</file>
+            <file>file:/D:/TA/TAProject/TAProjectELearning/src/java/project/ta/elearning/controller/Tb_quizController.java</file>
+            <file>file:/D:/TA/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/historis_exercise.jsp</file>
+            <file>file:/D:/TA/TAProject/TAProjectELearning/src/java/project/ta/elearning/service/impl/Tb_quizServiceImpl.java</file>
+            <file>file:/D:/TA/TAProject/TAProjectELearning/src/java/project/ta/elearning/dto/Tb_resultExerciseDto.java</file>
+            <file>file:/D:/TA/TAProject/TAProjectELearning/src/java/project/ta/elearning/dao/Tb_quizDao.java</file>
+            <file>file:/D:/TA/TAProject/TAProjectELearning/src/java/project/ta/elearning/service/Tb_quizService.java</file>
+            <file>file:/D:/TA/TAProject/TAProjectELearning/src/java/project/ta/elearning/dao/impl/Tb_quizDaoImpl.java</file>
+            <file>file:/D:/TA/TAProject/TAProjectELearning/src/java/project/ta/elearning/dto/Tb_quizDto.java</file>
         </group>
     </open-files>
 </project-private>

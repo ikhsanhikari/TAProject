@@ -8,6 +8,7 @@ package project.ta.elearning.dao;
 import java.util.List;
 import project.ta.elearning.model.Tb_quizModel;
 import project.ta.elearning.model.Tb_resultExcerciseModel;
+import project.ta.elearning.model.Tb_resultquizModel;
 
 /**
  *
@@ -18,6 +19,8 @@ public interface Tb_quizDao {
     public List<Tb_quizModel> getData();
 
     public void saveData(Tb_quizModel model);
+    
+    public void saveData(Tb_resultquizModel model);
 
     public void deleteData(Integer id);
 
@@ -45,4 +48,6 @@ public interface Tb_quizDao {
     public int getTotalSoalByLevel(int idLevel);
 
     public List<Object[]> getStatus(Integer id_qa,Integer id_answer);
+    
+    public Integer getTotalPoin(Integer id_user);
 }

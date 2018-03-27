@@ -29,6 +29,15 @@ public class Tb_quizDto {
     private String benar_salah;
     private String jawaban;
     private Integer id_qa;
+    private Integer totalPoin;
+
+    public Integer getTotalPoin() {
+        return totalPoin;
+    }
+
+    public void setTotalPoin(Integer totalPoin) {
+        this.totalPoin = totalPoin;
+    }
 
     public Integer getId_qa() {
         return id_qa;

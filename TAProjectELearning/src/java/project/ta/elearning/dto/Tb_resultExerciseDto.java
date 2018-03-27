@@ -22,6 +22,15 @@ public class Tb_resultExerciseDto {
     private String short_answer;
     private String jawaban_benar;
     private Integer id_answer;
+    private Integer poin;
+
+    public Integer getPoin() {
+        return poin;
+    }
+
+    public void setPoin(Integer poin) {
+        this.poin = poin;
+    }
 
     public String getJawaban_benar() {
         return jawaban_benar;

@@ -106,7 +106,7 @@
                                         <c:forEach var="data" items="${listQuiz}" >
                                             ${idx} . ${data.name} 
                                             <br/>
-                                            <form:hidden path="short_answer"/>
+                                            
                                             <c:forEach var="dataA" items="${listAnswer}" >
                                                 <form:radiobutton path="id_answer" value="${dataA.id_answer}"></form:radiobutton> . ${dataA.answer}<br/>
                                             </c:forEach>

@@ -11,6 +11,7 @@ import org.hibernate.Query;
 import project.ta.elearning.dao.Tb_quizDao;
 import project.ta.elearning.model.Tb_quizModel;
 import project.ta.elearning.model.Tb_resultExcerciseModel;
+import project.ta.elearning.model.Tb_resultquizModel;
 
 /**
  *
@@ -108,7 +109,8 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
     @Override
     public List<Object[]> getQuizRandomByLevel(int idLevel) {
 
-        String sql = "SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level,qa.id as id_qa "
+        String sql = "SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level,"
+                + " qa.id as id_qa ,q.id_category, q.id_matery "
                 + "FROM tb_quiz q, tb_qa qa, tb_answers a "
                 + "WHERE q.id=qa.id_quiz "
                 + "AND qa.id=a.id AND qa.id_level = " + idLevel
@@ -137,6 +139,23 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
         " and id_quiz = "+id_quiz+"";
         Query query = createNativeQuery(sql);
         return query.list();
+    }
+
+    @Override
+    public void saveData(Tb_resultquizModel model) {
+        try {
+            getSession().save(model);
+        } catch (Exception e) {
+        }
+    }
+
+    @Override
+    public Integer getTotalPoin(Integer id_user) {
+        String sql = "select floor((sum(poin)/count(poin))*100) as score " +
+                    "from tb_resultexercise " +
+                    "where id_collerger = "+id_user+"";
+        Query query = createNativeQuery(sql);
+        return Integer.parseInt(query.list().get(0).toString());
     }
 
 }

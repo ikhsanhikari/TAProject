@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import project.ta.elearning.dto.Tb_qaDto;
 import project.ta.elearning.dto.Tb_quizDto;
 import project.ta.elearning.dto.Tb_resultExerciseDto;
+import project.ta.elearning.dto.Tb_resultQuizDto;
 import project.ta.elearning.dto.Tb_sessionDto;
 import project.ta.elearning.dto.Tb_userDto;
 import project.ta.elearning.service.Tb_quizService;
@@ -95,7 +96,24 @@ public class Tb_quizController {
     Integer jenis_soal;
     String jawaban_benar;
     Integer id_qa;
+    Integer id_matery;
+    Integer id_category;
 
+    public Integer getId_matery() {
+        return id_matery;
+    }
+
+    public void setId_matery(Integer id_matery) {
+        this.id_matery = id_matery;
+    }
+
+    public Integer getId_category() {
+        return id_category;
+    }
+
+    public void setId_category(Integer id_category) {
+        this.id_category = id_category;
+    }
     public Integer getId_qa() {
         return id_qa;
     }
@@ -127,6 +145,7 @@ public class Tb_quizController {
     public void setId_quiz(Integer id_quiz) {
         this.id_quiz = id_quiz;
     }
+    
 
     @RequestMapping(value = "/view_quiz", method = RequestMethod.GET)
     public String viewQuiz(@RequestParam int idLevel, Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
@@ -144,6 +163,10 @@ public class Tb_quizController {
 
         setId_qa(listQuizRandomByLevel.get(0).getId_qa());
 
+        setId_matery(listQuizRandomByLevel.get(0).getId_matery());
+        
+        setId_category(listQuizRandomByLevel.get(0).getId_category());
+        
         List<Tb_quizDto> listAnswer = tb_quizService.getAnswerAllByQuiz(listQuizRandomByLevel.get(0).getId());
         reDto.setId_collerger(Integer.parseInt(session.getAttribute("iduser").toString()));
         map.addAttribute("listQuiz", listQuizRandomByLevel);
@@ -227,7 +250,7 @@ public class Tb_quizController {
             reDto.setId_qa(listStatus.get(0).getId());
             reDto.setStatus(listStatus.get(0).getId_status());
         }
-
+        reDto.setId_matery(getId_matery());
         tb_quizService.saveData(reDto);
 
         return "redirect:view_quiz.htm?idLevel=" + idLevel;
@@ -242,6 +265,21 @@ public class Tb_quizController {
     @RequestMapping(value = "/view_historis", method = RequestMethod.GET)
     public String historis(ModelMap model, HttpSession session) {
         List<Tb_quizDto> listHistoris = tb_quizService.getDataHistoris(Integer.parseInt(session.getAttribute("iduser").toString()));
+        Tb_resultQuizDto quizDto = new Tb_resultQuizDto();
+        quizDto.setId_matery(getId_matery());
+        quizDto.setId_category(getId_category());
+        quizDto.setId_colleger(Integer.parseInt(session.getAttribute("iduser").toString()));
+//        List<Tb_quizDto> listTotalPoin = tb_quizService.getTotalPoin(Integer.parseInt(session.getAttribute("iduser").toString()));
+        Integer score = tb_quizService.getTotalPoin(Integer.parseInt(session.getAttribute("iduser").toString()));
+        quizDto.setScore(tb_quizService.getTotalPoin(Integer.parseInt(session.getAttribute("iduser").toString())));
+        if(score<30){
+            quizDto.setIdknowledge(1);
+        }else if(score>=30 && score<60){
+            quizDto.setIdknowledge(2);
+        }else if(score>=60){
+            quizDto.setIdknowledge(3);
+        }
+        tb_quizService.saveData(quizDto);
         model.addAttribute("listHistoris", listHistoris);
         return "mahasiswa/historis_exercise";
     }

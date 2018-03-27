@@ -16,8 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
 import project.ta.elearning.dao.Tb_quizDao;
 import project.ta.elearning.dto.Tb_quizDto;
 import project.ta.elearning.dto.Tb_resultExerciseDto;
+import project.ta.elearning.dto.Tb_resultQuizDto;
 import project.ta.elearning.model.Tb_quizModel;
 import project.ta.elearning.model.Tb_resultExcerciseModel;
+import project.ta.elearning.model.Tb_resultquizModel;
 import project.ta.elearning.service.Tb_quizService;
 
 /**
@@ -128,7 +130,7 @@ public class Tb_quizServiceImpl implements Tb_quizService {
             String currDate = dateFormat.format(date);
             model.setId(1);
             model.setId_collerger(dto.getId_collerger());
-            model.setId_matery(1);
+            model.setId_matery(dto.getId_matery());
             model.setId_qa(dto.getId_qa());
             model.setShort_answer(dto.getShort_answer());
             model.setStatus(dto.getStatus());
@@ -136,6 +138,12 @@ public class Tb_quizServiceImpl implements Tb_quizService {
             model.setTimecreated(currDate);
             model.setTimemodified(currDate);
             model.setTimeopen(currDate);
+            if(dto.getStatus()==1){
+                model.setPoin(1);
+            }else{
+                model.setPoin(0);
+            }
+            
             tb_quizDao.saveData(model);
         } catch (Exception e) {
         }
@@ -191,6 +199,8 @@ public class Tb_quizServiceImpl implements Tb_quizService {
                 dto.setName(obj[1].toString());
                 dto.setId_jenis_soal(Integer.parseInt(obj[2].toString()));
                 dto.setId_qa(Integer.parseInt(obj[4].toString()));
+                dto.setId_category(Integer.parseInt(obj[5].toString()));
+                dto.setId_matery(Integer.parseInt(obj[6].toString()));
                 listData.add(dto);
             }
         }
@@ -216,6 +226,27 @@ public class Tb_quizServiceImpl implements Tb_quizService {
             }
         }
         return listData;
+    }
+
+    @Override
+    public void saveData(Tb_resultQuizDto dto) {
+        Tb_resultquizModel model = new Tb_resultquizModel();
+        try {
+            model.setId(1);
+            model.setId_colleger(dto.getId_colleger());
+            model.setId_matery(dto.getId_matery());
+            model.setIdknowledge(dto.getIdknowledge());
+            model.setId_category(dto.getId_category());
+            model.setScore(dto.getScore());
+            tb_quizDao.saveData(model);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Integer getTotalPoin(Integer id_user) {
+        return tb_quizDao.getTotalPoin(id_user);
     }
 
 }

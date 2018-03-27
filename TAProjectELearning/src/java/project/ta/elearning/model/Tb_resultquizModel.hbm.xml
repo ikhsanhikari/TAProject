@@ -13,6 +13,7 @@
         <property name="id_matery" type="integer"/>
         <property name="score" type="integer"/>
         <property name="idknowledge" type="integer"/>
+        <property name="id_category" type="integer"/>
     </class>
     
 </hibernate-mapping>

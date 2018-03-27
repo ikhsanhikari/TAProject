@@ -8,6 +8,7 @@ package project.ta.elearning.service;
 import java.util.List;
 import project.ta.elearning.dto.Tb_quizDto;
 import project.ta.elearning.dto.Tb_resultExerciseDto;
+import project.ta.elearning.dto.Tb_resultQuizDto;
 
 /**
  *
@@ -20,6 +21,8 @@ public interface Tb_quizService {
     public List<Tb_quizDto> getDataHistoris(Integer id);
 
     public void saveData(Tb_quizDto dto);
+    
+    public void saveData(Tb_resultQuizDto dto);
 
     public void deleteData(Integer id);
 
@@ -40,4 +43,6 @@ public interface Tb_quizService {
     public int getTotalSoalByLevel(int idLevel);
     
     public List<Tb_quizDto> getStatus(Integer id_quiz,Integer id_answer);
+    
+    public Integer  getTotalPoin(Integer id_user);
 }

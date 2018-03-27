@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project.ta.elearning.model;
+package project.ta.elearning.dto;
 
 /**
  *
  * @author Sou
  */
-public class Tb_resultquizModel {
+public class Tb_resultQuizDto {
     private Integer id;
     private Integer id_colleger;
     private Integer id_matery;
@@ -64,5 +64,4 @@ public class Tb_resultquizModel {
     public void setIdknowledge(Integer idknowledge) {
         this.idknowledge = idknowledge;
     }
-
 }

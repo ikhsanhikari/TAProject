@@ -20,6 +20,15 @@ public class Tb_resultExcerciseModel {
     private String timecreated;
     private String timemodified;
     private String short_answer;
+    private Integer poin;
+
+    public Integer getPoin() {
+        return poin;
+    }
+
+    public void setPoin(Integer poin) {
+        this.poin = poin;
+    }
 
     public String getShort_answer() {
         return short_answer;
