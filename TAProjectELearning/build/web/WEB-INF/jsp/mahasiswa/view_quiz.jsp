@@ -116,7 +116,7 @@
                                         </c:forEach>
                                     </div> <!-- /widget-content -->     
                                     <br/>
-                                    <a href="view_historis.htm" class="btn btn-success">Selesai</a>
+                                    <a href="view_informaion_of_exercise.htm" class="btn btn-success">Selesai</a>
                                     <input class="btn btn-primary" type="submit" value="Next"/>
                                 </form:form>
                             </div> <!-- /widget -->	

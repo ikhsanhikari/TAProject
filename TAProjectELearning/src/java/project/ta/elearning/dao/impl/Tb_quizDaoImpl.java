@@ -114,7 +114,13 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
                 + "FROM tb_quiz q, tb_qa qa, tb_answers a "
                 + "WHERE q.id=qa.id_quiz "
                 + "AND qa.id=a.id AND qa.id_level = " + idLevel
-                + "  ORDER BY rand() LIMIT 0,1";
+                + " and q.id not in("
+                + " select qa.id_quiz " 
+                + " from tb_resultexercise re,  " 
+                + " tb_qa qa " 
+                + " where re.id_qa= qa.id " 
+                + " and re.id_collerger  = 1 )  "
+                + " ORDER BY rand() LIMIT 0,1";
         Query query = createNativeQuery(sql);
         return query.list();
     }
@@ -168,6 +174,18 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
                                         "WHERE q.id=qa.id_quiz " +
                                         "AND qa.id=a.id AND qa.id_level = " + idLevel + " AND q.id_category = 1");
         
+        return query.list();
+    }
+
+    @Override
+    public List<Object[]> getInformationOfExercise(Integer id) {
+        String sql = "select rq.id,u.firstname , rq.score , k.knowledge " +
+                    "from tb_user u inner join tb_resultquiz rq " +
+                    "inner join tb_knowledge k " +
+                    "on u.id = rq.id_colleger " +
+                    "and k.id = rq.idknowledge " +
+                    "and rq.id_colleger="+id+"   ORDER BY rq.id DESC limit 0,1";
+        Query query = createNativeQuery(sql);
         return query.list();
     }
     

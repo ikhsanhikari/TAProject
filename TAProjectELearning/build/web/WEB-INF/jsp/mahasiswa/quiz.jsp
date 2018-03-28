@@ -1,7 +1,7 @@
 <%-- 
-    Document   : view_quiz
-    Created on : Mar 22, 2018, 7:37:12 PM
-    Author     : Sou
+    Document   : quiz
+    Created on : Mar 27, 2018, 10:13:41 PM
+    Author     : IT
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -55,37 +55,12 @@
         </div>
         <!-- /navbar -->
 
-        <div class="alert alert-block">
-            <table>
-                <tr>
-                    <td>
-                        <a href="view_quiz.htm?idLevel=1">
-                            <button id="btnLow" disabled class="btn btn-invert">
-                                Low
-                            </button>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="view_quiz.htm?idLevel=2">
-                            <button id="btnMedium" disabled class="btn btn-invert">
-                                Medium
-                            </button>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="view_quiz.htm?idLevel=3">
-                            <button id="btnHigh" disabled class="btn btn-invert">
-                                High
-                            </button>
-                        </a>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
         <div class="alert alert-info">
-            Soal exercise yang ditampilkan adalah soal dengan level <strong>${idLevel} (${level})</strong><br/>
-            Total soal untuk level ini adalah <strong>${totalSoalByLevel}</strong>
+            Menu ini dalam masa pengembangan. Random sudah bisa. <strong></strong><br/>
+            Untuk Melihat hasil random bisa Anda lihat di output Glassfish. <br/>
+            Untuk mengubah banyaknya soal, ganti parameter pada kode berikut :<br/>
+            <strong>List<HashMap> listSoalQuiz = tb_quizService.getSoalQuiz(3);</strong><br/>
+            Yang dipanggil di dalam method menuQuiz di <strong>Quiz Controller.</strong>
         </div>
 
         <div class="main">
@@ -96,13 +71,13 @@
                             <div class="widget">
                                 <div class="widget-header" style="margin-top:20px">
                                     <i class="icon-tasks"></i>
-                                    <h3>Exercise | Level ${idLevel} (${level})</h3>
+                                    <h3>Quiz | Nomor</h3>
                                 </div> <!-- /widget-header -->
 
                                 <div class="widget-content" style="height:350px">
-                                    <form:form modelAttribute="reDto" method="GET" action="random_quiz.htm">
+                                    <%--<form:form modelAttribute="reDto" method="GET" action="quiz.htm">
                                         <form:hidden path="id_collerger" />
-                                        <input type="hidden" name="idLevel" value="${idLevel}"/>
+                                        <!--<input type="hidden" name="idLevel" value=""/>-->
                                         <c:forEach var="data" items="${listQuiz}" >
                                             ${idx} . ${data.name} 
                                             <br/>
@@ -113,12 +88,12 @@
                                             <c:if test="${stat==0}">
                                                 <form:input path="short_answer" placeholder="Jawaban"/>
                                             </c:if>
-                                        </c:forEach>
+                                        </c:forEach>--%>
                                     </div> <!-- /widget-content -->     
-                                    <br/>
-                                    <a href="view_informaion_of_exercise.htm" class="btn btn-success">Selesai</a>
+                                    <%--<br/>
+                                    <a href="view_historis.htm" class="btn btn-success">Selesai</a>
                                     <input class="btn btn-primary" type="submit" value="Next"/>
-                                </form:form>
+                                </form:form>--%>
                             </div> <!-- /widget -->	
                         </div> <!-- /spa12 -->
                     </div> <!-- /row -->
@@ -129,16 +104,7 @@
         <!--javascript-->
         <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script>
         <script src="<c:url value="resources/js/bootstrap.js"/>"></script>
-        <script>
-        function setDisabled() {
-            var btnLow = document.getElementById('btnLow');
-            var btnMedium = document.getElementById('btnMedium');
-            var btnHigh = document.getElementById('btnHigh');
-            btnLow.disabled = ${nilaiDisabledLow};
-            btnMedium.disabled = ${nilaiDisabledMedium};
-            btnHigh.disabled = ${nilaiDisabledHigh};
-        }
-        </script>
     </body>
 </html>
+
 

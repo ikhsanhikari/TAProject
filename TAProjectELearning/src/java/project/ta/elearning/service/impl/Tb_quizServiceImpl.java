@@ -407,4 +407,21 @@ public class Tb_quizServiceImpl implements Tb_quizService {
         }
         return listSoalQuizHasilRandom;
     }
+
+    @Override
+    public List<Tb_resultQuizDto> getInformationOfExercise(Integer id) {
+        List<Tb_resultQuizDto> listData = new ArrayList<>();
+        List<Object[]> listModel = tb_quizDao.getInformationOfExercise(id);
+        if (listModel.size() > 0) {
+            for (Object[] obj : listModel) {
+                Tb_resultQuizDto dto = new Tb_resultQuizDto();
+                dto.setId(Integer.parseInt(obj[0].toString()));
+                dto.setName(obj[1].toString());
+                dto.setScore(Integer.parseInt(obj[2].toString()));
+                dto.setKnowledge(obj[3].toString());
+                listData.add(dto);
+            }
+        }
+        return listData;
+    }
 }

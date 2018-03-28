@@ -16,6 +16,24 @@ public class Tb_resultQuizDto {
     private Integer score;
     private Integer idknowledge;
     private Integer id_category;
+    private String knowledge;
+    private String name;
+
+    public String getKnowledge() {
+        return knowledge;
+    }
+
+    public void setKnowledge(String knowledge) {
+        this.knowledge = knowledge;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public Integer getId_category() {
         return id_category;

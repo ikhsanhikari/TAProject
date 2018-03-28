@@ -18,11 +18,11 @@ import project.ta.elearning.dto.Tb_resultQuizDto;
 public interface Tb_quizService {
 
     public List<Tb_quizDto> getData();
-    
+
     public List<Tb_quizDto> getDataHistoris(Integer id);
 
     public void saveData(Tb_quizDto dto);
-    
+
     public void saveData(Tb_resultQuizDto dto);
 
     public void deleteData(Integer id);
@@ -30,23 +30,26 @@ public interface Tb_quizService {
     public void updateData(Tb_quizDto dto);
 
     public Tb_quizDto getDataById(Integer id);
-    
+
     public List<Tb_quizDto> getAnswerAllByQuiz(Integer id);
-    
+
     public List<Tb_quizDto> getJawabanBenar(Integer id);
-    
-    public Integer saveQuiz(Integer id,Integer id_collerger,Integer id_matery,Integer id_qa,Integer status);
-    
+
+    public Integer saveQuiz(Integer id, Integer id_collerger, Integer id_matery, Integer id_qa, Integer status);
+
     public void saveData(Tb_resultExerciseDto dto);
-    
+
     public List<Tb_quizDto> getQuizRandomByLevel(int idLevel);
-    
+
     public int getTotalSoalByLevel(int idLevel);
-    
-    public List<Tb_quizDto> getStatus(Integer id_quiz,Integer id_answer);
-    
-    public Integer  getTotalPoin(Integer id_user);
-    
+
+    public List<Tb_quizDto> getStatus(Integer id_quiz, Integer id_answer);
+
+    public Integer getTotalPoin(Integer id_user);
+
 //    Permulaan Menu Quiz
     public List<HashMap> getSoalQuiz(int idLevel);
+
+//    Menampilkan nilai Exercise
+    public List<Tb_resultQuizDto> getInformationOfExercise(Integer id);
 }

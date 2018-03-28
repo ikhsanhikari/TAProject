@@ -53,4 +53,7 @@ public interface Tb_quizDao {
     
 //    Permulaan untuk Menu Quiz
     public List<Object[]> getQuizByLevel(int idLevel);
+    
+//    Menampilkan nilai
+    public List<Object[]> getInformationOfExercise(Integer id);
 }
