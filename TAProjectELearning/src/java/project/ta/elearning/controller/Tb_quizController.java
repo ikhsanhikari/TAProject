@@ -5,6 +5,7 @@
  */
 package project.ta.elearning.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpSession;
@@ -36,6 +37,12 @@ public class Tb_quizController {
 
     @Autowired
     Tb_userService tb_userService;
+    
+    List<HashMap> listSoalQuiz = new ArrayList<>();
+    int sudahMasuk = 0;
+    int noSoal = 1;
+    int jumlahBenar = 0;
+    Tb_resultQuizDto rqDto = new Tb_resultQuizDto();
 
     @RequestMapping(value = "/form_tambah_quiz", method = RequestMethod.GET)
     public String formTambahQuiz(ModelMap map, Tb_quizDto quizDto, HttpSession session, Tb_userDto userDto) {
@@ -328,31 +335,136 @@ public class Tb_quizController {
 
 //    Awal kode untuk MENU QUIZ
     @RequestMapping(value = "quiz", method = RequestMethod.GET)
-    public String menuQuiz(Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
-        List<HashMap> listSoalQuiz = tb_quizService.getSoalQuiz(3);
-//        setId_quiz(listQuizByLevel.get(0).getId());
-//
-//        List<Tb_quizDto> listJawabanBenar = tb_quizService.getJawabanBenar(getId_quiz());
-//        setJenis_soal(listQuizByLevel.get(0).getId_jenis_soal());
-//        setJawaban_benar(listJawabanBenar.get(0).getAnswer());
-//        setId_category(listQuizByLevel.get(0).getId_category());
-//        
-//        List<Tb_quizDto> listAnswer = tb_quizService.getAnswerAllByQuiz(listQuizByLevel.get(0).getId());
-//        reDto.setId_collerger(Integer.parseInt(session.getAttribute("iduser").toString()));
-//        map.addAttribute("listQuiz", listQuizByLevel);
-//        map.addAttribute("reDto", reDto);
-//        idx++;
-//        map.addAttribute("idx", idx);
-//        int stat = 0;
-//        if (listAnswer.size() > 1) {
-//            map.addAttribute("listAnswer", listAnswer);
-//            stat = 1;
-//        }
-//        map.addAttribute("stat", stat);
+    public String menuQuiz(@RequestParam String action, @RequestParam int noSoalParam, @RequestParam int statusMasuk, Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
+        System.out.println("Nilai statusMasuk : " + statusMasuk);
+        int jumlahSoalPerLevel = 3;
+        
+        if(statusMasuk==1 && sudahMasuk==0){
+            listSoalQuiz = tb_quizService.getSoalQuiz(jumlahSoalPerLevel);
+            sudahMasuk++;
+        }   
+        List<HashMap> listSoalQuizTetap = listSoalQuiz;
+        
+        if(noSoalParam==(jumlahSoalPerLevel*3)){
+            System.out.println("jumlahBenar = " + jumlahBenar);
+            float presentaseBenar = (float) jumlahBenar/(jumlahSoalPerLevel*3);
+            int presentase =  Math.round(presentaseBenar * 100);
+            System.out.println("presentaseBenar : " + presentaseBenar + "\n" + presentase + "%");
+            rqDto.setScore(presentase);
+            tb_quizService.saveDataScore(rqDto);
+            map.addAttribute("username", session.getAttribute("username").toString());
+            map.addAttribute("score", presentase);
+            
+            return "mahasiswa/post_quiz";
+        }
+        
+        List<HashMap> tampList = new ArrayList<>();
+        HashMap tampHashMap = new HashMap();
+        
+        if(action.equals("Next")){
+            doSave(reDto);
+            noSoalParam++;
+        } else if(action.equals("Previous")){
+            noSoalParam--;
+        }
+        noSoal = noSoalParam-1;
+        tampHashMap.put("no", listSoalQuizTetap.get(noSoal).get("no"));
+        tampHashMap.put("id", listSoalQuizTetap.get(noSoal).get("id"));
+        tampHashMap.put("name", listSoalQuizTetap.get(noSoal).get("name"));
+        tampHashMap.put("id_jenis_soal", listSoalQuizTetap.get(noSoal).get("id_jenis_soal"));
+        tampHashMap.put("id_level", listSoalQuizTetap.get(noSoal).get("id_level"));
+        tampHashMap.put("id_qa", listSoalQuizTetap.get(noSoal).get("id_qa"));
+        tampHashMap.put("id_category", listSoalQuizTetap.get(noSoal).get("id_category"));
+        tampHashMap.put("id_matery", listSoalQuizTetap.get(noSoal).get("id_matery"));
+        tampList.add(tampHashMap);
+        
+        setId_quiz((int) tampList.get(0).get("id"));    
 
+        List<Tb_quizDto> listJawabanBenar = tb_quizService.getJawabanBenar(getId_quiz());
+        setJenis_soal((int) tampList.get(0).get("id_jenis_soal"));
+        setJawaban_benar(listJawabanBenar.get(0).getAnswer());
+        setId_category((int) tampList.get(0).get("id_level"));
+        setId_qa((int) tampList.get(0).get("id_qa"));
+        setId_matery((int) tampList.get(0).get("id_category"));
+        setId_category((int) tampList.get(0).get("id_matery"));
+        
+        rqDto.setId_colleger(Integer.parseInt(session.getAttribute("iduser").toString()));
+        rqDto.setId_matery((int) tampList.get(0).get("id_matery"));
+        int idKnowledge = tb_userService.getDataKnowledge(session.getAttribute("username").toString());
+        rqDto.setIdknowledge(idKnowledge);
+        rqDto.setId_category((int) tampList.get(0).get("id_category"));
+        
+        List<Tb_quizDto> listAnswer = tb_quizService.getAnswerAllByQuiz((int) tampList.get(0).get("id"));
+        reDto.setId_collerger(Integer.parseInt(session.getAttribute("iduser").toString()));
+        map.addAttribute("listQuiz", tampList);
+        map.addAttribute("reDto", reDto);
+        idx++;
+        map.addAttribute("idx", idx);
+        int stat = 0;
+        if (listAnswer.size() > 1) {
+            map.addAttribute("listAnswer", listAnswer);
+            stat = 1;
+        }
+        map.addAttribute("stat", stat);
+        map.addAttribute("no", listSoalQuizTetap.get(noSoal).get("no"));
+        map.addAttribute("id", listSoalQuizTetap.get(noSoal).get("id"));
+        map.addAttribute("name", listSoalQuizTetap.get(noSoal).get("name"));
+        map.addAttribute("id_jenis_soal", listSoalQuizTetap.get(noSoal).get("id_jenis_soal"));
+        String level = "";
+        if((int)listSoalQuizTetap.get(noSoal).get("id_level")==1){
+            level = "Low";
+        } else if((int)listSoalQuizTetap.get(noSoal).get("id_level")==2){
+            level = "Medium";
+        } else if((int)listSoalQuizTetap.get(noSoal).get("id_level")==3){
+            level = "High";
+        }
+        map.addAttribute("level", level);
+        
+//        if(noSoal==1){
+//            System.out.println("masuk disabled previous");
+//            map.addAttribute("nilaiDisabledPrevious", "true");
+//        }
+//        if(noSoal==9){
+//            System.out.println("masuk disabled next");
+//            map.addAttribute("nilaiDisabledNext", "true");
+//        }
+        
         return "mahasiswa/quiz";
     }
     
+    public void doSave(Tb_resultExerciseDto reDto){
+        if (getJenis_soal() == 1) {
+//            reDto.getShort_answer().replaceAll("\\s+", " ");
+//            reDto.getShort_answer().replaceAll(" ", "");
+            if (getJawaban_benar().equals(reDto.getShort_answer())) {
+                System.out.println("Masuk sama = " + getJawaban_benar()+ " =="+reDto.getShort_answer());
+                reDto.setId_qa(getId_qa());
+                reDto.setStatus(1);
+            } else {
+                System.out.println("Masuk beda = " + getId_qa());
+                reDto.setId_qa(getId_qa());
+                reDto.setStatus(0);
+            }
+            System.out.println("jawaban kang field e " + reDto.getShort_answer());
+        } else {
+//            reDto.setShort_answer("");
+            System.out.println("status 0129111111111111111111111310\n" + getId_quiz() + " " + reDto.getId_answer());
+            List<Tb_quizDto> listStatus = tb_quizService.getStatus(getId_quiz(), reDto.getId_answer());
+            reDto.setId_qa(listStatus.get(0).getId());
+            reDto.setStatus(listStatus.get(0).getId_status());
+        }
+        if(reDto.getStatus()==1) jumlahBenar++;
+        System.out.println("77777777777777777777777777777\nJumlah Benar = " + jumlahBenar);
+        
+        reDto.setId_matery(getId_matery());
+        tb_quizService.saveData(reDto);
+    }
+    
+    public void doSaveScore(){
+        
+    }
+    
+//    Melihat informasi exercise
     @RequestMapping(value = "/view_informaion_of_exercise", method = RequestMethod.GET)
     public String informationOfEcxercise(ModelMap model, HttpSession session) {
         List<Tb_resultQuizDto> listHistoris = tb_quizService.getInformationOfExercise(Integer.parseInt(session.getAttribute("iduser").toString()));
@@ -372,6 +484,7 @@ public class Tb_quizController {
         }
         tb_quizService.saveData(quizDto);
         model.addAttribute("listInformationOfexercise", listHistoris);
+        noSoal++;
         return "mahasiswa/information_of_exercise";
     }
     

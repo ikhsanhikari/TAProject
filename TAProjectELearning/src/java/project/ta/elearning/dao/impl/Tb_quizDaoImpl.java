@@ -169,7 +169,7 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
 
     @Override
     public List<Object[]> getQuizByLevel(int idLevel) {
-        Query query = createNativeQuery("SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level " +
+        Query query = createNativeQuery("SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level, qa.id as id_qa ,q.id_category, q.id_matery " +
                                         "FROM tb_quiz q, tb_qa qa, tb_answers a " +
                                         "WHERE q.id=qa.id_quiz " +
                                         "AND qa.id=a.id AND qa.id_level = " + idLevel + " AND q.id_category = 1");

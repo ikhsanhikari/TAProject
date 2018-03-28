@@ -282,6 +282,9 @@ public class Tb_quizServiceImpl implements Tb_quizService {
                     hm.put("name", obj[1].toString());
                     hm.put("id_jenis_soal", Integer.parseInt(obj[2].toString()));
                     hm.put("id_level", Integer.parseInt(obj[3].toString()));
+                    hm.put("id_qa", Integer.parseInt(obj[4].toString()));
+                    hm.put("id_category", Integer.parseInt(obj[5].toString()));
+                    hm.put("id_matery", Integer.parseInt(obj[6].toString()));
                     if(i==1){
                         listSoalQuizLow.add(hm);
                         System.out.println("00000000000909\n" + listSoalQuizLow);
@@ -304,32 +307,48 @@ public class Tb_quizServiceImpl implements Tb_quizService {
         
 //        Menggabungkan hasil random dari ketiga level menjadi satu list
         List<HashMap> listSoalQuizHasilRandom = new ArrayList<>();
+        int no = 1;
         for(HashMap hashMap : listSoalQuizHasilRandomLow){
             HashMap hm = new HashMap();
-            hm.put("no", Integer.parseInt(hashMap.get("no").toString()));
+//            hm.put("no", Integer.parseInt(hashMap.get("no").toString()));
+            hm.put("no", no);
             hm.put("id", Integer.parseInt(hashMap.get("id").toString()));
             hm.put("name", hashMap.get("name").toString());
             hm.put("id_jenis_soal", Integer.parseInt(hashMap.get("id_jenis_soal").toString()));
             hm.put("id_level", Integer.parseInt(hashMap.get("id_level").toString()));
+            hm.put("id_qa", Integer.parseInt(hashMap.get("id_qa").toString()));
+            hm.put("id_category", Integer.parseInt(hashMap.get("id_category").toString()));
+            hm.put("id_matery", Integer.parseInt(hashMap.get("id_matery").toString()));
             listSoalQuizHasilRandom.add(hm);
+            no++;
         }
         for(HashMap hashMap : listSoalQuizHasilRandomMedium){
             HashMap hm = new HashMap();
-            hm.put("no", Integer.parseInt(hashMap.get("no").toString()));
+//            hm.put("no", Integer.parseInt(hashMap.get("no").toString()));
+            hm.put("no", no);
             hm.put("id", Integer.parseInt(hashMap.get("id").toString()));
             hm.put("name", hashMap.get("name").toString());
             hm.put("id_jenis_soal", Integer.parseInt(hashMap.get("id_jenis_soal").toString()));
             hm.put("id_level", Integer.parseInt(hashMap.get("id_level").toString()));
+            hm.put("id_qa", Integer.parseInt(hashMap.get("id_qa").toString()));
+            hm.put("id_category", Integer.parseInt(hashMap.get("id_category").toString()));
+            hm.put("id_matery", Integer.parseInt(hashMap.get("id_matery").toString()));
             listSoalQuizHasilRandom.add(hm);
+            no++;
         }
         for(HashMap hashMap : listSoalQuizHasilRandomHigh){
             HashMap hm = new HashMap();
-            hm.put("no", Integer.parseInt(hashMap.get("no").toString()));
+//            hm.put("no", Integer.parseInt(hashMap.get("no").toString()));
+            hm.put("no", no);
             hm.put("id", Integer.parseInt(hashMap.get("id").toString()));
             hm.put("name", hashMap.get("name").toString());
             hm.put("id_jenis_soal", Integer.parseInt(hashMap.get("id_jenis_soal").toString()));
             hm.put("id_level", Integer.parseInt(hashMap.get("id_level").toString()));
+            hm.put("id_qa", Integer.parseInt(hashMap.get("id_qa").toString()));
+            hm.put("id_category", Integer.parseInt(hashMap.get("id_category").toString()));
+            hm.put("id_matery", Integer.parseInt(hashMap.get("id_matery").toString()));
             listSoalQuizHasilRandom.add(hm);
+            no++;
         }
         
         System.out.println("\n44444444444444444444444444444444444444444444000000\n" + listSoalQuizHasilRandom);
@@ -399,6 +418,9 @@ public class Tb_quizServiceImpl implements Tb_quizService {
                     hm.put("name", hashMap.get("name").toString());
                     hm.put("id_jenis_soal", Integer.parseInt(hashMap.get("id_jenis_soal").toString()));
                     hm.put("id_level", Integer.parseInt(hashMap.get("id_level").toString()));
+                    hm.put("id_qa", Integer.parseInt(hashMap.get("id_qa").toString()));
+                    hm.put("id_category", Integer.parseInt(hashMap.get("id_category").toString()));
+                    hm.put("id_matery", Integer.parseInt(hashMap.get("id_matery").toString()));
                     listSoalQuizHasilRandom.add(hm);
                 }
             }
@@ -423,5 +445,25 @@ public class Tb_quizServiceImpl implements Tb_quizService {
             }
         }
         return listData;
+    }
+
+    @Override
+    public void saveDataScore(Tb_resultQuizDto dto) {
+        
+        Tb_resultquizModel model = new Tb_resultquizModel();
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = new Date();
+            String currDate = dateFormat.format(date);
+            model.setId(1);
+            model.setId_colleger(dto.getId_colleger());
+            model.setId_matery(dto.getId_matery());
+            model.setIdknowledge(dto.getIdknowledge());
+            model.setId_category(dto.getId_category());
+            model.setScore(dto.getScore());
+            
+            tb_quizDao.saveData(model);
+        } catch (Exception e) {
+        }
     }
 }

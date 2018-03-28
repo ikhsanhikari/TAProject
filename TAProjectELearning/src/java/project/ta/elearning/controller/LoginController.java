@@ -24,7 +24,7 @@ import project.ta.elearning.service.UserService;
  *
  * @author Sou
  */
-@SessionAttributes({"username", "password", "firstname", "lastname", "role", "nama", "iduser"})
+@SessionAttributes({"id","username", "password", "firstname", "lastname", "role", "nama", "iduser"})
 @Controller
 public class LoginController {
 

@@ -1,7 +1,7 @@
 <%-- 
-    Document   : index.jsp
-    Created on : Feb 24, 2018, 10:56:06 AM
-    Author     : Sou
+    Document   : pra_exercise
+    Created on : Mar 25, 2018, 12:07:29 AM
+    Author     : IT
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -20,7 +20,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Halaman Mahasiswa</title>
     </head>
-    <body>
+    <body onload="setDisabled()">
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
@@ -51,29 +51,21 @@
         </div>
         <!-- /navbar -->
         <div class="alert alert-info">
-            <p>Knowledge terdeteksi sebagai "<strong>${knowledge}</strong>". Datamu ${ada} dalam database.</p>
-            <p>Pilih jenis soal berikut untuk memulai :</p>
+            <div class="stat"> <i>Hasil Quiz : <strong>${score}%</strong> dijawab benar.</i> </div>
         </div>
-        
-        <div class="widget-content span12">
-            <div class="shortcuts"> 
-                <a href="pra_exercise.htm" class="shortcut"><i class="shortcut-icon icon-tasks"></i>
-                    <span class="shortcut-label">Excercise</span> 
-                </a>
-                <a href="quiz.htm?statusMasuk=1&noSoalParam=1&action=0" class="shortcut"><i class="shortcut-icon icon-time"></i>
-                    <span class="shortcut-label">Quiz</span> 
-                </a>
-            </div>
-            <!-- /shortcuts --> 
-        </div>
-        <!-- /widget-content --> 
-
+                        
         <!--javascript-->
-        <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script> 
-        <script src="<c:url value="resources/js/excanvas.min.js"/>"></script> 
-        <script src="<c:url value="resources/js/chart.min.js"/>" type="text/javascript"></script> 
+        <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script>
         <script src="<c:url value="resources/js/bootstrap.js"/>"></script>
-        <script language="javascript" type="text/javascript" src="<c:url value="resources/js/full-calendar/fullcalendar.min.js"/>"></script>
+        <script>
+        function setDisabled() {
+            var btnLow = document.getElementById('btnLow');
+            var btnMedium = document.getElementById('btnMedium');
+            var btnHigh = document.getElementById('btnHigh');
+            btnLow.disabled = ${nilaiDisabledLow};
+            btnMedium.disabled = ${nilaiDisabledMedium};
+            btnHigh.disabled = ${nilaiDisabledHigh};
+        }
+        </script>
     </body>
 </html>
-

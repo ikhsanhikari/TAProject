@@ -49,7 +49,8 @@ public interface Tb_quizService {
 
 //    Permulaan Menu Quiz
     public List<HashMap> getSoalQuiz(int idLevel);
-
+    public void saveDataScore(Tb_resultQuizDto dto);
+    
 //    Menampilkan nilai Exercise
     public List<Tb_resultQuizDto> getInformationOfExercise(Integer id);
 }

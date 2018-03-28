@@ -60,7 +60,7 @@
                 <a href="pra_exercise.htm" class="shortcut"><i class="shortcut-icon icon-tasks"></i>
                     <span class="shortcut-label">Excercise</span> 
                 </a>
-                <a href="quiz.htm" class="shortcut"><i class="shortcut-icon icon-time"></i>
+                <a href="quiz.htm?statusMasuk=1&noSoalParam=1&action=0" class="shortcut"><i class="shortcut-icon icon-time"></i>
                     <span class="shortcut-label">Quiz</span> 
                 </a>
             </div>

@@ -56,11 +56,7 @@
         <!-- /navbar -->
 
         <div class="alert alert-info">
-            Menu ini dalam masa pengembangan. Random sudah bisa. <strong></strong><br/>
-            Untuk Melihat hasil random bisa Anda lihat di output Glassfish. <br/>
-            Untuk mengubah banyaknya soal, ganti parameter pada kode berikut :<br/>
-            <strong>List<HashMap> listSoalQuiz = tb_quizService.getSoalQuiz(3);</strong><br/>
-            Yang dipanggil di dalam method menuQuiz di <strong>Quiz Controller.</strong>
+            Anda saat ini sedang menjalankan sesi <strong>Quiz</strong>.
         </div>
 
         <div class="main">
@@ -71,15 +67,17 @@
                             <div class="widget">
                                 <div class="widget-header" style="margin-top:20px">
                                     <i class="icon-tasks"></i>
-                                    <h3>Quiz | Nomor</h3>
+                                    <h3>Quiz | ${no}</h3>
+                                    <h3 style="text-align:right">Id = ${id} . ${level}</h3>
                                 </div> <!-- /widget-header -->
 
                                 <div class="widget-content" style="height:350px">
-                                    <%--<form:form modelAttribute="reDto" method="GET" action="quiz.htm">
-                                        <form:hidden path="id_collerger" />
-                                        <!--<input type="hidden" name="idLevel" value=""/>-->
-                                        <c:forEach var="data" items="${listQuiz}" >
-                                            ${idx} . ${data.name} 
+                                    <form:form modelAttribute="reDto" method="GET" action="quiz.htm">
+                                        <form:hidden path="id_collerger"/>
+                                        <input type="hidden" name="noSoalParam" value="${no}"/>
+                                        <input type="hidden" name="statusMasuk" value="0"/>
+                                        <c:forEach var="data" items="${listQuiz}">
+                                            ${data.name} 
                                             <br/>
                                             
                                             <c:forEach var="dataA" items="${listAnswer}" >
@@ -88,12 +86,13 @@
                                             <c:if test="${stat==0}">
                                                 <form:input path="short_answer" placeholder="Jawaban"/>
                                             </c:if>
-                                        </c:forEach>--%>
+                                        </c:forEach>
                                     </div> <!-- /widget-content -->     
-                                    <%--<br/>
-                                    <a href="view_historis.htm" class="btn btn-success">Selesai</a>
-                                    <input class="btn btn-primary" type="submit" value="Next"/>
-                                </form:form>--%>
+                                    <br/>
+                                    <!--<a href="view_historis.htm" class="btn btn-success">Selesai</a>-->
+                                    <input id="btnPrevious" type="submit" name="action" value="Previous" class="btn btn-primary"/>
+                                    <input id="btnNext" type="submit" name="action" value="Next" class="btn btn-primary"/>
+                                </form:form>
                             </div> <!-- /widget -->	
                         </div> <!-- /spa12 -->
                     </div> <!-- /row -->
@@ -104,6 +103,14 @@
         <!--javascript-->
         <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script>
         <script src="<c:url value="resources/js/bootstrap.js"/>"></script>
+        <script>
+            function setDisabled() {
+                var btnPrevious = document.getElementById('btnPrevious');
+                var btnNext = document.getElementById('btnNext');
+                btnPrevious.disabled = true;
+                btnNext.disabled = false;
+            }
+        </script>
     </body>
 </html>
 
