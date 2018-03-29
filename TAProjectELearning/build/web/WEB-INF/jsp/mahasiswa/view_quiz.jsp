@@ -41,7 +41,7 @@
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="icon-user"></i> ${nama} <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="javascript:;">Profile</a></li>
+                                    <li><a href="profile.htm">Profile</a></li>
                                     <li><a href="logout.htm">Logout</a></li>
                                 </ul>
                             </li>
@@ -98,15 +98,14 @@
                                     <i class="icon-tasks"></i>
                                     <h3>Exercise | Level ${idLevel} (${level})</h3>
                                 </div> <!-- /widget-header -->
-
                                 <div class="widget-content" style="height:350px">
-                                    <form:form modelAttribute="reDto" method="GET" action="random_quiz.htm">
+                                    <form:form modelAttribute="reDto" method="GET" action="onsubmit.htm">
                                         <form:hidden path="id_collerger" />
                                         <input type="hidden" name="idLevel" value="${idLevel}"/>
                                         <c:forEach var="data" items="${listQuiz}" >
-                                            ${idx} . ${data.name} 
+                                            ${data.name} 
                                             <br/>
-                                            
+
                                             <c:forEach var="dataA" items="${listAnswer}" >
                                                 <form:radiobutton path="id_answer" value="${dataA.id_answer}"></form:radiobutton> . ${dataA.answer}<br/>
                                             </c:forEach>
@@ -116,9 +115,16 @@
                                         </c:forEach>
                                     </div> <!-- /widget-content -->     
                                     <br/>
-                                    <a href="view_informaion_of_exercise.htm" class="btn btn-success">Selesai</a>
-                                    <input class="btn btn-primary" type="submit" value="Next"/>
+                                    <c:url var="onsubmit" value="onsubmit.htm">
+                                        <c:param value="${idLevel}" name="idLevel"></c:param>
+                                    </c:url>
+                                    <input class="btn btn-primary" type="submit" value="Submit"/>
+                                    <c:url value="view_quiz.htm" var="v">
+                                        <c:param name="idLevel" value="${idLevel}"></c:param>
+                                    </c:url>
+                                    <a href="${v}" class="btn btn-primary" >Next</a>
                                 </form:form>
+                                <a href="view_informaion_of_exercise.htm" class="btn btn-success pull-right">Selesai</a>
                             </div> <!-- /widget -->	
                         </div> <!-- /spa12 -->
                     </div> <!-- /row -->
@@ -127,17 +133,32 @@
         </div> <!-- /main -->
 
         <!--javascript-->
+        <script type="text/javascript">
+            function alertTry() {
+                var tamp = document.getElementById('hikari');
+                tamp.valueOf()
+            }
+            function alertAnswer() {
+//                var x = document.getElementById("divAlert");
+//                if (x.style.display === "none") {
+//                    x.style.display = "block";
+//                } else {
+//                    x.style.display = "none";
+//                }
+                alert('-------'+${idLevel});
+            }
+        </script>
         <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script>
         <script src="<c:url value="resources/js/bootstrap.js"/>"></script>
         <script>
-        function setDisabled() {
-            var btnLow = document.getElementById('btnLow');
-            var btnMedium = document.getElementById('btnMedium');
-            var btnHigh = document.getElementById('btnHigh');
-            btnLow.disabled = ${nilaiDisabledLow};
-            btnMedium.disabled = ${nilaiDisabledMedium};
-            btnHigh.disabled = ${nilaiDisabledHigh};
-        }
+            function setDisabled() {
+                var btnLow = document.getElementById('btnLow');
+                var btnMedium = document.getElementById('btnMedium');
+                var btnHigh = document.getElementById('btnHigh');
+                btnLow.disabled = ${nilaiDisabledLow};
+                btnMedium.disabled = ${nilaiDisabledMedium};
+                btnHigh.disabled = ${nilaiDisabledHigh};
+            }
         </script>
     </body>
 </html>

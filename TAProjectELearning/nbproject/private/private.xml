@@ -2,6 +2,10 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/TA/Clone%2029-03-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/post_quiz.jsp</file>
+            <file>file:/D:/TA/Clone%2029-03-2018/TAProject/TAProjectELearning/src/java/project/ta/elearning/controller/Tb_quizController.java</file>
+            <file>file:/D:/TA/Clone%2029-03-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/view_quiz.jsp</file>
+        </group>
     </open-files>
 </project-private>

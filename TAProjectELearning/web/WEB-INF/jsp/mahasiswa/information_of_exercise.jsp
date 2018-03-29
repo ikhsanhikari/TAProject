@@ -53,31 +53,34 @@
             <!-- /navbar-inner --> 
         </div>
         <!-- /navbar -->
-        <div class="span12">
-        <div class="widget widget-table action-table">
-            <div class="widget-header" style="margin-top:20px"> <i class="icon-th-list"></i>
-                <h3>Data Informasi Exercise</h3>
+        <!-- /widget-header -->
+        <c:forEach var="data" items="${listInformationOfexercise}">
+
+            <div class="alert alert-info">
+                <center>
+                    <div class="stat">
+                        Score Anda : <br/>
+                        <h1>${data.score}</h1>
+                    </div>
+
+                </center>
             </div>
-            <!-- /widget-header -->
-            <div class="widget-content">
-                <table class="table table-striped table-bordered">
-                    <tbody>
-                        <c:forEach var="data" items="${listInformationOfexercise}">
-                            Nilai Anda : <br/>
-                            <h1>${data.score}</h1>
-                            Tingkatan Anda berada di ${data.knowledge}
-                        </c:forEach>
-                    </tbody>
-                </table>
-            </div>
-            <!-- /widget-content --> 
-        </div>
-        </div>
-        <!--javascript-->
-        <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script> 
-        <script src="<c:url value="resources/js/excanvas.min.js"/>"></script> 
-        <script src="<c:url value="resources/js/chart.min.js"/>" type="text/javascript"></script> 
-        <script src="<c:url value="resources/js/bootstrap.js"/>"></script>
-        <script language="javascript" type="text/javascript" src="<c:url value="resources/js/full-calendar/fullcalendar.min.js"/>"></script>
-    </body>
+
+
+        <center>
+            <a href="halamanAwal.htm" class="btn btn-primary">Menu Awal</a>
+        </center>
+
+
+    </c:forEach>
+
+    <!-- /widget-content --> 
+
+    <!--javascript-->
+    <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script> 
+    <script src="<c:url value="resources/js/excanvas.min.js"/>"></script> 
+    <script src="<c:url value="resources/js/chart.min.js"/>" type="text/javascript"></script> 
+    <script src="<c:url value="resources/js/bootstrap.js"/>"></script>
+    <script language="javascript" type="text/javascript" src="<c:url value="resources/js/full-calendar/fullcalendar.min.js"/>"></script>
+</body>
 </html>

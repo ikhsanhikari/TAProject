@@ -188,5 +188,23 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
         Query query = createNativeQuery(sql);
         return query.list();
     }
+
+    @Override
+    public List<Object[]> getQuizRandomByLevelandIdQuiz(int idLevel, int id_quiz) {
+        String sql = "SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level," +
+                        " qa.id as id_qa ,q.id_category, q.id_matery " +
+                        " FROM tb_quiz q, tb_qa qa, tb_answers a " +
+                        " WHERE q.id=qa.id_quiz " +
+                        " AND qa.id_answers=a.id AND qa.id_level =   "+idLevel+"" +
+                        " and q.id not in(" +
+                        " select qa.id_quiz  " +
+                        " from tb_resultexercise re,   " +
+                        " tb_qa qa  " +
+                        " where re.id_qa= qa.id  " +
+                        " and re.id_collerger  = 1 )" +
+                        " and id_quiz ="+id_quiz+" limit 0,1";
+        Query query = createNativeQuery(sql);
+        return query.list();
+    }
     
 }

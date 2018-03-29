@@ -45,6 +45,8 @@ public interface Tb_quizDao {
     
     public List<Object[]> getQuizRandomByLevel(int idLevel);
     
+    public List<Object[]> getQuizRandomByLevelandIdQuiz(int idLevel,int id_quiz);
+    
     public int getTotalSoalByLevel(int idLevel);
 
     public List<Object[]> getStatus(Integer id_qa,Integer id_answer);

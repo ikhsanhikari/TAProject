@@ -190,6 +190,7 @@ public class Tb_userServiceImpl implements Tb_userService {
                 userDto.setTimecreated(list.getTimecreated());
                 userDto.setTimemodified(list.getTimemodified());
                 userDto.setId_role(list.getId_role());
+                userDto.setIdknowledge(list.getIdknowledge());
             }
         }
         return userDto;

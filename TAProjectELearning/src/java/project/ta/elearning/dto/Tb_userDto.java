@@ -31,6 +31,15 @@ public class Tb_userDto {
     private String timemodified;
     private Integer id_role;
     private String cari;
+    private Integer idknowledge;
+
+    public Integer getIdknowledge() {
+        return idknowledge;
+    }
+
+    public void setIdknowledge(Integer idknowledge) {
+        this.idknowledge = idknowledge;
+    }
 
     public String getCari() {
         return cari;

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : view_quiz
-    Created on : Mar 22, 2018, 7:37:12 PM
+    Document   : onsubmit
+    Created on : Mar 29, 2018, 9:03:15 PM
     Author     : Sou
 --%>
 
@@ -83,10 +83,6 @@
             </table>
         </div>
 
-        <div class="alert alert-info">
-            Soal exercise yang ditampilkan adalah soal dengan level <strong>${idLevel} (${level})</strong><br/>
-            Total soal untuk level ini adalah <strong>${totalSoalByLevel}</strong>
-        </div>
 
         <div class="main">
             <div class="main-inner">
@@ -99,26 +95,25 @@
                                     <h3>Exercise | Level ${idLevel} (${level})</h3>
                                 </div> <!-- /widget-header -->
                                 <div class="widget-content" style="height:350px">
-                                    <form:form modelAttribute="reDto" method="GET" action="onsubmit.htm">
+                                    <form:form modelAttribute="reDto" method="GET" action="random_quiz.htm">
                                         <form:hidden path="id_collerger" />
                                         <input type="hidden" name="idLevel" value="${idLevel}"/>
                                         <c:forEach var="data" items="${listQuiz}" >
-                                            ${data.name} 
-                                            <br/>
-
-                                            <c:forEach var="dataA" items="${listAnswer}" >
-                                                <form:radiobutton path="id_answer" value="${dataA.id_answer}"></form:radiobutton> . ${dataA.answer}<br/>
-                                            </c:forEach>
-                                            <c:if test="${stat==0}">
-                                                <form:input path="short_answer" placeholder="Jawaban"/>
-                                            </c:if>
+                                            Jawaban Untuk Soal <strong> ${data.name} </strong> adalah 
                                         </c:forEach>
+                                        <strong>${jawaban_benar} </strong>
+                                        <br/>
+                                        jawaban Anda : ${jawaban_di_pilih} 
+                                        <c:if test="${status==1}">
+                                            (Benar)
+                                        </c:if>
+                                            <c:if test="${status==0}">
+                                            (Salah)
+                                        </c:if>
                                     </div> <!-- /widget-content -->     
                                     <br/>
-                                    <c:url var="onsubmit" value="onsubmit.htm">
-                                        <c:param value="${idLevel}" name="idLevel"></c:param>
-                                    </c:url>
-                                    <input class="btn btn-primary" type="submit" value="Submit"/>
+<!--                                    <a  class="btn btn-success"  onclick="alertAnswer()">Submit</a>-->
+                                    <!--<input class="btn btn-primary" type="submit" value="Submit"/>-->
                                     <c:url value="view_quiz.htm" var="v">
                                         <c:param name="idLevel" value="${idLevel}"></c:param>
                                     </c:url>
