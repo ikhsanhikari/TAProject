@@ -20,6 +20,7 @@ import project.ta.elearning.dto.Tb_qaDto;
 import project.ta.elearning.dto.Tb_quizDto;
 import project.ta.elearning.dto.Tb_resultExerciseDto;
 import project.ta.elearning.dto.Tb_resultQuizDto;
+import project.ta.elearning.dto.Tb_resultquiz_afterDto;
 import project.ta.elearning.dto.Tb_sessionDto;
 import project.ta.elearning.dto.Tb_userDto;
 import project.ta.elearning.service.Tb_quizService;
@@ -622,6 +623,13 @@ public class Tb_quizController {
 
         reDto.setId_matery(getId_matery());
         tb_quizService.saveData(reDto);
+        
+//        Save ke table after
+//        Tb_resultquiz_afterDto reAfter = new Tb_resultquiz_afterDto();
+//        reAfter.setId(reDto.getId());
+//        reAfter.setId_category();
+//        reAfter.setId_colleger(Integer.parseInt(session.getAttribute("iduser").toString()));
+//        reAfter.setId_matery(getId_matery());
     }
 
     public void doSaveScore() {
