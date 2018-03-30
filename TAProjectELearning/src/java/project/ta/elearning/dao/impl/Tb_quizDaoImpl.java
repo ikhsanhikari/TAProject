@@ -107,30 +107,23 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
     }
 
     @Override
-    public List<Object[]> getQuizRandomByLevel(int idLevel) {
+    public List<Object[]> getQuizRandomByLevel(int idLevel, int idMateri) {
 
-        String sql = "SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level,"
-                + " qa.id as id_qa ,q.id_category, q.id_matery "
-                + "FROM tb_quiz q, tb_qa qa, tb_answers a "
-                + "WHERE q.id=qa.id_quiz "
-                + "AND qa.id=a.id AND qa.id_level = " + idLevel
-                + " and q.id not in("
-                + " select qa.id_quiz " 
-                + " from tb_resultexercise re,  " 
-                + " tb_qa qa " 
-                + " where re.id_qa= qa.id " 
-                + " and re.id_collerger  = 1 )  "
-                + " ORDER BY rand() LIMIT 0,1";
+        String sql = "SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level, qa.id AS id_qa ,q.id_category, q.id_matery " +
+                    "FROM tb_quiz q, tb_qa qa, tb_answers a " +
+                    "WHERE q.id=qa.id_quiz AND qa.id=a.id AND qa.id_level = '" + idLevel + "' AND q.id_matery = '" + idMateri + "' " +
+                    "AND q.id NOT IN(SELECT qa.id_quiz FROM tb_resultexercise re, tb_qa qa " +
+                    "WHERE re.id_qa= qa.id AND re.id_collerger  = 1 ) ORDER BY rand() LIMIT 0,1";
         Query query = createNativeQuery(sql);
         return query.list();
     }
 
     @Override
-    public int getTotalSoalByLevel(int idLevel) {
-        Query query = createNativeQuery("SELECT count(1) total_soal_by_level FROM (SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level "
-                + "FROM tb_quiz q, tb_qa qa, tb_answers a "
-                + "WHERE q.id=qa.id_quiz "
-                + "AND qa.id=a.id AND qa.id_level = " + idLevel + ") quiz_by_level");
+    public int getTotalSoalByLevelAndMatery(int idLevel, int idMateri) {
+        Query query = createNativeQuery("SELECT count(1) total_soal_by_level_and_matery FROM (SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level " +
+        "FROM tb_quiz q, tb_qa qa, tb_answers a " +
+        "WHERE q.id=qa.id_quiz AND qa.id=a.id " +
+        "AND qa.id_level = '" + idLevel + "' AND q.id_matery = '" + idMateri + "') quiz_by_level_and_matery");
         List<Object> list = new ArrayList();
         list = query.list();
         

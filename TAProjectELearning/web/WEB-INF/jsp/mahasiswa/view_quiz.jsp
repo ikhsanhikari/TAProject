@@ -79,13 +79,14 @@
                             </button>
                         </a>
                     </td>
+                    <span class="pull-right">${materi}</span>
                 </tr>
             </table>
         </div>
 
         <div class="alert alert-info">
-            Soal exercise yang ditampilkan adalah soal dengan level <strong>${idLevel} (${level})</strong><br/>
-            Total soal untuk level ini adalah <strong>${totalSoalByLevel}</strong>
+            Soal yang ditampilkan adalah soal dengan level <strong>${idLevel} (${level})</strong><br/>
+            Total soal untuk level ini adalah <strong>${totalSoalByLevelAndMatery}</strong>
         </div>
 
         <div class="main">
@@ -102,6 +103,7 @@
                                     <form:form modelAttribute="reDto" method="GET" action="onsubmit.htm">
                                         <form:hidden path="id_collerger" />
                                         <input type="hidden" name="idLevel" value="${idLevel}"/>
+                                        <input type="hidden" name="idMateri" value="${idMateri}"/>
                                         <c:forEach var="data" items="${listQuiz}" >
                                             ${data.name} 
                                             <br/>
@@ -121,6 +123,7 @@
                                     <input class="btn btn-primary" type="submit" value="Submit"/>
                                     <c:url value="view_quiz.htm" var="v">
                                         <c:param name="idLevel" value="${idLevel}"></c:param>
+                                        <c:param name="idMateri" value="${idMateri}"></c:param>
                                     </c:url>
                                     <a href="${v}" class="btn btn-primary" >Next</a>
                                 </form:form>

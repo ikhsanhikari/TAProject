@@ -1,8 +1,9 @@
 <%-- 
-    Document   : pra_exercise
-    Created on : Mar 25, 2018, 12:07:29 AM
+    Document   : pilihan_materi
+    Created on : Mar 30, 2018, 10:28:57 AM
     Author     : IT
 --%>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -51,47 +52,67 @@
         </div>
         <!-- /navbar -->
         <div class="alert alert-block">
-            <p>Berikut level soal yang tersedia untuk Knowledge-mu.</p>
+            <p>Berikut materi yang dapat dipilih.</p>
             <table>
                 <tr>
                     <td>
-                        <a href="view_quiz.htm?idLevel=1&idMateri=${idMateri}">
-                            <button id="btnLow" disabled class="btn btn-invert">
-                                Low
+                        <a href="pra_exercise.htm?idMateri=1">
+                            <button id="btnSekuensial" disabled class="btn btn-invert">
+                                Sekuensial
                             </button>
                         </a>
                     </td>
                     <td>
-                        <a href="view_quiz.htm?idLevel=2&idMateri=${idMateri}">
-                            <button id="btnMedium" disabled class="btn btn-invert">
-                                Medium
+                        <a href="pra_exercise.htm?idMateri=2">
+                            <button id="btnKondisional" disabled class="btn btn-invert">
+                                Kondisional
                             </button>
                         </a>
                     </td>
                     <td>
-                        <a href="view_quiz.htm?idLevel=3&idMateri=${idMateri}">
-                            <button id="btnHigh" disabled class="btn btn-invert">
-                                High
+                        <a href="pra_exercise.htm?idMateri=3">
+                            <button id="btnPerulangan" disabled class="btn btn-invert">
+                                Perulangan
                             </button>
                         </a>
                     </td>
-                <span class="pull-right">${materi}</span>
                 </tr>
             </table>
         </div>
+
+        <%--<div class="widget-content span12">
+            <div class="shortcuts"> 
+                <a href="pra_exercise.htm?idMateri=1" class="shortcut"><i class="shortcut-icon icon-signal"></i><br/>
+                    <span class="shortcut-label">Sekuensial</span>
+                </a>
+                <a href="pra_exercise.htm?idMateri=2" class="shortcut"><i class="shortcut-icon icon-random"></i><br/>
+                    <span class="shortcut-label">Kondisional</span>
+                </a>
+                <a href="pra_exercise.htm?idMateri=3" class="shortcut"><i class="shortcut-icon icon-repeat"></i><br/>
+                    <span class="shortcut-label">Perulangan</span>
+                </a>
+            </div>
+            <!-- /shortcuts --> 
+        </div>--%>
+        <!-- /widget-content --> 
 
         <!--javascript-->
         <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script>
         <script src="<c:url value="resources/js/bootstrap.js"/>"></script>
         <script>
         function setDisabled() {
-            var btnLow = document.getElementById('btnLow');
-            var btnMedium = document.getElementById('btnMedium');
-            var btnHigh = document.getElementById('btnHigh');
-            btnLow.disabled = ${nilaiDisabledLow};
-            btnMedium.disabled = ${nilaiDisabledMedium};
-            btnHigh.disabled = ${nilaiDisabledHigh};
+            var btnSekuensial = document.getElementById('btnSekuensial');
+            var btnKondisional = document.getElementById('btnKondisional');
+            var btnPerulangan = document.getElementById('btnPerulangan');
+            btnSekuensial.disabled = ${nilaiDisabledSekuensial};
+            btnKondisional.disabled = ${nilaiDisabledKondisional};
+            btnPerulangan.disabled = ${nilaiDisabledPerulangan};
         }
+        
+//        $('a').click(function(event){
+//            event.preventDefault();
+//         });
         </script>
     </body>
 </html>
+

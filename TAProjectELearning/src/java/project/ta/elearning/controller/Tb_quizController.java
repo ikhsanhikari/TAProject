@@ -165,10 +165,10 @@ public class Tb_quizController {
     }
 
     @RequestMapping(value = "/view_quiz", method = RequestMethod.GET)
-    public String viewQuiz(@RequestParam int idLevel, Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
+    public String viewQuiz(@RequestParam int idMateri, @RequestParam int idLevel, Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
         System.out.println("Cek @RequestParam viewQuiz...\nidLevel : " + idLevel);
 //        List<Tb_quizDto> listQuiz = tb_quizService.getData();
-        List<Tb_quizDto> listQuizRandomByLevel = tb_quizService.getQuizRandomByLevel(idLevel);
+        List<Tb_quizDto> listQuizRandomByLevel = tb_quizService.getQuizRandomByLevel(idLevel, idMateri);
 
         setId_quiz(listQuizRandomByLevel.get(0).getId());
 
@@ -236,14 +236,25 @@ public class Tb_quizController {
         map.addAttribute("idLevel", idLevel);
         map.addAttribute("level", level);
 
-        int totalSoalByLevel = tb_quizService.getTotalSoalByLevel(idLevel);
-        map.addAttribute("totalSoalByLevel", totalSoalByLevel);
+        int totalSoalByLevelAndMatery = tb_quizService.getTotalSoalByLevelAndMatery(idLevel, idMateri);
+        map.addAttribute("totalSoalByLevelAndMatery", totalSoalByLevelAndMatery);
 
+        String materi = "";
+        if(idMateri==1){
+            materi = "Sekuensial";
+        } else if(idMateri==2){
+            materi = "Kondisional";
+        } else if(idMateri==3){
+            materi = "Perulangan";
+        }
+        map.addAttribute("idMateri", idMateri);
+        map.addAttribute("materi", materi);
+        
         return "mahasiswa/view_quiz";
     }
 
     @RequestMapping(value = "/onsubmit", method = RequestMethod.GET)
-    public String onSubmitQuiz(@RequestParam int idLevel, Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
+    public String onSubmitQuiz(@RequestParam int idMateri, @RequestParam int idLevel, Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
         System.out.println("Cek @RequestParam viewQuiz...\nidLevel : " + idLevel);
         List<Tb_quizDto> listQuizRandomByLevel = tb_quizService.getQuizRandomByLevelAndidQuiz(idLevel, getId_quiz());
         map.addAttribute("jawaban_benar", getJawaban_benar());
@@ -297,8 +308,8 @@ public class Tb_quizController {
         map.addAttribute("idLevel", idLevel);
         map.addAttribute("level", level);
 
-        int totalSoalByLevel = tb_quizService.getTotalSoalByLevel(idLevel);
-        map.addAttribute("totalSoalByLevel", totalSoalByLevel);
+        int totalSoalByLevelAndMatery = tb_quizService.getTotalSoalByLevelAndMatery(idLevel, idMateri);
+        map.addAttribute("totalSoalByLevelAndMatery", totalSoalByLevelAndMatery);
 
         System.out.println("Jenis Soal "+getJenis_soal());
         System.out.println("Id Qa "+getId_qa());
@@ -332,6 +343,18 @@ public class Tb_quizController {
         reDto.setId_matery(getId_matery());
         tb_quizService.saveData(reDto);
         map.addAttribute("jawaban_di_pilih", reDto.getShort_answer());
+        
+        String materi = "";
+        if(idMateri==1){
+            materi = "Sekuensial";
+        } else if(idMateri==2){
+            materi = "Kondisional";
+        } else if(idMateri==3){
+            materi = "Perulangan";
+        }
+        map.addAttribute("idMateri", idMateri);
+        map.addAttribute("materi", materi);
+        
         return "mahasiswa/onsubmit";
     }
 
@@ -397,7 +420,7 @@ public class Tb_quizController {
     }
 
     @RequestMapping(value = "/pra_exercise", method = RequestMethod.GET)
-    public String praExercise(ModelMap modelMap, HttpSession session) {
+    public String praExercise(@RequestParam int idMateri, ModelMap modelMap, HttpSession session) {
 //        Setting button disabled/enabled
         int idKnowledge = tb_userService.getDataKnowledge(session.getAttribute("username").toString());
         System.out.println("Checking inside praExercise for Disabled Setting, idKnowledge is " + idKnowledge);
@@ -430,6 +453,17 @@ public class Tb_quizController {
         modelMap.addAttribute("nilaiDisabledLow", nilaiDisabledLow);
         modelMap.addAttribute("nilaiDisabledMedium", nilaiDisabledMedium);
         modelMap.addAttribute("nilaiDisabledHigh", nilaiDisabledHigh);
+        
+        String materi = "";
+        if(idMateri==1){
+            materi = "Sekuensial";
+        } else if(idMateri==2){
+            materi = "Kondisional";
+        } else if(idMateri==3){
+            materi = "Perulangan";
+        }
+        modelMap.addAttribute("idMateri", idMateri);
+        modelMap.addAttribute("materi", materi);
 //        modelMap.addAttribute("idKnowledge", idKnowledge);
 
         return "mahasiswa/pra_exercise";
@@ -626,7 +660,7 @@ public class Tb_quizController {
 
     @RequestMapping(value = "/submit_quiz", method = RequestMethod.GET)
     public String submitExercise(@RequestParam int idLevel, Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
-        List<Tb_quizDto> listQuizRandomByLevel = tb_quizService.getQuizRandomByLevel(idLevel);
+        List<Tb_quizDto> listQuizRandomByLevel = tb_quizService.getQuizRandomByLevel(idLevel, 1);
         return "";
     }
     
@@ -638,6 +672,29 @@ public class Tb_quizController {
         return "mahasiswa/halamanProfil";
     }
     
-    
+    @RequestMapping(value = "/pilihan_materi", method = RequestMethod.GET)
+    public String halamanPilihanMateri(ModelMap map){
+        int statusMateri = 3;
+        String nilaiDisabledSekuensial = "false"; // true = disabled, false = enabled
+        String nilaiDisabledKondisional = "false";
+        String nilaiDisabledPerulangan = "false";
+        switch (statusMateri) {
+            case 1:
+                nilaiDisabledKondisional = "true";
+                nilaiDisabledPerulangan = "true";
+                break;
+            case 2:
+                nilaiDisabledPerulangan = "true";
+                break;
+            case 3:
+                    // Tidak melakukan apapun karena semua tombol enabled.
+                break;
+        }
+        map.addAttribute("nilaiDisabledSekuensial", nilaiDisabledSekuensial);
+        map.addAttribute("nilaiDisabledKondisional", nilaiDisabledKondisional);
+        map.addAttribute("nilaiDisabledPerulangan", nilaiDisabledPerulangan);
+        
+        return "mahasiswa/pilihan_materi";
+    }
 
 }

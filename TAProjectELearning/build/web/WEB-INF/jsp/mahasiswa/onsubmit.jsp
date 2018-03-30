@@ -79,6 +79,7 @@
                             </button>
                         </a>
                     </td>
+                    <span class="pull-right">${materi}</span>
                 </tr>
             </table>
         </div>

@@ -55,26 +55,27 @@
             <table>
                 <tr>
                     <td>
-                        <a href="view_quiz.htm?idLevel=1">
+                        <a href="view_quiz.htm?idLevel=1&idMateri=${idMateri}">
                             <button id="btnLow" disabled class="btn btn-invert">
                                 Low
                             </button>
                         </a>
                     </td>
                     <td>
-                        <a href="view_quiz.htm?idLevel=2">
+                        <a href="view_quiz.htm?idLevel=2&idMateri=${idMateri}">
                             <button id="btnMedium" disabled class="btn btn-invert">
                                 Medium
                             </button>
                         </a>
                     </td>
                     <td>
-                        <a href="view_quiz.htm?idLevel=3">
+                        <a href="view_quiz.htm?idLevel=3&idMateri=${idMateri}">
                             <button id="btnHigh" disabled class="btn btn-invert">
                                 High
                             </button>
                         </a>
                     </td>
+                <span class="pull-right">${materi}</span>
                 </tr>
             </table>
         </div>

@@ -191,9 +191,9 @@ public class Tb_quizServiceImpl implements Tb_quizService {
     }
 
     @Override
-    public List<Tb_quizDto> getQuizRandomByLevel(int idLevel) {
+    public List<Tb_quizDto> getQuizRandomByLevel(int idLevel, int idMateri) {
         List<Tb_quizDto> listData = new ArrayList<>();
-        List<Object[]> listModel = tb_quizDao.getQuizRandomByLevel(idLevel);
+        List<Object[]> listModel = tb_quizDao.getQuizRandomByLevel(idLevel, idMateri);
         if (listModel.size() > 0) {
             for (Object[] obj : listModel) {
                 Tb_quizDto dto = new Tb_quizDto();
@@ -210,8 +210,8 @@ public class Tb_quizServiceImpl implements Tb_quizService {
     }
 
     @Override
-    public int getTotalSoalByLevel(int idLevel) {
-        return tb_quizDao.getTotalSoalByLevel(idLevel);
+    public int getTotalSoalByLevelAndMatery(int idLevel, int idMateri) {
+        return tb_quizDao.getTotalSoalByLevelAndMatery(idLevel, idMateri);
     }
 
     @Override
