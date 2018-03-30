@@ -117,6 +117,7 @@
                                     <!--<input class="btn btn-primary" type="submit" value="Submit"/>-->
                                     <c:url value="view_quiz.htm" var="v">
                                         <c:param name="idLevel" value="${idLevel}"></c:param>
+                                        <c:param name="idMateri" value="${idMateri}"></c:param>
                                     </c:url>
                                     <a href="${v}" class="btn btn-primary" >Next</a>
                                 </form:form>

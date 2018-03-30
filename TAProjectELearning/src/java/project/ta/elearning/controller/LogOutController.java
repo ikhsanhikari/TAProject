@@ -18,12 +18,12 @@ import project.ta.elearning.dto.Tb_userDto;
  */
 @Controller
 public class LogOutController {
-    @RequestMapping(value = "/logout",method = RequestMethod.GET)
-    public String logOut(HttpSession session,Tb_userDto userDto,ModelMap map){
-        if(session!=null){
-            session.invalidate();
-        }
-        map.addAttribute("loginDto", userDto);
-        return "login";
-    }
+//    @RequestMapping(value = "/logout",method = RequestMethod.GET)
+//    public String logOut(HttpSession session,Tb_userDto userDto,ModelMap map){
+//        if(session!=null){
+//            session.invalidate();
+//        }
+//        map.addAttribute("loginDto", userDto);
+//        return "login";
+//    }
 }

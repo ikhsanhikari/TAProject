@@ -53,7 +53,7 @@
         <div class="alert alert-info">
             <div class="stat"> <i>Hasil Quiz : <strong>${score}%</strong> dijawab benar.</i> </div>
         </div>
-                        
+          <a href="halamanAwal.htm" class="btn-primary">Menu Awal</a>               
         <!--javascript-->
         <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script>
         <script src="<c:url value="resources/js/bootstrap.js"/>"></script>

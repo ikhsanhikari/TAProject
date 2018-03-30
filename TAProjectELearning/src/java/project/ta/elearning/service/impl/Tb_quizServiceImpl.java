@@ -191,9 +191,9 @@ public class Tb_quizServiceImpl implements Tb_quizService {
     }
 
     @Override
-    public List<Tb_quizDto> getQuizRandomByLevel(int idLevel, int idMateri) {
+    public List<Tb_quizDto> getQuizRandomByLevel(int idLevel, int idMateri , int idUser) {
         List<Tb_quizDto> listData = new ArrayList<>();
-        List<Object[]> listModel = tb_quizDao.getQuizRandomByLevel(idLevel, idMateri);
+        List<Object[]> listModel = tb_quizDao.getQuizRandomByLevel(idLevel, idMateri,idUser);
         if (listModel.size() > 0) {
             for (Object[] obj : listModel) {
                 Tb_quizDto dto = new Tb_quizDto();

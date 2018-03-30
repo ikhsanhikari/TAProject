@@ -54,25 +54,23 @@
         </div>
         <!-- /navbar -->
         <!-- /widget-header -->
-        <c:forEach var="data" items="${listInformationOfexercise}">
-
+       
             <div class="alert alert-info">
                 <center>
                     <div class="stat">
+                        Soal yang dikerjakan : ${jumlah_e}<br/>
+                        Benar : ${exercise_benar}<br/>
+                        Salah : ${exercise_salah}<br/>
                         Score Anda : <br/>
-                        <h1>${data.score}</h1>
+                        <h1>
+                            ${presentase_exercise}
+                        </h1>
                     </div>
-
                 </center>
             </div>
-
-
         <center>
             <a href="halamanAwal.htm" class="btn btn-primary">Menu Awal</a>
         </center>
-
-
-    </c:forEach>
 
     <!-- /widget-content --> 
 

@@ -107,6 +107,9 @@ public class Tb_quizController {
     Integer id_matery;
     Integer id_category;
     String jawaban_di_pilih;
+    Integer jumlah_exercise = 0;
+    Integer exercise_salah = 0;
+    Integer exercise_benar = 0;
 
     public String getJawaban_di_pilih() {
         return jawaban_di_pilih;
@@ -167,8 +170,8 @@ public class Tb_quizController {
     @RequestMapping(value = "/view_quiz", method = RequestMethod.GET)
     public String viewQuiz(@RequestParam int idMateri, @RequestParam int idLevel, Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
         System.out.println("Cek @RequestParam viewQuiz...\nidLevel : " + idLevel);
-//        List<Tb_quizDto> listQuiz = tb_quizService.getData();
-        List<Tb_quizDto> listQuizRandomByLevel = tb_quizService.getQuizRandomByLevel(idLevel, idMateri);
+        
+        List<Tb_quizDto> listQuizRandomByLevel = tb_quizService.getQuizRandomByLevel(idLevel, idMateri,Integer.parseInt(session.getAttribute("iduser").toString()));
 
         setId_quiz(listQuizRandomByLevel.get(0).getId());
 
@@ -240,21 +243,22 @@ public class Tb_quizController {
         map.addAttribute("totalSoalByLevelAndMatery", totalSoalByLevelAndMatery);
 
         String materi = "";
-        if(idMateri==1){
+        if (idMateri == 1) {
             materi = "Sekuensial";
-        } else if(idMateri==2){
+        } else if (idMateri == 2) {
             materi = "Kondisional";
-        } else if(idMateri==3){
+        } else if (idMateri == 3) {
             materi = "Perulangan";
         }
         map.addAttribute("idMateri", idMateri);
         map.addAttribute("materi", materi);
-        
+
         return "mahasiswa/view_quiz";
     }
 
     @RequestMapping(value = "/onsubmit", method = RequestMethod.GET)
     public String onSubmitQuiz(@RequestParam int idMateri, @RequestParam int idLevel, Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
+        jumlah_exercise++;
         System.out.println("Cek @RequestParam viewQuiz...\nidLevel : " + idLevel);
         List<Tb_quizDto> listQuizRandomByLevel = tb_quizService.getQuizRandomByLevelAndidQuiz(idLevel, getId_quiz());
         map.addAttribute("jawaban_benar", getJawaban_benar());
@@ -311,11 +315,11 @@ public class Tb_quizController {
         int totalSoalByLevelAndMatery = tb_quizService.getTotalSoalByLevelAndMatery(idLevel, idMateri);
         map.addAttribute("totalSoalByLevelAndMatery", totalSoalByLevelAndMatery);
 
-        System.out.println("Jenis Soal "+getJenis_soal());
-        System.out.println("Id Qa "+getId_qa());
+        System.out.println("Jenis Soal " + getJenis_soal());
+        System.out.println("Id Qa " + getId_qa());
         System.out.println("======================== id_quiz " + getId_quiz() + "= = = = id_answer " + reDto.getId_answer() + " ".trim());
 
-        System.out.println("Jenis Soal "+getJenis_soal());
+        System.out.println("Jenis Soal " + getJenis_soal());
 
         if (getJenis_soal() == 1) {
             reDto.getShort_answer().replaceAll("\\s+", " ");
@@ -331,11 +335,10 @@ public class Tb_quizController {
             }
             System.out.println("jawaban kang field e " + reDto.getShort_answer());
         } else {
-//            reDto.setShort_answer("");
             List<Tb_quizDto> listStatus = tb_quizService.getStatus(getId_quiz(), reDto.getId_answer());
-            System.out.println("=====+ id qa "+listStatus.get(0).getId());
-            System.out.println("=====+ Status "+listStatus.get(0).getId_status());
-            
+            System.out.println("=====+ id qa " + listStatus.get(0).getId());
+            System.out.println("=====+ Status " + listStatus.get(0).getId_status());
+
             reDto.setId_qa(listStatus.get(0).getId());
             reDto.setStatus(listStatus.get(0).getId_status());
         }
@@ -343,26 +346,29 @@ public class Tb_quizController {
         reDto.setId_matery(getId_matery());
         tb_quizService.saveData(reDto);
         map.addAttribute("jawaban_di_pilih", reDto.getShort_answer());
-        
+
         String materi = "";
-        if(idMateri==1){
+        if (idMateri == 1) {
             materi = "Sekuensial";
-        } else if(idMateri==2){
+        } else if (idMateri == 2) {
             materi = "Kondisional";
-        } else if(idMateri==3){
+        } else if (idMateri == 3) {
             materi = "Perulangan";
         }
         map.addAttribute("idMateri", idMateri);
         map.addAttribute("materi", materi);
-        
+        if (reDto.getStatus() == 1) {
+            exercise_benar++;
+        } else {
+            exercise_salah++;
+        }
+
         return "mahasiswa/onsubmit";
     }
 
     @RequestMapping(value = "/random_quiz", method = RequestMethod.GET)
     public String randomQuiz(@RequestParam int idLevel, ModelMap map, Tb_resultExerciseDto reDto) {
         System.out.println("Cek @RequestParam randomQuiz...\nidLevel : " + idLevel);
-//        List<Tb_quizDto> listQuiz = tb_quizService.getData();
-//        map.addAttribute("listQuiz", listQuiz);
         map.addAttribute("reDto", reDto);
         System.out.println("======================== id_quiz " + getId_quiz() + "= = = = id_answer " + reDto.getId_answer() + " ".trim());
         System.out.println("jenis soal : " + getJenis_soal() + " = " + getJawaban_benar());
@@ -380,7 +386,6 @@ public class Tb_quizController {
             }
             System.out.println("jawaban kang field e " + reDto.getShort_answer());
         } else {
-//            reDto.setShort_answer("");
             List<Tb_quizDto> listStatus = tb_quizService.getStatus(getId_quiz(), reDto.getId_answer());
             reDto.setId_qa(listStatus.get(0).getId());
             reDto.setStatus(listStatus.get(0).getId_status());
@@ -404,7 +409,6 @@ public class Tb_quizController {
         quizDto.setId_matery(getId_matery());
         quizDto.setId_category(getId_category());
         quizDto.setId_colleger(Integer.parseInt(session.getAttribute("iduser").toString()));
-//        List<Tb_quizDto> listTotalPoin = tb_quizService.getTotalPoin(Integer.parseInt(session.getAttribute("iduser").toString()));
         Integer score = tb_quizService.getTotalPoin(Integer.parseInt(session.getAttribute("iduser").toString()));
         quizDto.setScore(tb_quizService.getTotalPoin(Integer.parseInt(session.getAttribute("iduser").toString())));
         if (score < 30) {
@@ -453,13 +457,13 @@ public class Tb_quizController {
         modelMap.addAttribute("nilaiDisabledLow", nilaiDisabledLow);
         modelMap.addAttribute("nilaiDisabledMedium", nilaiDisabledMedium);
         modelMap.addAttribute("nilaiDisabledHigh", nilaiDisabledHigh);
-        
+
         String materi = "";
-        if(idMateri==1){
+        if (idMateri == 1) {
             materi = "Sekuensial";
-        } else if(idMateri==2){
+        } else if (idMateri == 2) {
             materi = "Kondisional";
-        } else if(idMateri==3){
+        } else if (idMateri == 3) {
             materi = "Perulangan";
         }
         modelMap.addAttribute("idMateri", idMateri);
@@ -569,8 +573,6 @@ public class Tb_quizController {
 
     public void doSave(Tb_resultExerciseDto reDto) {
         if (getJenis_soal() == 1) {
-//            reDto.getShort_answer().replaceAll("\\s+", " ");
-//            reDto.getShort_answer().replaceAll(" ", "");
             if (getJawaban_benar().equals(reDto.getShort_answer())) {
                 System.out.println("Masuk sama = " + getJawaban_benar() + " ==" + reDto.getShort_answer());
                 reDto.setId_qa(getId_qa());
@@ -582,7 +584,6 @@ public class Tb_quizController {
             }
             System.out.println("jawaban kang field e " + reDto.getShort_answer());
         } else {
-//            reDto.setShort_answer("");
             System.out.println("status 0129111111111111111111111310\n" + getId_quiz() + " " + reDto.getId_answer());
             List<Tb_quizDto> listStatus = tb_quizService.getStatus(getId_quiz(), reDto.getId_answer());
             reDto.setId_qa(listStatus.get(0).getId());
@@ -604,24 +605,29 @@ public class Tb_quizController {
 //    Melihat informasi exercise
     @RequestMapping(value = "/view_informaion_of_exercise", method = RequestMethod.GET)
     public String informationOfEcxercise(ModelMap model, HttpSession session) {
-
-        Tb_resultQuizDto quizDto = new Tb_resultQuizDto();
-        quizDto.setId_matery(getId_matery());
-        quizDto.setId_category(getId_category());
-        quizDto.setId_colleger(Integer.parseInt(session.getAttribute("iduser").toString()));
-//        List<Tb_quizDto> listTotalPoin = tb_quizService.getTotalPoin(Integer.parseInt(session.getAttribute("iduser").toString()));
-        Integer score = tb_quizService.getTotalPoin(Integer.parseInt(session.getAttribute("iduser").toString()));
-        quizDto.setScore(tb_quizService.getTotalPoin(Integer.parseInt(session.getAttribute("iduser").toString())));
-        if (score < 30) {
-            quizDto.setIdknowledge(3);
-        } else if (score >= 30 && score < 60) {
-            quizDto.setIdknowledge(2);
-        } else if (score >= 60) {
-            quizDto.setIdknowledge(1);
-        }
-        tb_quizService.saveData(quizDto);
-        List<Tb_resultQuizDto> listHistoris = tb_quizService.getInformationOfExercise(Integer.parseInt(session.getAttribute("iduser").toString()));
-        model.addAttribute("listInformationOfexercise", listHistoris);
+        model.addAttribute("exercise_salah", exercise_salah);
+        model.addAttribute("exercise_benar", exercise_benar);
+        model.addAttribute("jumlah_e", jumlah_exercise);
+        float presentaseBenar = (float) exercise_benar / (jumlah_exercise);
+        int presentase = Math.round(presentaseBenar * 100);
+        System.out.println("presentaseBenar : " + presentaseBenar + "\n" + presentase + "%");
+        model.addAttribute("presentase_exercise", presentase);
+//        Tb_resultQuizDto quizDto = new Tb_resultQuizDto();
+//        quizDto.setId_matery(getId_matery());
+//        quizDto.setId_category(getId_category());
+//        quizDto.setId_colleger(Integer.parseInt(session.getAttribute("iduser").toString()));
+//        Integer score = tb_quizService.getTotalPoin(Integer.parseInt(session.getAttribute("iduser").toString()));
+//        quizDto.setScore(tb_quizService.getTotalPoin(Integer.parseInt(session.getAttribute("iduser").toString())));
+//        if (score < 30) {
+//            quizDto.setIdknowledge(3);
+//        } else if (score >= 30 && score < 60) {
+//            quizDto.setIdknowledge(2);
+//        } else if (score >= 60) {
+//            quizDto.setIdknowledge(1);
+//        }
+//        tb_quizService.saveData(quizDto);
+//        List<Tb_resultQuizDto> listHistoris = tb_quizService.getInformationOfExercise(Integer.parseInt(session.getAttribute("iduser").toString()));
+//        model.addAttribute("listInformationOfexercise", listHistoris);
         noSoal++;
         return "mahasiswa/information_of_exercise";
     }
@@ -655,25 +661,25 @@ public class Tb_quizController {
 
     @RequestMapping(value = "/halamanAwal", method = RequestMethod.GET)
     public String halamanAwalMahasiswa() {
+        jumlahBenar = 0;
+        jumlah_exercise = 0;
+        exercise_benar = 0;
+        exercise_salah = 0;
         return "mahasiswa/index";
     }
 
-    @RequestMapping(value = "/submit_quiz", method = RequestMethod.GET)
-    public String submitExercise(@RequestParam int idLevel, Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
-        List<Tb_quizDto> listQuizRandomByLevel = tb_quizService.getQuizRandomByLevel(idLevel, 1);
-        return "";
-    }
     
+
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public String halamanProfil( Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
+    public String halamanProfil(Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
         Tb_userDto listUser = tb_userService.getDataById(Integer.parseInt(session.getAttribute("iduser").toString()));
-        System.out.println("=====+++"+listUser);
-        map.addAttribute("listUser",listUser);
+        System.out.println("=====+++" + listUser);
+        map.addAttribute("listUser", listUser);
         return "mahasiswa/halamanProfil";
     }
-    
+
     @RequestMapping(value = "/pilihan_materi", method = RequestMethod.GET)
-    public String halamanPilihanMateri(ModelMap map){
+    public String halamanPilihanMateri(ModelMap map) {
         int statusMateri = 3;
         String nilaiDisabledSekuensial = "false"; // true = disabled, false = enabled
         String nilaiDisabledKondisional = "false";
@@ -687,14 +693,27 @@ public class Tb_quizController {
                 nilaiDisabledPerulangan = "true";
                 break;
             case 3:
-                    // Tidak melakukan apapun karena semua tombol enabled.
+                // Tidak melakukan apapun karena semua tombol enabled.
                 break;
         }
         map.addAttribute("nilaiDisabledSekuensial", nilaiDisabledSekuensial);
         map.addAttribute("nilaiDisabledKondisional", nilaiDisabledKondisional);
         map.addAttribute("nilaiDisabledPerulangan", nilaiDisabledPerulangan);
-        
+
         return "mahasiswa/pilihan_materi";
+    }
+    
+    @RequestMapping(value = "/logout",method = RequestMethod.GET)
+    public String logOut(HttpSession session,Tb_userDto userDto,ModelMap map){
+        jumlahBenar = 0;
+        jumlah_exercise = 0;
+        exercise_benar = 0;
+        exercise_salah = 0;
+        if(session!=null){
+            session.invalidate();
+        }
+        map.addAttribute("loginDto", userDto);
+        return "login";
     }
 
 }

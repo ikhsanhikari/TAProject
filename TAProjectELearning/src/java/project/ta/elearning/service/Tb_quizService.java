@@ -39,7 +39,7 @@ public interface Tb_quizService {
 
     public void saveData(Tb_resultExerciseDto dto);
 
-    public List<Tb_quizDto> getQuizRandomByLevel(int idLevel, int idMateri);
+    public List<Tb_quizDto> getQuizRandomByLevel(int idLevel, int idMateri,int idUser);
     
     public List<Tb_quizDto> getQuizRandomByLevelAndidQuiz(int idLevel,int id_quiz);
 

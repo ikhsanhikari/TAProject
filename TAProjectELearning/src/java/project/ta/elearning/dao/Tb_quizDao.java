@@ -43,7 +43,7 @@ public interface Tb_quizDao {
     
     public List<Object[]> getJawabanBenar(Integer id);
     
-    public List<Object[]> getQuizRandomByLevel(int idLevel, int idMateri);
+    public List<Object[]> getQuizRandomByLevel(int idLevel, int idMateri , int idUser);
     
     public List<Object[]> getQuizRandomByLevelandIdQuiz(int idLevel,int id_quiz);
     
