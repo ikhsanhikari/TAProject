@@ -161,11 +161,12 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
 //    Permulaan Menu Quiz
 
     @Override
-    public List<Object[]> getQuizByLevel(int idLevel) {
+    public List<Object[]> getQuizByLevelAndMateri(int idLevel, int idMateri) {
         Query query = createNativeQuery("SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level, qa.id as id_qa ,q.id_category, q.id_matery " +
                                         "FROM tb_quiz q, tb_qa qa, tb_answers a " +
                                         "WHERE q.id=qa.id_quiz " +
-                                        "AND qa.id=a.id AND qa.id_level = " + idLevel + " AND q.id_category = 1");
+                                        "AND qa.id=a.id AND qa.id_level = " + idLevel + " AND q.id_category = 1 AND q.id_matery = " + idMateri +
+                                        " GROUP BY q.id");
         
         return query.list();
     }
@@ -198,6 +199,15 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
                         " and id_quiz ="+id_quiz+" limit 0,1";
         Query query = createNativeQuery(sql);
         return query.list();
+    }
+
+    @Override
+    public int getStatusMateri() {
+        Query query = createNativeQuery("SELECT status FROM tb_statusmateri");
+        List<Object> list = new ArrayList();
+        list = query.list();
+        
+        return Integer.parseInt(list.get(0).toString());
     }
     
 }

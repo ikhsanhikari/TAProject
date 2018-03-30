@@ -54,8 +54,10 @@ public interface Tb_quizDao {
     public Integer getTotalPoin(Integer id_user);
     
 //    Permulaan untuk Menu Quiz
-    public List<Object[]> getQuizByLevel(int idLevel);
+    public List<Object[]> getQuizByLevelAndMateri(int idLevel, int idMateri);
     
 //    Menampilkan nilai
     public List<Object[]> getInformationOfExercise(Integer id);
+    
+    public int getStatusMateri();
 }

@@ -24,7 +24,7 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.html">Good Learner </a>
+                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.html">Personalized E-learning </a>
                     <div class="nav-collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
@@ -51,7 +51,7 @@
         </div>
         <!-- /navbar -->
         <div class="alert alert-info">
-            <div class="stat"> <i>Hasil Quiz : <strong>${score}%</strong> dijawab benar.</i> </div>
+            <div class="stat"> <i>Score : <strong>${score}</strong></i> </div>
         </div>
           <a href="halamanAwal.htm" class="btn-primary">Menu Awal</a>               
         <!--javascript-->

@@ -28,7 +28,7 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="loginAction.htm">Good Learner </a>
+                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="loginAction.htm">Personalized E-learning </a>
                     <div class="nav-collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
@@ -57,6 +57,7 @@
 
         <div class="alert alert-info">
             Anda saat ini sedang menjalankan sesi <strong>Quiz</strong>.
+            <span class="pull-right">${materi}</span>
         </div>
 
         <div class="main">
@@ -76,6 +77,7 @@
                                         <form:hidden path="id_collerger"/>
                                         <input type="hidden" name="noSoalParam" value="${no}"/>
                                         <input type="hidden" name="statusMasuk" value="0"/>
+                                        <input type="hidden" name="idMateri" value="${idMateri}"/>
                                         <c:forEach var="data" items="${listQuiz}">
                                             ${data.name} 
                                             <br/>
@@ -90,8 +92,8 @@
                                     </div> <!-- /widget-content -->     
                                     <br/>
                                     <!--<a href="view_historis.htm" class="btn btn-success">Selesai</a>-->
-                                    <input id="btnPrevious" type="submit" name="action" value="Previous" class="btn btn-primary"/>
-                                    <input id="btnNext" type="submit" name="action" value="Next" class="btn btn-primary"/>
+                                    <!--<input id="btnPrevious" type="submit" name="action" value="Previous" class="btn btn-primary"/>-->
+                                    <input id="btnNext" type="submit" name="action" value="Submit" class="btn btn-primary"/>
                                 </form:form>
                             </div> <!-- /widget -->	
                         </div> <!-- /spa12 -->

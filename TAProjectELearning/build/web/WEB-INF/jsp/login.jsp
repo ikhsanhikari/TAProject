@@ -30,7 +30,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </a>
-                        <a class="brand" href="index.htm">Good Learner</a>
+                        <a class="brand" href="index.htm">Personalized E-learning</a>
                         <div class="nav-collapse">
                             <ul class="nav pull-right">
                                 <li class="">						

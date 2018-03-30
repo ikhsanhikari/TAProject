@@ -50,10 +50,12 @@ public interface Tb_quizService {
     public Integer getTotalPoin(Integer id_user);
 
 //    Permulaan Menu Quiz
-    public List<HashMap> getSoalQuiz(int idLevel);
+    public List<HashMap> getSoalQuiz(int idLevel, int idMateri);
     
     public void saveDataScore(Tb_resultQuizDto dto);
     
 //    Menampilkan nilai Exercise
     public List<Tb_resultQuizDto> getInformationOfExercise(Integer id);
+    
+    public int getStatusMateri();
 }

@@ -42,6 +42,7 @@ public class Tb_quizController {
     int sudahMasuk = 0;
     int noSoal = 1;
     int jumlahBenar = 0;
+    int jumlahSalah = 0;
     Tb_resultQuizDto rqDto = new Tb_resultQuizDto();
 
     @RequestMapping(value = "/form_tambah_quiz", method = RequestMethod.GET)
@@ -475,25 +476,36 @@ public class Tb_quizController {
 
 //    Awal kode untuk MENU QUIZ
     @RequestMapping(value = "quiz", method = RequestMethod.GET)
-    public String menuQuiz(@RequestParam String action, @RequestParam int noSoalParam, @RequestParam int statusMasuk, Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
+    public String menuQuiz(@RequestParam String action, @RequestParam int idMateri, @RequestParam int noSoalParam, @RequestParam int statusMasuk, Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
         System.out.println("Nilai statusMasuk : " + statusMasuk);
         int jumlahSoalPerLevel = 3;
 
         if (statusMasuk == 1 && sudahMasuk == 0) {
-            listSoalQuiz = tb_quizService.getSoalQuiz(jumlahSoalPerLevel);
+            listSoalQuiz = tb_quizService.getSoalQuiz(jumlahSoalPerLevel, idMateri);
             sudahMasuk++;
         }
         List<HashMap> listSoalQuizTetap = listSoalQuiz;
 
-        if (noSoalParam == (jumlahSoalPerLevel * 3)) {
-            System.out.println("jumlahBenar = " + jumlahBenar);
-            float presentaseBenar = (float) jumlahBenar / (jumlahSoalPerLevel * 3);
-            int presentase = Math.round(presentaseBenar * 100);
-            System.out.println("presentaseBenar : " + presentaseBenar + "\n" + presentase + "%");
-            rqDto.setScore(presentase);
+        int totalSoal = jumlahSoalPerLevel * 3;
+        if (noSoalParam == totalSoal) {
+            System.out.println("jumlahBenar = " + jumlahBenar + "\njumlahSalah = " + jumlahSalah);
+            float presentaseBenar = (float) ((jumlahBenar*4) - jumlahSalah) / (totalSoal*4);
+            int score = Math.round(presentaseBenar * 100);
+            System.out.println("presentaseBenar : " + presentaseBenar + "\n" + score);
+            rqDto.setScore(score);
+            
+            int knowledge = 0;
+            if(score <= 33){
+                knowledge = 1; 
+            } else if(score > 33 && score <= 66){
+                knowledge = 2;
+            } else if(score > 66){
+                knowledge = 3;
+            }
+            rqDto.setIdknowledge(knowledge);
             tb_quizService.saveDataScore(rqDto);
             map.addAttribute("username", session.getAttribute("username").toString());
-            map.addAttribute("score", presentase);
+            map.addAttribute("score", score);
 
             return "mahasiswa/post_quiz";
         }
@@ -501,7 +513,7 @@ public class Tb_quizController {
         List<HashMap> tampList = new ArrayList<>();
         HashMap tampHashMap = new HashMap();
 
-        if (action.equals("Next")) {
+        if (action.equals("Submit")) {
             doSave(reDto);
             noSoalParam++;
         } else if (action.equals("Previous")) {
@@ -568,6 +580,18 @@ public class Tb_quizController {
 //            System.out.println("masuk disabled next");
 //            map.addAttribute("nilaiDisabledNext", "true");
 //        }
+        
+        String materi = "";
+        if (idMateri == 1) {
+            materi = "Sekuensial";
+        } else if (idMateri == 2) {
+            materi = "Kondisional";
+        } else if (idMateri == 3) {
+            materi = "Perulangan";
+        }
+        map.addAttribute("idMateri", idMateri);
+        map.addAttribute("materi", materi);
+        
         return "mahasiswa/quiz";
     }
 
@@ -591,6 +615,8 @@ public class Tb_quizController {
         }
         if (reDto.getStatus() == 1) {
             jumlahBenar++;
+        } else {
+            jumlahSalah++;
         }
         System.out.println("77777777777777777777777777777\nJumlah Benar = " + jumlahBenar);
 
@@ -662,9 +688,11 @@ public class Tb_quizController {
     @RequestMapping(value = "/halamanAwal", method = RequestMethod.GET)
     public String halamanAwalMahasiswa() {
         jumlahBenar = 0;
+        jumlahSalah = 0;
         jumlah_exercise = 0;
         exercise_benar = 0;
         exercise_salah = 0;
+        noSoal = 1;
         return "mahasiswa/index";
     }
 
@@ -680,7 +708,7 @@ public class Tb_quizController {
 
     @RequestMapping(value = "/pilihan_materi", method = RequestMethod.GET)
     public String halamanPilihanMateri(ModelMap map) {
-        int statusMateri = 3;
+        int statusMateri = tb_quizService.getStatusMateri();
         String nilaiDisabledSekuensial = "false"; // true = disabled, false = enabled
         String nilaiDisabledKondisional = "false";
         String nilaiDisabledPerulangan = "false";
@@ -709,6 +737,7 @@ public class Tb_quizController {
         jumlah_exercise = 0;
         exercise_benar = 0;
         exercise_salah = 0;
+        sudahMasuk = 0;
         if(session!=null){
             session.invalidate();
         }
@@ -716,4 +745,28 @@ public class Tb_quizController {
         return "login";
     }
 
+    @RequestMapping(value = "/pilihan_materi_quiz", method = RequestMethod.GET)
+    public String halamanPilihanMateriQuiz(ModelMap map) {
+        int statusMateri = tb_quizService.getStatusMateri();
+        String nilaiDisabledSekuensial = "false"; // true = disabled, false = enabled
+        String nilaiDisabledKondisional = "false";
+        String nilaiDisabledPerulangan = "false";
+        switch (statusMateri) {
+            case 1:
+                nilaiDisabledKondisional = "true";
+                nilaiDisabledPerulangan = "true";
+                break;
+            case 2:
+                nilaiDisabledPerulangan = "true";
+                break;
+            case 3:
+                // Tidak melakukan apapun karena semua tombol enabled.
+                break;
+        }
+        map.addAttribute("nilaiDisabledSekuensial", nilaiDisabledSekuensial);
+        map.addAttribute("nilaiDisabledKondisional", nilaiDisabledKondisional);
+        map.addAttribute("nilaiDisabledPerulangan", nilaiDisabledPerulangan);
+
+        return "mahasiswa/pilihan_materi_quiz";
+    }
 }

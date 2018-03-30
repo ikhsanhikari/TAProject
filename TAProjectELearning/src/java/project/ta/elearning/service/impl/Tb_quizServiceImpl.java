@@ -254,7 +254,7 @@ public class Tb_quizServiceImpl implements Tb_quizService {
 //    Permulaan Menu Quiz
 
     @Override
-    public List<HashMap> getSoalQuiz(int jumlahSoalPerLevel) {
+    public List<HashMap> getSoalQuiz(int jumlahSoalPerLevel, int idMateri) {
         List<Tb_quizDto> listData = new ArrayList<>();
         List<HashMap> listSoalQuizLow = new ArrayList<>();
         List<HashMap> listSoalQuizMedium = new ArrayList<>();
@@ -264,19 +264,12 @@ public class Tb_quizServiceImpl implements Tb_quizService {
 //        Memisahkan soal quiz berdasarkan level ke dalam list yang berbeda.
         int nomor = 0;
         for(int i=1;i<=3;i++){
-            listModel = tb_quizDao.getQuizByLevel(i);
+            listModel = tb_quizDao.getQuizByLevelAndMateri(i, idMateri);
             nomor = 1;
             if (listModel.size() > 0) {
                 for (Object[] obj : listModel) {
-//                    if(i==2){
-//                        Tb_quizDto dto = new Tb_quizDto();
-//                        dto.setId(Integer.parseInt(obj[0].toString()));
-//                        dto.setName(obj[1].toString());
-//                        dto.setId_jenis_soal(Integer.parseInt(obj[2].toString()));
-//                        listData.add(dto);
-//                    }
-
                     HashMap hm = new HashMap();
+                    
                     hm.put("no", nomor);
                     hm.put("id", Integer.parseInt(obj[0].toString()));
                     hm.put("name", obj[1].toString());
@@ -484,5 +477,10 @@ public class Tb_quizServiceImpl implements Tb_quizService {
             }
         }
         return listData;
+    }
+
+    @Override
+    public int getStatusMateri() {
+        return tb_quizDao.getStatusMateri();
     }
 }
