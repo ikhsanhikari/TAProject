@@ -63,6 +63,7 @@
                 <value>project/ta/elearning/model/Tb_modelModel.hbm.xml</value>
                 <value>project/ta/elearning/model/Tb_resultquizModel.hbm.xml</value>
                 <value>project/ta/elearning/model/Tb_skillModel.hbm.xml</value>
+                <value>project/ta/elearning/model/Tb_statusModel.hbm.xml</value>
                 <!--<value>project/ta/elearning/model/Tb_knowledgeModel.hbm.xml</value>-->
                 <!--<value>project/ta/elearning/model/Tb_eventModel.hbm.xml</value>-->
             </list>  
