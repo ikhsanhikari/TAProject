@@ -6,6 +6,7 @@
 package project.ta.elearning.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
@@ -70,6 +71,23 @@ public class Tb_resultquiz_beforeDaoImpl extends HibernateUtil implements Tb_res
             e.printStackTrace();;
         }
     return listData;
+    }
+
+    @Override
+    public void update(HashMap data) {
+        Query query = createNativeQuery("UPDATE tb_resultquiz_before SET score = " + data.get("score") + ", idknowledge = " + data.get("idknowledge") + ", id_category = " + data.get("id_category") +
+                " WHERE id_colleger = " + data.get("id_colleger") + " AND id_matery = " + data.get("id_matery"));
+        int result = query.executeUpdate();
+    }
+
+    @Override
+    public int isDataExistByIdAndMateri(int id, int idMateri) {
+        Query query = createNativeQuery("SELECT count(1) FROM tb_resultquiz_before "
+                + "WHERE id_colleger = " + id + " AND id_matery = " + idMateri);
+        List<Object> list = new ArrayList();
+        list = query.list();
+        
+        return Integer.parseInt(list.get(0).toString());
     }
     
 }

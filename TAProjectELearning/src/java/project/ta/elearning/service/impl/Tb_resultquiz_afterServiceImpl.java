@@ -6,11 +6,13 @@
 package project.ta.elearning.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.ta.elearning.dao.Tb_resultquizDao;
+import project.ta.elearning.dto.Tb_resultQuizDto;
 import project.ta.elearning.dao.Tb_resultquiz_afterDao;
 import project.ta.elearning.dto.Tb_resultquiz_afterDto;
 import project.ta.elearning.model.Tb_resultquiz_afterModel;
@@ -49,7 +51,7 @@ public class Tb_resultquiz_afterServiceImpl implements Tb_resultquiz_afterServic
     }
 
     @Override
-    public void saveData(Tb_resultquiz_afterDto dto) {
+    public void saveData(Tb_resultQuizDto dto) {
         Tb_resultquiz_afterModel model = new Tb_resultquiz_afterModel();
         try {
             model.setId(dto.getId());
@@ -91,9 +93,9 @@ public class Tb_resultquiz_afterServiceImpl implements Tb_resultquiz_afterServic
     }
 
     @Override
-    public Tb_resultquiz_afterDto getDataById(Integer id) {
+    public Tb_resultquiz_afterDto getDataById(int idColleger, int idMatery) {
         Tb_resultquiz_afterDto dto = new Tb_resultquiz_afterDto();
-        List<Tb_resultquiz_afterModel> listModel = tb_resultquiz_afterDao.getDataById(id);
+        List<Tb_resultquiz_afterModel> listModel = tb_resultquiz_afterDao.getDataById(idColleger, idMatery);
         if (listModel.size() > 0) {
             for (Tb_resultquiz_afterModel model : listModel) {
                 dto = new Tb_resultquiz_afterDto();
@@ -107,6 +109,21 @@ public class Tb_resultquiz_afterServiceImpl implements Tb_resultquiz_afterServic
         }
 
         return dto;
+    }
+
+    @Override
+    public int isDataExistByIdAndMateri(int id, int idMateri) {
+        return tb_resultquiz_afterDao.isDataExistByIdAndMateri(id, idMateri);
+    }
+
+    @Override
+    public void update(Tb_resultQuizDto rqDto) {
+        tb_resultquiz_afterDao.update(rqDto);
+    }
+
+    @Override
+    public int getKnowledgePerMateri(int idColleger, int idMateri) {
+        return tb_resultquiz_afterDao.getKnowledgePerMateri(idColleger, idMateri);
     }
 
 }

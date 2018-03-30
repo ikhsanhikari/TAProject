@@ -51,9 +51,18 @@
         </div>
         <!-- /navbar -->
         <div class="alert alert-info">
-            <div class="stat"> <i>Score : <strong>${score}</strong></i> </div>
-        </div>
-          <a href="halamanAwal.htm" class="btn-primary">Menu Awal</a>               
+            <center>
+                <div class="stat">
+                    Score : 
+                        <h1>
+                            ${score}
+                        </h1>
+                </div>
+            </center>
+          </div>
+        <center>
+            <a href="halamanAwal.htm" class="btn btn-primary">Menu Awal</a>
+        </center>
         <!--javascript-->
         <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script>
         <script src="<c:url value="resources/js/bootstrap.js"/>"></script>

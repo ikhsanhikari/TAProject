@@ -1,8 +1,9 @@
 <%-- 
-    Document   : index.jsp
-    Created on : Feb 24, 2018, 10:56:22 AM
-    Author     : Sou
+    Document   : halaman_maintenance
+    Created on : Mar 30, 2018, 10:28:00 PM
+    Author     : IT
 --%>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -28,6 +29,13 @@
                     <div class="nav-collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                                        class="icon-cog"></i> Account <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="javascript:;">Settings</a></li>
+                                    <li><a href="javascript:;">Help</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="icon-user"></i> ${nama} <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="profile.htm">Profile</a></li>
@@ -44,31 +52,7 @@
         </div>
         <!-- /navbar -->
         <div class="alert alert-info">
-            Menu dosen.
+            Menu ini dalam masa <i>maintenance</i>.
         </div>
-        
-        <div class="widget-content span12">
-            <div class="shortcuts"> 
-                <a href="pilihan_materi.htm" class="shortcut"><i class="shortcut-icon icon-copy"></i>
-                    <span class="shortcut-label">Menentukan Banyak Soal Per Level Quiz</span> 
-                </a>
-                <a href="pilihan_materi_quiz.htm" class="shortcut"><i class="shortcut-icon icon-check"></i>
-                    <span class="shortcut-label">Koreksi Soal</span> 
-                </a>
-                <a href="halaman_maintenance.htm" class="shortcut"><i class="shortcut-icon icon-eye-open"></i>
-                    <span class="shortcut-label">Lihat Data Mahasiswa</span> 
-                </a>
-            </div>
-            <!-- /shortcuts --> 
-        </div>
-        <!-- /widget-content --> 
-
-        <!--javascript-->
-        <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script> 
-        <script src="<c:url value="resources/js/excanvas.min.js"/>"></script> 
-        <script src="<c:url value="resources/js/chart.min.js"/>" type="text/javascript"></script> 
-        <script src="<c:url value="resources/js/bootstrap.js"/>"></script>
-        <script language="javascript" type="text/javascript" src="<c:url value="resources/js/full-calendar/fullcalendar.min.js"/>"></script>
     </body>
 </html>
-

@@ -5,7 +5,9 @@
  */
 package project.ta.elearning.service;
 
+import java.util.HashMap;
 import java.util.List;
+import project.ta.elearning.dto.Tb_resultQuizDto;
 import project.ta.elearning.dto.Tb_resultquiz_beforeDto;
 
 /**
@@ -15,8 +17,10 @@ import project.ta.elearning.dto.Tb_resultquiz_beforeDto;
 
 public interface Tb_resultquiz_beforeService {
     public List<Tb_resultquiz_beforeDto> getData(); 
-    public void saveData(Tb_resultquiz_beforeDto dto);
+    public void saveData(Tb_resultQuizDto dto);
     public void deleteData(Integer id);
     public void updateData(Tb_resultquiz_beforeDto dto);
     public Tb_resultquiz_beforeDto getDataById(Integer id);
+    public int isDataExistByIdAndMateri(int id, int idMateri);
+    public void update(HashMap data);
 }

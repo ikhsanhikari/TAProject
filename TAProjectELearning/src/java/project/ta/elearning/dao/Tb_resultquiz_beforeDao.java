@@ -5,6 +5,7 @@
  */
 package project.ta.elearning.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import project.ta.elearning.model.Tb_resultquiz_beforeModel;
 
@@ -18,4 +19,6 @@ public interface Tb_resultquiz_beforeDao {
     public void deleteData(Integer id);
     public void updateData(Tb_resultquiz_beforeModel model);
     public List<Tb_resultquiz_beforeModel> getDataById(Integer id);
+    public int isDataExistByIdAndMateri(int id, int idMateri);
+    public void update(HashMap data);
 }

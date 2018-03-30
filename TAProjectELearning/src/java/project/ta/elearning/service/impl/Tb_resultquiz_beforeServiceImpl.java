@@ -6,12 +6,14 @@
 package project.ta.elearning.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.ta.elearning.dao.Tb_resultquizDao;
 import project.ta.elearning.dao.Tb_resultquiz_beforeDao;
+import project.ta.elearning.dto.Tb_resultQuizDto;
 import project.ta.elearning.dto.Tb_resultquiz_beforeDto;
 import project.ta.elearning.model.Tb_resultquiz_beforeModel;
 import project.ta.elearning.service.Tb_resultquizService;
@@ -49,7 +51,7 @@ public class Tb_resultquiz_beforeServiceImpl implements Tb_resultquiz_beforeServ
     }
 
     @Override
-    public void saveData(Tb_resultquiz_beforeDto dto) {
+    public void saveData(Tb_resultQuizDto dto) {
         Tb_resultquiz_beforeModel model = new Tb_resultquiz_beforeModel();
         try {
             model.setId(dto.getId());
@@ -107,6 +109,16 @@ public class Tb_resultquiz_beforeServiceImpl implements Tb_resultquiz_beforeServ
         }
 
         return dto;
+    }
+
+    @Override
+    public int isDataExistByIdAndMateri(int id, int idMateri) {
+        return tb_resultquiz_beforeDao.isDataExistByIdAndMateri(id, idMateri);
+    }
+
+    @Override
+    public void update(HashMap data) {
+        tb_resultquiz_beforeDao.update(data);
     }
 
 }

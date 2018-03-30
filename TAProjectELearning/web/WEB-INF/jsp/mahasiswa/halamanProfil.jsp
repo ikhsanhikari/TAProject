@@ -51,72 +51,96 @@
         </div>
         <!-- /navbar -->
         <div class="widget-content ">
-            <div class="alert-info"> 
-                Selamat Datang di halaman profile ${nama}
-            </div>
+            Halaman profile ${nama}
             <hr/>
             <div class="brand">
                 <table cellpadding="10px">
                     <tr>
                         <td>
-                            <h3 class="icon-user"> Username</h3>
+                            Username
                         </td>
-                        <td><h3>:</h3></td>
-                        <td><h3> ${listUser.username}</h3></td>
+                        <td>:</td>
+                        <td>${listUser.username}</td>
                     </tr>
                     <tr>
                         <td>
-                            <h3 class="icon-phone"> Nomor Telepon </h3>
+                            Nama
                         </td>
-                        <td><h3>:</h3></td>
-                        <td><h3> ${listUser.phone1}</h3></td>
+                        <td>:</td>
+                        <td>${nama}</td>
                     </tr>
+                    <!--                    <tr>
+                                            <td>
+                                                <h3 class="icon-phone"> Nomor Telepon </h3>
+                                            </td>
+                                            <td><h3>:</h3></td>
+                                            <td><h3> ${listUser.phone1}</h3></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h3 class="icon-building"> Institution</h3>
+                                            </td>
+                                            <td><h3>:</h3></td>
+                                            <td><h3> ${listUser.institution}</h3></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h3 class="icon-building"> Department</h3>
+                                            </td>
+                                            <td><h3>:</h3></td>
+                                            <td><h3> ${listUser.department}</h3></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h3 class="icon-road"> Address</h3>
+                                            </td>
+                                            <td><h3>:</h3></td>
+                                            <td><h3> ${listUser.address}</h3></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h3 class="icon-flag"> City</h3>
+                                            </td>
+                                            <td><h3>:</h3></td>
+                                            <td><h3> ${listUser.city}</h3></td>
+                                        </tr>-->
                     <tr>
                         <td>
-                            <h3 class="icon-building"> Institution</h3>
+                            Knowledge
                         </td>
-                        <td><h3>:</h3></td>
-                        <td><h3> ${listUser.institution}</h3></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h3 class="icon-building"> Department</h3>
-                        </td>
-                        <td><h3>:</h3></td>
-                        <td><h3> ${listUser.department}</h3></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h3 class="icon-road"> Address</h3>
-                        </td>
-                        <td><h3>:</h3></td>
-                        <td><h3> ${listUser.address}</h3></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h3 class="icon-flag"> City</h3>
-                        </td>
-                        <td><h3>:</h3></td>
-                        <td><h3> ${listUser.city}</h3></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h3 class="icon-sun"> Knowledge</h3>
-                        </td>
-                        <td><h3>:</h3></td>
-                        <td>
-                            <h3> 
+                        <td>:</td>
+                        <td> 
                                 <c:if test="${listUser.idknowledge==1}">
-                                    GOOD
+                                    Poor
                                 </c:if>
                                 <c:if test="${listUser.idknowledge==2}">
-                                    FAIR
+                                    Fair
                                 </c:if>    
                                 <c:if test="${listUser.idknowledge==3}">
-                                    POOR
+                                    Good
                                 </c:if>
-                            </h3>
                         </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Sekuensial
+                        </td>
+                        <td>:</td>
+                        <td>${knowledgeSekuensial}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Kondisional
+                        </td>
+                        <td>:</td>
+                        <td>${knowledgeKondisional}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Perulangan
+                        </td>
+                        <td>:</td>
+                        <td>${knowledgePerulangan}</td>
                     </tr>
                 </table>
 

@@ -24,6 +24,8 @@ import project.ta.elearning.dto.Tb_resultquiz_afterDto;
 import project.ta.elearning.dto.Tb_sessionDto;
 import project.ta.elearning.dto.Tb_userDto;
 import project.ta.elearning.service.Tb_quizService;
+import project.ta.elearning.service.Tb_resultquiz_afterService;
+import project.ta.elearning.service.Tb_resultquiz_beforeService;
 import project.ta.elearning.service.Tb_userService;
 
 /**
@@ -38,6 +40,12 @@ public class Tb_quizController {
 
     @Autowired
     Tb_userService tb_userService;
+    
+    @Autowired
+    Tb_resultquiz_afterService tb_resultquiz_afterService;
+    
+    @Autowired
+    Tb_resultquiz_beforeService tb_resultquiz_beforeService;
 
     List<HashMap> listSoalQuiz = new ArrayList<>();
     int sudahMasuk = 0;
@@ -476,10 +484,10 @@ public class Tb_quizController {
     }
 
 //    Awal kode untuk MENU QUIZ
-    @RequestMapping(value = "quiz", method = RequestMethod.GET)
+    @RequestMapping(value = "/quiz", method = RequestMethod.GET)
     public String menuQuiz(@RequestParam String action, @RequestParam int idMateri, @RequestParam int noSoalParam, @RequestParam int statusMasuk, Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
         System.out.println("Nilai statusMasuk : " + statusMasuk);
-        int jumlahSoalPerLevel = 3;
+        int jumlahSoalPerLevel = 1;
 
         if (statusMasuk == 1 && sudahMasuk == 0) {
             listSoalQuiz = tb_quizService.getSoalQuiz(jumlahSoalPerLevel, idMateri);
@@ -487,7 +495,11 @@ public class Tb_quizController {
         }
         List<HashMap> listSoalQuizTetap = listSoalQuiz;
 
+        List<HashMap> tampList = new ArrayList<>();
+        HashMap tampHashMap = new HashMap();
+
         int totalSoal = jumlahSoalPerLevel * 3;
+        System.out.println("noSoalParam = " + noSoalParam);
         if (noSoalParam == totalSoal) {
             System.out.println("jumlahBenar = " + jumlahBenar + "\njumlahSalah = " + jumlahSalah);
             float presentaseBenar = (float) ((jumlahBenar*4) - jumlahSalah) / (totalSoal*4);
@@ -504,16 +516,44 @@ public class Tb_quizController {
                 knowledge = 3;
             }
             rqDto.setIdknowledge(knowledge);
+            
+            int existAfter = tb_resultquiz_afterService.isDataExistByIdAndMateri(rqDto.getId_colleger(), rqDto.getId_matery());
+            if(existAfter==0){
+                System.out.println("Data di after tidak ada.");
+                tb_resultquiz_afterService.saveData(rqDto);
+                System.out.println("Berhasil save data di tb_resultquiz_after");
+            }else{
+                System.out.println("Data di after ada.");
+                Tb_resultquiz_afterDto afterDto = tb_resultquiz_afterService.getDataById(rqDto.getId_colleger(), rqDto.getId_matery());
+                System.out.println("Isi afterDto = " + afterDto);
+                HashMap dataQuizBefore = new HashMap();
+                dataQuizBefore.put("score", afterDto.getScore());
+                dataQuizBefore.put("idknowledge", afterDto.getIdknowledge());
+                dataQuizBefore.put("id_category", afterDto.getId_category());
+                dataQuizBefore.put("id_colleger", afterDto.getId_colleger());
+                dataQuizBefore.put("id_matery", afterDto.getId_matery());
+                System.out.println("Isi dataQuizBefore = " + dataQuizBefore);
+                int existBefore = tb_resultquiz_beforeService.isDataExistByIdAndMateri(rqDto.getId_colleger(), rqDto.getId_matery());
+                if(existBefore==0){
+                    System.out.println("Data di before tidak ada.");
+                    tb_resultquiz_beforeService.saveData(rqDto);
+                    System.out.println("Berhasil save data di tb_resultquiz_before");
+                }else{
+                    System.out.println("Data di before ada.");
+                    tb_resultquiz_beforeService.update(dataQuizBefore);
+                    System.out.println("Berhasil update data di tb_resultquiz_before");
+                }
+                tb_resultquiz_afterService.update(rqDto);
+                System.out.println("Berhasil update data di tb_resultquiz_after");
+            }
+            System.out.println("Keluar if tb after dan before. Sebelum save score.");
             tb_quizService.saveDataScore(rqDto);
             map.addAttribute("username", session.getAttribute("username").toString());
             map.addAttribute("score", score);
 
             return "mahasiswa/post_quiz";
         }
-
-        List<HashMap> tampList = new ArrayList<>();
-        HashMap tampHashMap = new HashMap();
-
+        
         if (action.equals("Submit")) {
             doSave(reDto);
             noSoalParam++;
@@ -530,7 +570,7 @@ public class Tb_quizController {
         tampHashMap.put("id_category", listSoalQuizTetap.get(noSoal).get("id_category"));
         tampHashMap.put("id_matery", listSoalQuizTetap.get(noSoal).get("id_matery"));
         tampList.add(tampHashMap);
-
+        System.out.println("Soal : " + tampList);
         setId_quiz((int) tampList.get(0).get("id"));
 
         List<Tb_quizDto> listJawabanBenar = tb_quizService.getJawabanBenar(getId_quiz());
@@ -592,6 +632,14 @@ public class Tb_quizController {
         }
         map.addAttribute("idMateri", idMateri);
         map.addAttribute("materi", materi);
+        
+        System.out.println("Isi :\n");
+        System.out.println("id_colleger = " + rqDto.getId_colleger());
+        System.out.println("id_matery = " + rqDto.getId_matery());
+        System.out.println("score = " + rqDto.getScore());
+        System.out.println("category = " + rqDto.getId_category());
+        System.out.println("knowledge = " + rqDto.getIdknowledge());
+        
         
         return "mahasiswa/quiz";
     }
@@ -711,6 +759,53 @@ public class Tb_quizController {
         Tb_userDto listUser = tb_userService.getDataById(Integer.parseInt(session.getAttribute("iduser").toString()));
         System.out.println("=====+++" + listUser);
         map.addAttribute("listUser", listUser);
+        
+        int knowledgeSekuensial = tb_resultquiz_afterService.getKnowledgePerMateri(Integer.parseInt(session.getAttribute("iduser").toString()), 1);
+        int knowledgeKondisional = tb_resultquiz_afterService.getKnowledgePerMateri(Integer.parseInt(session.getAttribute("iduser").toString()), 2);
+        int knowledgePerulangan = tb_resultquiz_afterService.getKnowledgePerMateri(Integer.parseInt(session.getAttribute("iduser").toString()), 3);
+        
+        String ks = "";
+        if(knowledgeSekuensial==0){
+            ks = "None";
+        }else{
+            if(knowledgeSekuensial==1){
+                ks = "Poor";
+            } else if(knowledgeSekuensial==2){
+                ks = "Fair";
+            } else if(knowledgeSekuensial==3){
+                ks = "Good";
+            }
+        }
+        
+        String kk = "";
+        if(knowledgeKondisional==0){
+            kk = "None";
+        }else{
+            if(knowledgeKondisional==1){
+                kk = "Poor";
+            } else if(knowledgeKondisional==2){
+                kk = "Fair";
+            } else if(knowledgeKondisional==3){
+                kk = "Good";
+            }
+        }
+        
+        String kp = "";
+        if(knowledgePerulangan==0){
+            kp = "None";
+        }else{
+            if(knowledgePerulangan==1){
+                kp = "Poor";
+            } else if(knowledgePerulangan==2){
+                kp = "Fair";
+            } else if(knowledgePerulangan==3){
+                kp = "Good";
+            }
+        }
+        
+        map.addAttribute("knowledgeSekuensial", ks);
+        map.addAttribute("knowledgeKondisional", kk);
+        map.addAttribute("knowledgePerulangan", kp);
         return "mahasiswa/halamanProfil";
     }
 
