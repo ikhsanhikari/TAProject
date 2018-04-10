@@ -31,28 +31,12 @@
         <property name="mappingResources">  
             <list>
                 <value>project/ta/elearning/model/Tb_userModel.hbm.xml</value>
-                <value>project/ta/elearning/model/UserModel.hbm.xml</value>
-                <value>project/ta/elearning/model/Tb_courseModel.hbm.xml</value>
                 <value>project/ta/elearning/model/Tb_roleModel.hbm.xml</value>
-                <value>project/ta/elearning/model/Tb_assignmentModel.hbm.xml</value>
-                <value>project/ta/elearning/model/Tb_lessonModel.hbm.xml</value>
                 <value>project/ta/elearning/model/Tb_quizModel.hbm.xml</value>
-                <value>project/ta/elearning/model/Tb_freeQuizModel.hbm.xml</value>
                 <value>project/ta/elearning/model/Tb_levelModel.hbm.xml</value>
-                <value>project/ta/elearning/model/Tb_weklyQuizModel.hbm.xml</value>
                 <value>project/ta/elearning/model/Tb_majorsModel.hbm.xml</value>
-                <value>project/ta/elearning/model/Tb_nilaiModel.hbm.xml</value>
                 <value>project/ta/elearning/model/Tb_materyModel.hbm.xml</value>
-                <value>project/ta/elearning/model/Tb_fileModel.hbm.xml</value>
                 <value>project/ta/elearning/model/Tb_sessionModel.hbm.xml</value>
-                <value>project/ta/elearning/model/Tb_choiceModel.hbm.xml</value>
-                <value>project/ta/elearning/model/Tb_choice_answersModel.hbm.xml</value>
-                <value>project/ta/elearning/model/Tb_choice_optionsModel.hbm.xml</value>
-                <value>project/ta/elearning/model/Tb_eventModel.hbm.xml</value>
-                <value>project/ta/elearning/model/Tb_feedbackModel.hbm.xml</value>
-                <value>project/ta/elearning/model/Tb_file_categoriesModel.hbm.xml</value>
-                <value>project/ta/elearning/model/Tb_question_answersModel.hbm.xml</value>
-                <value>project/ta/elearning/model/Tb_questionsModel.hbm.xml</value>
                 <value>project/ta/elearning/model/Tb_answersModel.hbm.xml</value>
                 <value>project/ta/elearning/model/Tb_qaModel.hbm.xml</value>
                 <value>project/ta/elearning/model/Tb_jenisSoal.hbm.xml</value>
@@ -89,10 +73,7 @@
           p:url="${jdbc.url}"
           p:username="${jdbc.username}"
           p:password="${jdbc.password}" />
-        
-<!--    <bean id="userDao" class="project.ta.elearning.dao.impl.UserDaoImpl"/>
-    <bean id="userService" class="project.ta.elearning.service.impl.UserServiceImpl"/>
-    -->
+    
     <bean id="tb_userDao" class="project.ta.elearning.dao.impl.Tb_userDaoImpl"/>
     <bean id="tb_userService" class="project.ta.elearning.service.impl.Tb_userServiceImpl"/>
     
@@ -102,27 +83,9 @@
     <bean id="tb_levelDao" class="project.ta.elearning.dao.impl.Tb_levelDaoImpl"/>
     <bean id="tb_levelService" class="project.ta.elearning.service.impl.Tb_levelServiceImpl"/>
     
-    <bean id="tb_courseDao" class="project.ta.elearning.dao.impl.Tb_courseDaoImpl"/>
-    <bean id="tb_courseService" class="project.ta.elearning.service.impl.Tb_courseServiceImpl"/>
-    
-    <bean id="tb_assignmentDao" class="project.ta.elearning.dao.impl.Tb_assignmentDaoImpl"/>
-    <bean id="tb_assignmentService" class="project.ta.elearning.service.impl.Tb_assignmentServiceImpl"/>
-    
-    <bean id="tb_lessonDao" class="project.ta.elearning.dao.impl.Tb_lessonDaoImpl"/>
-    <bean id="tb_lessonService" class="project.ta.elearning.service.impl.Tb_lessonServiceImpl"/>
-    
-    <bean id="tb_freeQuizDao" class="project.ta.elearning.dao.impl.Tb_freeQuizDaoImpl"/>
-    <bean id="tb_freeQuizService" class="project.ta.elearning.service.impl.Tb_freeQuizServiceImpl"/>
-    
-    <bean id="tb_weeklyQuizDao" class="project.ta.elearning.dao.impl.Tb_weeklyQuizDaoImpl"/>
-    <bean id="tb_weeklyQuizService" class="project.ta.elearning.service.impl.Tb_weeklyQuizServiceImpl"/>
-
     <bean id="tb_majorsDao" class="project.ta.elearning.dao.impl.Tb_majorsDaoImpl"/>
     <bean id="tb_majorsService" class="project.ta.elearning.service.impl.Tb_majorsServiceImpl"/>
     
-    <bean id="tb_valueDao" class="project.ta.elearning.dao.impl.Tb_valueDaoImpl"/>
-    <bean id="tb_valueService" class="project.ta.elearning.service.impl.Tb_valueServiceImpl"/>
-
     <bean id="tb_sessionDao" class="project.ta.elearning.dao.impl.Tb_sessionDaoImpl"/>
     <bean id="tb_sessionService" class="project.ta.elearning.service.impl.Tb_sessionServiceImpl"/>
     

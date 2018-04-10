@@ -15,10 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import project.ta.elearning.dto.Tb_sessionDto;
 import project.ta.elearning.dto.Tb_userDto;
-import project.ta.elearning.dto.UserDto;
 import project.ta.elearning.service.Tb_sessionService;
 import project.ta.elearning.service.Tb_userService;
-import project.ta.elearning.service.UserService;
 
 /**
  *

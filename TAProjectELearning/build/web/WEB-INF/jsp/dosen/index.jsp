@@ -7,53 +7,68 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<link href="<c:url value="resources/css/bootstrap.min.css"/>" rel="stylesheet">
-<link href="<c:url value="resources/css/bootstrap-responsive.min.css"/>" rel="stylesheet">
+<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/bootstrap-responsive.min.css" />" rel="stylesheet">
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
       rel="stylesheet">
-<link href="<c:url value="resources/css/font-awesome.css"/>" rel="stylesheet">
-<link href="<c:url value="resources/css/style.css"/>" rel="stylesheet">
-<link href="<c:url value="resources/css/pages/dashboard.css"/>" rel="stylesheet">
-</head>
-<body>
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                        class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.html">Personalized E-learning</a>
-                <div class="nav-collapse">
-                    <ul class="nav pull-right">
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                                    class="icon-cog"></i> Account <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="javascript:;">Settings</a></li>
-                                <li><a href="javascript:;">Help</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                                    class="icon-user"></i> ${nama} <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="javascript:;">Profile</a></li>
-                                <li><a href="logout.htm">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="navbar-search pull-right">
-                        <input type="text" class="search-query" placeholder="Search">
-                    </form>
+<link href="<c:url value="/resources/css/font-awesome.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/pages/dashboard.css" />" rel="stylesheet">
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Halaman Mahasiswa</title>
+    </head>
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
+                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.html">Personalized E-learning </a>
+                    <div class="nav-collapse">
+                        <ul class="nav pull-right">
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                                        class="icon-user"></i> ${nama} <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="profile.htm">Profile</a></li>
+                                    <li><a href="logout.htm">Logout</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse --> 
                 </div>
+                <!-- /container --> 
             </div>
+            <!-- /navbar-inner --> 
         </div>
-    </div>
-    <h1>Hello ${nama} Passsword anda ${password} anda sebagai ${role} (Dosen)</h1>
-    <p><a href="logout.htm">Log Out</a></p>
+        <!-- /navbar -->
+        <div class="alert alert-info">
+            Menu dosen.
+        </div>
+        
+        <div class="widget-content span12">
+            <div class="shortcuts"> 
+                <a href="pilihan_materi.htm" class="shortcut"><i class="shortcut-icon icon-copy"></i>
+                    <span class="shortcut-label">Menentukan Banyak Soal Per Level Quiz</span> 
+                </a>
+                <a href="pilihan_materi_quiz.htm" class="shortcut"><i class="shortcut-icon icon-check"></i>
+                    <span class="shortcut-label">Koreksi Soal</span> 
+                </a>
+                <a href="halaman_maintenance.htm" class="shortcut"><i class="shortcut-icon icon-eye-open"></i>
+                    <span class="shortcut-label">Lihat Data Mahasiswa</span> 
+                </a>
+            </div>
+            <!-- /shortcuts --> 
+        </div>
+        <!-- /widget-content --> 
 
-    <!--javascript-->
-    <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script> 
-    <script src="<c:url value="resources/js/excanvas.min.js"/>"></script> 
-    <script src="<c:url value="resources/js/chart.min.js"/>" type="text/javascript"></script> 
-    <script src="<c:url value="resources/js/bootstrap.js"/>"></script>
-    <script language="javascript" type="text/javascript" src="<c:url value="resources/js/full-calendar/fullcalendar.min.js"/>"></script>
-
-    <script src="js/base.js"></script> 
-</body>
+        <!--javascript-->
+        <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script> 
+        <script src="<c:url value="resources/js/excanvas.min.js"/>"></script> 
+        <script src="<c:url value="resources/js/chart.min.js"/>" type="text/javascript"></script> 
+        <script src="<c:url value="resources/js/bootstrap.js"/>"></script>
+        <script language="javascript" type="text/javascript" src="<c:url value="resources/js/full-calendar/fullcalendar.min.js"/>"></script>
+    </body>
 </html>
+
