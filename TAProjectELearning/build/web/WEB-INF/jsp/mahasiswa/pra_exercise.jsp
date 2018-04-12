@@ -27,6 +27,9 @@
                             class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.html">Personalized E-learning </a>
                     <div class="nav-collapse">
                         <ul class="nav pull-right">
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Knowledge - <b>${knowledge}</b> | </a>
+                            </li>
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="icon-cog"></i> Account <b class="caret"></b></a>
                                 <ul class="dropdown-menu">

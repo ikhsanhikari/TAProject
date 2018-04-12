@@ -205,6 +205,9 @@ public class Tb_quizController {
             }
             map.addAttribute("idMateri", idMateri);
             map.addAttribute("materi", materi);
+                    
+//            Rabu, 11-04-2018
+            map.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
 
             return "mahasiswa/view_quiz";
         } catch (Exception e) {
@@ -306,6 +309,9 @@ public class Tb_quizController {
             } else {
                 exercise_salah++;
             }
+                    
+//            Rabu, 11-04-2018
+            map.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
 
             return "mahasiswa/onsubmit";
         } catch (Exception e) {
@@ -315,7 +321,7 @@ public class Tb_quizController {
     }
 
     @RequestMapping(value = "/random_quiz", method = RequestMethod.GET)
-    public String randomQuiz(@RequestParam int idLevel, ModelMap map, Tb_resultExerciseDto reDto) {
+    public String randomQuiz(@RequestParam int idLevel, ModelMap map, Tb_resultExerciseDto reDto, HttpSession session) {
         map.addAttribute("reDto", reDto);
         if (getJenis_soal() == 1) {
             if (getJawaban_benar().equals(reDto.getShort_answer())) {
@@ -334,6 +340,9 @@ public class Tb_quizController {
         }
         reDto.setId_matery(getId_matery());
         tb_quizService.saveData(reDto);
+                    
+//        Rabu, 11-04-2018
+        map.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
 
         return "redirect:view_quiz.htm?idLevel=" + idLevel;
     }
@@ -403,6 +412,9 @@ public class Tb_quizController {
         }
         modelMap.addAttribute("idMateri", idMateri);
         modelMap.addAttribute("materi", materi);
+                    
+//        Rabu, 11-04-2018
+        modelMap.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
         return "mahasiswa/pra_exercise";
     }
 
@@ -553,6 +565,9 @@ public class Tb_quizController {
             System.out.println("score = " + rqDto.getScore());
             System.out.println("category = " + rqDto.getId_category());
             System.out.println("knowledge = " + rqDto.getIdknowledge());
+                    
+//            Rabu, 11-04-2018
+            map.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
 
             return "mahasiswa/quiz";
         } catch (Exception e) {
@@ -603,17 +618,36 @@ public class Tb_quizController {
         System.out.println("presentaseBenar : " + presentaseBenar + "\n" + presentase + "%");
         model.addAttribute("presentase_exercise", presentase);
         noSoal++;
+        
+//        Rabu, 11-04-2018
+        model.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
+        
         return "mahasiswa/information_of_exercise";
     }
 
     @RequestMapping(value = "/halamanAwal", method = RequestMethod.GET)
-    public String halamanAwalMahasiswa() {
+    public String halamanAwalMahasiswa(ModelMap model, HttpSession session) {
         jumlahBenar = 0;
         jumlahSalah = 0;
         jumlah_exercise = 0;
         exercise_benar = 0;
         exercise_salah = 0;
         noSoal = 1;
+                
+        int idKnowledge = 0;
+        idKnowledge = tb_userService.getDataKnowledge(session.getAttribute("username").toString());
+        String knowledge = "";
+        String ada = "ada";
+        switch (idKnowledge) {
+            case 0: knowledge = "none"; ada = "belum ada"; break;
+            case 1: knowledge = "poor"; break;
+            case 2: knowledge = "fair"; break;
+            case 3: knowledge = "good"; break;
+        }
+        
+//        Rabu, 11-04-2018
+        model.addAttribute("knowledge", knowledge);
+        model.addAttribute("ada", ada);
         return "mahasiswa/index";
     }
 
@@ -626,6 +660,44 @@ public class Tb_quizController {
         int knowledgeKondisional = tb_resultquiz_afterService.getKnowledgePerMateri(Integer.parseInt(session.getAttribute("iduser").toString()), 2);
         int knowledgePerulangan = tb_resultquiz_afterService.getKnowledgePerMateri(Integer.parseInt(session.getAttribute("iduser").toString()), 3);
 
+        int knowledgeUmum = 0;
+        int scoreSeq = 0, scoreCond = 0, scoreLoop = 0, totalScore = 0;
+        Tb_resultquiz_afterDto afterDtoSeq = tb_resultquiz_afterService.getDataById(Integer.parseInt(session.getAttribute("iduser").toString()), 1);
+        if(afterDtoSeq.getScore()==null){
+            scoreSeq = 0;
+        } else {
+            scoreSeq = afterDtoSeq.getScore();
+        }
+        System.out.println("scoreSeq = " + scoreSeq);
+        Tb_resultquiz_afterDto afterDtoCond = tb_resultquiz_afterService.getDataById(Integer.parseInt(session.getAttribute("iduser").toString()), 2);
+        if(afterDtoCond.getScore()==null){
+            scoreCond = 0;
+        } else {
+            scoreCond = afterDtoCond.getScore();
+        }
+        System.out.println("scoreCond = " + scoreCond);
+        Tb_resultquiz_afterDto afterDtoLoop = tb_resultquiz_afterService.getDataById(Integer.parseInt(session.getAttribute("iduser").toString()), 3);
+        if(afterDtoLoop.getScore()==null){
+            scoreLoop = 0;
+        } else {
+            scoreLoop = afterDtoLoop.getScore();
+        }
+        System.out.println("scoreLoop = " + scoreLoop);
+        totalScore = (scoreSeq + scoreCond + scoreLoop)/3;
+        System.out.println("totalScore = " + totalScore);
+        
+        if(totalScore <= 33){
+            knowledgeUmum = 1;
+        } else if(totalScore > 33 && totalScore <= 66){
+            knowledgeUmum = 2;
+        } else if(totalScore > 66 && totalScore <= 100){
+            knowledgeUmum = 3;
+        } else {
+            // total score tidak valid
+        }
+        
+        tb_userService.updateKnowledgeUser(session.getAttribute("iduser").toString(), knowledgeUmum);
+        
         String ks = "";
         if (knowledgeSekuensial == 0) {
             ks = "None";
@@ -665,14 +737,33 @@ public class Tb_quizController {
             }
         }
 
+        String ku = "";
+        if (knowledgeUmum == 0) {
+            ku = "None";
+        } else {
+            if (knowledgeUmum == 1) {
+                ku = "Poor";
+            } else if (knowledgeUmum == 2) {
+                ku = "Fair";
+            } else if (knowledgeUmum == 3) {
+                ku = "Good";
+            }
+        }
+        System.out.println("ku : " + ku);
+        
         map.addAttribute("knowledgeSekuensial", ks);
         map.addAttribute("knowledgeKondisional", kk);
         map.addAttribute("knowledgePerulangan", kp);
+        map.addAttribute("knowledgeUmum", ku);
+
+//        Rabu, 11-04-2018
+        map.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
+        
         return "mahasiswa/halamanProfil";
     }
 
     @RequestMapping(value = "/pilihan_materi", method = RequestMethod.GET)
-    public String halamanPilihanMateri(ModelMap map) {
+    public String halamanPilihanMateri(ModelMap map, HttpSession session) {
         int statusMateri = tb_quizService.getStatusMateri();
         String nilaiDisabledSekuensial = "false"; // true = disabled, false = enabled
         String nilaiDisabledKondisional = "false";
@@ -692,7 +783,10 @@ public class Tb_quizController {
         map.addAttribute("nilaiDisabledSekuensial", nilaiDisabledSekuensial);
         map.addAttribute("nilaiDisabledKondisional", nilaiDisabledKondisional);
         map.addAttribute("nilaiDisabledPerulangan", nilaiDisabledPerulangan);
-
+        
+//        Rabu, 11-04-2018
+        map.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
+        
         return "mahasiswa/pilihan_materi";
     }
 
@@ -711,7 +805,7 @@ public class Tb_quizController {
     }
 
     @RequestMapping(value = "/pilihan_materi_quiz", method = RequestMethod.GET)
-    public String halamanPilihanMateriQuiz(ModelMap map) {
+    public String halamanPilihanMateriQuiz(ModelMap map, HttpSession session) {
         int statusMateri = tb_quizService.getStatusMateri();
         String nilaiDisabledSekuensial = "false"; // true = disabled, false = enabled
         String nilaiDisabledKondisional = "false";
@@ -732,6 +826,25 @@ public class Tb_quizController {
         map.addAttribute("nilaiDisabledKondisional", nilaiDisabledKondisional);
         map.addAttribute("nilaiDisabledPerulangan", nilaiDisabledPerulangan);
 
+//        Rabu, 11-04-2018
+        map.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
+        
         return "mahasiswa/pilihan_materi_quiz";
+    }
+
+//        Rabu, 11-04-2018
+    public String getKnowledgeUntukMunculSetiapSaat(HttpSession session){
+        int idKnowledge = 0;
+        idKnowledge = tb_userService.getDataKnowledge(session.getAttribute("username").toString());
+        String knowledge = "";
+        String ada = "ada";
+        switch (idKnowledge) {
+            case 0: knowledge = "none"; ada = "belum ada"; break;
+            case 1: knowledge = "poor"; break;
+            case 2: knowledge = "fair"; break;
+            case 3: knowledge = "good"; break;
+        }
+        
+        return knowledge;
     }
 }

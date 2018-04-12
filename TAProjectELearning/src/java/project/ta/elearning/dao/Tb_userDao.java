@@ -6,6 +6,7 @@
 package project.ta.elearning.dao;
 
 import java.util.List;
+import project.ta.elearning.dto.Tb_resultQuizDto;
 import project.ta.elearning.model.Tb_userModel;
 
 /**
@@ -23,4 +24,5 @@ public interface Tb_userDao {
     public List<Tb_userModel> getDataById(Integer id);
 //    public List<Tb_userModel> getDataKnowledge(Integer id);
     public int getDataKnowledge(String username);
+    public void updateKnowledgeUser(String username, int idKnowledge);
 }

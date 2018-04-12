@@ -104,22 +104,13 @@
                                             <td><h3>:</h3></td>
                                             <td><h3> ${listUser.city}</h3></td>
                                         </tr>-->
+                    
                     <tr>
                         <td>
                             Knowledge
                         </td>
                         <td>:</td>
-                        <td> 
-                                <c:if test="${listUser.idknowledge==1}">
-                                    Poor
-                                </c:if>
-                                <c:if test="${listUser.idknowledge==2}">
-                                    Fair
-                                </c:if>    
-                                <c:if test="${listUser.idknowledge==3}">
-                                    Good
-                                </c:if>
-                        </td>
+                        <td>${knowledgeUmum}</td>
                     </tr>
                     <tr>
                         <td>

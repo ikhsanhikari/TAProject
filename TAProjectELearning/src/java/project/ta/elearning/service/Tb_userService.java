@@ -23,4 +23,5 @@ public interface Tb_userService {
     public void updateData(Tb_userDto dao);
     public Tb_userDto getDataById(Integer id);
     public int getDataKnowledge(String username);
+    public void updateKnowledgeUser(String username, int idKnowledge);
 }

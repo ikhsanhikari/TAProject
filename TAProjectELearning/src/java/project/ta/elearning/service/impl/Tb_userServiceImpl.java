@@ -156,6 +156,7 @@ public class Tb_userServiceImpl implements Tb_userService {
             userModel.setTimecreated(userDto.getTimecreated());
             userModel.setTimemodified(currDate);
             userModel.setId_role(userDto.getId_role());
+            userModel.setIdknowledge(userDto.getIdknowledge());
             tb_userDao.updateData(userModel);
         } catch (Exception e) {
 
@@ -266,6 +267,11 @@ public class Tb_userServiceImpl implements Tb_userService {
     @Override
     public int getDataKnowledge(String username) {
         return tb_userDao.getDataKnowledge(username);
+    }
+
+    @Override
+    public void updateKnowledgeUser(String username, int idKnowledge) {
+        tb_userDao.updateKnowledgeUser(username, idKnowledge);
     }
 
 }

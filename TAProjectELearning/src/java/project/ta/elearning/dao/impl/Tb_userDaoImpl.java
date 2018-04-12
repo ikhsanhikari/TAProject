@@ -98,4 +98,11 @@ public class Tb_userDaoImpl extends HibernateUtil implements Tb_userDao{
         
         return Integer.parseInt(list.get(0).toString());
     }
+
+    @Override
+    public void updateKnowledgeUser(String username, int idKnowledge) {
+         Query query = createNativeQuery("UPDATE tb_user SET idknowledge = " + idKnowledge 
+                + " WHERE id = " + username);
+        int result = query.executeUpdate();
+    }
 }
