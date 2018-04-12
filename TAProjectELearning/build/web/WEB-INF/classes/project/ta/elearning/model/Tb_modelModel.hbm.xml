@@ -9,11 +9,13 @@
         <id name="id" column="id">
             <generator class="native"/>
         </id>
-        <property name="id_good_learner"  type="integer"/>
         <property name="id_user"  type="integer"/>
         <property name="id_matery"  type="integer"/>
-        <property name="id_knowledge_good_learner"  type="integer"/>
-        <property name="id_knowledge_user"  type="integer"/>
+        <property name="knowledge_sebelum"  type="integer"/>
+        <property name="knowledge_sesudah"  type="integer"/>
+        <property name="score_sebelum"  type="integer"/>
+        <property name="score_sesudah"  type="integer"/>
+        
     </class>
   
 

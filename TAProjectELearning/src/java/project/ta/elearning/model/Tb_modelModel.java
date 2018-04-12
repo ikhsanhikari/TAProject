@@ -11,11 +11,12 @@ package project.ta.elearning.model;
  */
 public class Tb_modelModel {
     private Integer id;
-    private Integer id_good_learner;
     private Integer id_user;
     private Integer id_matery;
-    private Integer id_knowledge_good_learner;
-    private Integer id_knowledge_user;
+    private Integer knowledge_sebelum;
+    private Integer knowledge_sesudah;
+    private Integer score_sesudah;
+    private Integer score_sebelum;
 
     public Integer getId() {
         return id;
@@ -23,14 +24,6 @@ public class Tb_modelModel {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getId_good_learner() {
-        return id_good_learner;
-    }
-
-    public void setId_good_learner(Integer id_good_learner) {
-        this.id_good_learner = id_good_learner;
     }
 
     public Integer getId_user() {
@@ -49,20 +42,36 @@ public class Tb_modelModel {
         this.id_matery = id_matery;
     }
 
-    public Integer getId_knowledge_good_learner() {
-        return id_knowledge_good_learner;
+    public Integer getKnowledge_sebelum() {
+        return knowledge_sebelum;
     }
 
-    public void setId_knowledge_good_learner(Integer id_knowledge_good_learner) {
-        this.id_knowledge_good_learner = id_knowledge_good_learner;
+    public void setKnowledge_sebelum(Integer knowledge_sebelum) {
+        this.knowledge_sebelum = knowledge_sebelum;
     }
 
-    public Integer getId_knowledge_user() {
-        return id_knowledge_user;
+    public Integer getKnowledge_sesudah() {
+        return knowledge_sesudah;
     }
 
-    public void setId_knowledge_user(Integer id_knowledge_user) {
-        this.id_knowledge_user = id_knowledge_user;
+    public void setKnowledge_sesudah(Integer knowledge_sesudah) {
+        this.knowledge_sesudah = knowledge_sesudah;
+    }
+
+    public Integer getScore_sesudah() {
+        return score_sesudah;
+    }
+
+    public void setScore_sesudah(Integer score_sesudah) {
+        this.score_sesudah = score_sesudah;
+    }
+
+    public Integer getScore_sebelum() {
+        return score_sebelum;
+    }
+
+    public void setScore_sebelum(Integer score_sebelum) {
+        this.score_sebelum = score_sebelum;
     }
     
 }
