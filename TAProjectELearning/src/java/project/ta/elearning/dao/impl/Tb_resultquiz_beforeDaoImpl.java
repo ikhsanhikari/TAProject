@@ -60,11 +60,11 @@ public class Tb_resultquiz_beforeDaoImpl extends HibernateUtil implements Tb_res
     }
 
     @Override
-    public List<Tb_resultquiz_beforeModel> getDataById(Integer id) {
+    public List<Tb_resultquiz_beforeModel> getDataById(int idColleger, int idMatery) {
         List<Tb_resultquiz_beforeModel> listData = new ArrayList<>();
         try {
-            String sql = "select model from Tb_resultquiz_beforeModel model where id = :id";
-            Query query = createQuery(sql).setParameter("id", id);
+            String sql = "select model from Tb_resultquiz_beforeModel model where id_colleger=:idColleger AND id_matery=:idMatery";
+            Query query = createQuery(sql).setParameter("idColleger", idColleger).setParameter("idMatery", idMatery);
             listData = query.list();
             
         } catch (Exception e) {

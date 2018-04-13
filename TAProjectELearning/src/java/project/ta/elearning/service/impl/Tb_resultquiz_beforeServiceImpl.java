@@ -93,9 +93,9 @@ public class Tb_resultquiz_beforeServiceImpl implements Tb_resultquiz_beforeServ
     }
 
     @Override
-    public Tb_resultquiz_beforeDto getDataById(Integer id) {
+    public Tb_resultquiz_beforeDto getDataById(int idColleger, int idMatery) {
         Tb_resultquiz_beforeDto dto = new Tb_resultquiz_beforeDto();
-        List<Tb_resultquiz_beforeModel> listModel = tb_resultquiz_beforeDao.getDataById(id);
+        List<Tb_resultquiz_beforeModel> listModel = tb_resultquiz_beforeDao.getDataById(idColleger, idMatery);
         if (listModel.size() > 0) {
             for (Tb_resultquiz_beforeModel model : listModel) {
                 dto = new Tb_resultquiz_beforeDto();

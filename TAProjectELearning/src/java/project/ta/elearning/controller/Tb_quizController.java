@@ -16,13 +16,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import project.ta.elearning.dto.Tb_modelDto;
 import project.ta.elearning.dto.Tb_qaDto;
 import project.ta.elearning.dto.Tb_quizDto;
 import project.ta.elearning.dto.Tb_resultExerciseDto;
 import project.ta.elearning.dto.Tb_resultQuizDto;
 import project.ta.elearning.dto.Tb_resultquiz_afterDto;
+import project.ta.elearning.dto.Tb_resultquiz_beforeDto;
 import project.ta.elearning.dto.Tb_sessionDto;
 import project.ta.elearning.dto.Tb_userDto;
+import project.ta.elearning.service.Tb_modelService;
 import project.ta.elearning.service.Tb_quizService;
 import project.ta.elearning.service.Tb_resultquiz_afterService;
 import project.ta.elearning.service.Tb_resultquiz_beforeService;
@@ -46,6 +49,9 @@ public class Tb_quizController {
 
     @Autowired
     Tb_resultquiz_beforeService tb_resultquiz_beforeService;
+    
+    @Autowired
+    Tb_modelService tb_modelService;
 
     List<HashMap> listSoalQuiz = new ArrayList<>();
     int sudahMasuk = 0;
@@ -486,6 +492,23 @@ public class Tb_quizController {
                 map.addAttribute("username", session.getAttribute("username").toString());
                 map.addAttribute("score", score);
 
+                int idUser = Integer.parseInt(session.getAttribute("iduser").toString());
+                Tb_resultquiz_afterDto raDto = tb_resultquiz_afterService.getDataById(idUser, rqDto.getId_matery());
+                Tb_resultquiz_beforeDto rbDto = tb_resultquiz_beforeService.getDataById(idUser, rqDto.getId_matery());
+                
+                if(raDto.getIdknowledge() > rbDto.getIdknowledge()){ //good learner
+                    System.out.println("Good Learner");
+                    Tb_modelDto modelDto = new Tb_modelDto();
+                    modelDto.setId_user(idUser);
+                    modelDto.setId_matery(rqDto.getId_matery());
+                    modelDto.setKnowledge_sebelum(rbDto.getIdknowledge());
+                    modelDto.setKnowledge_sesudah(raDto.getIdknowledge());
+                    modelDto.setScore_sebelum(rbDto.getScore());
+                    modelDto.setScore_sesudah(raDto.getScore());
+                    tb_modelService.saveData(modelDto);
+                } else {
+                    System.out.println("Bukan Good Learner");
+                }
                 return "mahasiswa/post_quiz";
             }
 

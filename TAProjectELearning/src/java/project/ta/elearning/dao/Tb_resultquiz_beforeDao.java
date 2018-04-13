@@ -18,7 +18,7 @@ public interface Tb_resultquiz_beforeDao {
     public void saveData(Tb_resultquiz_beforeModel model);
     public void deleteData(Integer id);
     public void updateData(Tb_resultquiz_beforeModel model);
-    public List<Tb_resultquiz_beforeModel> getDataById(Integer id);
+    public List<Tb_resultquiz_beforeModel> getDataById(int idColleger, int idMatery);
     public int isDataExistByIdAndMateri(int id, int idMateri);
     public void update(HashMap data);
 }

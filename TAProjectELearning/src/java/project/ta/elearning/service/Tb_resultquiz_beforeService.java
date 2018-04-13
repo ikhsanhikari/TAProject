@@ -20,7 +20,7 @@ public interface Tb_resultquiz_beforeService {
     public void saveData(Tb_resultQuizDto dto);
     public void deleteData(Integer id);
     public void updateData(Tb_resultquiz_beforeDto dto);
-    public Tb_resultquiz_beforeDto getDataById(Integer id);
+    public Tb_resultquiz_beforeDto getDataById(int idColleger, int idMatery);
     public int isDataExistByIdAndMateri(int id, int idMateri);
     public void update(HashMap data);
 }

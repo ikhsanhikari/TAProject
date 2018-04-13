@@ -93,5 +93,5 @@
     <bean id="tb_quizService" class="project.ta.elearning.service.impl.Tb_quizServiceImpl"/>
     
     <bean id="tb_modelDao" class="project.ta.elearning.dao.impl.Tb_modelDaoImpl"/>
-    <bean id="=" class="project.ta.elearning.service.impl.Tb_modelServiceImpl"/>
+    <!--<bean id="=" class="project.ta.elearning.service.impl.Tb_modelServiceImpl"/>-->
 </beans>
