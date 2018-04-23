@@ -38,14 +38,13 @@ public class Tb_quizServiceImpl implements Tb_quizService {
     @Override
     public List<Tb_quizDto> getData() {
         List<Tb_quizDto> listData = new ArrayList<>();
-        List<Object[]> listModel = tb_quizDao.getQuizAll();
+        List<Tb_quizModel> listModel = tb_quizDao.getData();
         if (listModel.size() > 0) {
-            for (Object[] obj : listModel) {
-                Tb_quizDto dto = new Tb_quizDto();
-                dto.setId(Integer.parseInt(obj[0].toString()));
-                dto.setName(obj[1].toString());
-                dto.setId_jenis_soal(Integer.parseInt(obj[2].toString()));
-                listData.add(dto);
+            for (Tb_quizModel model : listModel) {
+                Tb_quizDto tb_quizDto =  new Tb_quizDto();
+                tb_quizDto.setId(model.getId());
+                tb_quizDto.setName(model.getName());
+                listData.add(tb_quizDto);
             }
         }
         return listData;

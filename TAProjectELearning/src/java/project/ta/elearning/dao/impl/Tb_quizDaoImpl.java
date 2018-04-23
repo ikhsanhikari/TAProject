@@ -21,7 +21,11 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
 
     @Override
     public List<Tb_quizModel> getData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Tb_quizModel> listData = new ArrayList<>();
+        String sql = "select model from Tb_quizModel model";
+        Query query = createQuery(sql);
+        listData = query.list();
+        return listData;
     }
 
     @Override

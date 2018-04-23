@@ -80,7 +80,7 @@
     <bean id="tb_roleDao" class="project.ta.elearning.dao.impl.Tb_roleDaoImpl"/>
     <bean id="tb_roleService" class="project.ta.elearning.service.impl.Tb_roleServiceImpl"/>
     
-    <bean id="tb_levelDao" class="project.ta.elearning.dao.impl.Tb_levelDaoImpl"/>
+    <bean id="tb_levelDao" class="project.ta.elearning.dao.impl.Tb_jenisSoalDaoImp"/>
     <bean id="tb_levelService" class="project.ta.elearning.service.impl.Tb_levelServiceImpl"/>
     
     <bean id="tb_majorsDao" class="project.ta.elearning.dao.impl.Tb_majorsDaoImpl"/>
@@ -94,4 +94,10 @@
     
     <bean id="tb_modelDao" class="project.ta.elearning.dao.impl.Tb_modelDaoImpl"/>
     <!--<bean id="=" class="project.ta.elearning.service.impl.Tb_modelServiceImpl"/>-->
+    
+    <bean id="tb_qaDao" class="project.ta.elearning.dao.impl.Tb_qaDaoImpl"/>
+    <bean id="tb_qaService" class="project.ta.elearning.service.impl.Tb_qaServiceImpl"/>
+    
+    <bean id="tb_jenisSoalDao" class="project.ta.elearning.dao.impl.Tb_jenisSoalDaoImp"/>
+    <bean id="tb_jenisSoalService" class="project.ta.elearning.service.impl.Tb_jenisSoalServiceImpl"/>
 </beans>

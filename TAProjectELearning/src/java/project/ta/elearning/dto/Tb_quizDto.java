@@ -30,6 +30,15 @@ public class Tb_quizDto {
     private String jawaban;
     private Integer id_qa;
     private Integer totalPoin;
+    private String level;
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
 
     public Integer getTotalPoin() {
         return totalPoin;

@@ -10,6 +10,7 @@ package project.ta.elearning.dto;
  * @author Sou
  */
 public class Tb_qaDto {
+
     private Integer id;
     private String id_quiz;
     private String id_answers;
@@ -20,6 +21,15 @@ public class Tb_qaDto {
     private String timecreated;
     private String timemodified;
     private String id_jenis_soal;
+    private String id_jenisSoal;
+
+    public String getId_jenisSoal() {
+        return id_jenisSoal;
+    }
+
+    public void setId_jenisSoal(String id_jenisSoal) {
+        this.id_jenisSoal = id_jenisSoal;
+    }
 
     public Integer getId() {
         return id;
