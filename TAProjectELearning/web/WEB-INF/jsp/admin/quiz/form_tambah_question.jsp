@@ -58,7 +58,7 @@
 
         <div class="account-container register">
             <div class="content clearfix">
-                <form:form modelAttribute="questionDto" method="POST" action="save_question.htm">
+                <form:form modelAttribute="quizDto" method="POST" action="save_question.htm">
                     <h1>Form Tambah Question</h1>   	
                     <div class="login-fields">
                         <p>Isi form berikut</p>
@@ -66,7 +66,7 @@
                             <form:input path="id" placeholder="ID Question"/><br/>
                         </div>
                         <div class="field">
-                            <form:input path="question" placeholder="Question"/>
+                            <form:input path="name" placeholder="Question"/>
                         </div>
                             <input type="submit" value="Submit"/>
                         </form:form>

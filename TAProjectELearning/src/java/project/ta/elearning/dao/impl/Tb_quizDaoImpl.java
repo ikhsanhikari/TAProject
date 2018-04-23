@@ -38,7 +38,9 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
 
     @Override
     public void deleteData(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Tb_quizModel model = new Tb_quizModel();
+        model.setId(id);
+        getSession().delete(model);
     }
 
     @Override

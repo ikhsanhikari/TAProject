@@ -66,6 +66,13 @@
                             <form:input path="id" placeholder="ID Question"/><br/>
                         </div>
                         <div class="field">
+                            <form:select path="id_quiz" >
+                                <c:forEach items="${listQuiz}" var="data">
+                                    <option value="${data.id}">${data.id}. ${data.name}</option>
+                                </c:forEach>
+                            </form:select><br/>
+                        </div>
+                        <div class="field">
                             <form:select path="id_answers" >
                                 <c:forEach items="${listAnswer}" var="data">
                                     <option value="${data.id}">${data.id}. ${data.answers}</option>
@@ -84,6 +91,12 @@
                                 <c:forEach items="${listJenisSoal}" var="data">
                                     <option value="${data.id}">${data.id}. ${data.jenisSoal}</option>
                                 </c:forEach>
+                            </form:select><br/>
+                        </div>
+                        <div class="field">
+                            <form:select path="id_status" >
+                                <option value="1">Benar</option>
+                                <option value="0">Salah</option>
                             </form:select><br/>
                         </div>
                         <input type="submit" value="Submit"/>

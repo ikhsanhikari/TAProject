@@ -23,6 +23,7 @@ import project.ta.elearning.service.Tb_answersService;
 import project.ta.elearning.service.Tb_jenisSoalService;
 import project.ta.elearning.service.Tb_levelService;
 import project.ta.elearning.service.Tb_qaService;
+import project.ta.elearning.service.Tb_quizService;
 
 /**
  *
@@ -33,6 +34,9 @@ public class Tb_qaController {
 
     @Autowired
     Tb_qaService tb_qaService;
+    
+    @Autowired
+    Tb_quizService tb_quizService;
     
     @Autowired
     Tb_answersService tb_anwersService;
@@ -46,14 +50,19 @@ public class Tb_qaController {
     @RequestMapping(value = "/form_tambah_qa", method = RequestMethod.GET)
     public String formTambahQa(ModelMap map, Tb_qaDto qaDto, HttpSession session, Tb_userDto userDto) {
         map.addAttribute("loginDto", userDto);
+        
         List<Tb_answersDto> listAnswer = tb_anwersService.getData();
         map.addAttribute("listAnswer", listAnswer);
-        map.addAttribute("loginDto", userDto);
+        
         List<Tb_levelDto> listLevel = tb_levelService.getData();
         map.addAttribute("listLevel", listLevel);
         
         List<Tb_jenisSoalDto> listJenisSoal = tb_jenisSoalService.getData();
         map.addAttribute("listJenisSoal", listJenisSoal);
+        
+        List<Tb_quizDto> listQuiz = tb_quizService.getData();
+        map.addAttribute("listQuiz", listQuiz);
+        
         try {
             if (session.getAttribute("username") == null) {
                 return "login";
