@@ -5,7 +5,7 @@
   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="project.ta.elearning.model.Tb_skillModel" table="T=tb_skill">
+    <class name="project.ta.elearning.model.Tb_skillModel" table="tb_skill">
         <id name="id">
             <generator class="native"/>
         </id>

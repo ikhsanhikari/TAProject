@@ -16,4 +16,23 @@ public class Convert {
     public static String toString(Object obj){
         return obj.toString();
     }
+    
+    
+    public static String convertSpas(String arg) {
+        String tamp = "";
+        for (int i = 0; i < arg.length(); i++) {
+            if (arg.charAt(i) == '$') {
+                tamp = tamp + "\n";
+            } else if (arg.charAt(i) == '@') {
+                tamp = tamp + "\t";
+            } else {
+                tamp = tamp + arg.charAt(i) ;
+            }
+
+        }
+        return tamp;
+    }
+    public static void main(String[] args) {
+        System.out.println(convertSpas("hsaghda@rw$rw"));   
+    }
 }

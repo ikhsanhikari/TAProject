@@ -12,13 +12,17 @@ package project.ta.elearning.model;
 public class Tb_quizModel {
     private Integer id;
     private String name;
-    private Integer timeopen;
-    private Integer timeclose;
-    private Integer timelimit;
-    private Integer timecreated;
-    private Integer timemodified;
+    private String description;
     private Integer id_matery;
     private Integer id_category;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Integer getId() {
         return id;
@@ -51,46 +55,4 @@ public class Tb_quizModel {
     public void setName(String name) {
         this.name = name;
     }
-
-    public Integer getTimeopen() {
-        return timeopen;
-    }
-
-    public void setTimeopen(Integer timeopen) {
-        this.timeopen = timeopen;
-    }
-
-    public Integer getTimeclose() {
-        return timeclose;
-    }
-
-    public void setTimeclose(Integer timeclose) {
-        this.timeclose = timeclose;
-    }
-
-    public Integer getTimelimit() {
-        return timelimit;
-    }
-
-    public void setTimelimit(Integer timelimit) {
-        this.timelimit = timelimit;
-    }
-
-    public Integer getTimecreated() {
-        return timecreated;
-    }
-
-    public void setTimecreated(Integer timecreated) {
-        this.timecreated = timecreated;
-    }
-
-    public Integer getTimemodified() {
-        return timemodified;
-    }
-
-    public void setTimemodified(Integer timemodified) {
-        this.timemodified = timemodified;
-    }
-    
-    
 }

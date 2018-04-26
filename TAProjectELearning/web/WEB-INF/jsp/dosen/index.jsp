@@ -49,14 +49,17 @@
         
         <div class="widget-content span12">
             <div class="shortcuts"> 
-                <a href="pilihan_materi.htm" class="shortcut"><i class="shortcut-icon icon-copy"></i>
+                <a href="halaman_maintenance.htm" class="shortcut"><i class="shortcut-icon icon-copy"></i>
                     <span class="shortcut-label">Menentukan Banyak Soal Per Level Quiz</span> 
                 </a>
-                <a href="pilihan_materi_quiz.htm" class="shortcut"><i class="shortcut-icon icon-check"></i>
+                <a href="halaman_maintenance.htm" class="shortcut"><i class="shortcut-icon icon-check"></i>
                     <span class="shortcut-label">Koreksi Soal</span> 
                 </a>
                 <a href="halaman_maintenance.htm" class="shortcut"><i class="shortcut-icon icon-eye-open"></i>
                     <span class="shortcut-label">Lihat Data Mahasiswa</span> 
+                </a>
+                <a href="pilihan_materi.htm" class="shortcut"><i class="shortcut-icon icon-eye-open"></i>
+                    <span class="shortcut-label">Status Materi</span> 
                 </a>
             </div>
             <!-- /shortcuts --> 

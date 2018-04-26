@@ -40,6 +40,10 @@ public interface Tb_quizDao {
     
     public List<Object[]> getQuizRandomByLevel(int idLevel, int idMateri , int idUser);
     
+    public List<Object[]> getQuizRandomByLevelEssay(int idLevel, int idMateri , int idUser);
+    
+    public List<Object[]> getQuizRandomByLevelPG(int idLevel, int idMateri , int idUser);
+    
     public List<Object[]> getQuizRandomByLevelandIdQuiz(int idLevel,int id_quiz);
     
     public int getTotalSoalByLevelAndMatery(int idLevel, int idMateri);
@@ -55,4 +59,6 @@ public interface Tb_quizDao {
     public List<Object[]> getInformationOfExercise(Integer id);
     
     public int getStatusMateri();
+    
+    public int updateStatusMateri(int status);
 }

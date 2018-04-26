@@ -49,7 +49,7 @@ public class Tb_quizController {
 
     @Autowired
     Tb_resultquiz_beforeService tb_resultquiz_beforeService;
-    
+
     @Autowired
     Tb_modelService tb_modelService;
 
@@ -71,6 +71,7 @@ public class Tb_quizController {
     Integer jumlah_exercise = 0;
     Integer exercise_salah = 0;
     Integer exercise_benar = 0;
+    int no = 0;
 
     public String getJawaban_di_pilih() {
         return jawaban_di_pilih;
@@ -131,7 +132,15 @@ public class Tb_quizController {
     @RequestMapping(value = "/view_quiz", method = RequestMethod.GET)
     public String viewQuiz(@RequestParam int idMateri, @RequestParam int idLevel, Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
         try {
-            List<Tb_quizDto> listQuizRandomByLevel = tb_quizService.getQuizRandomByLevel(idLevel, idMateri, Integer.parseInt(session.getAttribute("iduser").toString()));
+            List<Tb_quizDto> listQuizRandomByLevel = new ArrayList<>();
+            no++;
+            if (no % 3 == 1) {
+                listQuizRandomByLevel = tb_quizService.getQuizRandomByLevel(idLevel, idMateri, Integer.parseInt(session.getAttribute("iduser").toString()));
+            } else if(no % 3 == 2){
+                listQuizRandomByLevel = tb_quizService.getQuizRandomByLevelPG(idLevel, idMateri, Integer.parseInt(session.getAttribute("iduser").toString()));
+            }else {
+                listQuizRandomByLevel = tb_quizService.getQuizRandomByLevelEssay(idLevel, idMateri, Integer.parseInt(session.getAttribute("iduser").toString()));
+            }
 
             setId_quiz(listQuizRandomByLevel.get(0).getId());
 
@@ -153,10 +162,15 @@ public class Tb_quizController {
             map.addAttribute("reDto", reDto);
             idx++;
             map.addAttribute("idx", idx);
+            
             int stat = 0;
             if (listAnswer.size() > 1) {
                 map.addAttribute("listAnswer", listAnswer);
-                stat = 1;
+                if(getJenis_soal() == 3){
+                    stat=2;
+                }else{
+                    stat = 1;
+                }
             }
             map.addAttribute("stat", stat);
 
@@ -211,7 +225,7 @@ public class Tb_quizController {
             }
             map.addAttribute("idMateri", idMateri);
             map.addAttribute("materi", materi);
-                    
+
 //            Rabu, 11-04-2018
             map.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
 
@@ -315,7 +329,7 @@ public class Tb_quizController {
             } else {
                 exercise_salah++;
             }
-                    
+
 //            Rabu, 11-04-2018
             map.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
 
@@ -346,7 +360,7 @@ public class Tb_quizController {
         }
         reDto.setId_matery(getId_matery());
         tb_quizService.saveData(reDto);
-                    
+
 //        Rabu, 11-04-2018
         map.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
 
@@ -418,7 +432,7 @@ public class Tb_quizController {
         }
         modelMap.addAttribute("idMateri", idMateri);
         modelMap.addAttribute("materi", materi);
-                    
+
 //        Rabu, 11-04-2018
         modelMap.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
         return "mahasiswa/pra_exercise";
@@ -495,8 +509,8 @@ public class Tb_quizController {
                 int idUser = Integer.parseInt(session.getAttribute("iduser").toString());
                 Tb_resultquiz_afterDto raDto = tb_resultquiz_afterService.getDataById(idUser, rqDto.getId_matery());
                 Tb_resultquiz_beforeDto rbDto = tb_resultquiz_beforeService.getDataById(idUser, rqDto.getId_matery());
-                
-                if(raDto.getIdknowledge() > rbDto.getIdknowledge()){ //good learner
+
+                if (raDto.getIdknowledge() > rbDto.getIdknowledge()) { //good learner
                     System.out.println("Good Learner");
                     Tb_modelDto modelDto = new Tb_modelDto();
                     modelDto.setId_user(idUser);
@@ -588,7 +602,7 @@ public class Tb_quizController {
             System.out.println("score = " + rqDto.getScore());
             System.out.println("category = " + rqDto.getId_category());
             System.out.println("knowledge = " + rqDto.getIdknowledge());
-                    
+
 //            Rabu, 11-04-2018
             map.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
 
@@ -641,10 +655,10 @@ public class Tb_quizController {
         System.out.println("presentaseBenar : " + presentaseBenar + "\n" + presentase + "%");
         model.addAttribute("presentase_exercise", presentase);
         noSoal++;
-        
+
 //        Rabu, 11-04-2018
         model.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
-        
+
         return "mahasiswa/information_of_exercise";
     }
 
@@ -656,18 +670,27 @@ public class Tb_quizController {
         exercise_benar = 0;
         exercise_salah = 0;
         noSoal = 1;
-                
+
         int idKnowledge = 0;
         idKnowledge = tb_userService.getDataKnowledge(session.getAttribute("username").toString());
         String knowledge = "";
         String ada = "ada";
         switch (idKnowledge) {
-            case 0: knowledge = "none"; ada = "belum ada"; break;
-            case 1: knowledge = "poor"; break;
-            case 2: knowledge = "fair"; break;
-            case 3: knowledge = "good"; break;
+            case 0:
+                knowledge = "none";
+                ada = "belum ada";
+                break;
+            case 1:
+                knowledge = "poor";
+                break;
+            case 2:
+                knowledge = "fair";
+                break;
+            case 3:
+                knowledge = "good";
+                break;
         }
-        
+
 //        Rabu, 11-04-2018
         model.addAttribute("knowledge", knowledge);
         model.addAttribute("ada", ada);
@@ -686,41 +709,41 @@ public class Tb_quizController {
         int knowledgeUmum = 0;
         int scoreSeq = 0, scoreCond = 0, scoreLoop = 0, totalScore = 0;
         Tb_resultquiz_afterDto afterDtoSeq = tb_resultquiz_afterService.getDataById(Integer.parseInt(session.getAttribute("iduser").toString()), 1);
-        if(afterDtoSeq.getScore()==null){
+        if (afterDtoSeq.getScore() == null) {
             scoreSeq = 0;
         } else {
             scoreSeq = afterDtoSeq.getScore();
         }
         System.out.println("scoreSeq = " + scoreSeq);
         Tb_resultquiz_afterDto afterDtoCond = tb_resultquiz_afterService.getDataById(Integer.parseInt(session.getAttribute("iduser").toString()), 2);
-        if(afterDtoCond.getScore()==null){
+        if (afterDtoCond.getScore() == null) {
             scoreCond = 0;
         } else {
             scoreCond = afterDtoCond.getScore();
         }
         System.out.println("scoreCond = " + scoreCond);
         Tb_resultquiz_afterDto afterDtoLoop = tb_resultquiz_afterService.getDataById(Integer.parseInt(session.getAttribute("iduser").toString()), 3);
-        if(afterDtoLoop.getScore()==null){
+        if (afterDtoLoop.getScore() == null) {
             scoreLoop = 0;
         } else {
             scoreLoop = afterDtoLoop.getScore();
         }
         System.out.println("scoreLoop = " + scoreLoop);
-        totalScore = (scoreSeq + scoreCond + scoreLoop)/3;
+        totalScore = (scoreSeq + scoreCond + scoreLoop) / 3;
         System.out.println("totalScore = " + totalScore);
-        
-        if(totalScore <= 33){
+
+        if (totalScore <= 33) {
             knowledgeUmum = 1;
-        } else if(totalScore > 33 && totalScore <= 66){
+        } else if (totalScore > 33 && totalScore <= 66) {
             knowledgeUmum = 2;
-        } else if(totalScore > 66 && totalScore <= 100){
+        } else if (totalScore > 66 && totalScore <= 100) {
             knowledgeUmum = 3;
         } else {
             // total score tidak valid
         }
-        
+
         tb_userService.updateKnowledgeUser(session.getAttribute("iduser").toString(), knowledgeUmum);
-        
+
         String ks = "";
         if (knowledgeSekuensial == 0) {
             ks = "None";
@@ -773,7 +796,7 @@ public class Tb_quizController {
             }
         }
         System.out.println("ku : " + ku);
-        
+
         map.addAttribute("knowledgeSekuensial", ks);
         map.addAttribute("knowledgeKondisional", kk);
         map.addAttribute("knowledgePerulangan", kp);
@@ -781,7 +804,7 @@ public class Tb_quizController {
 
 //        Rabu, 11-04-2018
         map.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
-        
+
         return "mahasiswa/halamanProfil";
     }
 
@@ -806,10 +829,10 @@ public class Tb_quizController {
         map.addAttribute("nilaiDisabledSekuensial", nilaiDisabledSekuensial);
         map.addAttribute("nilaiDisabledKondisional", nilaiDisabledKondisional);
         map.addAttribute("nilaiDisabledPerulangan", nilaiDisabledPerulangan);
-        
+
 //        Rabu, 11-04-2018
         map.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
-        
+
         return "mahasiswa/pilihan_materi";
     }
 
@@ -851,23 +874,48 @@ public class Tb_quizController {
 
 //        Rabu, 11-04-2018
         map.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
-        
+
         return "mahasiswa/pilihan_materi_quiz";
     }
 
 //        Rabu, 11-04-2018
-    public String getKnowledgeUntukMunculSetiapSaat(HttpSession session){
+    public String getKnowledgeUntukMunculSetiapSaat(HttpSession session) {
         int idKnowledge = 0;
         idKnowledge = tb_userService.getDataKnowledge(session.getAttribute("username").toString());
         String knowledge = "";
         String ada = "ada";
         switch (idKnowledge) {
-            case 0: knowledge = "none"; ada = "belum ada"; break;
-            case 1: knowledge = "poor"; break;
-            case 2: knowledge = "fair"; break;
-            case 3: knowledge = "good"; break;
+            case 0:
+                knowledge = "none";
+                ada = "belum ada";
+                break;
+            case 1:
+                knowledge = "poor";
+                break;
+            case 2:
+                knowledge = "fair";
+                break;
+            case 3:
+                knowledge = "good";
+                break;
         }
-        
+
         return knowledge;
     }
+
+    public String convertSpas(String arg) {
+        String tamp = "";
+        for (int i = 0; i < arg.length(); i++) {
+            if (arg.charAt(i) == '$') {
+                tamp = tamp + "\n";
+            } else if (arg.charAt(i) == '@') {
+                tamp = tamp + "\t";
+            } else {
+                tamp = tamp + arg.charAt(i) ;
+            }
+
+        }
+        return tamp;
+    }
+
 }

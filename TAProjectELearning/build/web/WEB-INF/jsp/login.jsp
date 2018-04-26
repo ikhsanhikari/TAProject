@@ -64,7 +64,6 @@
                             </div> <!-- /login-fields -->
                             <div class="login-actions">
                                 <span class="login-checkbox">
-                                    <input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
                                     <label class="choice" for="Field">Biarkan saya masuk</label>
                                 </span>
                                 <input class="button btn btn-success btn-large" type="submit" value="Masuk"/>

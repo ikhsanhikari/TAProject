@@ -12,11 +12,6 @@ package project.ta.elearning.dto;
 public class Tb_quizDto {
     private Integer id;
     private String name;
-    private Integer timeopen;
-    private Integer timeclose;
-    private Integer timelimit;
-    private Integer timecreated;
-    private Integer timemodified;
     private Integer id_matery;
     private Integer id_category;
     private String answer;
@@ -31,6 +26,15 @@ public class Tb_quizDto {
     private Integer id_qa;
     private Integer totalPoin;
     private String level;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public String getLevel() {
         return level;
@@ -143,46 +147,6 @@ public class Tb_quizDto {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getTimeopen() {
-        return timeopen;
-    }
-
-    public void setTimeopen(Integer timeopen) {
-        this.timeopen = timeopen;
-    }
-
-    public Integer getTimeclose() {
-        return timeclose;
-    }
-
-    public void setTimeclose(Integer timeclose) {
-        this.timeclose = timeclose;
-    }
-
-    public Integer getTimelimit() {
-        return timelimit;
-    }
-
-    public void setTimelimit(Integer timelimit) {
-        this.timelimit = timelimit;
-    }
-
-    public Integer getTimecreated() {
-        return timecreated;
-    }
-
-    public void setTimecreated(Integer timecreated) {
-        this.timecreated = timecreated;
-    }
-
-    public Integer getTimemodified() {
-        return timemodified;
-    }
-
-    public void setTimemodified(Integer timemodified) {
-        this.timemodified = timemodified;
     }
 
     public Integer getId_matery() {

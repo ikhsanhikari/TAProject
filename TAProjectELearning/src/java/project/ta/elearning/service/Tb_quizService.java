@@ -41,6 +41,10 @@ public interface Tb_quizService {
 
     public List<Tb_quizDto> getQuizRandomByLevel(int idLevel, int idMateri,int idUser);
     
+    public List<Tb_quizDto> getQuizRandomByLevelPG(int idLevel, int idMateri,int idUser);
+    
+    public List<Tb_quizDto> getQuizRandomByLevelEssay(int idLevel, int idMateri,int idUser);
+    
     public List<Tb_quizDto> getQuizRandomByLevelAndidQuiz(int idLevel,int id_quiz);
 
     public int getTotalSoalByLevelAndMatery(int idLevel, int idMateri);
