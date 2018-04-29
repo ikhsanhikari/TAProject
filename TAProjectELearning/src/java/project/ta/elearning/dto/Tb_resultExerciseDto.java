@@ -5,6 +5,8 @@
  */
 package project.ta.elearning.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 /**
  *
  * @author Sou
@@ -23,6 +25,15 @@ public class Tb_resultExerciseDto {
     private String jawaban_benar;
     private Integer id_answer;
     private Integer poin;
+    private MultipartFile jawaban;
+
+    public MultipartFile getJawaban() {
+        return jawaban;
+    }
+
+    public void setJawaban(MultipartFile jawaban) {
+        this.jawaban = jawaban;
+    }
 
     public Integer getPoin() {
         return poin;

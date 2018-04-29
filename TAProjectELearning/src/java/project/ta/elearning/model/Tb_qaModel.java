@@ -20,6 +20,15 @@ public class Tb_qaModel {
     private String timecreated;
     private String timemodified;
     private String id_jenis_soal;
+    private String latihan_ke;
+
+    public String getLatihan_ke() {
+        return latihan_ke;
+    }
+
+    public void setLatihan_ke(String latihan_ke) {
+        this.latihan_ke = latihan_ke;
+    }
 
     public String getId_jenis_soal() {
         return id_jenis_soal;

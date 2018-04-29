@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="project.ta.elearning.model.Tb_essayModel"  table="tb_essay">
+        <id name="id">
+            <generator class="native"/>
+        </id>
+        <property name="essay" type="string"/>
+        <property name="id_matery" type="integer"/>
+        <property name="id_level" type="integer"/>
+        <property name="id_jenis_soal" type="integer"/>
+        <property name="id_category" type="integer"/>
+    </class>
+  
+
+</hibernate-mapping>

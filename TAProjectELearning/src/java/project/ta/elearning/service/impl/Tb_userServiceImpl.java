@@ -56,6 +56,8 @@ public class Tb_userServiceImpl implements Tb_userService {
             userModel.setTimecreated(currDate);
             userModel.setTimemodified(currDate);
             userModel.setId_role(userDto.getId_role());
+            userModel.setIdknowledge(0);
+            
             tb_userDao.saveData(userModel);
         } catch (Exception e) {
             System.out.println(e);

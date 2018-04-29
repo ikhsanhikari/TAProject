@@ -51,6 +51,7 @@
                 <value>project/ta/elearning/model/Tb_resultquiz_before.hbm.xml</value>
                 <value>project/ta/elearning/model/Tb_resultquiz_after.hbm.xml</value>
                 <value>project/ta/elearning/model/Tb_essayModel.hbm.xml</value>
+                <value>project/ta/elearning/model/Tb_resultEssayModel.hbm.xml</value>
                 <!--<value>project/ta/elearning/model/Tb_knowledgeModel.hbm.xml</value>-->
                 <!--<value>project/ta/elearning/model/Tb_eventModel.hbm.xml</value>-->
             </list>  
@@ -101,4 +102,7 @@
     
     <bean id="tb_jenisSoalDao" class="project.ta.elearning.dao.impl.Tb_jenisSoalDaoImp"/>
     <bean id="tb_jenisSoalService" class="project.ta.elearning.service.impl.Tb_jenisSoalServiceImpl"/>
+    
+    <bean id="tb_resultEssayDao" class="project.ta.elearning.dao.impl.Tb_resultEssayDaoImpl"/>
+    <!--<bean id="tb_resultEssayService" class="project.ta.elearning.service.impl.Tb_resultEssayServiceImpl"/>-->
 </beans>

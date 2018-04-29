@@ -18,6 +18,7 @@
         <property name="timeclose" column="timeclose" type="string" />
         <property name="timecreated" column="timecreated" type="string" />
         <property name="timemodified" column="timemodified" type="string" />
+        <property name="latihan_ke" column="latihan_ke" type="string" />
         
 
     </class>

@@ -27,6 +27,7 @@ import project.ta.elearning.dto.Tb_sessionDto;
 import project.ta.elearning.dto.Tb_userDto;
 import project.ta.elearning.service.Tb_modelService;
 import project.ta.elearning.service.Tb_quizService;
+import project.ta.elearning.service.Tb_resultEssayService;
 import project.ta.elearning.service.Tb_resultquiz_afterService;
 import project.ta.elearning.service.Tb_resultquiz_beforeService;
 import project.ta.elearning.service.Tb_userService;
@@ -52,6 +53,9 @@ public class Tb_quizController {
 
     @Autowired
     Tb_modelService tb_modelService;
+
+    @Autowired
+    Tb_resultEssayService tb_resultEssayService;
 
     List<HashMap> listSoalQuiz = new ArrayList<>();
     int sudahMasuk = 0;
@@ -136,9 +140,9 @@ public class Tb_quizController {
             no++;
             if (no % 3 == 1) {
                 listQuizRandomByLevel = tb_quizService.getQuizRandomByLevel(idLevel, idMateri, Integer.parseInt(session.getAttribute("iduser").toString()));
-            } else if(no % 3 == 2){
+            } else if (no % 3 == 2) {
                 listQuizRandomByLevel = tb_quizService.getQuizRandomByLevelPG(idLevel, idMateri, Integer.parseInt(session.getAttribute("iduser").toString()));
-            }else {
+            } else {
                 listQuizRandomByLevel = tb_quizService.getQuizRandomByLevelEssay(idLevel, idMateri, Integer.parseInt(session.getAttribute("iduser").toString()));
             }
 
@@ -162,16 +166,16 @@ public class Tb_quizController {
             map.addAttribute("reDto", reDto);
             idx++;
             map.addAttribute("idx", idx);
-            
+
             int stat = 0;
-            if (listAnswer.size() > 1) {
+            if (listAnswer.size() > 1 && getJenis_soal() != 3) {
                 map.addAttribute("listAnswer", listAnswer);
-                if(getJenis_soal() == 3){
-                    stat=2;
-                }else{
-                    stat = 1;
-                }
+                stat = 1;
+            } else if (getJenis_soal() == 3) {
+                stat = 2;
             }
+
+            System.out.println("listAnswer and jenis soal : " + listAnswer.size() + " = " + getJenis_soal());
             map.addAttribute("stat", stat);
 
             int idKnowledge = tb_userService.getDataKnowledge(session.getAttribute("username").toString());
@@ -311,7 +315,14 @@ public class Tb_quizController {
             }
             map.addAttribute("status", reDto.getStatus());
             reDto.setId_matery(getId_matery());
+            System.out.println("jns sl :" + getJenis_soal());
+//            if(getJenis_soal() == 3){
+//                System.out.println("Masuk Upload");
+//                tb_resultEssayService.uploadData(reDto);
+//            }else{
             tb_quizService.saveData(reDto);
+//            }
+
             map.addAttribute("jawaban_di_pilih", reDto.getShort_answer());
 
             String materi = "";
@@ -911,11 +922,24 @@ public class Tb_quizController {
             } else if (arg.charAt(i) == '@') {
                 tamp = tamp + "\t";
             } else {
-                tamp = tamp + arg.charAt(i) ;
+                tamp = tamp + arg.charAt(i);
             }
 
         }
         return tamp;
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/onsubmit2", method = RequestMethod.GET)
+    public String onsubmit2(Tb_resultExerciseDto rdto,@RequestParam int idMateri, @RequestParam int idLevel,  ModelMap map, HttpSession session) {
+        System.out.println("Masuk onsubmit 2");
+        try {
+            map.addAttribute("reDto", rdto);
+//            tb_resultEssayService.uploadData(rdto);
+            return "jadi";
+        } catch (Exception e) {
+            return "tidak jadi";
+        }
+
+    }   
 }

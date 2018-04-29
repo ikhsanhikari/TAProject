@@ -52,7 +52,7 @@
                 <a href="halaman_maintenance.htm" class="shortcut"><i class="shortcut-icon icon-copy"></i>
                     <span class="shortcut-label">Menentukan Banyak Soal Per Level Quiz</span> 
                 </a>
-                <a href="halaman_maintenance.htm" class="shortcut"><i class="shortcut-icon icon-check"></i>
+                <a href="listEssay.htm" class="shortcut"><i class="shortcut-icon icon-check"></i>
                     <span class="shortcut-label">Koreksi Soal</span> 
                 </a>
                 <a href="halaman_maintenance.htm" class="shortcut"><i class="shortcut-icon icon-eye-open"></i>

@@ -103,19 +103,27 @@
                                     <h3>Exercise | Level ${idLevel} (${level})</h3>
                                 </div> <!-- /widget-header -->
                                 <div class="widget-content" style="height:350px">
-                                    <form:form modelAttribute="reDto" method="GET" action="onsubmit.htm">
+                                    <c:if test="${stat!=1}">
+                                        <c:url var="submit" value="onsubmit.htm"/>
+                                    </c:if>
+                                    <c:if test="${stat==2}">
+                                        <c:url var="submit" value="onsubmit2.htm"/>
+                                    </c:if>
+                                    <form:form modelAttribute="reDto" method="GET" action="${submit}">
                                         <form:hidden path="id_collerger" />
                                         <input type="hidden" name="idLevel" value="${idLevel}"/>
                                         <input type="hidden" name="idMateri" value="${idMateri}"/>
                                         <c:forEach var="data" items="${listQuiz}" >
                                             ${data.name} 
                                             <br/>
-
                                             <c:forEach var="dataA" items="${listAnswer}" >
                                                 <form:radiobutton path="id_answer" value="${dataA.id_answer}"></form:radiobutton> . ${dataA.answer}<br/>
                                             </c:forEach>
                                             <c:if test="${stat==0}">
                                                 <form:input path="short_answer" placeholder="Jawaban"/>
+                                            </c:if>
+                                            <c:if test="${stat==2}">
+                                                <form:input path="jawaban" type="file" placeholder="essay"/>
                                             </c:if>
                                         </c:forEach>
                                     </div> <!-- /widget-content -->     

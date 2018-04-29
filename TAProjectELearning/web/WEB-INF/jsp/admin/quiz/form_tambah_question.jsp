@@ -68,6 +68,20 @@
                         <div class="field">
                             <form:input path="name" placeholder="Question"/>
                         </div>
+                        <div class="field">
+                            <form:select path="id_matery">
+                                <option value="1">Sequensial</option>
+                                <option value="2">Kondisional</option>
+                                <option value="3">Perulangan</option>
+                            </form:select>
+                        </div>
+                        <div class="field">
+                            <form:select path="id_category">
+                                <option value="1">Quiz</option>
+                                <option value="2">Exercise</option>
+                            </form:select>
+                        </div>
+                        
                             <input type="submit" value="Submit"/>
                         </form:form>
                     </div> <!-- .actions -->

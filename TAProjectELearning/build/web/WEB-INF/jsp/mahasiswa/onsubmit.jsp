@@ -114,6 +114,10 @@
                                             <c:if test="${status==0}">
                                             (Salah)
                                         </c:if>
+                                            <br/>
+                                        <c:forEach var="data" items="${listQuiz}" >
+                                            Penjelasan <strong> ${data.description} </strong>
+                                        </c:forEach>
                                     </div> <!-- /widget-content -->     
                                     <br/>
 <!--                                    <a  class="btn btn-success"  onclick="alertAnswer()">Submit</a>-->

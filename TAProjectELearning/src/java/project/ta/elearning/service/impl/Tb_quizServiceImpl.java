@@ -54,7 +54,10 @@ public class Tb_quizServiceImpl implements Tb_quizService {
     public void saveData(Tb_quizDto dto) {
         Tb_quizModel model = new Tb_quizModel();
         try {
-            model.setId(dto.getId());
+            model.setId(1);
+            model.setName(dto.getName());
+            model.setId_category(dto.getId_category());
+            model.setId_matery(dto.getId_matery());
             tb_quizDao.saveData(model);
         } catch (Exception e) {
             e.printStackTrace();
@@ -472,6 +475,7 @@ public class Tb_quizServiceImpl implements Tb_quizService {
                 dto.setId_qa(Integer.parseInt(obj[4].toString()));
                 dto.setId_category(Integer.parseInt(obj[5].toString()));
                 dto.setId_matery(Integer.parseInt(obj[6].toString()));
+                dto.setDescription(obj[7].toString());
                 listData.add(dto);
             }
         }
