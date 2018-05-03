@@ -453,7 +453,7 @@ public class Tb_quizController {
     public String menuQuiz(@RequestParam String action, @RequestParam int idMateri, @RequestParam int noSoalParam, @RequestParam int statusMasuk, Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
         try {
             System.out.println("Nilai statusMasuk : " + statusMasuk);
-            int jumlahSoalPerLevel = 1;
+            int jumlahSoalPerLevel = 3;
 
             if (statusMasuk == 1 && sudahMasuk == 0) {
                 listSoalQuiz = tb_quizService.getSoalQuiz(jumlahSoalPerLevel, idMateri);
@@ -614,7 +614,6 @@ public class Tb_quizController {
             System.out.println("category = " + rqDto.getId_category());
             System.out.println("knowledge = " + rqDto.getIdknowledge());
 
-//            Rabu, 11-04-2018
             map.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
 
             return "mahasiswa/quiz";
