@@ -19,6 +19,7 @@
         <property name="timecreated" column="timecreated" type="string"/>
         <property name="timemodified" column="timemodified" type="string"/>
         <property name="poin" column="poin" type="integer"/>
+        <property name="id_category" column="id_category" type="integer"/>
     </class>
   
 

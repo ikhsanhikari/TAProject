@@ -21,6 +21,16 @@ public class Tb_resultExcerciseModel {
     private String timemodified;
     private String short_answer;
     private Integer poin;
+    private Integer id_category;
+
+    public Integer getId_category() {
+        return id_category;
+    }
+
+    public void setId_category(Integer id_category) {
+        this.id_category = id_category;
+    }
+    
 
     public Integer getPoin() {
         return poin;

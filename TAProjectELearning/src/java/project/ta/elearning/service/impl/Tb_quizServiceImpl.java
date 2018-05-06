@@ -142,6 +142,7 @@ public class Tb_quizServiceImpl implements Tb_quizService {
             model.setTimecreated(currDate);
             model.setTimemodified(currDate);
             model.setTimeopen(currDate);
+            model.setId_category(dto.getId_categoory());
             if(dto.getStatus()==1){
                 model.setPoin(1);
             }else{

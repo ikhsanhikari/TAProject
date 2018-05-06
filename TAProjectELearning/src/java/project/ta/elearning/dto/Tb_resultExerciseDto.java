@@ -26,9 +26,18 @@ public class Tb_resultExerciseDto {
     private Integer id_answer;
     private Integer poin;
     private MultipartFile jawaban;
+    private Integer id_categoory;
 
     public MultipartFile getJawaban() {
         return jawaban;
+    }
+
+    public Integer getId_categoory() {
+        return id_categoory;
+    }
+
+    public void setId_categoory(Integer id_categoory) {
+        this.id_categoory = id_categoory;
     }
 
     public void setJawaban(MultipartFile jawaban) {

@@ -138,12 +138,12 @@ public class Tb_quizController {
         try {
             List<Tb_quizDto> listQuizRandomByLevel = new ArrayList<>();
             no++;
-            if (no % 3 == 1) {
+            if (no % 2 == 1) {
                 listQuizRandomByLevel = tb_quizService.getQuizRandomByLevel(idLevel, idMateri, Integer.parseInt(session.getAttribute("iduser").toString()));
-            } else if (no % 3 == 2) {
+            } else if (no % 2 == 0) {
                 listQuizRandomByLevel = tb_quizService.getQuizRandomByLevelPG(idLevel, idMateri, Integer.parseInt(session.getAttribute("iduser").toString()));
             } else {
-                listQuizRandomByLevel = tb_quizService.getQuizRandomByLevelEssay(idLevel, idMateri, Integer.parseInt(session.getAttribute("iduser").toString()));
+//                listQuizRandomByLevel = tb_quizService.getQuizRandomByLevelEssay(idLevel, idMateri, Integer.parseInt(session.getAttribute("iduser").toString()));
             }
 
             setId_quiz(listQuizRandomByLevel.get(0).getId());
@@ -315,6 +315,7 @@ public class Tb_quizController {
             }
             map.addAttribute("status", reDto.getStatus());
             reDto.setId_matery(getId_matery());
+            reDto.setId_categoory(2);
             System.out.println("jns sl :" + getJenis_soal());
 //            if(getJenis_soal() == 3){
 //                System.out.println("Masuk Upload");
@@ -647,6 +648,7 @@ public class Tb_quizController {
             jumlahSalah++;
         }
         reDto.setId_matery(getId_matery());
+        reDto.setId_categoory(1);
         tb_quizService.saveData(reDto);
     }
 
