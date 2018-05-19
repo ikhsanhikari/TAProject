@@ -103,13 +103,8 @@
                                     <h3>Exercise | Level ${idLevel} (${level})</h3>
                                 </div> <!-- /widget-header -->
                                 <div class="widget-content" style="height:350px">
-                                    <c:if test="${stat!=1}">
-                                        <c:url var="submit" value="onsubmit.htm"/>
-                                    </c:if>
-                                    <c:if test="${stat==2}">
-                                        <c:url var="submit" value="onsubmit2.htm"/>
-                                    </c:if>
-                                    <form:form modelAttribute="reDto" method="GET" action="${submit}">
+                                    
+                                    <form:form modelAttribute="reDto" method="GET" action="onsubmit.htm">
                                         <form:hidden path="id_collerger" />
                                         <input type="hidden" name="idLevel" value="${idLevel}"/>
                                         <input type="hidden" name="idMateri" value="${idMateri}"/>
