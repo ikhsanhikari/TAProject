@@ -18,6 +18,7 @@
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/pages/dashboard.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/pages/faq.css" />" rel="stylesheet">
+<link rel="icon" href="<c:url value="/resources/img/green.png"/>"/>
 <!DOCTYPE html>
 <html>
     <head>

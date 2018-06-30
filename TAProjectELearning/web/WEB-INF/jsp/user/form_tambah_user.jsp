@@ -15,6 +15,7 @@
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" type="text/css">
 <link href="<c:url value="/resources/css/pages/signin.css" />" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+<link rel="icon" href="<c:url value="/resources/img/green.png"/>"/>
 <!DOCTYPE html>
 <html>
     <head>
