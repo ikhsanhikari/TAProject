@@ -299,9 +299,10 @@ public class Tb_quizController {
 
             int totalSoalByLevelAndMatery = tb_quizService.getTotalSoalByLevelAndMatery(idLevel, idMateri);
             map.addAttribute("totalSoalByLevelAndMatery", totalSoalByLevelAndMatery);
-
+            System.out.println("Java 304 : "+getJenis_soal());
             if (getJenis_soal() == 1) {
-                if (getJawaban_benar().equals(reDto.getShort_answer())) {
+                System.out.println("Masuk IF, Data :  "+getJawaban_benar()+" dan ");
+                if (getJawaban_benar().equals(reDto.getShort_answer().toLowerCase())) {
                     reDto.setId_qa(getId_qa());
                     reDto.setStatus(1);
                 } else {
@@ -347,6 +348,7 @@ public class Tb_quizController {
 
             return "mahasiswa/onsubmit";
         } catch (Exception e) {
+            e.printStackTrace();
             return "mahasiswa/soalhabis";
         }
 

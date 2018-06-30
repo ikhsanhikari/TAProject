@@ -99,7 +99,7 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
 
     @Override
     public List<Object[]> getJawabanBenar(Integer id) {
-        String sql = "select q.id , a.answers,qa.id_status  "
+        String sql = "select q.id , lower(a.answers),qa.id_status  "
                 + " from tb_quiz q  "
                 + " inner join  "
                 + " tb_answers a  "
