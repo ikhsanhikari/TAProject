@@ -45,7 +45,8 @@
         </div>
         <!-- /navbar -->
         <div class="alert alert-info">
-            Status Materi Saat Ini : ${status}
+            Status Materi Saat Ini : <strong>${status}</strong><br/>
+            Pilih Materi di Bawah ini untuk Mengubah  
         </div>
         
         <div class="widget-content span12">
@@ -60,13 +61,11 @@
                     <span class="shortcut-label">Perulangan</span> 
                 </a>
             </div>
+            <br/>
+            <a  href="viewDosen.htm" class="btn btn-primary pull-right">Selesai</a>
             <!-- /shortcuts --> 
         </div>
-        <div class="widget-content span12">
-           <center>
-                <a href="viewDosen.htm" class="btn btn-primary">Menu Awal</a>
-            </center> 
-        </div>
+
         <!-- /widget-content --> 
 
         <!--javascript-->

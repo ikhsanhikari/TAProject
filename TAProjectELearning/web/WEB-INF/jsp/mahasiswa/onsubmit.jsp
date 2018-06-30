@@ -103,20 +103,21 @@
                                         <form:hidden path="id_collerger" />
                                         <input type="hidden" name="idLevel" value="${idLevel}"/>
                                         <c:forEach var="data" items="${listQuiz}" >
-                                            Jawaban Untuk Soal <strong> ${data.name} </strong> adalah 
+                                            Soal <strong> <pre>${data.name}</pre> </strong> 
                                         </c:forEach>
-                                        <strong>${jawaban_benar} </strong>
-                                        <br/>
-                                        jawaban Anda : ${jawaban_di_pilih} 
+                                        Jawaban yang Benar :<strong><pre>${jawaban_benar}</pre>  </strong>
+                                        jawaban Anda : 
                                         <c:if test="${status==1}">
                                             (Benar)
                                         </c:if>
                                             <c:if test="${status==0}">
                                             (Salah)
                                         </c:if>
-                                            <br/>
+                                        <pre>${jawaban_di_pilih}</pre> 
+                                        
                                         <c:forEach var="data" items="${listQuiz}" >
-                                            Penjelasan <strong> ${data.description} </strong>
+                                            Penjelasan : 
+                                            <strong> <pre>${data.description}</pre> </strong>
                                         </c:forEach>
                                     </div> <!-- /widget-content -->     
                                     <br/>

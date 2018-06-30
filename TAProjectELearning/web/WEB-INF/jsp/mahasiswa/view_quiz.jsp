@@ -82,7 +82,7 @@
                             </button>
                         </a>
                     </td>
-                    <span class="pull-right">${materi}</span>
+                <span class="pull-right">${materi}</span>
                 </tr>
             </table>
         </div>
@@ -103,17 +103,17 @@
                                     <h3>Exercise | Level ${idLevel} (${level})</h3>
                                 </div> <!-- /widget-header -->
                                 <div class="widget-content" style="height:350px">
-                                    
+
                                     <form:form modelAttribute="reDto" method="GET" action="onsubmit.htm">
                                         <form:hidden path="id_collerger" />
                                         <input type="hidden" name="idLevel" value="${idLevel}"/>
                                         <input type="hidden" name="idMateri" value="${idMateri}"/>
                                         <c:forEach var="data" items="${listQuiz}" >
-                                            ${data.name} 
-                                            <br/>
-                                            <c:forEach var="dataA" items="${listAnswer}" >
-                                                <form:radiobutton path="id_answer" value="${dataA.id_answer}"></form:radiobutton> . ${dataA.answer}<br/>
-                                            </c:forEach>
+                                            <pre>${data.name} </pre>
+                                                <c:forEach var="dataA" items="${listAnswer}" >
+                                                    <form:radiobutton path="id_answer" value="${dataA.id_answer}"></form:radiobutton> . ${dataA.answer}<br/>
+                                                </c:forEach>
+                                            
                                             <c:if test="${stat==0}">
                                                 <form:input path="short_answer" placeholder="Jawaban"/>
                                             </c:if>
@@ -154,7 +154,7 @@
 //                } else {
 //                    x.style.display = "none";
 //                }
-                alert('-------'+${idLevel});
+                alert('-------' +${idLevel});
             }
         </script>
         <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script>

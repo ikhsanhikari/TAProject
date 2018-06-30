@@ -44,7 +44,8 @@
         </div>
         <!-- /navbar -->
         <div class="alert alert-info">
-            Status Jumlah Soal Per Level Saat Ini : ${status}
+            Status Jumlah Soal Per Level Saat Ini : <strong>${status}</strong><br/>
+            Silahkan Pilih Jumlah Soal di Bawah ini untuk Mengubah
         </div>
         
         <div class="widget-content span12">
@@ -68,15 +69,14 @@
                     <span class="shortcut-label"> <strong>7</strong> Soal Per Level</span> 
                 </a>
             </div>
+            <br/>
+            <a  href="viewDosen.htm" class="btn btn-primary pull-right">Selesai</a>
+            
             <!-- /shortcuts --> 
         </div>
         <!-- /widget-content --> 
         <br/>
-        <div class="widget-content span12">
-           <center>
-                <a href="viewDosen.htm" class="btn btn-primary">Menu Awal</a>
-            </center> 
-        </div>
+        
         <!--javascript-->
         <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script> 
         <script src="<c:url value="resources/js/excanvas.min.js"/>"></script> 

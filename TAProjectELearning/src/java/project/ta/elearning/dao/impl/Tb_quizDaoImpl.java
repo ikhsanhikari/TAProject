@@ -119,7 +119,7 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
                 + "FROM tb_quiz q, tb_qa qa, tb_answers a "
                 + "WHERE q.id=qa.id_quiz AND qa.id_answers=a.id AND qa.id_level = '" + idLevel + "' AND q.id_matery = '" + idMateri + "' "
                 + "AND q.id NOT IN(SELECT qa.id_quiz FROM tb_resultexercise re, tb_qa qa "
-                + "WHERE re.id_qa= qa.id AND re.id_collerger  = " + idUser + " ) AND q.id_category = 2 AND id_jenis_soal = 1 GROUP BY q.id ORDER BY rand() LIMIT 0,1";
+                + "WHERE re.id_qa= qa.id AND re.id_collerger  = " + idUser + " AND re.id_category = 2 ) AND q.id_category = 2 AND id_jenis_soal = 1 GROUP BY q.id ORDER BY rand() LIMIT 0,1";
         Query query = createNativeQuery(sql);
         return query.list();
     }
@@ -233,7 +233,7 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
                 + "FROM tb_quiz q, tb_qa qa, tb_answers a "
                 + "WHERE q.id=qa.id_quiz AND qa.id_answers=a.id AND qa.id_level = '" + idLevel + "' AND q.id_matery = '" + idMateri + "' "
                 + "AND q.id NOT IN(SELECT qa.id_quiz FROM tb_resultexercise re, tb_qa qa "
-                + "WHERE re.id_qa= qa.id AND re.id_collerger  = " + idUser + " ) AND q.id_category = 2 AND id_jenis_soal = 2 GROUP BY q.id ORDER BY rand() LIMIT 0,1";
+                + "WHERE re.id_qa= qa.id AND re.id_collerger  = " + idUser + " AND re.id_category = 2 ) AND q.id_category = 2 AND id_jenis_soal = 2 GROUP BY q.id ORDER BY rand() LIMIT 0,1";
         Query query = createNativeQuery(sql);
         return query.list();
     }
