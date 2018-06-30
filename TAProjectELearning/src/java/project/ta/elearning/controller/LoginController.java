@@ -46,6 +46,7 @@ public class LoginController {
                 modelMap.addAttribute("password", password);
                 modelMap.addAttribute("role", listUser.getId_role());
                 modelMap.addAttribute("firstname", listUser.getFirstname());
+                modelMap.addAttribute("lastname", listUser.getLastname());
                 modelMap.addAttribute("iduser", listUser.getId());
                 Tb_sessionDto tb_sessionDto = new Tb_sessionDto();
                 tb_sessionDto.setFirstip("10.10.10.142");

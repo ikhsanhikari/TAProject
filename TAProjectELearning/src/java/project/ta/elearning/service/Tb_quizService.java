@@ -62,4 +62,13 @@ public interface Tb_quizService {
     public List<Tb_resultQuizDto> getInformationOfExercise(Integer id);
     
     public int getStatusMateri();
+    
+//    ketika soal habis
+    public int soalHabis(int id_colleger);
+    
+    public int updateStatusMateri(int status);
+    
+    public int getStatusJumlahSoalPerLevel();
+    
+    public int updateJumlahSoalPerLevel(int jumlah);
 }

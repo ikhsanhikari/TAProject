@@ -525,4 +525,42 @@ public class Tb_quizServiceImpl implements Tb_quizService {
         }
         return listData;
     }
+
+    @Override
+    public int soalHabis(int id_colleger) {
+        int result = 0;
+        try {
+             result = tb_quizDao.soalHabis(id_colleger);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
+    @Override
+    public int updateStatusMateri(int status) {
+        int result = 0;
+        try {
+             result = tb_quizDao.updateStatusMateri(status);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @Override
+    public int getStatusJumlahSoalPerLevel() {
+        return tb_quizDao.getStatusJumlahSOal();
+    }
+    
+    @Override
+    public int updateJumlahSoalPerLevel(int jumlah) {
+        int result = 0;
+        try {
+             result = tb_quizDao.updateJumlahSoalPerLevel(jumlah);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 }

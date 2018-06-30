@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Halaman Error</h1>
-        <a href="halamanAwal.htm"><p>Kembali kehalaman awal</p></a>
+        <h1>Halaman Error, Soal Habis</h1>
+        <a href="soalHabis.htm"><p>Kembali kehalaman awal</p></a>
     </body>
 </html>

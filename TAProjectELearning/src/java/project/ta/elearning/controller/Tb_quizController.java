@@ -454,7 +454,10 @@ public class Tb_quizController {
     public String menuQuiz(@RequestParam String action, @RequestParam int idMateri, @RequestParam int noSoalParam, @RequestParam int statusMasuk, Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
         try {
             System.out.println("Nilai statusMasuk : " + statusMasuk);
-            int jumlahSoalPerLevel = 3;
+            
+//            get Julmlah soal perlevel from tabel
+//            int jumlahSoalPerLevel = 4;
+            int jumlahSoalPerLevel = tb_quizService.getStatusJumlahSoalPerLevel();
 
             if (statusMasuk == 1 && sudahMasuk == 0) {
                 listSoalQuiz = tb_quizService.getSoalQuiz(jumlahSoalPerLevel, idMateri);
@@ -942,5 +945,17 @@ public class Tb_quizController {
             return "tidak jadi";
         }
 
-    }   
+    } 
+    
+    @RequestMapping(value = "/soalHabis", method = RequestMethod.GET)
+    public String soalHabis(HttpSession session) {
+        System.out.println("Masuk Soal Habis");
+        try {
+            int result = tb_quizService.soalHabis(Integer.parseInt(session.getAttribute("iduser").toString()));
+            System.out.println("Masuk Soal Habis : "+result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "redirect:view_informaion_of_exercise.htm";
+    }
 }

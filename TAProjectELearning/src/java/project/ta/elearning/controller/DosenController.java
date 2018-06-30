@@ -12,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import project.ta.elearning.dto.Tb_resultEssayDto;
+import project.ta.elearning.service.Tb_quizService;
 import project.ta.elearning.service.Tb_resultEssayService;
 
 /**
@@ -23,6 +25,10 @@ import project.ta.elearning.service.Tb_resultEssayService;
 public class DosenController {
     @Autowired
     Tb_resultEssayService tb_resultEssayService;
+    
+    @Autowired
+    Tb_quizService tb_quizService;
+
     
     @RequestMapping(value = "/halaman_maintenance", method = RequestMethod.GET)
     public String viewHalamanMaintenance(){
@@ -53,5 +59,43 @@ public class DosenController {
         resultEssayDto.setId_korektor(Integer.parseInt(session.getAttribute("iduser").toString()));
         tb_resultEssayService.updateData(resultEssayDto);
         return "redirect:listEssay.htm";
+    }
+    @RequestMapping(value = "/ubahStatusMateri", method = RequestMethod.GET)
+    public String viewStatusMateri(ModelMap modelMap){
+        int statusMateri = tb_quizService.getStatusMateri();
+        String status = "";
+        if(statusMateri == 1){
+            status = "Sekuensial";
+        }else if(statusMateri == 2){
+            status = "Kondisional";
+        }else if(statusMateri == 3){
+            status = "Perulangan";
+        }
+        modelMap.addAttribute("status", status);
+        return "dosen/status_materi";
+    }
+    
+    @RequestMapping(value = "/ubahStatus", method = RequestMethod.GET)
+    public String ubahStatusMateri(@RequestParam int status) {
+        tb_quizService.updateStatusMateri(status);
+        return "redirect:ubahStatusMateri.htm";
+    }
+    @RequestMapping(value = "/ubahJumlah", method = RequestMethod.GET)
+    public String ubahStatusJenisSoal(@RequestParam int jumlah) {
+        tb_quizService.updateJumlahSoalPerLevel(jumlah);
+        return "redirect:ubahStatusJumlahSoal.htm";
+    }
+    
+    @RequestMapping(value = "/ubahStatusJumlahSoal", method = RequestMethod.GET)
+    public String viewStatusJumlahSoal(ModelMap modelMap){
+        int statusJumlahSoal = tb_quizService.getStatusJumlahSoalPerLevel();
+        modelMap.addAttribute("status", statusJumlahSoal);
+        return "dosen/jumlah_soal_per_level";
+    }
+    @RequestMapping(value = "/viewDosen", method = RequestMethod.GET)
+    public String viewIndexDosen(ModelMap modelMap,HttpSession session){
+        String nama = session.getAttribute("firstname").toString()+" "+session.getAttribute("lastname").toString();
+        modelMap.addAttribute("nama",nama);
+        return "dosen/index";
     }
 }

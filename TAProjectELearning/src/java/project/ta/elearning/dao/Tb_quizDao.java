@@ -61,4 +61,11 @@ public interface Tb_quizDao {
     public int getStatusMateri();
     
     public int updateStatusMateri(int status);
+    
+    public int soalHabis(int id_colleger);
+    
+    public int getStatusJumlahSOal();
+    
+    public int updateJumlahSoalPerLevel(int jumlah);
+    
 }

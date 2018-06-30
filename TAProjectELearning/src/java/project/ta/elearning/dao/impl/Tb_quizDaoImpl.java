@@ -115,33 +115,33 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
     @Override
     public List<Object[]> getQuizRandomByLevel(int idLevel, int idMateri, int idUser) {
 
-        String sql = "SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level, qa.id AS id_qa ,q.id_category, q.id_matery " +
-                    "FROM tb_quiz q, tb_qa qa, tb_answers a " +
-                    "WHERE q.id=qa.id_quiz AND qa.id_answers=a.id AND qa.id_level = '" + idLevel + "' AND q.id_matery = '" + idMateri + "' " +
-                    "AND q.id NOT IN(SELECT qa.id_quiz FROM tb_resultexercise re, tb_qa qa " +
-                    "WHERE re.id_qa= qa.id AND re.id_collerger  = "+idUser+" ) AND q.id_category = 2 AND id_jenis_soal = 1 GROUP BY q.id ORDER BY rand() LIMIT 0,1";
+        String sql = "SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level, qa.id AS id_qa ,q.id_category, q.id_matery "
+                + "FROM tb_quiz q, tb_qa qa, tb_answers a "
+                + "WHERE q.id=qa.id_quiz AND qa.id_answers=a.id AND qa.id_level = '" + idLevel + "' AND q.id_matery = '" + idMateri + "' "
+                + "AND q.id NOT IN(SELECT qa.id_quiz FROM tb_resultexercise re, tb_qa qa "
+                + "WHERE re.id_qa= qa.id AND re.id_collerger  = " + idUser + " ) AND q.id_category = 2 AND id_jenis_soal = 1 GROUP BY q.id ORDER BY rand() LIMIT 0,1";
         Query query = createNativeQuery(sql);
         return query.list();
     }
 
     @Override
     public int getTotalSoalByLevelAndMatery(int idLevel, int idMateri) {
-        Query query = createNativeQuery("SELECT count(1) total_soal_by_level_and_matery FROM (SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level " +
-        "FROM tb_quiz q, tb_qa qa, tb_answers a " +
-        "WHERE q.id=qa.id_quiz AND qa.id_answers=a.id " +
-        "AND qa.id_level = '" + idLevel + "' AND q.id_matery = '" + idMateri + "') quiz_by_level_and_matery");
+        Query query = createNativeQuery("SELECT count(1) total_soal_by_level_and_matery FROM (SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level "
+                + "FROM tb_quiz q, tb_qa qa, tb_answers a "
+                + "WHERE q.id=qa.id_quiz AND qa.id_answers=a.id "
+                + "AND qa.id_level = '" + idLevel + "' AND q.id_matery = '" + idMateri + "') quiz_by_level_and_matery");
         List<Object> list = new ArrayList();
         list = query.list();
-        
+
         return Integer.parseInt(list.get(0).toString());
     }
 
     @Override
     public List<Object[]> getStatus(Integer id_quiz, Integer id_answer) {
-        String sql = "select id,id_status" +
-        " from tb_qa" +
-        " where id_answers = "+id_answer+"" +
-        " and id_quiz = "+id_quiz+"";
+        String sql = "select id,id_status"
+                + " from tb_qa"
+                + " where id_answers = " + id_answer + ""
+                + " and id_quiz = " + id_quiz + "";
         Query query = createNativeQuery(sql);
         return query.list();
     }
@@ -156,53 +156,51 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
 
     @Override
     public Integer getTotalPoin(Integer id_user) {
-        String sql = "select floor((sum(poin)/count(poin))*100) as score " +
-                    "from tb_resultexercise " +
-                    "where id_collerger = "+id_user+"";
+        String sql = "select floor((sum(poin)/count(poin))*100) as score "
+                + "from tb_resultexercise "
+                + "where id_collerger = " + id_user + "";
         Query query = createNativeQuery(sql);
         return Integer.parseInt(query.list().get(0).toString());
     }
 
-    
 //    Permulaan Menu Quiz
-
     @Override
     public List<Object[]> getQuizByLevelAndMateri(int idLevel, int idMateri) {
-        Query query = createNativeQuery("SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level, qa.id as id_qa ,q.id_category, q.id_matery " +
-                                        "FROM tb_quiz q, tb_qa qa, tb_answers a " +
-                                        "WHERE q.id=qa.id_quiz " +
-                                        "AND qa.id_answers=a.id AND qa.id_level = " + idLevel + " AND q.id_category = 1 AND q.id_matery = " + idMateri +
-                                        " GROUP BY q.id");
-        
+        Query query = createNativeQuery("SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level, qa.id as id_qa ,q.id_category, q.id_matery "
+                + "FROM tb_quiz q, tb_qa qa, tb_answers a "
+                + "WHERE q.id=qa.id_quiz "
+                + "AND qa.id_answers=a.id AND qa.id_level = " + idLevel + " AND q.id_category = 1 AND q.id_matery = " + idMateri
+                + " GROUP BY q.id");
+
         return query.list();
     }
 
     @Override
     public List<Object[]> getInformationOfExercise(Integer id) {
-        String sql = "select rq.id,u.firstname , rq.score , k.knowledge " +
-                    "from tb_user u inner join tb_resultquiz rq " +
-                    "inner join tb_knowledge k " +
-                    "on u.id = rq.id_colleger " +
-                    "and k.id = rq.idknowledge " +
-                    "and rq.id_colleger="+id+"   ORDER BY rq.id DESC limit 0,1";
+        String sql = "select rq.id,u.firstname , rq.score , k.knowledge "
+                + "from tb_user u inner join tb_resultquiz rq "
+                + "inner join tb_knowledge k "
+                + "on u.id = rq.id_colleger "
+                + "and k.id = rq.idknowledge "
+                + "and rq.id_colleger=" + id + "   ORDER BY rq.id DESC limit 0,1";
         Query query = createNativeQuery(sql);
         return query.list();
     }
 
     @Override
     public List<Object[]> getQuizRandomByLevelandIdQuiz(int idLevel, int id_quiz) {
-        String sql = "SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level," +
-                        " qa.id as id_qa ,q.id_category, q.id_matery , q.description" +
-                        " FROM tb_quiz q, tb_qa qa, tb_answers a " +
-                        " WHERE q.id=qa.id_quiz " +
-                        " AND qa.id_answers=a.id AND qa.id_level =   "+idLevel+"" +
-                        " and q.id not in(" +
-                        " select qa.id_quiz  " +
-                        " from tb_resultexercise re,   " +
-                        " tb_qa qa  " +
-                        " where re.id_qa= qa.id  " +
-                        " and re.id_collerger  = 1 )" +
-                        " and id_quiz ="+id_quiz+" limit 0,1";
+        String sql = "SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level,"
+                + " qa.id as id_qa ,q.id_category, q.id_matery , q.description"
+                + " FROM tb_quiz q, tb_qa qa, tb_answers a "
+                + " WHERE q.id=qa.id_quiz "
+                + " AND qa.id_answers=a.id AND qa.id_level =   " + idLevel + ""
+                + " and q.id not in("
+                + " select qa.id_quiz  "
+                + " from tb_resultexercise re,   "
+                + " tb_qa qa  "
+                + " where re.id_qa= qa.id  "
+                + " and re.id_collerger  = 1 )"
+                + " and id_quiz =" + id_quiz + " limit 0,1";
         Query query = createNativeQuery(sql);
         return query.list();
     }
@@ -212,34 +210,72 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
         Query query = createNativeQuery("SELECT status FROM tb_statusmateri");
         List<Object> list = new ArrayList();
         list = query.list();
-        
-        return Integer.parseInt(list.get(0).toString());
-    }
-    
-    @Override
-    public int updateStatusMateri(int status) {
-        Query query = createNativeQuery("update tb_statusmateri set status =  "+status);
-        List<Object> list = new ArrayList();
-        list = query.list();
+
         return Integer.parseInt(list.get(0).toString());
     }
 
     @Override
+    public int updateStatusMateri(int status) {
+        try {
+            Query query = createNativeQuery("update tb_statusmateri set status =  " + status);
+            List<Object> list = new ArrayList();
+            query.executeUpdate();
+            return 1;
+        } catch (Exception e) {
+            return 0;
+        }
+
+    }
+
+    @Override
     public List<Object[]> getQuizRandomByLevelPG(int idLevel, int idMateri, int idUser) {
-        String sql = "SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level, qa.id AS id_qa ,q.id_category, q.id_matery " +
-                    "FROM tb_quiz q, tb_qa qa, tb_answers a " +
-                    "WHERE q.id=qa.id_quiz AND qa.id_answers=a.id AND qa.id_level = '" + idLevel + "' AND q.id_matery = '" + idMateri + "' " +
-                    "AND q.id NOT IN(SELECT qa.id_quiz FROM tb_resultexercise re, tb_qa qa " +
-                    "WHERE re.id_qa= qa.id AND re.id_collerger  = "+idUser+" ) AND q.id_category = 2 AND id_jenis_soal = 2 GROUP BY q.id ORDER BY rand() LIMIT 0,1";
+        String sql = "SELECT DISTINCT q.id, q.name, qa.id_jenis_soal, qa.id_level, qa.id AS id_qa ,q.id_category, q.id_matery "
+                + "FROM tb_quiz q, tb_qa qa, tb_answers a "
+                + "WHERE q.id=qa.id_quiz AND qa.id_answers=a.id AND qa.id_level = '" + idLevel + "' AND q.id_matery = '" + idMateri + "' "
+                + "AND q.id NOT IN(SELECT qa.id_quiz FROM tb_resultexercise re, tb_qa qa "
+                + "WHERE re.id_qa= qa.id AND re.id_collerger  = " + idUser + " ) AND q.id_category = 2 AND id_jenis_soal = 2 GROUP BY q.id ORDER BY rand() LIMIT 0,1";
         Query query = createNativeQuery(sql);
         return query.list();
     }
 
     @Override
     public List<Object[]> getQuizRandomByLevelEssay(int idLevel, int idMateri, int idUser) {
-        String sql = "select * from tb_essay where id_matery = "+idMateri+" and id_level = "+idLevel+"";
+        String sql = "select * from tb_essay where id_matery = " + idMateri + " and id_level = " + idLevel + "";
         Query query = createNativeQuery(sql);
         return query.list();
     }
+
+    @Override
+    public int soalHabis(int id_colleger) {
+        try {
+            String sql = "DELETE FROM tb_resultexercise WHERE id_collerger  = " + id_colleger + " and id_category = 2";
+            Query query = createNativeQuery(sql);
+//            List<Object> list = new ArrayList();
+            query.executeUpdate();
+            return 1;
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    @Override
+    public int getStatusJumlahSOal() {
+        Query query = createNativeQuery("select jumlah_soal from tb_jumlah_soal_per_level");
+        List<Object> list = new ArrayList();
+        list = query.list();
+        return Integer.parseInt(list.get(0).toString());
+    }
     
+    @Override
+    public int updateJumlahSoalPerLevel(int jumlah) {
+        try {
+            Query query = createNativeQuery("update tb_jumlah_soal_per_level set jumlah_soal =  " + jumlah);
+            List<Object> list = new ArrayList();
+            query.executeUpdate();
+            return 1;
+        } catch (Exception e) {
+            return 0;
+        }
+
+    }
 }
