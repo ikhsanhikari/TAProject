@@ -27,5 +27,6 @@
     <mapping resource="project/ta/elearning/model/Tb_resultquiz_after.hbm.xml"/>
     <mapping resource="project/ta/elearning/model/Tb_essayModel.hbm.xml"/>
     <mapping resource="project/ta/elearning/model/Tb_resultEssayModel.hbm.xml"/>
+    <mapping resource="project/ta/elearning/model/Tb_jumlahSoalModel.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

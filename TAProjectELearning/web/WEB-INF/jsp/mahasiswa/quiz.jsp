@@ -82,7 +82,7 @@
                                         <input type="hidden" name="statusMasuk" value="0"/>
                                         <input type="hidden" name="idMateri" value="${idMateri}"/>
                                         <c:forEach var="data" items="${listQuiz}">
-                                            ${data.name} 
+                                            <pre>${data.name} </pre>  
                                             <br/>
                                             
                                             <c:forEach var="dataA" items="${listAnswer}" >
