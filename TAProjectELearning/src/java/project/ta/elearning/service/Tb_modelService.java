@@ -19,4 +19,5 @@ public interface Tb_modelService {
     public void deleteData(Integer id);
     public void updateData(Tb_modelDto dto);
     public Tb_modelDto getDataById(Integer id);
+    public int cekGoodLearner(int id);
 }

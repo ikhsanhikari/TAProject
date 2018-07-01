@@ -111,4 +111,9 @@ public class Tb_modelServiceImpl implements Tb_modelService {
         return dto;
     }
 
+    @Override
+    public int cekGoodLearner(int id) {
+        return tb_modelDao.getDataById(id).size();
+    }
+
 }

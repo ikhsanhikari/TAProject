@@ -61,12 +61,12 @@
 
                                 <div class="field">
                                     <label for="password">Password:</label>
-                                    <form:input path="password" class="login password-field" style="height:40px;"/>
+                                    <form:input path="password" type="password" class="login password-field" style="height:40px;"/>
                                 </div> <!-- /password -->
                             </div> <!-- /login-fields -->
                             <div class="login-actions">
                                 <span class="login-checkbox">
-                                    <label class="choice" for="Field">Biarkan saya masuk</label>
+                                    <label class="choice" style="font-size: 11px; color: red" for="Field">${pesan}</label>
                                 </span>
                                 <input class="button btn btn-success btn-large" type="submit" value="Masuk"/>
                             </div> <!-- .actions -->
@@ -74,7 +74,6 @@
                     </div> <!-- /content -->
                 </div> <!-- /account-container -->
                 <div class="login-extra">
-                    <a href="#">Reset Password</a>
                 </div> <!-- /login-extra -->
             </form:form>
 

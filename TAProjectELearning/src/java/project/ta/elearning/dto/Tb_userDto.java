@@ -32,6 +32,15 @@ public class Tb_userDto {
     private Integer id_role;
     private String cari;
     private Integer idknowledge;
+    private String goodlearner;
+
+    public String getGoodlearner() {
+        return goodlearner;
+    }
+
+    public void setGoodlearner(String goodlearner) {
+        this.goodlearner = goodlearner;
+    }
 
     public Integer getIdknowledge() {
         return idknowledge;

@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import project.ta.elearning.dao.Tb_userDao;
 import project.ta.elearning.dto.Tb_userDto;
 import project.ta.elearning.model.Tb_userModel;
+import project.ta.elearning.service.Tb_modelService;
 import project.ta.elearning.service.Tb_userService;
 
 /**
@@ -28,6 +29,9 @@ public class Tb_userServiceImpl implements Tb_userService {
 
     @Autowired
     Tb_userDao tb_userDao;
+
+    @Autowired
+    Tb_modelService tb_modelService;
 
     @Override
     public void saveData(Tb_userDto userDto) {
@@ -57,7 +61,7 @@ public class Tb_userServiceImpl implements Tb_userService {
             userModel.setTimemodified(currDate);
             userModel.setId_role(userDto.getId_role());
             userModel.setIdknowledge(0);
-            
+
             tb_userDao.saveData(userModel);
         } catch (Exception e) {
             System.out.println(e);
@@ -274,6 +278,31 @@ public class Tb_userServiceImpl implements Tb_userService {
     @Override
     public void updateKnowledgeUser(String username, int idKnowledge) {
         tb_userDao.updateKnowledgeUser(username, idKnowledge);
+    }
+
+    @Override
+    public List<Tb_userDto> getDataMahasiswa() {
+        List<Tb_userDto> listData = new ArrayList<>();
+        List<Object[]> listModel = tb_userDao.getDataMahasiswa();
+        String goodlearner = "";
+
+        if (listModel.size() > 0) {
+            for (Object[] obj : listModel) {
+                Tb_userDto dto = new Tb_userDto();
+                dto.setId(Integer.parseInt(obj[0].toString()));
+                dto.setFirstname(obj[3].toString());
+                dto.setPhone1(obj[6].toString());
+                dto.setIdknowledge(Integer.parseInt(obj[20].toString()));
+                if (tb_modelService.cekGoodLearner(dto.getId()) == 1) {
+                    goodlearner = "Good Learner";
+                } else {
+                    goodlearner = "Non Good Learner";
+                }
+                dto.setGoodlearner(goodlearner);
+                listData.add(dto);
+            }
+        }
+        return listData;
     }
 
 }

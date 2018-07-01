@@ -180,5 +180,26 @@ public class Tb_userController {
         tb_userService.deleteData(id);
         return "redirect:view_user.htm";
     }
+    @RequestMapping(value = "/view_mahasiswa", method = RequestMethod.GET)
+    public String viewMahasiswa(ModelMap map, HttpSession session, Tb_userDto userDto) {
+        List<Tb_userDto> listUser = tb_userService.getDataMahasiswa();
+        map.addAttribute("loginDto", userDto);
+        map.addAttribute("userDto", userDto);
+        try {
+            if (session.getAttribute("username") == null) {
+                return "login";
+            } else {
+                int role = Integer.parseInt(session.getAttribute("role").toString());
+                if (role != 2) {
+                    return "login";
+                } else {
+                    map.addAttribute("listUser", listUser);
+                    return "dosen/view_mahasiswa";
+                }
+            }
+        } catch (Exception e) {
+            return "login";
+        }
 
+    }
 }

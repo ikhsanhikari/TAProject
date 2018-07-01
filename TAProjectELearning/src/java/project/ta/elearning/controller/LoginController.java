@@ -88,6 +88,7 @@ public class LoginController {
             }
         } catch (Exception e) {
             Tb_userDto userDto = new Tb_userDto();
+            modelMap.addAttribute("pesan","Maaf Username atau Password yang Anda Masukkan Salah ");
             modelMap.addAttribute("loginDto", userDto);
             return "login";
         }

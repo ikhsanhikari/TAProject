@@ -299,9 +299,9 @@ public class Tb_quizController {
 
             int totalSoalByLevelAndMatery = tb_quizService.getTotalSoalByLevelAndMatery(idLevel, idMateri);
             map.addAttribute("totalSoalByLevelAndMatery", totalSoalByLevelAndMatery);
-            System.out.println("Java 304 : "+getJenis_soal());
+            System.out.println("Java 304 : " + getJenis_soal());
             if (getJenis_soal() == 1) {
-                System.out.println("Masuk IF, Data :  "+getJawaban_benar()+" dan ");
+                System.out.println("Masuk IF, Data :  " + getJawaban_benar() + " dan ");
                 if (getJawaban_benar().equals(reDto.getShort_answer().toLowerCase())) {
                     reDto.setId_qa(getId_qa());
                     reDto.setStatus(1);
@@ -456,7 +456,7 @@ public class Tb_quizController {
     public String menuQuiz(@RequestParam String action, @RequestParam int idMateri, @RequestParam int noSoalParam, @RequestParam int statusMasuk, Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto) {
         try {
             System.out.println("Nilai statusMasuk : " + statusMasuk);
-            
+
 //            get Julmlah soal perlevel from tabel
 //            int jumlahSoalPerLevel = 4;
             int jumlahSoalPerLevel = tb_quizService.getStatusJumlahSoalPerLevel();
@@ -937,7 +937,7 @@ public class Tb_quizController {
 
     @ResponseBody
     @RequestMapping(value = "/onsubmit2", method = RequestMethod.GET)
-    public String onsubmit2(Tb_resultExerciseDto rdto,@RequestParam int idMateri, @RequestParam int idLevel,  ModelMap map, HttpSession session) {
+    public String onsubmit2(Tb_resultExerciseDto rdto, @RequestParam int idMateri, @RequestParam int idLevel, ModelMap map, HttpSession session) {
         System.out.println("Masuk onsubmit 2");
         try {
             map.addAttribute("reDto", rdto);
@@ -947,17 +947,128 @@ public class Tb_quizController {
             return "tidak jadi";
         }
 
-    } 
-    
+    }
+
     @RequestMapping(value = "/soalHabis", method = RequestMethod.GET)
     public String soalHabis(HttpSession session) {
         System.out.println("Masuk Soal Habis");
         try {
             int result = tb_quizService.soalHabis(Integer.parseInt(session.getAttribute("iduser").toString()));
-            System.out.println("Masuk Soal Habis : "+result);
+            System.out.println("Masuk Soal Habis : " + result);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return "redirect:view_informaion_of_exercise.htm";
+    }
+
+    @RequestMapping(value = "/detail_mahasiswa", method = RequestMethod.GET)
+    public String detailMahasiswa(Tb_quizDto quizDto, ModelMap map, HttpSession session, Tb_userDto userDto, Tb_resultExerciseDto reDto,int iduser) {
+        Tb_userDto listUser = tb_userService.getDataById(iduser);
+        map.addAttribute("listUser", listUser);
+
+        int knowledgeSekuensial = tb_resultquiz_afterService.getKnowledgePerMateri(iduser, 1);
+        int knowledgeKondisional = tb_resultquiz_afterService.getKnowledgePerMateri(iduser, 2);
+        int knowledgePerulangan = tb_resultquiz_afterService.getKnowledgePerMateri(iduser, 3);
+
+        int knowledgeUmum = 0;
+        int scoreSeq = 0, scoreCond = 0, scoreLoop = 0, totalScore = 0;
+        Tb_resultquiz_afterDto afterDtoSeq = tb_resultquiz_afterService.getDataById(iduser, 1);
+        if (afterDtoSeq.getScore() == null) {
+            scoreSeq = 0;
+        } else {
+            scoreSeq = afterDtoSeq.getScore();
+        }
+        System.out.println("scoreSeq = " + scoreSeq);
+        Tb_resultquiz_afterDto afterDtoCond = tb_resultquiz_afterService.getDataById(iduser, 2);
+        if (afterDtoCond.getScore() == null) {
+            scoreCond = 0;
+        } else {
+            scoreCond = afterDtoCond.getScore();
+        }
+        System.out.println("scoreCond = " + scoreCond);
+        Tb_resultquiz_afterDto afterDtoLoop = tb_resultquiz_afterService.getDataById(iduser, 3);
+        if (afterDtoLoop.getScore() == null) {
+            scoreLoop = 0;
+        } else {
+            scoreLoop = afterDtoLoop.getScore();
+        }
+        System.out.println("scoreLoop = " + scoreLoop);
+        totalScore = (scoreSeq + scoreCond + scoreLoop) / 3;
+        System.out.println("totalScore = " + totalScore);
+
+        if (totalScore <= 33) {
+            knowledgeUmum = 1;
+        } else if (totalScore > 33 && totalScore <= 66) {
+            knowledgeUmum = 2;
+        } else if (totalScore > 66 && totalScore <= 100) {
+            knowledgeUmum = 3;
+        } else {
+            // total score tidak valid
+        }
+
+        tb_userService.updateKnowledgeUser(String.valueOf(iduser), knowledgeUmum);
+
+        String ks = "";
+        if (knowledgeSekuensial == 0) {
+            ks = "None";
+        } else {
+            if (knowledgeSekuensial == 1) {
+                ks = "Poor";
+            } else if (knowledgeSekuensial == 2) {
+                ks = "Fair";
+            } else if (knowledgeSekuensial == 3) {
+                ks = "Good";
+            }
+        }
+
+        String kk = "";
+        if (knowledgeKondisional == 0) {
+            kk = "None";
+        } else {
+            if (knowledgeKondisional == 1) {
+                kk = "Poor";
+            } else if (knowledgeKondisional == 2) {
+                kk = "Fair";
+            } else if (knowledgeKondisional == 3) {
+                kk = "Good";
+            }
+        }
+
+        String kp = "";
+        if (knowledgePerulangan == 0) {
+            kp = "None";
+        } else {
+            if (knowledgePerulangan == 1) {
+                kp = "Poor";
+            } else if (knowledgePerulangan == 2) {
+                kp = "Fair";
+            } else if (knowledgePerulangan == 3) {
+                kp = "Good";
+            }
+        }
+
+        String ku = "";
+        if (knowledgeUmum == 0) {
+            ku = "None";
+        } else {
+            if (knowledgeUmum == 1) {
+                ku = "Poor";
+            } else if (knowledgeUmum == 2) {
+                ku = "Fair";
+            } else if (knowledgeUmum == 3) {
+                ku = "Good";
+            }
+        }
+        System.out.println("ku : " + ku);
+
+        map.addAttribute("knowledgeSekuensial", ks);
+        map.addAttribute("knowledgeKondisional", kk);
+        map.addAttribute("knowledgePerulangan", kp);
+        map.addAttribute("knowledgeUmum", ku);
+
+//        Rabu, 11-04-2018
+        map.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
+
+        return "dosen/detail_mahasiswa";
     }
 }

@@ -24,4 +24,5 @@ public interface Tb_userService {
     public Tb_userDto getDataById(Integer id);
     public int getDataKnowledge(String username);
     public void updateKnowledgeUser(String username, int idKnowledge);
+    public List<Tb_userDto> getDataMahasiswa();
 }

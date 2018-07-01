@@ -56,7 +56,7 @@
                 <a href="listEssay.htm" class="shortcut"><i class="shortcut-icon icon-check"></i>
                     <span class="shortcut-label">Koreksi Soal</span> 
                 </a>
-                <a href="halaman_maintenance.htm" class="shortcut"><i class="shortcut-icon icon-eye-open"></i>
+                <a href="view_mahasiswa.htm" class="shortcut"><i class="shortcut-icon icon-eye-open"></i>
                     <span class="shortcut-label">Lihat Data Mahasiswa</span> 
                 </a>
                 <a href="ubahStatusMateri.htm" class="shortcut"><i class="shortcut-icon icon-eye-open"></i>

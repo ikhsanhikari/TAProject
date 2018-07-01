@@ -71,5 +71,5 @@ public class Tb_modelDaoImpl extends HibernateUtil implements Tb_modelDao{
             
     return listData;
     }
-    
+
 }

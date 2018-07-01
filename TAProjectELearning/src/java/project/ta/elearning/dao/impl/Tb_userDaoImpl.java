@@ -105,4 +105,11 @@ public class Tb_userDaoImpl extends HibernateUtil implements Tb_userDao{
                 + " WHERE id = " + username);
         int result = query.executeUpdate();
     }
+
+    @Override
+    public List<Object[]> getDataMahasiswa() {
+        String sql = "select * from tb_user where id_role = 1";
+        Query query = createNativeQuery(sql);
+        return query.list();
+    }
 }
