@@ -462,7 +462,7 @@ public class Tb_quizController {
             int jumlahSoalPerLevel = tb_quizService.getStatusJumlahSoalPerLevel();
 
             if (statusMasuk == 1 && sudahMasuk == 0) {
-                listSoalQuiz = tb_quizService.getSoalQuiz(jumlahSoalPerLevel, idMateri);
+                listSoalQuiz = tb_quizService.getSoalQuiz(jumlahSoalPerLevel, idMateri, Integer.parseInt(session.getAttribute("iduser").toString()));
                 sudahMasuk++;
             }
             List<HashMap> listSoalQuizTetap = listSoalQuiz;
