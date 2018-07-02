@@ -54,7 +54,7 @@ public interface Tb_quizService {
     public Integer getTotalPoin(Integer id_user);
 
 //    Permulaan Menu Quiz
-    public List<HashMap> getSoalQuiz(int idLevel, int idMateri, int idUser);
+    public List<HashMap> getSoalQuiz(int idLevel, int idMateri, int idKnowledge);
     
     public void saveDataScore(Tb_resultQuizDto dto);
     

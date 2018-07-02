@@ -257,7 +257,7 @@ public class Tb_quizServiceImpl implements Tb_quizService {
 //    Permulaan Menu Quiz
 
     @Override
-    public List<HashMap> getSoalQuiz(int jumlahSoalPerLevel, int idMateri, int idUser) {
+    public List<HashMap> getSoalQuiz(int jumlahSoalPerLevel, int idMateri, int idKnowledge) {
         List<Tb_quizDto> listData = new ArrayList<>();
         List<HashMap> listSoalQuizLow = new ArrayList<>();
         List<HashMap> listSoalQuizMedium = new ArrayList<>();
@@ -265,17 +265,30 @@ public class Tb_quizServiceImpl implements Tb_quizService {
         List<HashMap> listSoalModelLow = new ArrayList<>();
         List<HashMap> listSoalModelMedium = new ArrayList<>();
         List<HashMap> listSoalModelHigh = new ArrayList<>();
-        List<Object[]> listQuiz = null;
-        List<Object[]> listModel = null;
+        List<Object[]> listSoalQuiz = null;
+        List<Object[]> listSoalModel = null;
+        List<Object[]> listModel = tb_quizDao.getModel();
         
+        int kSebelumModel = 0, kUser = idKnowledge, idModel = -1;
+        if(listModel!=null){
+            for(Object[] obj : listModel){
+                kSebelumModel = Integer.parseInt(obj[3].toString()); // obj[3] -> kolom knowledge_sebelum
+                if(kSebelumModel==kUser){
+                    idModel = Integer.parseInt(obj[1].toString());
+                    break;
+                }
+            }
+        }
+        
+
 //        Memisahkan soal quiz berdasarkan level ke dalam list yang berbeda.
         int nomor = 0;
         for(int i=1;i<=3;i++){
-            listQuiz = tb_quizDao.getQuizByLevelAndMateri(i, idMateri);
-            listModel = tb_quizDao.getSoalModel(i, idMateri, idUser);
+            listSoalQuiz = tb_quizDao.getQuizByLevelAndMateri(i, idMateri);
+            listSoalModel = tb_quizDao.getSoalModel(i, idMateri, idModel);
             nomor = 1;
-            if (listQuiz.size() > 0) {
-                for (Object[] obj : listQuiz) {
+            if (listSoalQuiz.size() > 0) {
+                for (Object[] obj : listSoalQuiz) {
                     HashMap hm = new HashMap();
                     
                     hm.put("no", nomor);
@@ -300,8 +313,8 @@ public class Tb_quizServiceImpl implements Tb_quizService {
                 }
             }
             
-            if (listModel.size() > 0) {
-                for (Object[] obj : listQuiz) {
+            if (listSoalModel.size() > 0) {
+                for (Object[] obj : listSoalModel) {
                     HashMap hm = new HashMap();
                     
                     hm.put("no", nomor);
