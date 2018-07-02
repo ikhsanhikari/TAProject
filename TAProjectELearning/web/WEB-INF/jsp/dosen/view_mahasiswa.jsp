@@ -27,7 +27,7 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.html">Good Learner </a>
+                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="viewDosen.htm">Good Learner </a>
                     <div class="nav-collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
@@ -104,7 +104,7 @@
                     <c:url var="pilih" value="detail_mahasiswa.htm">
                         <c:param name="iduser" value="${data.id}"/>
                     </c:url>
-                    <td><a href="${pilih}"><i class="icon-pencil"></i></a></td>
+                    <td><a href="${pilih}"><center><i class="icon-eye-open"></i></center></a></td>
 
                     </tr>
                 </c:forEach>

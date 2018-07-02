@@ -72,11 +72,28 @@
             <!-- /subnavbar-inner --> 
         </div>
         <!-- /subnavbar -->
-        
+        <div>
+
+            <div class="widget">
+                <div class="widget-header "> <i class="icon-th-list"></i>
+                    <h3>Dashboard</h3>
+                </div>
+                <div class="widget-content">
+                    <center>
+                        <h3>Selamat Datang <strong>${nama}</strong> di Halaman Admin</h3>
+                        <p>Anda Memilik Hak Penuh dengan Aplikasi ini</p>
+                        <img src="resources/img/1.jpg" width="500px" height="500px"/>
+                        <p>Silahkan Pilih Memnu di atas untuk mulai mengolah data</p>
+                    </center>
+
+                </div>
+            </div>
+
+        </div>
     </body>
-        <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script> 
-        <script src="<c:url value="resources/js/excanvas.min.js"/>"></script> 
-        <script src="<c:url value="resources/js/chart.min.js"/>" type="text/javascript"></script> 
-        <script src="<c:url value="resources/js/bootstrap.js"/>"></script>
-        <script language="javascript" type="text/javascript" src="<c:url value="resources/js/full-calendar/fullcalendar.min.js"/>"></script>
+    <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script> 
+    <script src="<c:url value="resources/js/excanvas.min.js"/>"></script> 
+    <script src="<c:url value="resources/js/chart.min.js"/>" type="text/javascript"></script> 
+    <script src="<c:url value="resources/js/bootstrap.js"/>"></script>
+    <script language="javascript" type="text/javascript" src="<c:url value="resources/js/full-calendar/fullcalendar.min.js"/>"></script>
 </html>

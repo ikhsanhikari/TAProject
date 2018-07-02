@@ -25,7 +25,7 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.html">Personalized E-learning </a>
+                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="viewDosen.htm">Personalized E-learning </a>
                     <div class="nav-collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
@@ -53,9 +53,9 @@
                 <a href="ubahStatusJumlahSoal.htm" class="shortcut"><i class="shortcut-icon icon-copy"></i>
                     <span class="shortcut-label">Menentukan Banyak Soal Per Level Quiz</span> 
                 </a>
-                <a href="listEssay.htm" class="shortcut"><i class="shortcut-icon icon-check"></i>
+<!--                <a href="listEssay.htm" class="shortcut"><i class="shortcut-icon icon-check"></i>
                     <span class="shortcut-label">Koreksi Soal</span> 
-                </a>
+                </a>-->
                 <a href="view_mahasiswa.htm" class="shortcut"><i class="shortcut-icon icon-eye-open"></i>
                     <span class="shortcut-label">Lihat Data Mahasiswa</span> 
                 </a>
