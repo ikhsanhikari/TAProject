@@ -292,4 +292,12 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
         Query query = createNativeQuery(sql);
         return query.list();
     }
+    
+    @Override
+    public List<Object[]> getModel() {
+        String sql = "SELECT * " +
+                "FROM tb_model";
+        Query query = createNativeQuery(sql);
+        return query.list();
+    }
 }

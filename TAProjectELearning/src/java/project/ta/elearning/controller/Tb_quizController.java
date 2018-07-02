@@ -459,10 +459,11 @@ public class Tb_quizController {
 
 //            get Julmlah soal perlevel from tabel
 //            int jumlahSoalPerLevel = 4;
+            int idKnowledge = tb_userService.getDataKnowledge(session.getAttribute("username").toString());
             int jumlahSoalPerLevel = tb_quizService.getStatusJumlahSoalPerLevel();
 
             if (statusMasuk == 1 && sudahMasuk == 0) {
-                listSoalQuiz = tb_quizService.getSoalQuiz(jumlahSoalPerLevel, idMateri, Integer.parseInt(session.getAttribute("iduser").toString()));
+                listSoalQuiz = tb_quizService.getSoalQuiz(jumlahSoalPerLevel, idMateri, idKnowledge);
                 sudahMasuk++;
             }
             List<HashMap> listSoalQuizTetap = listSoalQuiz;
@@ -572,7 +573,6 @@ public class Tb_quizController {
 
             rqDto.setId_colleger(Integer.parseInt(session.getAttribute("iduser").toString()));
             rqDto.setId_matery((int) tampList.get(0).get("id_matery"));
-            int idKnowledge = tb_userService.getDataKnowledge(session.getAttribute("username").toString());
             rqDto.setIdknowledge(idKnowledge);
             rqDto.setId_category((int) tampList.get(0).get("id_category"));
 

@@ -69,4 +69,6 @@ public interface Tb_quizDao {
     public int updateJumlahSoalPerLevel(int jumlah);
     
     public List<Object[]> getSoalModel(int idLevel, int idMateri, int idUser);
+    
+    public List<Object[]> getModel();
 }
