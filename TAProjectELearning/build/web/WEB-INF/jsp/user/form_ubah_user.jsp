@@ -40,7 +40,7 @@
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="icon-user"></i> ${nama} <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="javascript:;">Profile</a></li>
+                                    <li><a href="profile.htm">Profile</a></li>
                                     <li><a href="logout.htm">Logout</a></li>
                                 </ul>
                             </li>
@@ -53,56 +53,83 @@
             <!-- /navbar-inner --> 
         </div>
         <!-- /navbar -->
-        <h1>Ubah User</h1>
-        <form:form modelAttribute="userDto" name="form_user" method="POST" action="update_user.htm">
-            <form:input path="id" placeholder="id" /><br/>
-            <form:input path="username" placeholder="username" /><br/>
-            <form:input path="password" placeholder="password" /><br/>
-            <form:input path="firstname" placeholder="firstname" /><br/>
-            <form:input path="lastname" placeholder="lastname" /><br/>
-            <form:input path="email" placeholder="email" /><br/>
-            <form:input path="skype" placeholder="skype" /><br/>
-            <form:input path="yahoo" placeholder="yahoo" /><br/>
-            <form:input path="phone1" placeholder="phone1" /><br/>
-            <form:input path="phone2" placeholder="phone2" /><br/>
-            <form:input path="institution" placeholder="institution" /><br/>
-            <form:input path="department" placeholder="department" /><br/>
-            <form:input path="address" placeholder="address" /><br/>
-            <form:input path="city" placeholder="city" /><br/>
-            <form:input path="country" placeholder="country" /><br/>
-            <form:input path="timezone" placeholder="timezone" /><br/>
-            <form:input path="firstaccess" placeholder="firstaccess" /><br/>
-            <form:input path="lastaccess" placeholder="lastaccess" /><br/>
-            <form:input path="lastlogin" placeholder="lastlogin" /><br/>
-            <form:input path="currentlogin" placeholder="currentlogin" /><br/>
-            <form:input path="picture" placeholder="picture" /><br/>
-            <form:input path="description" placeholder="description" /><br/>
-            <form:input path="timecreated" placeholder="timecreated" /><br/>
-            <form:input path="timemodified" placeholder="timemodified" /><br/>
-            <form:input path="imagealt" placeholder="imagealt" /><br/>
-            <form:input path="lastnamephonetic" placeholder="lastnamephonetic" /><br/>
-            <form:input path="firstnamephonetic" placeholder="firstnamephonetic" /><br/>
-            <form:input path="middlename" placeholder="middlename" /><br/>
-            <form:input path="alternatename" placeholder="alternatename" /><br/>
-            <form:select path="id_role" >
-                <option>Role</option>
-                <c:forEach items="${listRole}" var="listData" >
-                    <option value="${listData.id}">${listData.name}</option>
-                </c:forEach>
-            </form:select>
-            
-            <input type="submit" value="Simpan"/>
-        </form:form>
-                </div> <!-- .actions -->
-            </div>
-        </div> <!-- /content -->
-    </div> <!-- /account-container -->
+        <!--<h1>Ubah User</h1>-->
+        <form:form modelAttribute="userDto" name="form_user" method="POST" action="update_profil.htm">
+            <div class="account-container register">
+                <div class="content clearfix">
+                    <form action="#" method="post">
+                        <h1>Ubah User</h1>
+                        <div class="login-fields">
+                            <!--                            <p>Create your free account:</p>-->
 
-    <!--javascript-->
-    <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script> 
-    <script src="<c:url value="resources/js/excanvas.min.js"/>"></script> 
-    <script src="<c:url value="resources/js/chart.min.js"/>" type="text/javascript"></script> 
-    <script src="<c:url value="resources/js/bootstrap.js"/>"></script>
-    <script language="javascript" type="text/javascript" src="<c:url value="resources/js/full-calendar/fullcalendar.min.js"/>"></script>
+                            <div class="field1">
+                                <form:input path="username" placeholder="username" class="login" style="height:40px;"/><br/>
+                            </div> <!-- /field -->
+                            <div class="field1">
+                                <form:input path="password" placeholder="password" class="login" style="height:40px;"/><br/>
+                            </div> <!-- /field -->
+                            <div class="field1">
+                                <form:input path="firstname" placeholder="firstname" class="login" style="height:40px;"/><br/>
+                            </div> <!-- /field -->
+                            <div class="field1">
+                                <form:input path="lastname" placeholder="lastname" class="login" style="height:40px;"/><br/>
+                            </div> <!-- /field -->
+                            <div class="field1">
+                                <form:input path="email" placeholder="email" class="login" style="height:40px;"/><br/>
+                            </div> <!-- /field -->
+                            <div class="field1">
+                                <form:input path="phone1" placeholder="phone1" class="login" style="height:40px;"/><br/>
+                            </div> <!-- /field -->
+                            <div class="field1">
+                                <form:input path="institution" placeholder="institution" class="login" style="height:40px;"/><br/>
+                            </div> <!-- /field -->
+                            <div class="field1">
+                                <form:input path="department" placeholder="department" class="login" style="height:40px;"/><br/>
+                            </div> <!-- /field -->
+                            <div class="field1">
+                                <form:input path="address" placeholder="address" class="login" style="height:40px;"/><br/>
+                            </div> <!-- /field -->
+                            <div class="field1">
+                                <form:input path="city" placeholder="city" class="login" style="height:40px;"/><br/>
+                            </div> <!-- /field -->
+                            <div class="field1">
+                                <form:input path="picture" placeholder="picture" class="login" style="height:40px;"/><br/>
+                            </div> <!-- /field -->
+                            <div class="field1">
+                                <form:input path="description" placeholder="description" class="login" style="height:40px;"/><br/>
+                            </div> <!-- /field -->
+                            <div class="field1">
+                                <form:hidden path="idknowledge"   class="login" style="height:40px;"/>
+                            </div> <!-- /field -->
+                            <div class="field1">
+                                <form:hidden path="id_role"  placeholder="id role" class="login" style="height:40px;"/>
+                            </div> <!-- /field -->
+                            <form:hidden path="id" placeholder="id" />
+
+                            <form:hidden path="firstaccess" placeholder="firstaccess" />
+                            <form:hidden path="lastaccess" placeholder="lastaccess" />
+                            <form:hidden path="lastlogin" placeholder="lastlogin" />
+                            <form:hidden path="currentlogin" placeholder="currentlogin" />
+                            <form:hidden path="timecreated" placeholder="timecreated" />
+                            <form:hidden path="timemodified" placeholder="timemodified" />
+                             <form:hidden path="idknowledge" placeholder="idknowledge" />
+                            <input type="submit" value="Simpan"/>
+
+                        </div> <!-- .actions -->
+                    </form>
+                </div> <!-- /content -->
+            </div> <!-- /account-container -->
+        </form:form>
+    </div> <!-- .actions -->
+</div>
+</div> <!-- /content -->
+</div> <!-- /account-container -->
+
+<!--javascript-->
+<script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script> 
+<script src="<c:url value="resources/js/excanvas.min.js"/>"></script> 
+<script src="<c:url value="resources/js/chart.min.js"/>" type="text/javascript"></script> 
+<script src="<c:url value="resources/js/bootstrap.js"/>"></script>
+<script language="javascript" type="text/javascript" src="<c:url value="resources/js/full-calendar/fullcalendar.min.js"/>"></script>
 </body>
 </html>

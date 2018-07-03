@@ -167,10 +167,15 @@ public class Tb_userController {
         }
 
     }
-
+    
     @RequestMapping(value = "/update_user", method = RequestMethod.POST)
     public String ubahUser(Tb_userDto userDto) {
-        tb_userService.updateData(userDto);
+        try {
+            tb_userService.updateData(userDto);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
         return "redirect:view_user.htm";
     }
 //    @ResponseBody
@@ -201,5 +206,39 @@ public class Tb_userController {
             return "login";
         }
 
+    }
+    
+    @RequestMapping(value = "/edit_profil", method = RequestMethod.GET)
+    public String formEditProfil(ModelMap map,  HttpSession session, Tb_userDto userDto) {
+        userDto = tb_userService.getDataById(Integer.parseInt(session.getAttribute("iduser").toString()));
+        List<Tb_roleDto> listRole = tb_roleService.getData();
+        map.addAttribute("loginDto", userDto);
+        try {
+//            if (session.getAttribute("username") == null) {
+//                return "login";
+//            } else {
+//                int role = Integer.parseInt(session.getAttribute("role").toString());
+//                if (role != 3) {
+//                    return "login";
+//                } else {
+                    map.addAttribute("userDto", userDto);
+                    map.addAttribute("listRole", listRole);
+                    return "user/form_ubah_user";
+//                }
+//            }
+        } catch (Exception e) {
+            return "login";
+        }
+        
+    }
+    @RequestMapping(value = "/update_profil", method = RequestMethod.POST)
+    public String ubahProfil(Tb_userDto userDto) {
+        try {
+            tb_userService.updateData(userDto);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return "redirect:profile.htm";
     }
 }

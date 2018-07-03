@@ -70,42 +70,7 @@
                         <td>:</td>
                         <td>${nama}</td>
                     </tr>
-                    <!--                    <tr>
-                                            <td>
-                                                <h3 class="icon-phone"> Nomor Telepon </h3>
-                                            </td>
-                                            <td><h3>:</h3></td>
-                                            <td><h3> ${listUser.phone1}</h3></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h3 class="icon-building"> Institution</h3>
-                                            </td>
-                                            <td><h3>:</h3></td>
-                                            <td><h3> ${listUser.institution}</h3></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h3 class="icon-building"> Department</h3>
-                                            </td>
-                                            <td><h3>:</h3></td>
-                                            <td><h3> ${listUser.department}</h3></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h3 class="icon-road"> Address</h3>
-                                            </td>
-                                            <td><h3>:</h3></td>
-                                            <td><h3> ${listUser.address}</h3></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h3 class="icon-flag"> City</h3>
-                                            </td>
-                                            <td><h3>:</h3></td>
-                                            <td><h3> ${listUser.city}</h3></td>
-                                        </tr>-->
-                    
+          
                     <tr>
                         <td>
                             Knowledge
@@ -134,11 +99,50 @@
                         <td>:</td>
                         <td>${knowledgePerulangan}</td>
                     </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>:</td>
+                        <td>${listUser.email}  </td>
+                    </tr>
+                    <tr>
+                        <td>Nomor Telepon</td>
+                        <td>:</td>
+                        <td>${listUser.phone1}  </td>
+                    </tr>
+                    <tr>
+                        <td>Institution</td>
+                        <td>:</td>
+                        <td>${listUser.institution}  </td>
+                    </tr>
+                    <tr>
+                        <td>Jurusan</td>
+                        <td>:</td>
+                        <td>${listUser.department}  </td>
+                    </tr>
+                    <tr>
+                        <td>Alamat</td>
+                        <td>:</td>
+                        <td>${listUser.address}  </td>
+                    </tr>
+                    <tr>
+                        <td>Kota</td>
+                        <td>:</td>
+                        <td>${listUser.city}  </td>
+                    </tr>
                 </table>
-
+                    
+                    <!--<br/>-->
+                
             </div>
+                    <a href="edit_profil.htm" class="btn btn-primary pull-right">Ubah Profil</a>
             <!-- /shortcuts --> 
         </div>
+<!--        <pre>
+  Keterangan Tambahan : 
+  Email               : ${listUser.email}                   Jurusan       : ${listUser.department} 
+  Nomor Telepon       : ${listUser.phone1}                  Alamat        : ${listUser.address} 
+  Institution         : ${listUser.institution}             Kota          : ${listUser.city}
+        </pre>-->
         <!-- /widget-content --> 
 
         <!--javascript-->
