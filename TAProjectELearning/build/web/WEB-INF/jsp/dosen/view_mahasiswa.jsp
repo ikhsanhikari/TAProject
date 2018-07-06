@@ -21,7 +21,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>View Level </title>
+        <title>View Mahasiswa </title>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
