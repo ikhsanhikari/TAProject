@@ -1,10 +1,10 @@
 <%-- 
-    Document   : form_tambah_answers
-    Created on : Mar 9, 2018, 6:39:32 PM
-    Author     : Sou
+    Document   : profilAdmin
+    Created on : Jul 15, 2018, 1:18:14 PM
+    Author     : hikari
 --%>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,13 +15,12 @@
 <link href="<c:url value="/resources/css/font-awesome.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/pages/dashboard.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/pages/signin.css" />" rel="stylesheet" type="text/css">
 <link rel="icon" href="<c:url value="/resources/img/green.png"/>"/>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>View Assignment</title>
+        <title>Halaman Profil</title>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
@@ -37,8 +36,8 @@
                                     <li><a href="javascript:;">Help</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                                        class="icon-user"></i> ${nama} <b class="caret"></b></a>
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="icon-user"></i> ${nama} <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="profilAdmin.htm">Profile</a></li>
                                     <li><a href="logout.htm">Logout</a></li>
@@ -53,26 +52,70 @@
             <!-- /navbar-inner --> 
         </div>
         <!-- /navbar -->
-
-        <div class="account-container register">
-            <div class="content clearfix">
-                <form:form modelAttribute="answersDto" method="POST" action="save_answers.htm">
-                    <h1>Form Tambah Answers</h1>   	
-                    <div class="login-fields">
-                        <p>Isi form berikut</p>
-                        <div class="field">
-                            <form:input path="id" style="height:40px;" placeholder="ID Answers"/><br/>
-                        </div>
-                        <div class="field" >
-                            <form:textarea rows="5px" cols="10px" path="answers"></form:textarea>
-                            <%--<form:input path="answers" style="height:40px;" placeholder="Answers"/>--%>
-                        </div>
-                            <input type="submit" value="Submit"/>
-                        </form:form>
-                    </div> <!-- .actions -->
-                </div>
-            </div> <!-- /content -->
-        </div> <!-- /account-container -->
+        <div class="widget-content ">
+            Halaman profile ${nama}
+            <hr/>
+            <div class="brand">
+                <table cellpadding="10px">
+                    <tr>
+                        <td>
+                            Username
+                        </td>
+                        <td>:</td>
+                        <td>${listUser.username}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Nama
+                        </td>
+                        <td>:</td>
+                        <td>${nama}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>:</td>
+                        <td>${listUser.email}  </td>
+                    </tr>
+                    <tr>
+                        <td>Nomor Telepon</td>
+                        <td>:</td>
+                        <td>${listUser.phone1}  </td>
+                    </tr>
+                    <tr>
+                        <td>Institution</td>
+                        <td>:</td>
+                        <td>${listUser.institution}  </td>
+                    </tr>
+                    <tr>
+                        <td>Jurusan</td>
+                        <td>:</td>
+                        <td>${listUser.department}  </td>
+                    </tr>
+                    <tr>
+                        <td>Alamat</td>
+                        <td>:</td>
+                        <td>${listUser.address}  </td>
+                    </tr>
+                    <tr>
+                        <td>Kota</td>
+                        <td>:</td>
+                        <td>${listUser.city}  </td>
+                    </tr>
+                </table>
+                    
+                    <!--<br/>-->
+                
+            </div>
+                    <a href="edit_profil.htm" class="btn btn-primary pull-right">Ubah Profil</a>
+            <!-- /shortcuts --> 
+        </div>
+<!--        <pre>
+  Keterangan Tambahan : 
+  Email               : ${listUser.email}                   Jurusan       : ${listUser.department} 
+  Nomor Telepon       : ${listUser.phone1}                  Alamat        : ${listUser.address} 
+  Institution         : ${listUser.institution}             Kota          : ${listUser.city}
+        </pre>-->
+        <!-- /widget-content --> 
 
         <!--javascript-->
         <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script> 

@@ -100,7 +100,7 @@ public class Tb_userServiceImpl implements Tb_userService {
         if (listModel.size() > 0) {
             for (Tb_userModel list : listModel) {
                 Tb_userDto userDto = new Tb_userDto();
-                userDto.setId(userDto.getId());
+                userDto.setId(list.getId());
                 userDto.setUsername(list.getUsername());
                 userDto.setPassword(list.getPassword());
                 userDto.setFirstname(list.getFirstname());
@@ -211,7 +211,7 @@ public class Tb_userServiceImpl implements Tb_userService {
         if (listModel.size() > 0) {
             for (Tb_userModel list : listModel) {
                 Tb_userDto userDto = new Tb_userDto();
-                userDto.setId(userDto.getId());
+                userDto.setId(list.getId());
                 userDto.setUsername(list.getUsername());
                 userDto.setPassword(list.getPassword());
                 userDto.setFirstname(list.getFirstname());
@@ -244,7 +244,7 @@ public class Tb_userServiceImpl implements Tb_userService {
         if (listModel.size() > 0) {
             for (Tb_userModel list : listModel) {
                 Tb_userDto userDto = new Tb_userDto();
-                userDto.setId(userDto.getId());
+                userDto.setId(list.getId());
                 userDto.setUsername(list.getUsername());
                 userDto.setPassword(list.getPassword());
                 userDto.setFirstname(list.getFirstname());

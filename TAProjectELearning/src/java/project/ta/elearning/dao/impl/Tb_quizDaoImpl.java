@@ -22,7 +22,7 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
     @Override
     public List<Tb_quizModel> getData() {
         List<Tb_quizModel> listData = new ArrayList<>();
-        String sql = "select model from Tb_quizModel model";
+        String sql = "select model from Tb_quizModel model order by id desc";
         Query query = createQuery(sql);
         listData = query.list();
         return listData;
@@ -45,12 +45,19 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
 
     @Override
     public void updateData(Tb_quizModel model) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            getSession().update(model);
+        } catch (Exception e) {
+        }
     }
 
     @Override
     public List<Tb_quizModel> getDataById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Tb_quizModel> listData = new ArrayList<>();
+        String sql = "select model from Tb_quizModel model where id = :id";
+        Query query = createQuery(sql).setParameter("id", id);
+        listData = query.list();
+        return listData;
     }
 
     @Override

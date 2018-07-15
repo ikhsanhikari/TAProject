@@ -134,6 +134,36 @@
                         <td>:</td>
                         <td>${knowledgePerulangan}</td>
                     </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>:</td>
+                        <td>${listUser.email}  </td>
+                    </tr>
+                    <tr>
+                        <td>Nomor Telepon</td>
+                        <td>:</td>
+                        <td>${listUser.phone1}  </td>
+                    </tr>
+                    <tr>
+                        <td>Institution</td>
+                        <td>:</td>
+                        <td>${listUser.institution}  </td>
+                    </tr>
+                    <tr>
+                        <td>Jurusan</td>
+                        <td>:</td>
+                        <td>${listUser.department}  </td>
+                    </tr>
+                    <tr>
+                        <td>Alamat</td>
+                        <td>:</td>
+                        <td>${listUser.address}  </td>
+                    </tr>
+                    <tr>
+                        <td>Kota</td>
+                        <td>:</td>
+                        <td>${listUser.city}  </td>
+                    </tr>
                 </table>
 
             </div>

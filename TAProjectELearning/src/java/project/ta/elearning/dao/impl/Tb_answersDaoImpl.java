@@ -22,7 +22,7 @@ public class Tb_answersDaoImpl extends HibernateUtil implements Tb_answersDao{
     @Override
     public List<Tb_answersModel> getData() {
         List<Tb_answersModel> listData = new ArrayList<>();
-        String sql = "select model from Tb_answersModel model";
+        String sql = "select model from Tb_answersModel model order by id desc";
         Query query = createQuery(sql);
         listData = query.list();
         return listData;

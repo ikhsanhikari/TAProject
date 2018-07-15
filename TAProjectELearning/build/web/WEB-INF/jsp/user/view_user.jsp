@@ -26,7 +26,7 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.html">Personalized E-learning </a>
+                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="admin.htm">Good Learner</a>
                     <div class="nav-collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
@@ -39,7 +39,7 @@
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="icon-user"></i> ${nama} <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="javascript:;">Profile</a></li>
+                                    <li><a href="profilAdmin.htm">Profile</a></li>
                                     <li><a href="logout.htm">Logout</a></li>
                                 </ul>
                             </li>
@@ -56,14 +56,14 @@
             <div class="subnavbar-inner">
                 <div class="container">
                     <ul class="mainnav">
-                        <li><a href="admin.htm"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
-                        <li><a href="view_role.htm"><i class="icon-user-md"></i><span>Role</span> </a> </li>
-                        <li><a href="view_question.htm"><i class="icon-question"></i><span>Question</span> </a> </li>
+                        <li ><a href="admin.htm"><i class="icon-dashboard"></i><span>Dashboard</span> </a> </li>
+                        <!--<li><a href="view_role.htm"><i class="icon-user-md"></i><span>Role</span> </a> </li>-->
+                        <li ><a href="view_question.htm"><i class="icon-question"></i><span>Question</span> </a> </li>
                         <li><a href="view_answers.htm"><i class="icon-star"></i><span>Answers</span> </a> </li>
                         <li><a href="view_qa.htm"><i class="icon-tasks"></i><span>Question Answers</span> </a> </li>
-                        <li ><a href="view_level.htm"><i class="icon-signal"></i><span>Level</span> </a> </li>
+                        <!--<li ><a href="view_level.htm"><i class="icon-signal"></i><span>Level</span> </a> </li>-->
                         <li class="active"><a href="view_user.htm"><i class="icon-user"></i><span>User</span> </a> </li>
-                        <li><a href="view_majors.htm"><i class="icon-th-large"></i><span>Majors</span> </a> </li>
+                        <!--<li><a href="view_majors.htm"><i class="icon-th-large"></i><span>Majors</span> </a> </li>-->
                     </ul>
                 </div>
                 <!-- /container --> 
@@ -72,11 +72,11 @@
         </div>
         <!-- /subnavbar -->
 
-        <p><a href="signup.htm">Add User</a></p>
+        <!--<p><a href="signup.htm">Add User</a></p>-->
         <!-- /widget -->
         <div class="widget widget-table action-table">
             <div class="widget-header"> <i class="icon-th-list"></i>
-                <h3>Daftar Weekly Quiz</h3>
+                <h3>Daftar User </h3>
             </div>
             <!-- /widget-header -->
             <div class="widget-content">

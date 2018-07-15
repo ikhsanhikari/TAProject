@@ -85,6 +85,18 @@ public class Tb_qaController {
     public String formUbahQa(ModelMap map, Tb_qaDto qaDto, Integer id, HttpSession session, Tb_userDto userDto) {
         qaDto = tb_qaService.getDataById(id);
         map.addAttribute("loginDto", userDto);
+        
+        List<Tb_answersDto> listAnswer = tb_anwersService.getData();
+        map.addAttribute("listAnswer", listAnswer);
+        
+        List<Tb_levelDto> listLevel = tb_levelService.getData();
+        map.addAttribute("listLevel", listLevel);
+        
+        List<Tb_jenisSoalDto> listJenisSoal = tb_jenisSoalService.getData();
+        map.addAttribute("listJenisSoal", listJenisSoal);
+        
+        List<Tb_quizDto> listQuiz = tb_quizService.getData();
+        map.addAttribute("listQuiz", listQuiz);
         try {
             if (session.getAttribute("username") == null) {
                 return "login";
@@ -106,7 +118,12 @@ public class Tb_qaController {
 
     @RequestMapping(value = "/save_qa", method = RequestMethod.POST)
     public String saveQa(Tb_qaDto qaDto) {
-        tb_qaService.saveData(qaDto);
+        try {
+            tb_qaService.saveData(qaDto);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
         return "redirect:view_qa.htm";
     }
 

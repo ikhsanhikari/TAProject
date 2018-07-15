@@ -5,7 +5,10 @@
  */
 package project.ta.elearning.service.impl;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,16 +58,19 @@ public class Tb_qaServiceImpl implements Tb_qaService {
     public void saveData(Tb_qaDto dto) {
         Tb_qaModel model = new Tb_qaModel();
         try {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = new Date();
+            String currDate = dateFormat.format(date);
             model.setId(dto.getId());
             model.setId_quiz(dto.getId_quiz());
             model.setId_answers(dto.getId_answers());
             model.setId_status(dto.getId_status());
             model.setId_level(dto.getId_level());
             model.setId_jenis_soal(dto.getId_jenis_soal());
-            model.setTimeopen(dto.getTimeopen());
-            model.setTimeclose(dto.getTimeclose());
-            model.setTimecreated(dto.getTimecreated());
-            model.setTimemodified(dto.getTimemodified());
+            model.setTimeopen(currDate);
+            model.setTimeclose(currDate);
+            model.setTimecreated(currDate);
+            model.setTimemodified(currDate);
             tb_qaDao.saveData(model);
         } catch (Exception e) {
             e.printStackTrace();

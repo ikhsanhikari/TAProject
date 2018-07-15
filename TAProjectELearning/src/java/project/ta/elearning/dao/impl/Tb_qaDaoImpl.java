@@ -22,7 +22,7 @@ public class Tb_qaDaoImpl extends HibernateUtil implements Tb_qaDao{
     @Override
     public List<Tb_qaModel> getData() {
         List<Tb_qaModel> listData = new ArrayList<>();
-        String sql = "select model from Tb_qaModel model";
+        String sql = "select model from Tb_qaModel model order by id desc";
         Query query = createQuery(sql);
         listData = query.list();
         return listData;
@@ -78,7 +78,7 @@ public class Tb_qaDaoImpl extends HibernateUtil implements Tb_qaDao{
                     "from tb_qa qa, tb_answers a,tb_quiz q,tb_level l,tb_jenissoal j \n" +
                     "where qa.id_answers = a.id and qa.id_quiz = q.id and qa.id_level = l.id \n" +
                     "and qa.id_jenis_soal = j.id\n" +
-                    "order by qa.id ";
+                    "order by qa.id desc";
         Query query = createNativeQuery(sql);
         return query.list();
     }

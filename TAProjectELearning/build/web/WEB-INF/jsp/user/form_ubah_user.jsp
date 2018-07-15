@@ -21,13 +21,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>View Assignment</title>
+        <title>Ubah User</title>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.html">Personalized E-learning </a>
+                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="admin.htm">Good Learner</a>
                     <div class="nav-collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
@@ -40,7 +40,7 @@
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="icon-user"></i> ${nama} <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="profile.htm">Profile</a></li>
+                                    <li><a href="profilAdmin.htm">Profile</a></li>
                                     <li><a href="logout.htm">Logout</a></li>
                                 </ul>
                             </li>
@@ -54,12 +54,15 @@
         </div>
         <!-- /navbar -->
         <!--<h1>Ubah User</h1>-->
-        <form:form modelAttribute="userDto" name="form_user" method="POST" action="update_profil.htm">
+        <form:form modelAttribute="userDto" name="form_user" method="POST" action="update_user.htm">
             <div class="account-container register">
                 <div class="content clearfix">
                     <form action="#" method="post">
-                        <h1>Ubah User</h1>
+                        <h1>Ubah Profil</h1>
                         <div class="login-fields">
+                            <div class="field1">
+                                <form:input path="id" placeholder="id" class="login" style="height:40px;"/><br/>
+                            </div> <!-- /field -->
                             <!--                            <p>Create your free account:</p>-->
 
                             <div class="field1">

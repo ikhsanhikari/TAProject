@@ -223,7 +223,7 @@ public class Tb_userController {
 //                } else {
                     map.addAttribute("userDto", userDto);
                     map.addAttribute("listRole", listRole);
-                    return "user/form_ubah_user";
+                    return "user/form_ubah_profil";
 //                }
 //            }
         } catch (Exception e) {

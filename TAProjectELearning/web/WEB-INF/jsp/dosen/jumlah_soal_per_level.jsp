@@ -60,7 +60,7 @@
                 <a href="ubahJumlah.htm?jumlah=4" class="shortcut"><i class="shortcut-icon icon-question"></i>
                     <span class="shortcut-label"> <strong>4</strong> Soal Per Level</span> 
                 </a>
-                <a href="ubahJumlah.htm?jumlah=5" class="shortcut"><i class="shortcut-icon icon-question"></i>
+<!--                <a href="ubahJumlah.htm?jumlah=5" class="shortcut"><i class="shortcut-icon icon-question"></i>
                     <span class="shortcut-label"> <strong>5</strong> Soal Per Level</span> 
                 </a>
                 <a href="ubahJumlah.htm?jumlah=6" class="shortcut"><i class="shortcut-icon icon-question"></i>
@@ -68,7 +68,7 @@
                 </a>
                 <a href="ubahJumlah.htm?jumlah=7" class="shortcut"><i class="shortcut-icon icon-question"></i>
                     <span class="shortcut-label"> <strong>7</strong> Soal Per Level</span> 
-                </a>
+                </a>-->
             </div>
             <br/>
             <a  href="viewDosen.htm" class="btn btn-primary pull-right">Selesai</a>

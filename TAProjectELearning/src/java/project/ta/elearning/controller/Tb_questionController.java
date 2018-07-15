@@ -58,12 +58,13 @@ public class Tb_questionController {
                 if (role != 3) {
                     return "login";
                 } else {
-                    map.addAttribute("quizDto", quizDto);
+                    map.addAttribute("questionDto", quizDto);
                     return "admin/quiz/form_ubah_question";
                 }
                 
             }
         } catch (Exception e) {
+            e.printStackTrace();
             return "login";
         }
 

@@ -41,7 +41,7 @@
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="icon-user"></i> ${nama} <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="javascript:;">Profile</a></li>
+                                    <li><a href="profilAdmin.htm">Profile</a></li>
                                     <li><a href="logout.htm">Logout</a></li>
                                 </ul>
                             </li>
@@ -57,15 +57,46 @@
 
         <div class="account-container register">
             <div class="content clearfix">
-                <form:form modelAttribute="questionDto" method="POST" action="update_question.htm">
-                    <h1>Form Ubah Question</h1>   	
+                <form:form modelAttribute="qaDto" method="POST" action="update_question.htm">
+                    <h1>Form Ubah Question Answers</h1>   	
                     <div class="login-fields">
                         <p>Isi form berikut</p>
                         <div class="field">
-                            <form:input path="id" placeholder="ID Question"/><br/>
+                            <form:input path="id" placeholder="ID Question" /><br/>
                         </div>
                         <div class="field">
-                            <form:input path="question" placeholder="Question"/><br/>
+                            <form:select path="id_quiz" style="height:40px;">
+                                <c:forEach items="${listQuiz}" var="data" >
+                                    <option value="${data.id}">${data.id}. ${data.name}</option>
+                                </c:forEach>
+                            </form:select><br/>
+                        </div>
+                        <div class="field">
+                            <form:select path="id_answers" style="height:40px;">
+                                <c:forEach items="${listAnswer}" var="data">
+                                    <option value="${data.id}">${data.id}. ${data.answers}</option>
+                                </c:forEach>
+                            </form:select><br/>
+                        </div>
+                        <div class="field">
+                            <form:select path="id_level" style="height:40px;">
+                                <c:forEach items="${listLevel}" var="data">
+                                    <option value="${data.id}">${data.id}. ${data.level}</option>
+                                </c:forEach>
+                            </form:select><br/>
+                        </div>
+                        <div class="field">
+                            <form:select path="id_jenis_soal"  style="height:40px;">
+                                <c:forEach items="${listJenisSoal}" var="data">
+                                    <option value="${data.id}">${data.id}. ${data.jenisSoal}</option>
+                                </c:forEach>
+                            </form:select><br/>
+                        </div>
+                        <div class="field">
+                            <form:select path="id_status"  style="height:40px;">
+                                <option value="1">Benar</option>
+                                <option value="0">Salah</option>
+                            </form:select><br/>
                         </div>
                         <input type="submit" value="Submit"/>
                     </form:form>

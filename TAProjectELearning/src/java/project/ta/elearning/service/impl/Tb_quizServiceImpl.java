@@ -79,7 +79,9 @@ public class Tb_quizServiceImpl implements Tb_quizService {
         Tb_quizModel model = new Tb_quizModel();
         try {
             model.setId(dto.getId());
-//            model.setLevel(dto.getLevel());
+            model.setName(dto.getName());
+            model.setId_category(dto.getId_category());
+            model.setId_matery(dto.getId_matery());
             tb_quizDao.updateData(model);
         } catch (Exception e) {
             e.printStackTrace();
@@ -94,7 +96,7 @@ public class Tb_quizServiceImpl implements Tb_quizService {
             for (Tb_quizModel model : listModel) {
                 dto = new Tb_quizDto();
                 dto.setId(model.getId());
-//                dto.setLevel(model.getLevel());
+                dto.setName(model.getName());
             }
         }
 

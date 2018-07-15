@@ -41,7 +41,7 @@
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="icon-user"></i> ${nama} <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="javascript:;">Profile</a></li>
+                                    <li><a href="profilAdmin.htm">Profile</a></li>
                                     <li><a href="logout.htm">Logout</a></li>
                                 </ul>
                             </li>
@@ -65,7 +65,7 @@
                             <form:input path="id" placeholder="ID Answers"/><br/>
                         </div>
                         <div class="field">
-                            <form:input path="answers" placeholder="Answers"/><br/>
+                            <form:textarea rows="5px" cols="10px" path="answers"></form:textarea>
                         </div>
                         <input type="submit" value="Submit"/>
                     </form:form>

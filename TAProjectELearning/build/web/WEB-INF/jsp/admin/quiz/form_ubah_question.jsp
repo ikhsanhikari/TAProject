@@ -41,7 +41,7 @@
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="icon-user"></i> ${nama} <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="javascript:;">Profile</a></li>
+                                    <li><a href="profilAdmin.htm">Profile</a></li>
                                     <li><a href="logout.htm">Logout</a></li>
                                 </ul>
                             </li>
@@ -62,12 +62,28 @@
                     <div class="login-fields">
                         <p>Isi form berikut</p>
                         <div class="field">
-                            <form:input path="id" placeholder="ID Question"/><br/>
+                            <form:input path="id"  placeholder="ID Question"/><br/>
                         </div>
                         <div class="field">
-                            <form:input path="question" placeholder="Question"/><br/>
+                            <form:textarea path="name"  cols="10px" rows="5px"></form:textarea>
+                        
+                            <%--<form:input path="name" style="height:40px;" placeholder="Question"/>--%>
                         </div>
-                        <input type="submit" value="Submit"/>
+                        <div class="field">
+                            <form:select path="id_matery" style="height:40px;">
+                                <option value="1">Sequensial</option>
+                                <option value="2">Kondisional</option>
+                                <option value="3">Perulangan</option>
+                            </form:select>
+                        </div>
+                        <div class="field">
+                            <form:select path="id_category" style="height:40px;">
+                                <option value="1">Quiz</option>
+                                <option value="2">Exercise</option>
+                            </form:select>
+                        </div>
+                        
+                            <input type="submit" value="Submit"/>
                     </form:form>
                 </div> <!-- .actions -->
             </div>
