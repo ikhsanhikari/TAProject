@@ -70,5 +70,5 @@ public interface Tb_quizDao {
     
     public List<Object[]> getSoalModel(int idLevel, int idMateri, int idUser);
     
-    public List<Object[]> getModel();
+    public List<Object[]> getModel(int idMatery);
 }

@@ -14,10 +14,11 @@ import project.ta.elearning.dto.Tb_modelDto;
  */
 
 public interface Tb_modelService {
-    public List<Tb_modelDto> getData(); 
+    public List<Tb_modelDto> getData();
     public void saveData(Tb_modelDto dto);
     public void deleteData(Integer id);
     public void updateData(Tb_modelDto dto);
     public Tb_modelDto getDataById(Integer id);
     public int cekGoodLearner(int id);
+    public List<Object[]> getDataByKnowledgeBefore(Integer knowledgeBefore, Integer idMatery);
 }

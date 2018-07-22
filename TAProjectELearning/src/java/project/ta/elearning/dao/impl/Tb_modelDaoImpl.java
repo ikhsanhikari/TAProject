@@ -72,4 +72,13 @@ public class Tb_modelDaoImpl extends HibernateUtil implements Tb_modelDao{
     return listData;
     }
 
+    @Override
+    public List<Object[]> getDataByKnowledgeBefore(Integer knowledgeBefore, Integer idMatery) {
+        String sql = "SELECT m.id_user, u.username " +
+            "FROM tb_model m, tb_user u WHERE m.id_user = u.id AND knowledge_sebelum = " + knowledgeBefore + " AND id_matery = " + idMatery;
+        Query query = createNativeQuery(sql);
+            
+    return query.list();
+    }
+
 }

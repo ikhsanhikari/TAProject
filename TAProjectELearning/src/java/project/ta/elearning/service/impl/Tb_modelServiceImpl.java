@@ -116,4 +116,25 @@ public class Tb_modelServiceImpl implements Tb_modelService {
         return tb_modelDao.getDataById(id).size();
     }
 
+    @Override
+    public List<Object[]> getDataByKnowledgeBefore(Integer knowledgeBefore, Integer idMatery) {
+        List<Tb_modelDto> listDto = new ArrayList<>();
+        List<Object[]> listModel = tb_modelDao.getDataByKnowledgeBefore(knowledgeBefore, idMatery);
+//        if (listModel.size() > 0) {
+//            for (Tb_modelModel model : listModel) {
+//                Tb_modelDto dto = new Tb_modelDto();
+//                dto.setId(model.getId());
+//                dto.setId_user(model.getId_user());
+//                dto.setId_matery(model.getId_matery());
+//                dto.setKnowledge_sebelum(model.getKnowledge_sebelum());
+//                dto.setKnowledge_sesudah(model.getKnowledge_sesudah());
+//                dto.setScore_sebelum(model.getScore_sebelum());
+//                dto.setScore_sesudah(model.getScore_sesudah());
+//                listDto.add(dto);
+//            }
+//        }
+
+        return listModel;
+    }
+
 }

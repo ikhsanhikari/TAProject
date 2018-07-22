@@ -18,4 +18,5 @@ public interface Tb_modelDao {
     public void deleteData(Integer id);
     public void updateData(Tb_modelModel model);
     public List<Tb_modelModel> getDataById(Integer id);
+    public List<Object[]> getDataByKnowledgeBefore(Integer knowledgeBefore, Integer idMatery);
 }

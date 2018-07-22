@@ -822,6 +822,14 @@ public class Tb_quizController {
 
 //        Rabu, 11-04-2018
         map.addAttribute("knowledge", getKnowledgeUntukMunculSetiapSaat(session));
+        
+        List<Object[]> listModelSekuensial = tb_modelService.getDataByKnowledgeBefore(knowledgeSekuensial, 1);
+        List<Object[]> listModelKondisional = tb_modelService.getDataByKnowledgeBefore(knowledgeKondisional, 2);
+        List<Object[]> listModelPerulangan = tb_modelService.getDataByKnowledgeBefore(knowledgePerulangan, 3);
+        // Menampilkan model
+        map.addAttribute("listModelSekuensial", listModelSekuensial);
+        map.addAttribute("listModelKondisional", listModelKondisional);
+        map.addAttribute("listModelPerulangan", listModelPerulangan);
 
         return "mahasiswa/halamanProfil";
     }

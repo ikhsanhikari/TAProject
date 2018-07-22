@@ -269,7 +269,7 @@ public class Tb_quizServiceImpl implements Tb_quizService {
         List<HashMap> listSoalModelHigh = new ArrayList<>();
         List<Object[]> listSoalQuiz = null;
         List<Object[]> listSoalModel = null;
-        List<Object[]> listModel = tb_quizDao.getModel();
+        List<Object[]> listModel = tb_quizDao.getModel(idMateri);
         
         int kSebelumModel = 0, kUser = idKnowledge, idModel = -1;
         if(listModel!=null){
