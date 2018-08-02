@@ -32,13 +32,6 @@
                     <div class="nav-collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                                        class="icon-cog"></i> Account <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="javascript:;">Settings</a></li>
-                                    <li><a href="javascript:;">Help</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="icon-user"></i> ${nama} <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="profilAdmin.htm">Profile</a></li>
@@ -65,7 +58,7 @@
                             <form:input path="id" placeholder="ID Question" /><br/>
                         </div>
                         <div class="field">
-                            <form:select path="id_quiz" style="height:40px;">
+                            <form:select path="id_quiz" id="id_quiz" style="height:40px;">
                                 <c:forEach items="${listQuiz}" var="data" >
                                     <option value="${data.id}">${data.id}. ${data.name}</option>
                                 </c:forEach>
@@ -104,7 +97,9 @@
             </div>
         </div> <!-- /content -->
     </div> <!-- /account-container -->
+    <script>
 
+    </script>
     <!--javascript-->
     <script src="<c:url value="resources/js/jquery-1.7.2.min.js"/>"></script> 
     <script src="<c:url value="resources/js/excanvas.min.js"/>"></script> 

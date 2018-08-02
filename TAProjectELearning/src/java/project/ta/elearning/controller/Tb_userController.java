@@ -214,18 +214,23 @@ public class Tb_userController {
         List<Tb_roleDto> listRole = tb_roleService.getData();
         map.addAttribute("loginDto", userDto);
         try {
-//            if (session.getAttribute("username") == null) {
-//                return "login";
-//            } else {
-//                int role = Integer.parseInt(session.getAttribute("role").toString());
-//                if (role != 3) {
-//                    return "login";
-//                } else {
                     map.addAttribute("userDto", userDto);
                     map.addAttribute("listRole", listRole);
                     return "user/form_ubah_profil";
-//                }
-//            }
+        } catch (Exception e) {
+            return "login";
+        }
+        
+    }
+    @RequestMapping(value = "/edit_profil_dosen", method = RequestMethod.GET)
+    public String formEditProfilDosen(ModelMap map,  HttpSession session, Tb_userDto userDto) {
+        userDto = tb_userService.getDataById(Integer.parseInt(session.getAttribute("iduser").toString()));
+        List<Tb_roleDto> listRole = tb_roleService.getData();
+        map.addAttribute("loginDto", userDto);
+        try {
+                    map.addAttribute("userDto", userDto);
+                    map.addAttribute("listRole", listRole);
+                    return "user/form_ubah_profil_dosen";
         } catch (Exception e) {
             return "login";
         }
@@ -240,5 +245,27 @@ public class Tb_userController {
         }
         
         return "redirect:profile.htm";
+    }
+    
+    @RequestMapping(value = "/update_profil_admin", method = RequestMethod.POST)
+    public String ubahProfilAdmin(Tb_userDto userDto) {
+        try {
+            tb_userService.updateData(userDto);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return "redirect:profilAdmin.htm";
+    }
+    
+    @RequestMapping(value = "/update_profil_dosen", method = RequestMethod.POST)
+    public String ubahProfilDosen(Tb_userDto userDto) {
+        try {
+            tb_userService.updateData(userDto);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return "redirect:profilDosen.htm";
     }
 }

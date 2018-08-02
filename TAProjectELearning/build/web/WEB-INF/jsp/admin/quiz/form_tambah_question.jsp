@@ -21,7 +21,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>View Assignment</title>
+        <title>Form Tambah Question</title>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
@@ -30,13 +30,6 @@
                             class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="admin.htm">Good Learner </a>
                     <div class="nav-collapse">
                         <ul class="nav pull-right">
-                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                                        class="icon-cog"></i> Account <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="javascript:;">Settings</a></li>
-                                    <li><a href="javascript:;">Help</a></li>
-                                </ul>
-                            </li>
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="icon-user"></i> ${nama} <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
@@ -61,10 +54,10 @@
                     <div class="login-fields">
                         <p>Isi form berikut</p>
                         <div class="field">
-                            <form:input path="id" style="height:40px;" placeholder="ID Question"/><br/>
+                            <form:input path="id" readonly="true"  style="height:40px;" placeholder="ID Question"/><br/>
                         </div>
                         <div class="field">
-                            <form:textarea path="name"  cols="10px" rows="5px"></form:textarea>
+                            <form:textarea  path="name" placeholder="Question"  cols="10px" rows="5px"></form:textarea>
                         
                             <%--<form:input path="name" style="height:40px;" placeholder="Question"/>--%>
                         </div>

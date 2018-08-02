@@ -99,7 +99,7 @@
                     <!--<br/>-->
                 
             </div>
-                    <a href="edit_profil.htm" class="btn btn-primary pull-right">Ubah Profil</a>
+                    <a href="edit_profil_dosen.htm" class="btn btn-primary pull-right">Ubah Profil</a>
             <!-- /shortcuts --> 
         </div>
 <!--        <pre>

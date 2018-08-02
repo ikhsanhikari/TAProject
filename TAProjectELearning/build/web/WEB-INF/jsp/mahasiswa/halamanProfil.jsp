@@ -28,13 +28,6 @@
                             class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="halamanAwal.htm">Good Learner </a>
                     <div class="nav-collapse">
                         <ul class="nav pull-right">
-                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                                        class="icon-cog"></i> Account <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="javascript:;">Settings</a></li>
-                                    <li><a href="javascript:;">Help</a></li>
-                                </ul>
-                            </li>
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="icon-user"></i> ${nama} <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
@@ -130,11 +123,70 @@
                         <td>${listUser.city}  </td>
                     </tr>
                 </table>
-                    
                     <!--<br/>-->
-                
             </div>
-                    <a href="edit_profil.htm" class="btn btn-primary pull-right">Ubah Profil</a>
+            <div class="widget-content ">Berikut adalah model untuk Knowledge mu :</div>
+            <div class="widget-content">
+                Model untuk materi Sekuensial :
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="data" items="${listModelSekuensial}">
+                            <tr>
+                                <td>${data[0]}</td>
+                                <td>${data[1]}</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+                    
+            <div class="widget-content">
+                Model untuk materi Kondisional :
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="data" items="${listModelKondisional}">
+                            <tr>
+                                <td>${data[0]}</td>
+                                <td>${data[1]}</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+                    
+            <div class="widget-content">
+                Model untuk materi Perulangan :
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="data" items="${listModelPerulangan}">
+                            <tr>
+                                <td>${data[0]}</td>
+                                <td>${data[1]}</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+
+            <a href="edit_profil.htm" class="btn btn-primary pull-right">Ubah Profil</a>
             <!-- /shortcuts --> 
         </div>
 <!--        <pre>

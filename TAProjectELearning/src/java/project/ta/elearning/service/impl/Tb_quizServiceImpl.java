@@ -97,6 +97,8 @@ public class Tb_quizServiceImpl implements Tb_quizService {
                 dto = new Tb_quizDto();
                 dto.setId(model.getId());
                 dto.setName(model.getName());
+                dto.setId_matery(model.getId_matery());
+                dto.setId_category(model.getId_category());
             }
         }
 

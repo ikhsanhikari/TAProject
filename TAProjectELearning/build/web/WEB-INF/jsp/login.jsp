@@ -36,14 +36,14 @@
                         <div class="nav-collapse">
                             <ul class="nav pull-right">
                                 <li class="">						
-                                    <a href="signup.htm" class="">Tidak mempunyai akun?</a>
+                                    <a href="signup.htm" class="">Buat Akun</a>
                                 </li>
-                                <li class="">						
+<!--                                <li class="">						
                                     <a href="index.html" class="">
                                         <i class="icon-chevron-left"></i>
                                         Kembali ke Beranda
                                     </a>
-                                </li>
+                                </li>-->
                             </ul>
                         </div>
                     </div>

@@ -18,11 +18,12 @@
 <link href="<c:url value="/resources/css/pages/dashboard.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/pages/signin.css" />" rel="stylesheet" type="text/css">
 <link rel="icon" href="<c:url value="/resources/img/green.png"/>"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>View Assignment</title>
+        <title>Form Ubah Question</title>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
@@ -31,13 +32,6 @@
                             class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="admin.htm">Good Learner </a>
                     <div class="nav-collapse">
                         <ul class="nav pull-right">
-                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                                        class="icon-cog"></i> Account <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="javascript:;">Settings</a></li>
-                                    <li><a href="javascript:;">Help</a></li>
-                                </ul>
-                            </li>
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="icon-user"></i> ${nama} <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
@@ -62,27 +56,26 @@
                     <div class="login-fields">
                         <p>Isi form berikut</p>
                         <div class="field">
-                            <form:input path="id"  placeholder="ID Question"/><br/>
+                            <form:input path="id" readonly="true" placeholder="ID Question"/><br/>
                         </div>
                         <div class="field">
                             <form:textarea path="name"  cols="10px" rows="5px"></form:textarea>
                         
                             <%--<form:input path="name" style="height:40px;" placeholder="Question"/>--%>
                         </div>
-                        <div class="field">
-                            <form:select path="id_matery" style="height:40px;">
-                                <option value="1">Sequensial</option>
-                                <option value="2">Kondisional</option>
-                                <option value="3">Perulangan</option>
+                        <div class="field">                            
+                            <form:select path="id_matery" style="height:40px;"  id="id_matery">
+                                <option  value="1">Sequensial </option>
+                                <option  value="2">Kondisional</option>
+                                <option  value="3">Perulangan </option>
                             </form:select>
                         </div>
                         <div class="field">
-                            <form:select path="id_category" style="height:40px;">
+                            <form:select path="id_category" style="height:40px;" id="id_category">
                                 <option value="1">Quiz</option>
                                 <option value="2">Exercise</option>
                             </form:select>
                         </div>
-                        
                             <input type="submit" value="Submit"/>
                     </form:form>
                 </div> <!-- .actions -->
@@ -96,5 +89,23 @@
     <script src="<c:url value="resources/js/chart.min.js"/>" type="text/javascript"></script> 
     <script src="<c:url value="resources/js/bootstrap.js"/>"></script>
     <script language="javascript" type="text/javascript" src="<c:url value="resources/js/full-calendar/fullcalendar.min.js"/>"></script>
+    <script type="text/javascript">
+        var idx = ${questionDto.id_matery};
+        if(idx == 1){
+            $("#id_matery").val(1);
+        }else if(idx==2){
+            $("#id_matery").val(2);
+        }else{
+            $("#id_matery").val(3);
+        }
+        
+        var idxC = ${questionDto.id_category};
+        if(idxC == 1){
+            $("#id_category").val(1);
+        }else{
+            $("#id_category").val(2);
+        }
+        
+    </script>
 </body>
 </html>

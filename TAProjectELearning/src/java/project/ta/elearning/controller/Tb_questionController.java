@@ -28,6 +28,10 @@ public class Tb_questionController {
     @RequestMapping(value = "/form_tambah_question", method = RequestMethod.GET)
     public String formTambahQuiz(ModelMap map, Tb_quizDto quizDto, HttpSession session, Tb_userDto userDto) {
         map.addAttribute("loginDto", userDto);
+        List<Tb_quizDto> listDto = tb_quizService.getData();
+        int id_question = Integer.parseInt(listDto.get(0).getId().toString());
+//        map.addAttribute("id",id_question);
+        quizDto.setId(id_question+1);
         try {
             if (session.getAttribute("username") == null) {
                 return "login";

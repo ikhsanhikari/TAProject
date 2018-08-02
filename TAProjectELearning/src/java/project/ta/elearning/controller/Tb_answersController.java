@@ -28,6 +28,9 @@ public class Tb_answersController {
 
     @RequestMapping(value = "/form_tambah_answers", method = RequestMethod.GET)
     public String formTambahAnswers(ModelMap map, Tb_answersDto answersDto, HttpSession session, Tb_userDto userDto) {
+        List<Tb_answersDto> listDto = tb_answersService.getData();
+        int id_answer = (int)listDto.get(0).getId();
+        answersDto.setId(id_answer+1);
         map.addAttribute("loginDto", userDto);
         try {
             if (session.getAttribute("username") == null) {

@@ -31,13 +31,6 @@
                     <div class="nav-collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                                        class="icon-cog"></i> Account <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="javascript:;">Settings</a></li>
-                                    <li><a href="javascript:;">Help</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="icon-user"></i> ${nama} <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="profilAdmin.htm">Profile</a></li>
@@ -61,10 +54,10 @@
                     <div class="login-fields">
                         <p>Isi form berikut</p>
                         <div class="field">
-                            <form:input path="id" style="height:40px;" placeholder="ID Answers"/><br/>
+                            <form:input path="id"  readonly="true" style="height:40px;" placeholder="ID Answers"/><br/>
                         </div>
                         <div class="field" >
-                            <form:textarea rows="5px" cols="10px" path="answers"></form:textarea>
+                            <form:textarea rows="5px" cols="10px" path="answers" placeholder="Answers"></form:textarea>
                             <%--<form:input path="answers" style="height:40px;" placeholder="Answers"/>--%>
                         </div>
                             <input type="submit" value="Submit"/>

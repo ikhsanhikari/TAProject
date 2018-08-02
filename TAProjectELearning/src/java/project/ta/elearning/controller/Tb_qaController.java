@@ -50,7 +50,9 @@ public class Tb_qaController {
     @RequestMapping(value = "/form_tambah_qa", method = RequestMethod.GET)
     public String formTambahQa(ModelMap map, Tb_qaDto qaDto, HttpSession session, Tb_userDto userDto) {
         map.addAttribute("loginDto", userDto);
-        
+        List<Tb_quizDto> listDto = tb_qaService.getDataNative();
+        int id_qa =(int) listDto.get(0).getId();
+        qaDto.setId(id_qa+1);
         List<Tb_answersDto> listAnswer = tb_anwersService.getData();
         map.addAttribute("listAnswer", listAnswer);
         

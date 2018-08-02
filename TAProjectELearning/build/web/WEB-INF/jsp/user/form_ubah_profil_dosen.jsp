@@ -1,7 +1,7 @@
 <%-- 
-    Document   : form_ubah_user
-    Created on : Mar 9, 2018, 7:11:39 PM
-    Author     : Sou
+    Document   : form_ubah_profil
+    Created on : Jul 15, 2018, 1:31:48 PM
+    Author     : hikari
 --%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -33,7 +33,7 @@
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="icon-user"></i> ${nama} <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="profilAdmin.htm">Profile</a></li>
+                                    <li><a href="profilDosen.htm">Profile</a></li>
                                     <li><a href="logout.htm">Logout</a></li>
                                 </ul>
                             </li>
@@ -47,7 +47,7 @@
         </div>
         <!-- /navbar -->
         <!--<h1>Ubah User</h1>-->
-        <form:form modelAttribute="userDto" name="form_user" method="POST" action="update_user.htm">
+        <form:form modelAttribute="userDto" name="form_user" method="POST" action="update_profil_dosen.htm">
             <div class="account-container register">
                 <div class="content clearfix">
                     <form action="#" method="post">
