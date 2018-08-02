@@ -58,40 +58,40 @@
                             <p>Create your free account:</p>
 
                             <div class="field1">
-                                <form:input path="username" placeholder="username" class="login" style="height:40px;"/><br/>
+                                <form:input path="username" required="true" placeholder="username" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="password" placeholder="password" class="login" style="height:40px;"/><br/>
+                                <form:input path="password" required="true" placeholder="password" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="firstname" placeholder="firstname" class="login" style="height:40px;"/><br/>
+                                <form:input path="firstname" required="true" placeholder="firstname" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="lastname" placeholder="lastname" class="login" style="height:40px;"/><br/>
+                                <form:input path="lastname" required="true" placeholder="lastname" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="email" placeholder="email" class="login" style="height:40px;"/><br/>
+                                <form:input path="email" required="true" placeholder="email" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="phone1" placeholder="phone1" class="login" style="height:40px;"/><br/>
+                                <form:input path="phone1" required="true" placeholder="phone1" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="institution" placeholder="institution" class="login" style="height:40px;"/><br/>
+                                <form:input path="institution" required="true" placeholder="institution" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="department" placeholder="department" class="login" style="height:40px;"/><br/>
+                                <form:input path="department" required="true" placeholder="department" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="address" placeholder="address" class="login" style="height:40px;"/><br/>
+                                <form:input path="address" required="true" placeholder="address" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="city" placeholder="city" class="login" style="height:40px;"/><br/>
+                                <form:input path="city" required="true" placeholder="city" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="picture" placeholder="picture" class="login" style="height:40px;"/><br/>
+                                <form:input path="picture" required="true" placeholder="picture" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="description" placeholder="description" class="login" style="height:40px;"/><br/>
+                                <form:input path="description" required="true" placeholder="description" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
                                 <form:select path="id_role" style="height:40px;">

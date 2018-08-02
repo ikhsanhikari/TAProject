@@ -54,10 +54,10 @@
                     <div class="login-fields">
                         <p>Isi form berikut</p>
                         <div class="field">
-                            <form:input path="id" readonly="true"  style="height:40px;" placeholder="ID Question"/><br/>
+                            <form:input path="id" readonly="true" required="true"  style="height:40px;" placeholder="ID Question"/><br/>
                         </div>
                         <div class="field">
-                            <form:textarea  path="name" placeholder="Question"  cols="10px" rows="5px"></form:textarea>
+                            <form:textarea  path="name" required="true" placeholder="Question"  cols="10px" rows="5px"></form:textarea>
                         
                             <%--<form:input path="name" style="height:40px;" placeholder="Question"/>--%>
                         </div>

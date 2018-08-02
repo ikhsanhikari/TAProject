@@ -59,7 +59,7 @@
                             <form:input path="id" readonly="true" placeholder="ID Question"/><br/>
                         </div>
                         <div class="field">
-                            <form:textarea path="name"  cols="10px" rows="5px"></form:textarea>
+                            <form:textarea path="name" required="true" cols="10px" rows="5px" required="true"></form:textarea>
                         
                             <%--<form:input path="name" style="height:40px;" placeholder="Question"/>--%>
                         </div>
