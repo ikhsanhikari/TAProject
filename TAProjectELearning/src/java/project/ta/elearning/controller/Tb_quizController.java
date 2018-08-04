@@ -625,6 +625,7 @@ public class Tb_quizController {
 
             return "mahasiswa/quiz";
         } catch (Exception e) {
+            e.printStackTrace();
             return "mahasiswa/soalhabis";
         }
 

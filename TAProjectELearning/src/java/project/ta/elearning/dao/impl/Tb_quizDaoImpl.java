@@ -303,7 +303,7 @@ public class Tb_quizDaoImpl extends HibernateUtil implements Tb_quizDao {
     @Override
     public List<Object[]> getModel(int idMatery) {
         String sql = "SELECT * " +
-                "FROM tb_model id_matery = " + idMatery;
+                "FROM tb_model where id_matery = " + idMatery;
         Query query = createNativeQuery(sql);
         return query.list();
     }
