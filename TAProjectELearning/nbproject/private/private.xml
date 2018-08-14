@@ -3,17 +3,52 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/admin/profilAdmin.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/user/view_user.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/information_of_exercise.jsp</file>
             <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/src/java/project/ta/elearning/dto/Tb_quizDto.java</file>
-            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/src/java/project/ta/elearning/service/impl/Tb_quizServiceImpl.java</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/dosen/profilDosen.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/login.jsp</file>
             <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/src/java/project/ta/elearning/controller/Tb_questionController.java</file>
-            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/src/java/project/ta/elearning/controller/Tb_answersController.java</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/user/form_tambah_user.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/pilihan_materi_quiz.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/dosen/jumlah_soal_per_level.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/user/form_ubah_profil.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/pra_exercise.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/view_quiz.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/src/java/project/ta/elearning/controller/Tb_quizController.java</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/pilihan_materi.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/admin/index.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/dosen/koreksi.jsp</file>
             <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/admin/qa/form_tambah_qa.jsp</file>
             <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/admin/qa/form_ubah_qa.jsp</file>
-            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/admin/answers/form_ubah_answers.jsp</file>
-            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/admin/answers/form_tambah_answers.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/admin/quiz/view_question.jsp</file>
             <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/admin/quiz/form_ubah_question.jsp</file>
-            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/src/java/project/ta/elearning/controller/Tb_qaController.java</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/dosen/index.jsp</file>
             <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/admin/quiz/form_tambah_question.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/dosen/status_materi.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/onsubmit.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/src/java/project/ta/elearning/controller/AdminController.java</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/admin/answers/form_ubah_answers.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/index.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/admin/answers/view_answers.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/admin/answers/form_tambah_answers.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/src/java/project/ta/elearning/controller/Tb_qaController.java</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/src/java/project/ta/elearning/dao/impl/Tb_quizDaoImpl.java</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/src/java/project/ta/elearning/controller/Tb_userController.java</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/user/form_ubah_user.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/dosen/view_mahasiswa.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/historis_exercise.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/exercise.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/halamanProfil.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/src/java/project/ta/elearning/service/impl/Tb_quizServiceImpl.java</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/admin/qa/view_qa.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/post_quiz.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/src/java/project/ta/elearning/controller/Tb_answersController.java</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/dosen/detail_mahasiswa.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/user/form_ubah_profil_dosen.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/soalhabis.jsp</file>
+            <file>file:/D:/TA/NEW%2030-06-2018/TAProject/TAProjectELearning/web/WEB-INF/jsp/mahasiswa/quiz.jsp</file>
         </group>
     </open-files>
 </project-private>

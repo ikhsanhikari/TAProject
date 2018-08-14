@@ -20,7 +20,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Tambah User</title>
+        <title>Form Tambah User</title>
     </head>
     <body>
         <form:form modelAttribute="userDto" name="form_user" method="POST" action="save_user.htm">
