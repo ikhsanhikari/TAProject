@@ -54,33 +54,33 @@
                         <h1>Ubah Profil</h1>
                         <div class="login-fields">
                             <div class="field1">
-                                <form:input path="id" placeholder="id" class="login" style="height:40px;"/><br/>
+                                <form:hidden path="id" placeholder="id" required="true" readonly="true" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <!--                            <p>Create your free account:</p>-->
 
                             <div class="field1">
-                                <form:input path="username" placeholder="username" class="login" style="height:40px;"/><br/>
+                                <form:input path="username" placeholder="username" required="true"  class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="password" placeholder="password" class="login" style="height:40px;"/><br/>
+                                <form:input path="password" placeholder="password" required="true"  class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="firstname" placeholder="firstname" class="login" style="height:40px;"/><br/>
+                                <form:input path="firstname" placeholder="firstname" class="login"   required="true" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="lastname" placeholder="lastname" class="login" style="height:40px;"/><br/>
+                                <form:input path="lastname" placeholder="lastname" class="login" required="true" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="email" placeholder="email" class="login" style="height:40px;"/><br/>
+                                <form:input path="email" placeholder="email" class="login" required="true"  style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
                                 <form:input path="phone1" placeholder="phone1" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="institution" placeholder="institution" class="login" style="height:40px;"/><br/>
+                                <form:input path="institution" placeholder="institution" class="login" required="true" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="department" placeholder="department" class="login" style="height:40px;"/><br/>
+                                <form:input path="department" placeholder="department" class="login" required="true" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
                                 <form:input path="address" placeholder="address" class="login" style="height:40px;"/><br/>
@@ -89,7 +89,7 @@
                                 <form:input path="city" placeholder="city" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="picture" placeholder="picture" class="login" style="height:40px;"/><br/>
+                                <form:hidden path="picture" placeholder="picture" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
                                 <form:input path="description" placeholder="description" class="login" style="height:40px;"/><br/>
@@ -98,7 +98,7 @@
                                 <form:hidden path="idknowledge"   class="login" style="height:40px;"/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:hidden path="id_role"  placeholder="id role" class="login" style="height:40px;"/>
+                                <form:hidden path="id_role"  placeholder="id role" class="login" required="true" style="height:40px;"/>
                             </div> <!-- /field -->
                             <form:hidden path="id" placeholder="id" />
 

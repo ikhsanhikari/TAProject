@@ -23,7 +23,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>On Submit</title>
+        <title>Deskripsi jawaban</title>
     </head>
     <body onload="setDisabled()">
         <div class="navbar navbar-fixed-top">

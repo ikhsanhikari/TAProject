@@ -32,8 +32,8 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </a>
-                        <a class="brand" href="index.html">Personalized E-learning</a>	
-                        <div class="nav-collapse">
+                        <a class="brand" href="login.htm">Good Learner</a>	
+<!--                        <div class="nav-collapse">
                             <ul class="nav pull-right">
                                 <li class="">						
                                     <a href="login.htm" class="">Sudah punya akun? Login sekarang</a>
@@ -45,7 +45,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </div><!--/.nav-collapse -->	
+                        </div>/.nav-collapse 	-->
                     </div> <!-- /container -->
                 </div> <!-- /navbar-inner -->
             </div> <!-- /navbar -->
@@ -70,10 +70,10 @@
                                 <form:input path="lastname" required="true" placeholder="lastname" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="email" required="true" placeholder="email" class="login" style="height:40px;"/><br/>
+                                <form:input type="email" path="email" required="true" placeholder="email" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="phone1" required="true" placeholder="phone1" class="login" style="height:40px;"/><br/>
+                                <form:input path="phone1" type="number" required="true" placeholder="phone1" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
                                 <form:input path="institution" required="true" placeholder="institution" class="login" style="height:40px;"/><br/>
@@ -88,14 +88,14 @@
                                 <form:input path="city" required="true" placeholder="city" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="picture" required="true" placeholder="picture" class="login" style="height:40px;"/><br/>
+                                <form:hidden path="picture" value="1" placeholder="picture" class="login" style="height:40px;"/>
                             </div> <!-- /field -->
                             <div class="field1">
                                 <form:input path="description" required="true" placeholder="description" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
                                 <form:select path="id_role" style="height:40px;">
-                                    <option>Role</option>
+                                    <!--<option>Role</option>-->
                                     <c:forEach items="${listRole}" var="listData" >
                                         <option value="${listData.id}">${listData.name}</option>
                                     </c:forEach>

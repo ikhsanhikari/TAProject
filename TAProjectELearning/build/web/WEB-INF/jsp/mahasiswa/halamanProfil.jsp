@@ -186,7 +186,7 @@
                 </table>
             </div>
 
-            <a href="edit_profil.htm" class="btn btn-primary pull-right">Ubah Profil</a>
+            <a href="edit_profil_mahasiswa.htm" class="btn btn-primary pull-right">Ubah Profil</a>
             <!-- /shortcuts --> 
         </div>
 <!--        <pre>

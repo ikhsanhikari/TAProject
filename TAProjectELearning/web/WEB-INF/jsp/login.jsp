@@ -23,7 +23,7 @@
         <title>Form Login</title>
     </head>
     <body>
-        <form:form modelAttribute="loginDto" name="formLogin" action="loginAction.htm" method="GET">
+        <form:form modelAttribute="loginDto" name="formLogin" action="loginAction.htm" method="POST">
             <div class="navbar navbar-fixed-top">
                 <div class="navbar-inner">
                     <div class="container">

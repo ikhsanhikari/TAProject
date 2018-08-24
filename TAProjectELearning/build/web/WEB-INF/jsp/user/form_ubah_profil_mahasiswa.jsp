@@ -1,8 +1,9 @@
 <%-- 
-    Document   : form_ubah_user
-    Created on : Mar 9, 2018, 7:11:39 PM
-    Author     : Sou
+    Document   : form_ubah_profil_mahasiswa
+    Created on : Aug 24, 2018, 2:40:38 PM
+    Author     : hikari
 --%>
+
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -27,13 +28,13 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
-                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="admin.htm">Good Learner</a>
+                            class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="view_mahasiswa.htm">Good Learner</a>
                     <div class="nav-collapse">
                         <ul class="nav pull-right">
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="icon-user"></i> ${nama} <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="profilAdmin.htm">Profile</a></li>
+                                    <li><a href="profile.htm">Profile</a></li>
                                     <li><a href="logout.htm">Logout</a></li>
                                 </ul>
                             </li>
@@ -47,40 +48,40 @@
         </div>
         <!-- /navbar -->
         <!--<h1>Ubah User</h1>-->
-        <form:form modelAttribute="userDto" name="form_user" method="POST" action="update_user.htm">
+        <form:form modelAttribute="userDto" name="form_user" method="POST" action="update_profil_mahasiswa.htm">
             <div class="account-container register">
                 <div class="content clearfix">
                     <form action="#" method="post">
                         <h1>Ubah Profil</h1>
                         <div class="login-fields">
                             <div class="field1">
-                                <form:hidden path="id" placeholder="id" required="true" readonly="true" class="login" style="height:40px;"/><br/>
+                                <form:input path="id"  placeholder="id" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <!--                            <p>Create your free account:</p>-->
 
                             <div class="field1">
-                                <form:input path="username" placeholder="username" required="true"  class="login" style="height:40px;"/><br/>
+                                <form:input path="username" placeholder="username" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="password" placeholder="password" required="true"  class="login" style="height:40px;"/><br/>
+                                <form:input path="password" placeholder="password" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="firstname" placeholder="firstname" class="login"   required="true" style="height:40px;"/><br/>
+                                <form:input path="firstname" placeholder="firstname" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="lastname" placeholder="lastname" class="login" required="true" style="height:40px;"/><br/>
+                                <form:input path="lastname" placeholder="lastname" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="email" placeholder="email" class="login" required="true"  style="height:40px;"/><br/>
+                                <form:input path="email" placeholder="email" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
                                 <form:input path="phone1" placeholder="phone1" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="institution" placeholder="institution" class="login" required="true" style="height:40px;"/><br/>
+                                <form:input path="institution" placeholder="institution" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:input path="department" placeholder="department" class="login" required="true" style="height:40px;"/><br/>
+                                <form:input path="department" placeholder="department" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
                                 <form:input path="address" placeholder="address" class="login" style="height:40px;"/><br/>
@@ -89,7 +90,7 @@
                                 <form:input path="city" placeholder="city" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:hidden path="picture" placeholder="picture" class="login" style="height:40px;"/><br/>
+                                <form:input path="picture" placeholder="picture" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
                                 <form:input path="description" placeholder="description" class="login" style="height:40px;"/><br/>
@@ -98,7 +99,7 @@
                                 <form:hidden path="idknowledge"   class="login" style="height:40px;"/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:hidden path="id_role"  placeholder="id role" class="login" required="true" style="height:40px;"/>
+                                <form:hidden path="id_role"  placeholder="id role" class="login" style="height:40px;"/>
                             </div> <!-- /field -->
                             <form:hidden path="id" placeholder="id" />
 

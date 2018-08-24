@@ -301,7 +301,16 @@ public class Tb_quizController {
             map.addAttribute("totalSoalByLevelAndMatery", totalSoalByLevelAndMatery);
             System.out.println("Java 304 : " + getJenis_soal());
             if (getJenis_soal() == 1) {
-                System.out.println("Masuk IF, Data :  " + getJawaban_benar() + " dan ");
+                
+//                System.out.println("Masuk IF, Data :  " + getJawaban_benar() + " dan "+reDto.getShort_answer().toLowerCase());
+                
+                try {
+                    if(reDto.getShort_answer().equals(null) || reDto.getShort_answer().equals(null)){
+                        reDto.setShort_answer("dum"); 
+                    }
+                } catch (NullPointerException e) {
+                    reDto.setShort_answer("dum");
+                }
                 if (getJawaban_benar().equals(reDto.getShort_answer().toLowerCase())) {
                     reDto.setId_qa(getId_qa());
                     reDto.setStatus(1);
@@ -310,9 +319,24 @@ public class Tb_quizController {
                     reDto.setStatus(0);
                 }
             } else {
+//                System.out.println("getId_answer : "+reDto.getId_answer());
+                
+                try {
+                    if(reDto.getId_answer().equals(null) || reDto.getId_answer().equals(null)){
+                        reDto.setId_answer(1); 
+                    }
+                } catch (NullPointerException e) {
+                    reDto.setId_answer(1);
+                }
                 List<Tb_quizDto> listStatus = tb_quizService.getStatus(getId_quiz(), reDto.getId_answer());
-                reDto.setId_qa(listStatus.get(0).getId());
-                reDto.setStatus(listStatus.get(0).getId_status());
+                try {
+                    reDto.setId_qa(listStatus.get(0).getId());
+                    reDto.setStatus(listStatus.get(0).getId_status());
+                } catch (IndexOutOfBoundsException e) {
+                    reDto.setId_qa(1);
+                    reDto.setStatus(0);
+                }
+                
             }
             map.addAttribute("status", reDto.getStatus());
             reDto.setId_matery(getId_matery());

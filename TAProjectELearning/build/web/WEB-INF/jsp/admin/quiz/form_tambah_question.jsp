@@ -62,6 +62,9 @@
                             <%--<form:input path="name" style="height:40px;" placeholder="Question"/>--%>
                         </div>
                         <div class="field">
+                            <form:textarea  path="description" required="true" placeholder="Description"  cols="10px" rows="5px"></form:textarea>
+                        </div>
+                        <div class="field">
                             <form:select path="id_matery" style="height:40px;">
                                 <option value="1">Sequensial</option>
                                 <option value="2">Kondisional</option>

@@ -31,7 +31,7 @@ public class LoginController {
     @Autowired
     Tb_sessionService tb_sessionService;
 
-    @RequestMapping(value = "/loginAction", method = RequestMethod.GET)
+    @RequestMapping(value = "/loginAction", method = RequestMethod.POST)
     public String loginAction(String username, String password, HttpSession session, ModelMap modelMap) {
         try {
             int data = tb_userService.loginUser(username, password);

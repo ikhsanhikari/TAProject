@@ -47,6 +47,8 @@ public class Tb_userController {
         try {
             if (listUser.size() == 0) {
                 tb_userService.saveData(userDto);
+                map.addAttribute("loginDto", userDto);
+                return "login";
             } else {
                 map.addAttribute("pesan", "Username sudah digunakan");
                 List<Tb_roleDto> listRole = tb_roleService.getData();
@@ -58,17 +60,19 @@ public class Tb_userController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if(userDto.getId_role()==1){
-            map.addAttribute("nama",userDto.getFirstname()+" "+userDto.getLastname());
-            return "mahasiswa/index";
-        }else if(userDto.getId_role()==2){
-            map.addAttribute("nama",userDto.getFirstname()+" "+userDto.getLastname());
-            return "dosen/index";
-        }else if(userDto.getId_role()==3){
-            map.addAttribute("nama",userDto.getFirstname()+" "+userDto.getLastname());
-            return "admin/index";
-        }
-        return "redirect:view_user.htm";
+        map.addAttribute("loginDto", userDto);
+                return "login";
+//        if(userDto.getId_role()==1){
+//            map.addAttribute("nama",userDto.getFirstname()+" "+userDto.getLastname());
+//            return "mahasiswa/index";
+//        }else if(userDto.getId_role()==2){
+//            map.addAttribute("nama",userDto.getFirstname()+" "+userDto.getLastname());
+//            return "dosen/index";
+//        }else if(userDto.getId_role()==3){
+//            map.addAttribute("nama",userDto.getFirstname()+" "+userDto.getLastname());
+//            return "admin/index";
+//        }
+//        return "redirect:view_user.htm";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -267,5 +271,30 @@ public class Tb_userController {
         }
         
         return "redirect:profilDosen.htm";
+    }
+    
+    @RequestMapping(value = "/edit_profil_mahasiswa", method = RequestMethod.GET)
+    public String formEditProfilMahasiswa(ModelMap map,  HttpSession session, Tb_userDto userDto) {
+        userDto = tb_userService.getDataById(Integer.parseInt(session.getAttribute("iduser").toString()));
+        List<Tb_roleDto> listRole = tb_roleService.getData();
+        map.addAttribute("loginDto", userDto);
+        try {
+                    map.addAttribute("userDto", userDto);
+                    map.addAttribute("listRole", listRole);
+                    return "user/form_ubah_profil_mahasiswa";
+        } catch (Exception e) {
+            return "login";
+        }
+        
+    }
+    @RequestMapping(value = "/update_profil_mahasiswa", method = RequestMethod.POST)
+    public String ubahProfilMahasiswa(Tb_userDto userDto) {
+        try {
+            tb_userService.updateData(userDto);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return "redirect:profile.htm";
     }
 }

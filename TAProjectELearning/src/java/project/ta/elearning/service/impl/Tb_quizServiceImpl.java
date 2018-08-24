@@ -57,6 +57,7 @@ public class Tb_quizServiceImpl implements Tb_quizService {
             model.setId(1);
             model.setName(dto.getName());
             model.setId_category(dto.getId_category());
+            model.setDescription(dto.getDescription());
             model.setId_matery(dto.getId_matery());
             tb_quizDao.saveData(model);
         } catch (Exception e) {
@@ -81,6 +82,7 @@ public class Tb_quizServiceImpl implements Tb_quizService {
             model.setId(dto.getId());
             model.setName(dto.getName());
             model.setId_category(dto.getId_category());
+            model.setDescription(dto.getDescription());
             model.setId_matery(dto.getId_matery());
             tb_quizDao.updateData(model);
         } catch (Exception e) {
@@ -96,6 +98,7 @@ public class Tb_quizServiceImpl implements Tb_quizService {
             for (Tb_quizModel model : listModel) {
                 dto = new Tb_quizDto();
                 dto.setId(model.getId());
+                dto.setDescription(model.getDescription());
                 dto.setName(model.getName());
                 dto.setId_matery(model.getId_matery());
                 dto.setId_category(model.getId_category());
