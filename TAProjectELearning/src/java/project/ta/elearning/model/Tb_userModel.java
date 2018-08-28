@@ -31,6 +31,15 @@ public class Tb_userModel {
     private String timemodified;
     private Integer id_role;
     private Integer idknowledge;
+    private Integer dosen;
+
+    public Integer getDosen() {
+        return dosen;
+    }
+
+    public void setDosen(Integer dosen) {
+        this.dosen = dosen;
+    }
 
     public Integer getIdknowledge() {
         return idknowledge;

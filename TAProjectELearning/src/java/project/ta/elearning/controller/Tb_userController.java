@@ -105,7 +105,7 @@ public class Tb_userController {
                 return "login";
             } else {
                 int role = Integer.parseInt(session.getAttribute("role").toString());
-                if (role != 3) {
+                if (role != 2) {
                     return "login";
                 } else {
                     map.addAttribute("listUser", listUser);
@@ -158,7 +158,7 @@ public class Tb_userController {
                 return "login";
             } else {
                 int role = Integer.parseInt(session.getAttribute("role").toString());
-                if (role != 3) {
+                if (role != 2) {
                     return "login";
                 } else {
                     map.addAttribute("userDto", userDto);
@@ -199,7 +199,7 @@ public class Tb_userController {
                 return "login";
             } else {
                 int role = Integer.parseInt(session.getAttribute("role").toString());
-                if (role != 2) {
+                if (role != 3) {
                     return "login";
                 } else {
                     map.addAttribute("listUser", listUser);
@@ -211,7 +211,7 @@ public class Tb_userController {
         }
 
     }
-    
+            
     @RequestMapping(value = "/edit_profil", method = RequestMethod.GET)
     public String formEditProfil(ModelMap map,  HttpSession session, Tb_userDto userDto) {
         userDto = tb_userService.getDataById(Integer.parseInt(session.getAttribute("iduser").toString()));

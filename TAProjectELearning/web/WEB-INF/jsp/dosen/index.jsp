@@ -50,18 +50,18 @@
         
         <div class="widget-content span12">
             <div class="shortcuts"> 
-                <a href="ubahStatusJumlahSoal.htm" class="shortcut"><i class="shortcut-icon icon-copy"></i>
+<!--                <a href="ubahStatusJumlahSoal.htm" class="shortcut"><i class="shortcut-icon icon-copy"></i>
                     <span class="shortcut-label">Menentukan Banyak Soal Per Level Quiz</span> 
-                </a>
+                </a>-->
 <!--                <a href="listEssay.htm" class="shortcut"><i class="shortcut-icon icon-check"></i>
                     <span class="shortcut-label">Koreksi Soal</span> 
                 </a>-->
-                <a href="view_mahasiswa.htm" class="shortcut"><i class="shortcut-icon icon-eye-open"></i>
-                    <span class="shortcut-label">Lihat Data Mahasiswa</span> 
+                <a href="view_user.htm" class="shortcut"><i class="shortcut-icon icon-eye-open"></i>
+                    <span class="shortcut-label">Kelola Data Dosen</span> 
                 </a>
-                <a href="ubahStatusMateri.htm" class="shortcut"><i class="shortcut-icon icon-eye-open"></i>
+<!--                <a href="ubahStatusMateri.htm" class="shortcut"><i class="shortcut-icon icon-eye-open"></i>
                     <span class="shortcut-label">Status Materi</span> 
-                </a>
+                </a>-->
             </div>
             <!-- /shortcuts --> 
         </div>

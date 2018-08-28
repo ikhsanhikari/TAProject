@@ -29,6 +29,7 @@
         <property name="timemodified" length="100"/>
         <property name="id_role" type="integer" length="10"/>
         <property name="idknowledge" type="integer" length="10"/>
+        <property name="dosen" type="integer" length="10"/>
     </class>
   
 

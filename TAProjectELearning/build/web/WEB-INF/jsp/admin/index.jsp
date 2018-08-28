@@ -56,7 +56,10 @@
                         <li><a href="view_answers.htm"><i class="icon-star"></i><span>Answers</span> </a> </li>
                         <li><a href="view_qa.htm"><i class="icon-tasks"></i><span>Question Answers</span> </a> </li>
                         <!--<li ><a href="view_level.htm"><i class="icon-signal"></i><span>Level</span> </a> </li>-->
-                        <li><a href="view_user.htm"><i class="icon-user"></i><span>User</span> </a> </li>
+                        <!--<li><a href="view_user.htm"><i class="icon-user"></i><span>User</span> </a> </li>-->
+                        <li><a href="ubahStatusJumlahSoal.htm"><i class="icon-copy"></i><span>Menentukan Banyak Soal Per Level</span> </a> </li>
+                        <li><a href="view_mahasiswa.htm"><i class="icon-eye-open"></i><span>Lihat Data Mahasiswa</span> </a> </li>
+                        <li><a href="ubahStatusMateri.htm"><i class="icon-eye-open"></i><span>Status Materi</span> </a> </li>
                         <!--<li><a href="view_majors.htm"><i class="icon-th-large"></i><span>Majors</span> </a> </li>-->
                     </ul>
                 </div>
@@ -74,9 +77,9 @@
                 <div class="widget-content">
                     <center>
                         <h3>Selamat Datang <strong>${nama}</strong> di Halaman Admin</h3>
-                        <p>Anda Memilik Hak Penuh dengan Aplikasi ini</p>
+                        <p>Anda Memilik Hak Untuk Mengelola Aplikasi ini</p>
                         <img src="resources/img/1.jpg" width="500px" height="500px"/>
-                        <p>Silahkan Pilih Memnu di atas untuk mulai mengolah data</p>
+                        <p>Silahkan Pilih Menu di atas untuk mulai mengolah data</p>
                     </center>
 
                 </div>

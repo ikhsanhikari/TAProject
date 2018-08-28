@@ -55,7 +55,10 @@
                         <li><a href="view_answers.htm"><i class="icon-star"></i><span>Answers</span> </a> </li>
                         <li><a href="view_qa.htm"><i class="icon-tasks"></i><span>Question Answers</span> </a> </li>
                         <!--<li ><a href="view_level.htm"><i class="icon-signal"></i><span>Level</span> </a> </li>-->
-                        <li><a href="view_user.htm"><i class="icon-user"></i><span>User</span> </a> </li>
+                        <!--<li><a href="view_user.htm"><i class="icon-user"></i><span>User</span> </a> </li>-->
+                        <li><a href="ubahStatusJumlahSoal.htm"><i class="icon-copy"></i><span>Menentukan Banyak Soal Per Level</span> </a> </li>
+                        <li><a href="view_mahasiswa.htm"><i class="icon-eye-open"></i><span>Lihat Data Mahasiswa</span> </a> </li>
+                        <li><a href="ubahStatusMateri.htm"><i class="icon-eye-open"></i><span>Status Materi</span> </a> </li>
                         <!--<li><a href="view_majors.htm"><i class="icon-th-large"></i><span>Majors</span> </a> </li>-->
                     </ul>
                 </div>
