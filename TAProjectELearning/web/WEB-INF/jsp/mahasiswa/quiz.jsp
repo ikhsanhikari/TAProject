@@ -53,7 +53,8 @@
         <!-- /navbar -->
 
         <div class="alert alert-info">
-            Anda saat ini sedang menjalankan sesi <strong>Quiz</strong>.
+            Anda saat ini sedang menjalankan sesi <strong>Quiz</strong>.<br>
+            Time Out : <span id="countdowntimer">60</span>
             <span class="pull-right">${materi}</span>
         </div>
 
@@ -70,10 +71,11 @@
                                 </div> <!-- /widget-header -->
 
                                 <div class="widget-content" style="height:350px">
-                                    <form:form modelAttribute="reDto" method="GET" action="quiz.htm">
+                                    <form:form modelAttribute="reDto" method="GET" id="formQuiz" action="quiz.htm">
                                         <form:hidden path="id_collerger"/>
                                         <input type="hidden" name="noSoalParam" value="${no}"/>
                                         <input type="hidden" name="statusMasuk" value="0"/>
+                                        <input type="hidden" name="action" value="Submit"/>
                                         <input type="hidden" name="idMateri" value="${idMateri}"/>
                                         <c:forEach var="data" items="${listQuiz}">
                                             <pre>${data.name} </pre>  
@@ -90,7 +92,7 @@
                                     <br/>
                                     <!--<a href="view_historis.htm" class="btn btn-success">Selesai</a>-->
                                     <!--<input id="btnPrevious" type="submit" name="action" value="Previous" class="btn btn-primary"/>-->
-                                    <input id="btnNext" type="submit" name="action" value="Submit" class="btn btn-primary"/>
+                                    <input id="btnNext" type="submit" class="btn btn-primary"/>
                                 </form:form>
                             </div> <!-- /widget -->	
                         </div> <!-- /spa12 -->
@@ -109,6 +111,21 @@
                 btnPrevious.disabled = true;
                 btnNext.disabled = false;
             }
+            
+        </script>
+        <script type="text/javascript">
+            var timeleft = 60;
+            var downloadTimer = setInterval(function(){
+            timeleft--;
+
+            document.getElementById("countdowntimer").textContent = timeleft;
+            if(timeleft <= 0)
+                clearInterval(downloadTimer);
+                if(timeleft===0){
+//                    alert("jadi");
+                    $("#formQuiz").submit();
+                }
+            },1000);
         </script>
     </body>
 </html>
