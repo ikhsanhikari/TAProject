@@ -108,7 +108,21 @@ public class Tb_userDaoImpl extends HibernateUtil implements Tb_userDao{
 
     @Override
     public List<Object[]> getDataMahasiswa() {
-        String sql = "select * from tb_user where id_role = 1";
+        String sql = "select * from tb_user where id_role = 3";
+        Query query = createNativeQuery(sql);
+        return query.list();
+    }
+
+    @Override
+    public List<Object[]> getDataDosen() {
+        String sql = "select * from tb_user where id_role = 2";
+        Query query = createNativeQuery(sql);
+        return query.list();
+    }
+    
+    @Override
+    public List<Object[]> getDataMahasiswaBasedOnDosen(Integer dosen) {
+        String sql = "select * from tb_user where id_role = 3 and dosen =" + dosen;
         Query query = createNativeQuery(sql);
         return query.list();
     }

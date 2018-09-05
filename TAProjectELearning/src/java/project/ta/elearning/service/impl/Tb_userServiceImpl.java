@@ -61,7 +61,11 @@ public class Tb_userServiceImpl implements Tb_userService {
             userModel.setTimemodified(currDate);
             userModel.setId_role(userDto.getId_role());
             userModel.setIdknowledge(0);
-
+            if(userDto.getId_role()==3){ // 3 stands for student/colleger
+                userModel.setDosen(userDto.getDosen());
+            }else{
+                userModel.setDosen(0);
+            }
             tb_userDao.saveData(userModel);
         } catch (Exception e) {
             System.out.println(e);
@@ -305,4 +309,54 @@ public class Tb_userServiceImpl implements Tb_userService {
         return listData;
     }
 
+    @Override
+    public List<Tb_userDto> getDataDosen() {
+        List<Tb_userDto> listData = new ArrayList<>();
+        List<Object[]> listModel = tb_userDao.getDataDosen();
+        String goodlearner = "";
+
+        if (listModel.size() > 0) {
+            for (Object[] obj : listModel) {
+                Tb_userDto dto = new Tb_userDto();
+                dto.setId(Integer.parseInt(obj[0].toString()));
+                dto.setFirstname(obj[3].toString());
+                dto.setPhone1(obj[6].toString());
+                dto.setIdknowledge(Integer.parseInt(obj[20].toString()));
+                if (tb_modelService.cekGoodLearner(dto.getId()) == 1) {
+                    goodlearner = "Good Learner";
+                } else {
+                    goodlearner = "Non Good Learner";
+                }
+                dto.setGoodlearner(goodlearner);
+                listData.add(dto);
+            }
+        }
+        return listData;
+    }
+    
+    @Override
+    public List<Tb_userDto> getDataMahasiswaBasedOnDosen(Integer dosen) {
+        List<Tb_userDto> listData = new ArrayList<>();
+        List<Object[]> listModel = tb_userDao.getDataMahasiswaBasedOnDosen(dosen);
+        String goodlearner = "";
+
+        if (listModel.size() > 0) {
+            for (Object[] obj : listModel) {
+                Tb_userDto dto = new Tb_userDto();
+                dto.setId(Integer.parseInt(obj[0].toString()));
+                dto.setFirstname(obj[3].toString());
+                dto.setLastname(obj[4].toString());
+                dto.setPhone1(obj[6].toString());
+                dto.setIdknowledge(Integer.parseInt(obj[20].toString()));
+                if (tb_modelService.cekGoodLearner(dto.getId()) == 1) {
+                    goodlearner = "Good Learner";
+                } else {
+                    goodlearner = "Non Good Learner";
+                }
+                dto.setGoodlearner(goodlearner);
+                listData.add(dto);
+            }
+        }
+        return listData;
+    }
 }

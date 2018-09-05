@@ -37,7 +37,7 @@ public class Tb_questionController {
                 return "login";
             } else {
                 int role = Integer.parseInt(session.getAttribute("role").toString());
-                if (role != 3) {
+                if (role != 2) {
                     return "login";
                 } else {
                     map.addAttribute("quizDto", quizDto);
@@ -59,7 +59,7 @@ public class Tb_questionController {
                 return "login";
             } else {
                 int role = Integer.parseInt(session.getAttribute("role").toString());
-                if (role != 3) {
+                if (role != 2) {
                     return "login";
                 } else {
                     map.addAttribute("questionDto", quizDto);
@@ -95,7 +95,7 @@ public class Tb_questionController {
                 return "login";
             } else {
                 int role = Integer.parseInt(session.getAttribute("role").toString());
-                if (role != 3) {
+                if (role != 2) {
                     return "login";
                 } else {
                     map.addAttribute("listQuestion", listDto);

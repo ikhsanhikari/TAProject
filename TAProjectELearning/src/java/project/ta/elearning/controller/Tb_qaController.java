@@ -70,7 +70,7 @@ public class Tb_qaController {
                 return "login";
             } else {
                 int role = Integer.parseInt(session.getAttribute("role").toString());
-                if (role != 3) {
+                if (role != 2) {
                     return "login";
                 } else {
                     map.addAttribute("qaDto", qaDto);
@@ -104,7 +104,7 @@ public class Tb_qaController {
                 return "login";
             } else {
                 int role = Integer.parseInt(session.getAttribute("role").toString());
-                if (role != 3) {
+                if (role != 2) {
                     return "login";
                 } else {
                     map.addAttribute("qaDto", qaDto);
@@ -144,7 +144,7 @@ public class Tb_qaController {
                 return "login";
             } else {
                 int role = Integer.parseInt(session.getAttribute("role").toString());
-                if (role != 3) {
+                if (role != 2) {
                     return "login";
                 } else {
                     map.addAttribute("listQa", listDto);

@@ -25,4 +25,6 @@ public interface Tb_userService {
     public int getDataKnowledge(String username);
     public void updateKnowledgeUser(String username, int idKnowledge);
     public List<Tb_userDto> getDataMahasiswa();
+    public List<Tb_userDto> getDataDosen();
+    public List<Tb_userDto> getDataMahasiswaBasedOnDosen(Integer dosen);
 }

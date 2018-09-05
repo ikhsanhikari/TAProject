@@ -33,6 +33,7 @@ public class LoginController {
 
     @RequestMapping(value = "/loginAction", method = RequestMethod.POST)
     public String loginAction(String username, String password, HttpSession session, ModelMap modelMap) {
+        System.out.println("masuk login");
         try {
             int data = tb_userService.loginUser(username, password);
             Tb_userDto listUser = tb_userService.selectUser(username, password);
@@ -42,6 +43,7 @@ public class LoginController {
             modelMap.addAttribute("nama", nama);
             if (data > 0) {
                 idKnowledge = tb_userService.getDataKnowledge(username);
+                modelMap.addAttribute("id", listUser.getId());
                 modelMap.addAttribute("username", username);
                 modelMap.addAttribute("password", password);
                 modelMap.addAttribute("role", listUser.getId_role());
@@ -54,7 +56,7 @@ public class LoginController {
                 tb_sessionDto.setUsername(username);
                 tb_sessionDto.setUserid(listUser.getId());
                 tb_sessionService.saveData(tb_sessionDto);
-                if (listUser.getId_role() == 1) {
+                if (listUser.getId_role() == 3) {
                     String knowledge = "";
                     String ada = "ada";
                     switch (idKnowledge) {
@@ -76,9 +78,9 @@ public class LoginController {
                     modelMap.addAttribute("ada", ada);
                     return "mahasiswa/index";
                 } else if (listUser.getId_role() == 2) {
-                    return "dosen/index";
-                } else if (listUser.getId_role() == 3) {
                     return "admin/index";
+                } else if (listUser.getId_role() == 1) {
+                    return "dosen/index";
                 }
                 return "index";
             } else {
@@ -87,6 +89,7 @@ public class LoginController {
                 return "login";
             }
         } catch (Exception e) {
+            System.out.println("masuk catch login: " + e);
             Tb_userDto userDto = new Tb_userDto();
             modelMap.addAttribute("pesan","Maaf Username atau Password yang Anda Masukkan Salah ");
             modelMap.addAttribute("loginDto", userDto);

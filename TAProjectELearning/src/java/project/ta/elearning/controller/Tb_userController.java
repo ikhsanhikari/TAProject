@@ -35,8 +35,10 @@ public class Tb_userController {
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String form_tambah_user(Tb_userDto userDto, ModelMap map, HttpSession session, HttpServletRequest req) {
         List<Tb_roleDto> listRole = tb_roleService.getData();
+        List<Tb_userDto> listDosen = tb_userService.getDataDosen();
         map.addAttribute("userDto", userDto);
         map.addAttribute("listRole", listRole);
+        map.addAttribute("listDosen", listDosen);
         return "user/form_tambah_user";
     }
 
@@ -84,9 +86,9 @@ public class Tb_userController {
                 return "login";
             }
             Integer role = Integer.parseInt(session.getAttribute("role").toString());
-            if (role == 1) {
+            if (role == 3) {
                 return "mahasiswa/index";
-            } else if (role == 2) {
+            } else if (role == 1) {
                 return "dosen/index";
             }
         } catch (Exception e) {
@@ -105,7 +107,7 @@ public class Tb_userController {
                 return "login";
             } else {
                 int role = Integer.parseInt(session.getAttribute("role").toString());
-                if (role != 2) {
+                if (role != 3) {
                     return "login";
                 } else {
                     map.addAttribute("listUser", listUser);
@@ -191,22 +193,29 @@ public class Tb_userController {
     }
     @RequestMapping(value = "/view_mahasiswa", method = RequestMethod.GET)
     public String viewMahasiswa(ModelMap map, HttpSession session, Tb_userDto userDto) {
-        List<Tb_userDto> listUser = tb_userService.getDataMahasiswa();
+        int dosen = (int) session.getAttribute("id");
+        System.out.println("masuk 0 dosen: " + dosen);
+        List<Tb_userDto> listMahasiswaBasedOnDosen = tb_userService.getDataMahasiswaBasedOnDosen(dosen);
         map.addAttribute("loginDto", userDto);
         map.addAttribute("userDto", userDto);
         try {
             if (session.getAttribute("username") == null) {
+                System.out.println("masuk 1");
                 return "login";
             } else {
+                System.out.println("masuk 2");
                 int role = Integer.parseInt(session.getAttribute("role").toString());
-                if (role != 3) {
+                if (role != 2) {
+                    System.out.println("masuk 3, role:" + role);
                     return "login";
                 } else {
-                    map.addAttribute("listUser", listUser);
+                    System.out.println("masuk 4 sukses");
+                    map.addAttribute("listMahasiswaBasedOnDosen", listMahasiswaBasedOnDosen);
                     return "dosen/view_mahasiswa";
                 }
             }
         } catch (Exception e) {
+            System.out.println("masuk 5 error catch");
             return "login";
         }
 

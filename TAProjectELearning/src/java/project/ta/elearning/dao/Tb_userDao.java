@@ -26,4 +26,6 @@ public interface Tb_userDao {
     public int getDataKnowledge(String username);
     public void updateKnowledgeUser(String username, int idKnowledge);
     public List<Object[]> getDataMahasiswa();
+    public List<Object[]> getDataDosen();
+    public List<Object[]> getDataMahasiswaBasedOnDosen(Integer dosen);
 }

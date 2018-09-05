@@ -19,7 +19,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Halaman Dosen</title>
+        <title>Halaman Admin</title>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
@@ -31,7 +31,7 @@
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="icon-user"></i> ${nama} <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="profilDosen.htm">Profile</a></li>
+                                    <li><a href="profiladmin.htm">Profile</a></li>
                                     <li><a href="logout.htm">Logout</a></li>
                                 </ul>
                             </li>
@@ -45,7 +45,7 @@
         </div>
         <!-- /navbar -->
         <div class="alert alert-info">
-            Menu dosen.
+            Menu Admin.
         </div>
         
         <div class="widget-content span12">
@@ -57,7 +57,7 @@
                     <span class="shortcut-label">Koreksi Soal</span> 
                 </a>-->
                 <a href="view_user.htm" class="shortcut"><i class="shortcut-icon icon-eye-open"></i>
-                    <span class="shortcut-label">Kelola Data Dosen</span> 
+                    <span class="shortcut-label">Kelola Data Admin</span> 
                 </a>
 <!--                <a href="ubahStatusMateri.htm" class="shortcut"><i class="shortcut-icon icon-eye-open"></i>
                     <span class="shortcut-label">Status Materi</span> 

@@ -79,7 +79,7 @@
                 <thead>
                     <tr>
                         <th width="50px"> ID</th>
-                        <th width="100px"> Nama</th>
+                        <th width="300px"> Nama</th>
 <!--                        <th width="100px"> Nomor Telepon </th>
                         <th width="100px"> Knowledge</th>-->
                         <th width="100px">Status</th>
@@ -87,10 +87,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${listUser}" var="data">
+                    <c:forEach items="${listMahasiswaBasedOnDosen}" var="data">
                     <tr>
                     <td>${data.id}</td>    
-                    <td>${data.firstname}</td>
+                    <td>${data.firstname} ${data.lastname}</td>
                     <td>${data.goodlearner}</td>
                     <c:url var="pilih" value="detail_mahasiswa.htm">
                         <c:param name="iduser" value="${data.id}"/>

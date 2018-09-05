@@ -33,7 +33,16 @@ public class Tb_userDto {
     private String cari;
     private Integer idknowledge;
     private String goodlearner;
+    private Integer dosen;
 
+    public Integer getDosen() {
+        return dosen;
+    }
+
+    public void setDosen(Integer dosen) {
+        this.dosen = dosen;
+    }
+    
     public String getGoodlearner() {
         return goodlearner;
     }

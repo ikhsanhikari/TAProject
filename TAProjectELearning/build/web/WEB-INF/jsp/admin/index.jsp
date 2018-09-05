@@ -21,7 +21,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Halaman Admin</title>
+        <title>Halaman Dosen</title>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
@@ -33,7 +33,7 @@
                             <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="icon-user"></i> ${nama} <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="profilAdmin.htm">Profile</a></li>
+                                    <li><a href="profilDosen.htm">Profile</a></li>
                                     <li><a href="logout.htm">Logout</a></li>
                                 </ul>
                             </li>
@@ -76,10 +76,9 @@
                 </div>
                 <div class="widget-content">
                     <center>
-                        <h3>Selamat Datang <strong>${nama}</strong> di Halaman Admin</h3>
-                        <p>Anda Memilik Hak Untuk Mengelola Aplikasi ini</p>
+                        <h3>Selamat Datang <strong>${nama}</strong> di Halaman Dosen</h3>
+                        <p>Anda memilik hak untuk mengakses menu di atas.</p>
                         <img src="resources/img/1.jpg" width="500px" height="500px"/>
-                        <p>Silahkan Pilih Menu di atas untuk mulai mengolah data</p>
                     </center>
 
                 </div>
