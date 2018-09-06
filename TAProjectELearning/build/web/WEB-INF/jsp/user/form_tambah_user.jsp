@@ -101,7 +101,13 @@
                                     </c:forEach>
                                 </form:select>
                             </div> <!-- /field -->
-
+                            <div class="field1">
+                                <form:select path="dosen" style="height:40px;">
+                                    <c:forEach items="${listDosen}" var="listData" >
+                                        <option value="${listData.id}">${listData.firstname} ${listData.lastname}</option>
+                                    </c:forEach>
+                                </form:select>
+                            </div> <!-- /field -->
                             <input type="submit" value="Simpan"/>
 
                         </div> <!-- .actions -->

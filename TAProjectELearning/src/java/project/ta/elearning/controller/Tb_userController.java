@@ -107,7 +107,7 @@ public class Tb_userController {
                 return "login";
             } else {
                 int role = Integer.parseInt(session.getAttribute("role").toString());
-                if (role != 3) {
+                if (role != 1) {
                     return "login";
                 } else {
                     map.addAttribute("listUser", listUser);
@@ -160,7 +160,7 @@ public class Tb_userController {
                 return "login";
             } else {
                 int role = Integer.parseInt(session.getAttribute("role").toString());
-                if (role != 2) {
+                if (role != 1) {
                     return "login";
                 } else {
                     map.addAttribute("userDto", userDto);
