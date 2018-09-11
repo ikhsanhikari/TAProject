@@ -306,4 +306,9 @@ public class Tb_userController {
         
         return "redirect:profile.htm";
     }
+    @RequestMapping(value = "/hapus_mahasiswa", method = RequestMethod.GET)
+    public String hapusMahasiswa(Integer id) {
+        tb_userService.deleteData(id);
+        return "redirect:view_mahasiswa.htm";
+    }
 }

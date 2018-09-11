@@ -57,7 +57,7 @@
                     <span class="shortcut-label">Koreksi Soal</span> 
                 </a>-->
                 <a href="view_user.htm" class="shortcut"><i class="shortcut-icon icon-eye-open"></i>
-                    <span class="shortcut-label">Kelola Data Admin</span> 
+                    <span class="shortcut-label">Kelola Data Dosen</span> 
                 </a>
 <!--                <a href="ubahStatusMateri.htm" class="shortcut"><i class="shortcut-icon icon-eye-open"></i>
                     <span class="shortcut-label">Status Materi</span> 

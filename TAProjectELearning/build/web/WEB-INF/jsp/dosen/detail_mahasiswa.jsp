@@ -158,9 +158,13 @@
                         <td>${listUser.city}  </td>
                     </tr>
                 </table>
-
+                        <c:url var="test" value="hapus_mahasiswa.htm">
+                            <c:param name="id" value="${listUser.id}"/>
+                        </c:url>
+                    <a href="${test}"><button class="btn btn-primary pull-right">Hapus Mahasiswa</button></a>
             </div>
             <!-- /shortcuts --> 
+            
         </div>
         <!-- /widget-content --> 
 
