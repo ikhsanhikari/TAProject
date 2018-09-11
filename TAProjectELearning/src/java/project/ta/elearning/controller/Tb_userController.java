@@ -99,7 +99,7 @@ public class Tb_userController {
 
     @RequestMapping(value = "/view_user", method = RequestMethod.GET)
     public String viewUser(ModelMap map, HttpSession session, Tb_userDto userDto) {
-        List<Tb_userDto> listUser = tb_userService.getData();
+        List<Tb_userDto> listUser = tb_userService.getDataByIdRole(2);
         map.addAttribute("loginDto", userDto);
         map.addAttribute("userDto", userDto);
         try {

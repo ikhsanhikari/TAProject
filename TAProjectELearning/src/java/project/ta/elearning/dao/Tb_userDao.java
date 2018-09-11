@@ -28,4 +28,5 @@ public interface Tb_userDao {
     public List<Object[]> getDataMahasiswa();
     public List<Object[]> getDataDosen();
     public List<Object[]> getDataMahasiswaBasedOnDosen(Integer dosen);
+    public List<Tb_userModel> getDataByRole(Integer idrole);
 }

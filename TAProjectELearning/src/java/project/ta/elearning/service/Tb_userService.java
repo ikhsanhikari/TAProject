@@ -27,4 +27,5 @@ public interface Tb_userService {
     public List<Tb_userDto> getDataMahasiswa();
     public List<Tb_userDto> getDataDosen();
     public List<Tb_userDto> getDataMahasiswaBasedOnDosen(Integer dosen);
+    public List<Tb_userDto> getDataByIdRole(Integer id_role);
 }

@@ -359,4 +359,37 @@ public class Tb_userServiceImpl implements Tb_userService {
         }
         return listData;
     }
+
+    @Override
+    public List<Tb_userDto> getDataByIdRole(Integer id_role) {
+        List<Tb_userDto> listDto = new ArrayList<>();
+        List<Tb_userModel> listModel = tb_userDao.getDataByRole(id_role);
+        if (listModel.size() > 0) {
+            for (Tb_userModel list : listModel) {
+                Tb_userDto userDto = new Tb_userDto();
+                userDto.setId(list.getId());
+                userDto.setUsername(list.getUsername());
+                userDto.setPassword(list.getPassword());
+                userDto.setFirstname(list.getFirstname());
+                userDto.setLastname(list.getLastname());
+                userDto.setEmail(list.getEmail());
+                userDto.setPhone1(list.getPhone1());
+                userDto.setInstitution(list.getInstitution());
+                userDto.setDepartment(list.getDepartment());
+                userDto.setAddress(list.getAddress());
+                userDto.setCity(list.getCity());
+                userDto.setFirstaccess(list.getFirstaccess());
+                userDto.setLastaccess(list.getLastaccess());
+                userDto.setLastlogin(list.getLastlogin());
+                userDto.setCurrentlogin(list.getCurrentlogin());
+                userDto.setPicture(list.getPicture());
+                userDto.setDescription(list.getDescription());
+                userDto.setTimecreated(list.getTimecreated());
+                userDto.setTimemodified(list.getTimemodified());
+                userDto.setId_role(list.getId_role());
+                listDto.add(userDto);
+            }
+        }
+        return listDto;
+    }
 }

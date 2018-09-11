@@ -126,4 +126,13 @@ public class Tb_userDaoImpl extends HibernateUtil implements Tb_userDao{
         Query query = createNativeQuery(sql);
         return query.list();
     }
+
+    @Override
+    public List<Tb_userModel> getDataByRole(Integer idrole) {
+        List<Tb_userModel> listData = new ArrayList<>();
+        String sql = "select model from Tb_userModel model where id_role = :id";
+        Query query = createQuery(sql).setParameter("id", idrole);
+        listData = query.list();
+        return listData;
+    }
 }
