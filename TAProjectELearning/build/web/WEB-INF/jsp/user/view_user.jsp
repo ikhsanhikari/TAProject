@@ -20,7 +20,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>View User</title>
+        <title>View Data Dosen</title>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
@@ -69,7 +69,7 @@
         <!-- /widget -->
         <div class="widget widget-table action-table">
             <div class="widget-header"> <i class="icon-th-list"></i>
-                <h3>Daftar User </h3>
+                <h3>Daftar Dosen</h3>
             </div>
             <!-- /widget-header -->
             <div class="widget-content">
