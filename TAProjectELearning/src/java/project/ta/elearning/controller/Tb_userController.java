@@ -311,4 +311,19 @@ public class Tb_userController {
         tb_userService.deleteData(id);
         return "redirect:view_mahasiswa.htm";
     }
+    @RequestMapping(value = "/form_tambah_dosen", method = RequestMethod.GET)
+    public String formTambahDosen(ModelMap map, Tb_userDto userDto) {
+        map.addAttribute("userDto", userDto);
+        return "user/form_tambah_dosen";
+    }
+    @RequestMapping(value = "/saveDosen", method = RequestMethod.POST)
+    public String tambahDosen(Tb_userDto userDto) {
+        try {
+            tb_userService.saveData(userDto);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return "redirect:view_user.htm";
+    }
 }

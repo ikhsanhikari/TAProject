@@ -67,10 +67,13 @@
 
         <!--<p><a href="signup.htm">Add User</a></p>-->
         <!-- /widget -->
+        <br>
         <div class="widget widget-table action-table">
+            <a href="form_tambah_dosen.htm">Tambah User</a>
             <div class="widget-header"> <i class="icon-th-list"></i>
                 <h3>Daftar Dosen</h3>
             </div>
+            
             <!-- /widget-header -->
             <div class="widget-content">
                 <table class="table table-striped table-bordered">
