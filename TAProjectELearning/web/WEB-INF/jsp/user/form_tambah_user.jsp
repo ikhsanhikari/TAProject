@@ -94,7 +94,7 @@
                                 <form:input path="description" required="true" placeholder="description" class="login" style="height:40px;"/><br/>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:select path="id_role" style="height:40px;">
+                                <form:select path="id_role" style="height:40px;" onchange="disableDosen()" id="role">
                                     <!--<option>Role</option>-->
                                     <c:forEach items="${listRole}" var="listData" >
                                         <option value="${listData.id}">${listData.name}</option>
@@ -102,11 +102,11 @@
                                 </form:select>
                             </div> <!-- /field -->
                             <div class="field1">
-                                <form:select path="dosen" style="height:40px;">
-                                    <c:forEach items="${listDosen}" var="listData" >
-                                        <option value="${listData.id}">${listData.firstname} ${listData.lastname}</option>
-                                    </c:forEach>
-                                </form:select>
+                                    <form:select path="dosen" style="height:40px;" id="dosen">
+                                        <c:forEach items="${listDosen}" var="listData" >
+                                            <option value="${listData.id}">${listData.firstname} ${listData.lastname}</option>
+                                        </c:forEach>
+                                    </form:select>
                             </div> <!-- /field -->
                             <input type="submit" value="Simpan"/>
 
@@ -121,5 +121,21 @@
         <script src="<c:url value="resources/js/chart.min.js"/>" type="text/javascript"></script> 
         <script src="<c:url value="resources/js/bootstrap.js"/>"></script>
         <script language="javascript" type="text/javascript" src="<c:url value="resources/js/full-calendar/fullcalendar.min.js"/>"></script>
+        <script type="text/javascript">
+            $( window ).load(function() {
+                disableDosen();
+            });
+            function disableDosen(){
+                var role = document.getElementById('role').value;
+                console.log("role: " + role);
+                if(role != 3){
+                    console.log("masuk");
+                    $('#dosen').prop('disabled', true);
+                } else {
+                    console.log("masuk else");
+                    $('#dosen').prop('disabled', false);
+                }
+            }
+        </script>
     </body>
 </html>
