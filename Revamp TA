@@ -1,1 +1,12 @@
-Revamp
+Revamp TA (Tugas Akhir)
+
+Database Design :
+
+Table List :
+1. question : id,question,id_question_type,id_question_level,description
+2. question_type : id,question_type
+3. question_level : id,question_level
+4. answer : id,answer,answer_type
+5. question_answer: id,id_question,id_answer,answer_status
+
+
