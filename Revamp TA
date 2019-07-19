@@ -6,7 +6,33 @@ Table List :
 1. question : id,question,id_question_type,id_question_level,description
 2. question_type : id,question_type
 3. question_level : id,question_level
-4. answer : id,answer,answer_type
-5. question_answer: id,id_question,id_answer,answer_status
+4. short_answer : id,answer
+5. multiple_choice_answer: id,question,answer
+6. question_answer: id,id_question,id_answer
 
 
+{
+  "id": "1"
+  "question" : "Apakah kepanjangan dari HTML. ?"
+  "questionType" : "1"
+  "questionLevel" : "1"
+  "rhight_answer": "1"
+  "answer" [
+    {
+      "id": "1",
+      "answer": "Hyperlink Text Mailing Language"
+    },
+    {
+      "id": "2",
+      "answer": ""
+    },
+    {
+      "id": "3",
+      "answer": ""
+    },
+    {
+      "id": "4",
+      "answer": ""
+    }
+  ]
+}
