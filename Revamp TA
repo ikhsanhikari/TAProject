@@ -10,29 +10,60 @@ Table List :
 5. multiple_choice_answer: id,question,answer
 6. question_answer: id,id_question,id_answer
 
-
+Request :
 {
-  "id": "1"
-  "question" : "Apakah kepanjangan dari HTML. ?"
-  "questionType" : "1"
-  "questionLevel" : "1"
-  "rhight_answer": "1"
-  "answer" [
-    {
-      "id": "1",
-      "answer": "Hyperlink Text Mailing Language"
-    },
-    {
-      "id": "2",
-      "answer": ""
-    },
-    {
-      "id": "3",
-      "answer": ""
-    },
-    {
-      "id": "4",
-      "answer": ""
-    }
-  ]
+	"question":"Apakah singkatan dari HTML ?",
+	"questionType":1,
+	"questionLevel":1,
+	"answers":[
+		{
+			"status":false,
+			"answer":"Hyper Text Kubernate Language"
+		},
+		{
+			"status":false,
+			"answer":"Hyper Text Query Language"
+		},
+		{
+			"status":false,
+			"answer":"Hyper Text Kieru Language"
+		},
+		{
+			"status":true,
+			"answer":"Hyper Text Mailing Language"
+		}
+	]
 }
+
+Response:
+
+[
+    {
+        "id": 1,
+        "question": "Apakah singkatan dari HTML ?",
+        "questionType": 1,
+        "questionLevel": 1,
+        "answers": [
+            {
+                "id": 1,
+                "variable": "A",
+                "answer": "Hyper Text Kubernate Language"
+            },
+            {
+                "id": 2,
+                "variable": "B",
+                "answer": "Hyper Text Query Language"
+            },
+            {
+                "id": 3,
+                "variable": "C",
+                "answer": "Hyper Text Kieru Language"
+            },
+            {
+                "id": 4,
+                "variable": "D",
+                "answer": "Hyper Text Mailing Language"
+            }
+        ]
+    }
+]
