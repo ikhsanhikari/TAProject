@@ -9,6 +9,7 @@ Table List :
 4. short_answer : id,answer
 5. multiple_choice_answer: id,question,answer
 6. question_answer: id,id_question,id_answer
+7. 
 
 Request :
 {
@@ -67,3 +68,19 @@ Response:
         ]
     }
 ]
+
+
+
+Request: 
+{
+	"eventId":1,
+	"userId":1,
+	"questionsTransactionDetail":{
+		"id":1,
+		"idQuestion":1,
+		"answerId":1
+	}
+}
+
+1. questionTransaction {id,eventId,userId}
+2. questionTransactionDetail{id,idQuestionTransaction,questionId,answerId,status}
