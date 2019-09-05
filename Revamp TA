@@ -6,11 +6,16 @@ Table List :
 1. question : id,question,id_question_type,id_question_level,description
 2. question_type : id,question_type
 3. question_level : id,question_level
-4. short_answer : id,answer
+4. short_answer : id,question, answer, questionLevel
 5. multiple_choice_answer: id,question,answer
 6. question_answer: id,id_question,id_answer
-7. question_short : id,question,id_question_level
-8. question_short_answer : id, id_question_short, id_short_answer
+
+Request: 
+{
+	"question_short": "Object Oriented Programming sering di sebut dengan istiah ???",
+	"questionLevel": 1,
+	"shortAnswer": "OOP"
+}
 
 Request :
 {
