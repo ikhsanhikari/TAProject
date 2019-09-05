@@ -1,1 +1,19 @@
+Table :
 
+1. ResultMultipleChoice : id,id_user,id_question,answer,package_unique
+
+Request :
+[
+  {
+    "id_user":1,
+    "id_question":1,
+    "answer":1,
+    "package":"llllll0"
+  },
+  {
+    "id_user":1,
+    "id_question":1,
+    "answer":2,
+    "package":"llllll0"
+  }
+]
