@@ -17,3 +17,11 @@ Request :
     "package":"llllll0"
   }
 ]
+
+
+select qa.id, qa.id_question, qa.id_answer 
+as right_answer ,rmc.id_answer 
+as user_answer, rmc.package_unique 
+from question_answer qa , result_multiple_choice rmc 
+where qa.id_question = rmc.id_question
+and rmc.package_unique = 'Q660VC'
