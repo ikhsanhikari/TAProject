@@ -28,6 +28,29 @@ where qa.id_question = rmc.id_question
 and rmc.package_unique = 'Q660VC'
 
 
+Remake MC:
+select qa.id, q.question, 
+qa.id_answer as right_answer ,
+a.variable as right_variabe ,
+a.answer as right_answer_value,
+rmc.id_answer as user_answer,
+(select variable from answer where id = user_answer) as user_answer_variable,
+(select answer from answer where id = user_answer) as user_answer_value,
+ rmc.package_unique 
+from question_answer qa , 
+result_multiple_choice rmc ,
+question q,
+answer a 
+where qa.id_question = rmc.id_question
+and q.id = qa.id_question
+and a.id = qa.id_answer
+and rmc.package_unique = 'WPQL66'
+
+
+
+
+
+
 SA:
 select sa.id, sa.question, sa.short_answer 
 as right_answer ,rmc.id_answer 
