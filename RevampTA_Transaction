@@ -18,6 +18,7 @@ Request :
   }
 ]
 
+MC:
 
 select qa.id, qa.id_question, qa.id_answer 
 as right_answer ,rmc.id_answer 
@@ -25,3 +26,12 @@ as user_answer, rmc.package_unique
 from question_answer qa , result_multiple_choice rmc 
 where qa.id_question = rmc.id_question
 and rmc.package_unique = 'Q660VC'
+
+
+SA:
+select sa.id, sa.question, sa.short_answer 
+as right_answer ,rmc.id_answer 
+as user_answer, rmc.package_unique 
+from short_answer sa , result_short_answer rmc 
+where sa.id = rmc.id_question
+and rmc.package_unique = 'WPQL66'
